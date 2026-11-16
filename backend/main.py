@@ -1,3 +1,4 @@
+from collections import defaultdict
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -5,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from database import Base, engine, get_db
 from models import (
+    CourseEdge,
     Section,
     Subject,
     Syllabus,
@@ -16,7 +18,7 @@ from models import (
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="KNU CSE Hackathon Backend", version="0.1.0")
+app = FastAPI(title="KNU CSE Hackathon Backend", version="0.2.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -46,6 +48,16 @@ def _parse_list(raw: str | None) -> list[str]:
         return []
     return [item.strip() for item in raw.split(",") if item.strip()]
 
+def _is_edge_satisfied(edge: CourseEdge, completed_codes: set[str]) -> bool:
+    if edge.from_code in completed_codes:
+        return True
+    if edge.or_with:
+        alt_codes = _parse_list(edge.or_with)
+        if any(code in completed_codes for code in alt_codes):
+            return True
+    return False
+
+
 
 @app.get("/health")
 def health_check():
@@ -58,6 +70,7 @@ def get_roadmap(
     db: Session = Depends(get_db),
 ):
     subjects = db.query(Subject).order_by(Subject.subject_code).all()
+    edges = db.query(CourseEdge).order_by(CourseEdge.id).all()
     completed_rows = (
         db.query(UserCompletedCourse)
         .filter(UserCompletedCourse.user_id == user_id)
@@ -65,23 +78,52 @@ def get_roadmap(
     )
     completed_codes = {row.subject_code for row in completed_rows}
 
+    prereq_edges_by_target: dict[str, list[CourseEdge]] = defaultdict(list)
+    for e in edges:
+        if e.type == "pre":
+            prereq_edges_by_target[e.to_code].append(e)
+
     nodes = []
     for s in subjects:
         is_completed = s.subject_code in completed_codes
-        prereqs = _parse_list(s.prerequisites)
-        followups = _parse_list(s.followups)
+        target_edges = prereq_edges_by_target.get(s.subject_code, [])
+        if is_completed:
+            status = "completed"
+        elif not target_edges or all(_is_edge_satisfied(e, completed_codes) for e in target_edges):
+            status = "available"
+        else:
+            status = "locked"
+
         nodes.append({
             "subject_code": s.subject_code,
             "subject_name": s.subject_name,
             "credit": s.credit,
             "offered_terms": _parse_list(s.offered_terms),
-            "prerequisites": prereqs,
-            "followups": followups,
+            "prerequisites": _parse_list(s.prerequisites),
+            "followups": _parse_list(s.followups),
             "is_completed": is_completed,
+            "status": status,
             "light": "green" if is_completed else "default",
         })
 
-    return {"user_id": user_id, "total": len(nodes), "subjects": nodes}
+    edge_list = [
+        {
+            "from_code": e.from_code,
+            "from_name": e.from_name,
+            "to_code": e.to_code,
+            "to_name": e.to_name,
+            "type": e.type,
+            "or_with": e.or_with,
+        }
+        for e in edges
+    ]
+
+    return {
+        "user_id": user_id,
+        "total": len(nodes),
+        "subjects": nodes,
+        "edges": edge_list,
+    }
 
 
 @app.post("/api/roadmap/complete")
