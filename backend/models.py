@@ -15,6 +15,17 @@ class Subject(Base):
     prerequisites = Column(Text, nullable=True)
     followups = Column(Text, nullable=True)
 
+class CourseEdge(Base):
+    __tablename__ = "course_edges"
+
+id = Column(Integer, primary_key=True, autoincrement=True)
+from_code = Column(String(32), nullable=False, index=True)
+from_name = Column(String(200), nullable=True)
+to_code = Column(String(32), nullable=False, index=True)
+to_name = Column(String(200), nullable=True)
+type = Column(String(32), nullable=False, default="pre")
+or_with = Column(String(100), nullable=True)
+
 
 class Section(Base):
     __tablename__ = "sections"
