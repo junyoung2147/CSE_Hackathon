@@ -1,8 +1,8 @@
 """경북대 수업시간표·강의계획서 공개 페이지에서 강의 목록과 강의계획서 원본(JSON)을 수집한다.
 
 사용법:
-    python data/scripts/crawl_lectures.py --year 2026 --smstr 1 2             # 목록만
-    python data/scripts/crawl_lectures.py --year 2026 --smstr 1 2 --syllabus  # 목록 + 강의계획서
+    python data/lecture_data/scripts/crawl_lectures.py --year 2026 --smstr 1 2             # 목록만
+    python data/lecture_data/scripts/crawl_lectures.py --year 2026 --smstr 1 2 --syllabus  # 목록 + 강의계획서
     --refresh: 해당 학기 raw를 무시하고 다시 받음
 
 강의계획서 상세 API는 직접 호출하면 401이라, 사이트가 비로그인 사용자에게 여는 팝업을 그대로 열고
