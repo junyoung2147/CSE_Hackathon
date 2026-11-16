@@ -1,0 +1,81 @@
+﻿term,course_no,book_no,title,author,publisher,year,isbn,book_type_code,source_file
+2026-1,COME0331-004,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_1_COME0331-004/SrchBooks.json
+2026-1,COMP0216-002,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_1_COMP0216-002/SrchBooks.json
+2026-1,COMP0217-002,1,이것이 자바다 : 교육 현장에서 가장 많이 쓰이는 JAVA 프로그래밍 기본서,"신용권, 임경균",한빛미디어,2024,9791169212274,STLP002500001,raw/syllabus/2026_1_COMP0217-002/SrchBooks.json
+2026-1,COMP0319-002,1,Introduction to Algorithms,"토머스 코멘,찰스 레이서손,로날드 리베스트,클리포드 스타인 공저",한빛미디어,2014,9791156641131,STLP002500001,raw/syllabus/2026_1_COMP0319-002/SrchBooks.json
+2026-1,COMP0319-003,1,Introduction to Algorithms,"토머스 코멘,찰스 레이서손,로날드 리베스트,클리포드 스타인 공저",한빛미디어,2014,9791156641131,STLP002500001,raw/syllabus/2026_1_COMP0319-003/SrchBooks.json
+2026-1,FUTR0201-001,1,스타트업 창업가 DNA : 성공으로 가는 길,정진선,法文社,2025,9788918916101,STLP002500001,raw/syllabus/2026_1_FUTR0201-001/SrchBooks.json
+2026-1,FUTR0208-001,1,4차 산업혁명 보고서 : 미래를 여는 나침반,박종구,생능출판,2019,9788970509648,STLP002500001,raw/syllabus/2026_1_FUTR0208-001/SrchBooks.json
+2026-1,FUTR0208-001,2,4차 산업혁명 미래 전략 보고서 : 포스코·GE·지멘스는 어떻게 4차 산업혁명을 준비하고 있는가?,김민규,북스타,2018,9791188768028,STLP002500002,raw/syllabus/2026_1_FUTR0208-001/SrchBooks.json
+2026-1,FUTR0208-001,3,인공지능 : 미래를 위해 반드시 알아야 할 101가지 사항들,라세 로우하이에넨,청람,2021,9788959728336,STLP002500003,raw/syllabus/2026_1_FUTR0208-001/SrchBooks.json
+2026-1,FUTR0208-001,4,IT 트렌드 2025 : 새로 쓰는 AI의 미래와 세계 비즈니스 모델의 모든 것,김지현,CRETA;크레타,2024,9791192742342,STLP002500003,raw/syllabus/2026_1_FUTR0208-001/SrchBooks.json
+2026-1,COME0311-001,1,Probability and Statistics for Engineers and Scientists,Anthony J. Hayter,Duxbury Press,2012,9781111827045,STLP002500001,raw/syllabus/2026_1_COME0311-001/SrchBooks.json
+2026-1,COME0311-002,1,Probability and Statistics for Engineers and Scientists,Anthony J. Hayter,Duxbury Press,2012,9781111827045,STLP002500001,raw/syllabus/2026_1_COME0311-002/SrchBooks.json
+2026-1,COMP0217-004,1,명품 자바 에센셜 : 명품 JAVA programming light version,황기태,생능출판,2025,9791194630494,STLP002500001,raw/syllabus/2026_1_COMP0217-004/SrchBooks.json
+2026-1,COMP0462-001,1,Data Mining: Concepts and Techniques,Jiawei Han,Morgan Kaufmann Publishers In,2011,9780123814791,STLP002500001,raw/syllabus/2026_1_COMP0462-001/SrchBooks.json
+2026-1,EECS0312-001,1,윤성우의 열혈 TCP/IP 소켓 프로그래밍,윤성우,OrangeMedia(오렌지미디어),2009,9788996094036,STLP002500001,raw/syllabus/2026_1_EECS0312-001/SrchBooks.json
+2026-1,ELEC0462-001,1,Understanding Unix/Linux programming,Bruce Molay,Prentice Hall,2002,9780130083968,STLP002500001,raw/syllabus/2026_1_ELEC0462-001/SrchBooks.json
+2026-1,ELEC0462-002,1,Understanding Unix/Linux programming,Bruce Molay,Prentice Hall,2002,9780130083968,STLP002500001,raw/syllabus/2026_1_ELEC0462-002/SrchBooks.json
+2026-1,FUTR0208-002,1,4차 산업혁명 보고서 : 미래를 여는 나침반,박종구,생능출판,2019,9788970509648,STLP002500001,raw/syllabus/2026_1_FUTR0208-002/SrchBooks.json
+2026-1,FUTR0208-002,2,4차 산업혁명 미래 전략 보고서 : 포스코·GE·지멘스는 어떻게 4차 산업혁명을 준비하고 있는가?,김민규,북스타,2018,9791188768028,STLP002500002,raw/syllabus/2026_1_FUTR0208-002/SrchBooks.json
+2026-1,FUTR0208-002,3,인공지능 : 미래를 위해 반드시 알아야 할 101가지 사항들,라세 로우하이에넨,청람,2021,9788959728336,STLP002500003,raw/syllabus/2026_1_FUTR0208-002/SrchBooks.json
+2026-1,GLSO0215-001,1,Pro Git,Scott Chacon;Ben Straub,Apress,2014,9781484200773,STLP002500001,raw/syllabus/2026_1_GLSO0215-001/SrchBooks.json
+2026-1,GLSO0215-001,2,Refactoring : Wie Sie das Design bestehender Software verbessern,Martin Fowler,MITP,2020,9783958459410,STLP002500003,raw/syllabus/2026_1_GLSO0215-001/SrchBooks.json
+2026-1,ITEC0419-001,1,밑바닥부터 시작하는 데이터 과학 : 데이터 분석을 위한 파이썬 프로그래밍과 수학·통계 기초,조엘 그루스,인사이트,2020,9788966262571,STLP002500001,raw/syllabus/2026_1_ITEC0419-001/SrchBooks.json
+2026-1,ITEC0419-001,2,"판다스 인 액션 : 인기 영화, 스포츠, 만화 데이터로 익히는 판다스 라이브러리",보리스 패스캐버,한빛미디어,2022,9791169210102,STLP002500002,raw/syllabus/2026_1_ITEC0419-001/SrchBooks.json
+2026-1,ITEC0419-001,3,데이터 시각화 교과서 : 데이터 분석의 본질을 살리는 그래프와 차트 제작의 기본 원리와 응용,클라우스 윌케,책만,2020,9791189909109,STLP002500002,raw/syllabus/2026_1_ITEC0419-001/SrchBooks.json
+2026-1,COMP0419-001,1,Introduction to Information Retrieval,Christopher D. Manning; Prabhakar  Ragha,Cambridge University Press,2008,9780521865715,STLP002500001,raw/syllabus/2026_1_COMP0419-001/SrchBooks.json
+2026-1,CAIB0222-001,1,Designing Machine Learning Systems : An Iterative Process for Production-Ready Applications,Chip Huyen,"O'Reilly Media, Inc, USA",2022,9781098107963,STLP002500001,raw/syllabus/2026_1_CAIB0222-001/SrchBooks.json
+2026-1,CAIB0222-001,2,"머신러닝 시스템 설계 : 프로젝트 범위 산정부터 프로덕션 배포 후 모니터링까지, MLOps 완벽 해부하기",칩 후옌,한빛미디어,2023,9791169210850,STLP002500001,raw/syllabus/2026_1_CAIB0222-001/SrchBooks.json
+2026-1,COMP0315-002,1,"Introduction to Automata Theory, Languages, and Computation",Mauricio Alberto Ortega Ruiz,Toronto Academic Press,2025,9781779563019,STLP002500001,raw/syllabus/2026_1_COMP0315-002/SrchBooks.json
+2026-1,COMP0319-004,1,Introduction to algorithms,"Thomas H. Cormen, Charles E. Leiserson,",한빛아카데미,2024,9791156640325,STLP002500001,raw/syllabus/2026_1_COMP0319-004/SrchBooks.json
+2026-1,COMP0453-001,1,나도하는 도전! 파이썬 코딩 : 최고의 파이썬 입문서,"류춘하, 박보석, 송무희, 송유진, 조현숙, 하숙정",홍릉;홍릉과학출판사,2024,9791156002390,STLP002500001,raw/syllabus/2026_1_COMP0453-001/SrchBooks.json
+2026-1,MTED0231-010,1,Introduction to Linear Algebra,Gilbert Strang,Wellesley-Cambridge Press,2023,9781733146678,STLP002500001,raw/syllabus/2026_1_MTED0231-010/SrchBooks.json
+2026-1,MTED0231-010,2,"Studyguide for Linear Algebra and Its Applications by Lay, David C.",Cram101 Textbook Reviews,Academic Internet Publishers,2013,9781478488927,STLP002500003,raw/syllabus/2026_1_MTED0231-010/SrchBooks.json
+2026-1,COMP0218-001,1,이야기로 풀어쓴 컴퓨터 과학 : 컬러판,백낙훈,다소미닷컴,2025,9791189961145,STLP002500001,raw/syllabus/2026_1_COMP0218-001/SrchBooks.json
+2026-1,COMP0218-001,2,난생처음 인공지능 입문 : 최신 트렌드를 반영한 AI 교양 입문서 with 챗GPT,서지영,한빛아카데미,2024,9791156640448,STLP002500001,raw/syllabus/2026_1_COMP0218-001/SrchBooks.json
+2026-1,COMP0206-003,1,Perfect C : C언어로 배우는 프로그래밍 기초,"강환수, 강환일, 이동규",Infinitybooks(인피니티북스),2021,9791185578835,STLP002500001,raw/syllabus/2026_1_COMP0206-003/SrchBooks.json
+2026-2,CAIB0211-001,1,Introduction to Natural Language Processing,Jacob Eisenstein,MIT Press Ltd,2019,9780262042840,STLP002500001,raw/syllabus/2026_2_CAIB0211-001/SrchBooks.json
+2026-2,CLTR0246-010,1,(캠벨) 생명과학 포커스,"Lisa A. Urry, Michael L. Cain, Peter V.",바이오사이언스,2025,9789813352209,STLP002500001,raw/syllabus/2026_2_CLTR0246-010/SrchBooks.json
+2026-2,COMP0224-001,1,"Systems Analysis and Design, with EEPUB Access : An Object-Oriented Approach with UML",Alan Dennis; Binny Samuel; Barbara Wixom,John Wiley & Sons Inc,2025,9781394331765,STLP002500001,raw/syllabus/2026_2_COMP0224-001/SrchBooks.json
+2026-2,COMP0224-001,2,Head First Object-Oriented Analysis and Design,David Wood; Bert  Bates; Kathy  Sierra,"OReilly Media, Inc, USA",2006,9780596008673,STLP002500003,raw/syllabus/2026_2_COMP0224-001/SrchBooks.json
+2026-2,COMP0320-001,1,알고리즘 문제 해결 전략 세트 : 프로그래밍 대회에서 배우는,구종만,인사이트,2012,9788966260546,STLP002500001,raw/syllabus/2026_2_COMP0320-001/SrchBooks.json
+2026-2,COMP0322-002,1,Fundamentals of Database Systems,Ramez Elmasri;Shamkant B. Navathe,Pearson,2015,9780133970777,STLP002500001,raw/syllabus/2026_2_COMP0322-002/SrchBooks.json
+2026-2,COMP0328-001,1,(Do it!) 깡샘의 안드로이드 앱 프로그래밍 with 코틀린 : 친절한 문법 설명 + 19개 실습 예제로 배우는 모바일 앱 개발,강성윤,이지스퍼블리싱,2026,9791163038351,STLP002500001,raw/syllabus/2026_2_COMP0328-001/SrchBooks.json
+2026-2,COMP0411-006,1,컴퓨터 구조 및 설계 (RISC-V Edition) : 하드웨어/소프트웨어 인터페이스,"David A. Patterson, John L. Hennessy",한티미디어,2022,9788964214381,STLP002500001,raw/syllabus/2026_2_COMP0411-006/SrchBooks.json
+2026-2,COMP0411-006,2,Computer Organization and Design RISC-V Edition : The Hardware Software Interface,David A. Patterson; John L. Hennessy,Elsevier Science & Technology,2021,9780128203316,STLP002500001,raw/syllabus/2026_2_COMP0411-006/SrchBooks.json
+2026-2,COMP0411-006,3,Digital Design and Computer Architecture : RISC-V Edition,Sarah Harris; David Harris,Elsevier Science & Technology,2021,9780128200643,STLP002500001,raw/syllabus/2026_2_COMP0411-006/SrchBooks.json
+2026-2,COMP0411-006,4,RISC-V Microprocessor System-On-Chip Design,David Harris; James Stine; Sarah Harris;,Morgan Kaufmann,2026,9780323994989,STLP002500002,raw/syllabus/2026_2_COMP0411-006/SrchBooks.json
+2026-2,COMP0423-001,1,"Essentials of Programming Languages, 3rd Edition",Daniel P. Friedman,Mit Press,2008,9780262062794,STLP002500001,raw/syllabus/2026_2_COMP0423-001/SrchBooks.json
+2026-2,COMP0423-001,2,"Concepts of Programming Languages, Global Edition",Robert Sebesta,Pearson Education Limited,2022,9781292436821,STLP002500002,raw/syllabus/2026_2_COMP0423-001/SrchBooks.json
+2026-2,COMP0436-001,1,Augmented Reality : Principles and Practice,Dieter Schmalstieg;Tobias Hollerer,Addison-Wesley Professional,2016,9780321883575,STLP002500003,raw/syllabus/2026_2_COMP0436-001/SrchBooks.json
+2026-2,COMP0436-001,2,Understanding Augmented Reality : Concepts and Applications,Dr. Alan B. Craig,Morgan Kaufmann,2013,9780240824086,STLP002500003,raw/syllabus/2026_2_COMP0436-001/SrchBooks.json
+2026-2,COMP0455-001,1,"Interaction Design: Beyond Human-Computer Interact ion, Sixth Edition : Beyond Human-Computer Interact ion, Sixth Edition",Rogers,John Wiley & Sons Inc,2023,9781119901099,STLP002500001,raw/syllabus/2026_2_COMP0455-001/SrchBooks.json
+2026-2,EECS0312-001,1,윤성우의 열혈 TCP/IP 소켓 프로그래밍,윤성우,OrangeMedia(오렌지미디어),2009,9788996094036,STLP002500001,raw/syllabus/2026_2_EECS0312-001/SrchBooks.json
+2026-2,ELEC0462-001,1,Understanding Unix/Linux programming,Bruce Molay,Prentice Hall,2002,9780130083968,STLP002500001,raw/syllabus/2026_2_ELEC0462-001/SrchBooks.json
+2026-2,ELEC0462-002,1,Understanding Unix/Linux programming,Bruce Molay,Prentice Hall,2002,9780130083968,STLP002500001,raw/syllabus/2026_2_ELEC0462-002/SrchBooks.json
+2026-2,ELEC0462-003,1,Understanding Unix/Linux programming,Bruce Molay,Prentice Hall,2002,9780130083968,STLP002500001,raw/syllabus/2026_2_ELEC0462-003/SrchBooks.json
+2026-2,STAT0452-006,1,(공학도를 위한)수치해석,"Steven C. Chapra, Raymond P. Canale",맥그로힐에듀케이션코리아 유한회사,2021,9791132110804,STLP002500001,raw/syllabus/2026_2_STAT0452-006/SrchBooks.json
+2026-2,TCHR0593-002,1,정보교과교육론 : 디지털 인재 양성을 위한 정보 교육,"최현종, 전용주",한빛아카데미,2023,9791156646471,STLP002500001,raw/syllabus/2026_2_TCHR0593-002/SrchBooks.json
+2026-2,COMP0322-003,1,Fundamentals of Database Systems,Ramez Elmasri;Shamkant B. Navathe,Pearson,2015,9780133970777,STLP002500001,raw/syllabus/2026_2_COMP0322-003/SrchBooks.json
+2026-2,COMP0322-004,1,Fundamentals of Database Systems,Ramez Elmasri;Shamkant B. Navathe,Pearson,2015,9780133970777,STLP002500001,raw/syllabus/2026_2_COMP0322-004/SrchBooks.json
+2026-2,COMP0328-002,1,(Do it!) 깡샘의 안드로이드 앱 프로그래밍 with 코틀린 : 친절한 문법 설명 + 19개 실습 예제로 배우는 모바일 앱 개발,강성윤,이지스퍼블리싱,2026,9791163038351,STLP002500001,raw/syllabus/2026_2_COMP0328-002/SrchBooks.json
+2026-2,GLSO0229-001,1,린 스타트업 : 지속적 혁신을 실현하는 창업의 과학,에릭 리스,인사이트,2012,9788966260577,STLP002500003,raw/syllabus/2026_2_GLSO0229-001/SrchBooks.json
+2026-2,CAIB0216-002,1,Reinforcement Learning : An Introduction,Richard S. Sutton;Andrew G. Barto;Franci,A Bradford Book,2018,9780262039246,STLP002500001,raw/syllabus/2026_2_CAIB0216-002/SrchBooks.json
+2026-2,COMP0205-001,1,창의적 공학설계,김은경,한빛아카데미,2025,9791173400407,STLP002500001,raw/syllabus/2026_2_COMP0205-001/SrchBooks.json
+2026-2,COMP0322-005,1,Fundamentals of Database Systems,Ramez Elmasri;Shamkant B. Navathe,Pearson,2015,9780133970777,STLP002500001,raw/syllabus/2026_2_COMP0322-005/SrchBooks.json
+2026-2,ELEC0462-004,1,Understanding Unix/Linux programming,Bruce Molay,Prentice Hall,2002,9780130083968,STLP002500001,raw/syllabus/2026_2_ELEC0462-004/SrchBooks.json
+2026-2,COME0331-004,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_2_COME0331-004/SrchBooks.json
+2026-2,COME0331-005,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_2_COME0331-005/SrchBooks.json
+2026-2,COMP0333-001,1,(따라하며 배우는) 파이썬과 데이터 과학 : 파이썬으로 시작하는 데이터 과학과 기계학습,"천인국, 박동규, 강영민",생능출판(생능출판사),2023,9791192932347,STLP002500002,raw/syllabus/2026_2_COMP0333-001/SrchBooks.json
+2026-2,COMP0333-001,2,"파이썬으로 시작하는 컴퓨터 과학 입문 : Python Programming : An Introduction to Computer Science, 3rd Edition",존 M. 젤,인사이트,2017,9788966264087,STLP002500002,raw/syllabus/2026_2_COMP0333-001/SrchBooks.json
+2026-2,COMP0333-001,3,"(파이썬을 이용한)데이터 분석의 정석 : 넘파이, 판다스, 맷플롯립과 실전 예제로 배우는",채진석,루비페이퍼,2021,9791186710708,STLP002500002,raw/syllabus/2026_2_COMP0333-001/SrchBooks.json
+2026-2,COMP0334-001,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_2_COMP0334-001/SrchBooks.json
+2026-2,COMP0335-001,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_2_COMP0335-001/SrchBooks.json
+2026-2,COMP0335-002,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_2_COMP0335-002/SrchBooks.json
+2026-2,COME0331-006,1,Fundamentals of Data Structures in C,Susan Anderson-Freed  Sartaj Sahni Ellis,Silicon Press,2007,9780929306407,STLP002500001,raw/syllabus/2026_2_COME0331-006/SrchBooks.json
+2026-2,COMP0336-001,1,쉽게 배우는 자바 프로그래밍,우종정,한빛아카데미,2020,9791156645146,STLP002500002,raw/syllabus/2026_2_COMP0336-001/SrchBooks.json
+2026-2,COMP0336-001,2,Java How to Program : International Version,Harvey M. Deitel,Pearson Education Limited,2011,9780273759768,STLP002500002,raw/syllabus/2026_2_COMP0336-001/SrchBooks.json
+2026-2,ELEC0247-002,1,(처음 만나는) 디지털 논리회로,"임석구, 홍경호",한빛아카데미,2024,9791156640479,STLP002500001,raw/syllabus/2026_2_ELEC0247-002/SrchBooks.json
+2026-1,CLTR0213-020,1,대학물리학,"Raymond A. Serway(원저), John W. Jewett(원저",북스힐,2023,9791159714665,STLP002500001,raw/syllabus/2026_1_CLTR0213-020/SrchBooks.json
+2026-2,CLTR0214-014,1,대학물리학 에센스,"Raymond A. Serway, John W. Jewett",북스힐,2024,9791159715709,STLP002500001,raw/syllabus/2026_2_CLTR0214-014/SrchBooks.json

@@ -1,0 +1,172 @@
+﻿subject_code,subject_name,credit,lecture_hours,practice_hours,offered_terms,section_count,prerequisites,followups
+CAIB0211,자연어처리개론,3,3,0,2026-2,1,"Calculus, Linear Algebra, Probability & Statistics, Discrete Mathematics, Programming for Beginners, Data Structure, Algorithms, Automata and Formal Languages (2026-2 001)",Natural Language Processing (2026-2 001)
+CAIB0216,강화학습개론,3,3,0,2026-2,1,"Calculus, Linear Algebra, Probability & Statistics, Discrete Mathematics, Programming for Beginners, Data Structure, Algorithms (2026-2 002)",None (2026-2 002)
+CAIB0222,인공지능시스템,3,3,0,2026-1,1,Machine Learning (2026-1 001),AI Convergence Capstone Design (2026-1 001)
+CAIB0233,영상이해,3,3,0,2026-1,1,"Linear Algebra: Foundations in matrix operations, eigenvalues, and eigenvectors. Probability and Statistics: Concepts of probability distributions, random variables, and hypothesis testing. Programming Fundamentals: Proficiency in Python programming, including data structures and algorithms. (2026-1 001)",Computer Vision (2026-1 001)
+CAIB0234,신경망개론,3,3,0,2026-1,1,"인공지능 관련 강의, 컴퓨터비전 및 패턴인식 강의 파이썬 프로그래밍 (2026-1 001)",인공지능 관련 강의 (2026-1 001)
+CLTR0211,수학 I,3,3,0,2026-1;2026-2,55,"없음 (2026-2 006, 2026-2 007, 2026-2 008, 2026-1 025)","수학II (2026-2 006, 2026-2 007, 2026-2 008, 2026-1 025)"
+CLTR0212,수학 II,3,3,0,2026-1;2026-2,25,"수학 I (2026-1 001)
+수학I (2026-2 018)","없음 (2026-1 001, 2026-2 018)"
+CLTR0213,물리학 I,3,3,0,2026-1;2026-2,37,"없음 (2026-1 020, 2026-2 002)","없음 (2026-1 020)
+물리학 II (2026-2 002)"
+CLTR0214,물리학 II,3,3,0,2026-2,20,물리학 I (2026-2 014),- (2026-2 014)
+CLTR0246,일반생명과학Ⅰ,3,3,0,2026-2,1,없음 (2026-2 010),일반생명과학II (2026-2 010)
+CLTR0819,기초수학2,3,3,0,2026-1;2026-2,6,"없음 (2026-1 002, 2026-1 003, 2026-1 004, 2026-1 005, 2026-2 001)","수학I, 수학II (2026-1 002, 2026-1 003, 2026-1 004, 2026-1 005)
+수학I (2026-2 001)"
+COME0301,이산수학,3,3,0,2026-1,3,"없음 (2026-1 001, 2026-1 002, 2026-1 003)","자료구조, 논리회로, 확률통계, 선형대수, 데이터과학기초 (2026-1 001)
+자료구조, 알고리즘, (2026-1 002, 2026-1 003)"
+COME0311,확률및통계,3,3,0,2026-1;2026-2,5,"Mathematics 1 (2026-1 001)
+수학 1 (2026-1 002)
+Calculus I, including limits, derivatives, and basic integrals. Familiarity with sets and functions is assumed. Linear Algebra is recommended or concurrent. (2026-2 004)
+수학1 (2026-2 005)
+수학 I (2026-2 006)","Other probability and statistics courses (2026-1 001)
+확률통계 관련 전공 과목, 기계 학습 및 인공지능 관련 과목 (2026-1 002)
+Introduction to Machine Learning, Data Science, Artificial Intelligence. (2026-2 004)
+수학관련 전공과목 (2026-2 005)
+수학 관련 전공 과목 및 AI 관련 과목 (2026-2 006)"
+COME0331,자료구조,3,3,0,2026-1;2026-2,7,"프로그래밍기초 또는 기초프로그래밍 (C 또는 C++ 이론과 실습과목을 모두 선수강해야 함) (2026-1 003, 2026-2 003)
+프로그래밍기초 (2026-1 004, 2026-1 005, 2026-2 005)
+프로그래밍기초(C 또는 C++) (2026-2 004)
+프로그래밍기초 또는 기초프로그래밍(C 또는 C++ 이론과 실습과목) (2026-2 006)","알고리즘 (2026-1 003, 2026-1 004, 2026-2 003, 2026-2 004, 2026-2 005, 2026-2 006)
+알고리즘. (2026-1 005)"
+COME0368,정보보호론,3,3,0,2026-2,1,"운영체제, 네트워크프로그래밍 (2026-2 001)","암호공학, 웹보안 (2026-2 001)"
+COMP0204,프로그래밍기초,6,4,4,2026-2,2,"없음 (2026-2 001, 2026-2 002)","자료구조 (2026-2 001, 2026-2 002)"
+COMP0205,기초창의공학설계,3,2,2,2026-2,1,없음 (2026-2 001),소프트웨어 관련 과목 (2026-2 001)
+COMP0206,기초프로그래밍,3,2,2,2026-1,3,"없음 (2026-1 001, 2026-1 003)","자료구조 (2026-1 001)
+자료구조, 알고리즘 (2026-1 003)"
+COMP0207,기초프로그래밍실습,3,1,4,2026-1,2,없음 (2026-1 001),자료구조 (2026-1 001)
+COMP0216,자료구조응용,3,2,2,2026-1;2026-2,4,"프로그래밍기초 또는 기초프로그래밍 (C 또는 C++ 이론 및 실습과목을 모두 선수강해야 함) (2026-1 001, 2026-2 001)
+프로그래밍기초 (2026-1 002, 2026-1 003)","알고리즘 (2026-1 001, 2026-1 002, 2026-2 001)
+알고리즘. (2026-1 003)"
+COMP0217,자바프로그래밍,3,2,2,2026-1,5,"프로그래밍기초 (2026-1 001, 2026-1 003, 2026-1 005)
+프로그래밍 기초, 자료구조 (2026-1 002)
+없음 (2026-1 004)","소프트웨어설계 (2026-1 001, 2026-1 003)
+자료구조, 알고리즘 (2026-1 002)
+자료구조, 알고리즘, 소프트웨어 디자인, 모바일 프로그래밍 등 (2026-1 004)
+소프트웨어설계, 모바일앱프로그래밍1 (2026-1 005)"
+COMP0218,인공지능과컴퓨팅,3,3,0,2026-1,2,none (2026-1 001),C Programming or C++ Programming (2026-1 001)
+COMP0219,인공지능수학심화,3,3,0,2026-1,1,"인공지능수학기초, 인공지능 (2026-1 001)","딥러닝, 기계학습, 컴퓨터비젼 (2026-1 001)"
+COMP0224,소프트웨어설계,3,3,0,2026-2,2,"객체지향 프로그래밍 (2026-2 001)
+객체지향 프로그램 및 객체지향프로그램 언어 1개 이상 (2026-2 002)","소프트웨어공학 (2026-2 001)
+소프트웨어 패턴, 소프트웨어공학, 요구공학, 프로젝트방법론, 소프트웨어 테스트, 종프, 융프 (2026-2 002)"
+COMP0225,디지털설계및실험,3,2,2,2026-2,1,논리회로 (2026-2 001),"컴퓨터구조, VLSI/SOC 설계, 임베디드 시스템 (2026-2 001)"
+COMP0312,운영체제,3,3,0,2026-1;2026-2,6,"C Programming, Computer Architecture (2026-1 003, 2026-2 002, 2026-2 003)
+시스템프로그래밍, 컴퓨터구조 (2026-1 004)
+C Programming, System Programming, Computer Architecture (2026-1 005)
+C programming skill (2026-2 001)","System Programming (2026-1 003, 2026-2 002, 2026-2 003)
+대규모병렬컴퓨팅, 클라우드컴퓨팅 (2026-1 004)
+Cloud Computing, Massively Parallel Computing (2026-1 005)
+Computer Architecture (2026-2 001)"
+COMP0315,오토마타및형식언어,3,3,0,2026-1,2,"None (2026-1 001)
+이산수학 (2026-1 002)","Compiler (2026-1 001)
+컴파일 (2026-1 002)"
+COMP0319,알고리즘1,3,3,0,2026-1,3,"프로그래밍기초, 자료구조 (2026-1 002, 2026-1 003)
+자료구조 (2026-1 004)","알고리즘2 (2026-1 002, 2026-1 003, 2026-1 004)"
+COMP0320,알고리즘2,3,2,2,2026-2,1,"자료구조, 알고리즘1 (2026-2 001)",고급문제해결 (2026-2 001)
+COMP0321,컴파일러,3,3,0,2026-1,1,"다음 과목들을 수강하신 뒤 수강하시는 것을 강력히 권장합니다: * 기초 프로그래밍 관련 교과목 (C, Python, Java) * 자료구조 (2026-1 001)",프로그래밍언어론 (2026-1 001)
+COMP0322,데이타베이스,3,2,2,2026-2,5,"프로그래밍 기초, 자바 프로그래밍, SW문제해결 및 사고 (Python 프로그래밍), 시스템프로그래밍, 자료 구조, 운영체제, 컴퓨터 구조 (2026-2 001)
+COMP0217 자바프로그래밍(Java Programming), COME0331 자료구조(Data Structure), COMP0216 자료구조응용(Data Structure Applications) (2026-2 002, 2026-2 003, 2026-2 004)
+COMP0217 Java Programming, COME0331 Data Structure, COMP0216 Data Structure Applications (2026-2 005)","정보 검색, 데이터 마이닝, 데이터베이스 특론 (대학원), 데이터베이스 관리 시스템 (대학원), 빅데이터 과학 및 분석 (대학원), 데이터 마이닝 특론 (대학원) (2026-2 001)
+None (2026-2 002, 2026-2 005)
+없음 (2026-2 003, 2026-2 004)"
+COMP0323,데이타통신,3,3,0,2026-1;2026-2,2,"Computer Networks, Internet (2026-2 002)","IoT, wireless communications (2026-2 002)"
+COMP0324,인공지능,3,3,0,2026-1;2026-2,3,"- Discrete Mathematics - Computational Thinking and Software Coding (or Python Programming / Introduction to Interactive Programming) - Mathematics I (or Foundations of Mathematics for AI) - Probability and Statistics (2026-1 001)
+인공지능관련 과목, 확률통계, 선형대수 (2026-2 003)
+이산수학, Python programming, 수학 I, 확률과 통계 등 (2026-2 004)","- Introduction to Machine Learning - Deep Learning - Other advanced major courses related to artificial intelligence (2026-1 001)
+인공지능 관련 과목 (2026-2 003)
+기계학습 개론, 딥러닝, 기타 인공지능 관련 상위 과목 (2026-2 004)"
+COMP0328,모바일앱프로그래밍1,3,2,2,2026-2,2,"자바프로그래밍 혹은 기타 객체지향프로그래밍 언어 과목 (2026-2 001, 2026-2 002)","앱 개발 프로젝트를 수행하는 과목들 (2026-2 001, 2026-2 002)"
+COMP0332,프로그래밍연습1,1,0,2,2026-1,3,"없음 (2026-1 001, 2026-1 002)","프로그래밍 심화 관련 교과목 (2026-1 001, 2026-1 002)"
+COMP0333,데이터분석을 위한 파이썬프로그래밍,3,2,2,2026-2,1,"기초프로그래밍, 기초프로그래밍실습 (2026-2 001)",데이터과학기초 (2026-2 001)
+COMP0334,프로그래밍연습2,1,0,2,2026-2,1,프로그래밍기초(C 또는 C++) (2026-2 001),알고리즘 (2026-2 001)
+COMP0335,자료구조실습,3,1,4,2026-2,2,"프로그래밍기초(C 또는 C++) (2026-2 001)
+프로그래밍기초 (2026-2 002)","알고리즘 (2026-2 001, 2026-2 002)"
+COMP0336,객체지향프로그래밍기초,3,2,2,2026-2,1,기초프로그래밍 (2026-2 001),"자료구조, 알고리즘 (2026-2 001)"
+COMP0411,컴퓨터구조,3,3,0,2026-1;2026-2,5,"논리회로 (2026-1 001, 2026-2 005)
+C programming (2026-1 002)
+C Programming, Digital Logic (2026-1 003)
+- C Programming, Python Programming (기초 프로그래밍 - C 및 파이썬 사용이 가능해야 함.) - If you have taken Logic Circuits before, it will be much easier to follow the latter part of the course. However, all the necessary concepts required to understand the course content will be covered during the lectures. (논리회로의 경우 수강하였다면, 후반부 수업의 수강이 훨씬 수월해지나, 수업 내용 이해에 필요한 사항들은 모두 수업에서 다룰 예정임.) (2026-2 006)","운영체제 (2026-1 001, 2026-2 005)
+Operating System (2026-1 002, 2026-1 003)
+Operating Systems (2026-2 006)"
+COMP0413,컴퓨터그래픽스,3,3,0,2026-1,1,"- 4학년 컴퓨터 전공 수업입니다. ** 1,2학년 학생, 타학과 학생의 수강을 전혀 권장하지 않습니다. ** 컴퓨터 개론, 자료구조, 알고리즘, 컴퓨터 구조, 운영체제 등에서 나오는 개념에 대한 복습은 전혀 없습니다. ** 공대, IT 대학 커리큘럼은 학년 순서대로 수강해야 이해도가 높습니다. - C/C++ 프로그래밍 ** 주의 : C/C++ 언어의 오퍼레이터 오버로딩, 템플레이트 등의 개념을 적극 사용합니다. ** Python, Java 등의 언어로는 실습이 불가능합니다. ** 매킨토시 기종에서는 실습이 곤란할 수 있습니다. (애플의 폐쇄 정책으로 소프트웨어 실행 불가) - 선형 대수 지식은 필수가 아니지만, 2원 1차 연립 방정식을 풀 수 있고, 2x2, 3x3, 4x4 행렬에 행 벡터 또는 열 벡터 1개를 곱하는 방법은 알고 있어야 함 (2026-1 001)",대규모병렬 컴퓨팅 (2학기 개설) (2026-1 001)
+COMP0414,컴퓨터망,3,3,0,2026-1;2026-2,3,"데이타통신 (2026-1 001)
+해당 사항 없음 (2026-1 002)
+데이타통신, 네트워크 프로그래밍 (2026-2 001)","무선네트워크 (2026-1 001, 2026-2 001)
+해당 사항 없음 (2026-1 002)"
+COMP0417,컴퓨터윤리,3,3,0,2026-1,1,없음 (2026-1 001),ITEC403; COMP428; CLTR086; 정보 보호론 (2026-1 001)
+COMP0419,정보검색,3,3,0,2026-1,1,자료구조 (2026-1 001),없음 (2026-1 001)
+COMP0422,소프트웨어공학,3,3,0,2026-1,1,"소프트웨어설계 (권장, 필수 X) (2026-1 001)",소프트웨어 테스팅 (2026-1 001)
+COMP0423,프로그래밍언어론,3,3,0,2026-2,1,"자료구조, 프로그래밍 기초 (2026-2 001)",컴파일러 (2026-2 001)
+COMP0428,IT기술경영개론,3,3,0,2026-2,1,"컴퓨터학개론 (강력 추천), 창업관련 과목 (선택적) (2026-2 001)",직접 창업할 것 ! (2026-2 001)
+COMP0432,소프트웨어 특강,2,2,0,2026-2,1,없음 (2026-2 001),없음 (2026-2 001)
+COMP0436,증강현실,3,3,0,2026-2,1,"권장과목: 지능 HCI, 컴퓨터 그래픽스 등, 모바일 프로그래밍 등 (필수는 아니며, 관련 내용을 일부 다룹니다.) (2026-2 001)",지능 HCI 등 (2026-2 001)
+COMP0453,컴퓨팅사고와 SW코딩,3,2,2,2026-1,1,없음 (2026-1 001),"자료구조, 자료구조 응용 (2026-1 001)"
+COMP0454,인공지능수학기초,3,3,0,2026-2,1,없음 (2026-2 001),"선형대수, 확률및통계, 인공지능, 기계학습개론, 딥러닝, 컴퓨터비젼 (2026-2 001)"
+COMP0455,지능HCI,3,3,0,2026-2,1,This course is designed for students with appropriate programming and hardware skills. (2026-2 001),- (2026-2 001)
+COMP0458,모바일네트워크,3,3,0,2026-2,1,Data communications and Computer networks (2026-2 001),Internet of things. (2026-2 001)
+COMP0460,문제해결기반 공학연수실습(컴퓨터학),2,1,2,2026-1;2026-2,5,"없음 (2026-1 001, 2026-1 004, 2026-1 006)
+자연어처리개론, 강화학습개론, 기계학습개론 (2026-1 003)
+알고리즘, 운영체제, 컴퓨터구조 (2026-2 001)","문제해결기반 공학연수실습(심화컴퓨터학) (2026-1 001)
+없음 (2026-1 003, 2026-1 004, 2026-1 006)
+대학원 논문 연구 과목; 공학논문 작성법 (2026-2 001)"
+COMP0461,문제해결기반 공학연수실습(심화컴퓨터학),2,1,2,2026-2,2,"없음 (2026-2 001, 2026-2 002)","없음 (2026-2 001, 2026-2 002)"
+COMP0462,데이터마이닝이론및응용,3,3,0,2026-1,1,Data Structure (2026-1 001),None (2026-1 001)
+EECS0312,네트워크프로그래밍,3,2,2,2026-1;2026-2,2,"C 프로그래밍, 시스템 프로그래밍 (2026-1 001, 2026-2 001)","시스템 프로그래밍 (2026-1 001, 2026-2 001)"
+ELEC0247,논리회로,3,3,0,2026-1;2026-2,2,"없음 (2026-1 011)
+기초수학, 컴퓨터공학개론 (2026-2 002)","컴퓨터구조, 디지털설계실습 (2026-1 011)
+컴퓨터구조, 임베디드컴퓨터시스템, 마이크로프로세서응용, 디지털시스템설계 (2026-2 002)"
+ELEC0462,시스템프로그래밍,3,2,2,2026-1;2026-2,6,"C Programming; Introduction to Computer Science; Data Structures; Discrete Mathematics (2026-1 001)
+C Programming, Data Structures (2026-1 002, 2026-2 001)
+프로그래밍기초, 이산수학, 자료구조 (2026-2 002, 2026-2 003)
+프로그래밍 기초, 자료구조 (2026-2 004)","Database; Operating System; Computer Architecture; (2026-1 001)
+Operating System, Computer Architecture, Database system (2026-1 002, 2026-2 001)
+운영체제 (2026-2 002, 2026-2 003, 2026-2 004)"
+FUTR0201,기업가정신과 벤처창업,3,3,0,2026-1,1,없음 (2026-1 001),없음 (2026-1 001)
+FUTR0208,미래산업과 직업선택,3,3,0,2026-1,2,"없음 (2026-1 001, 2026-1 002)","유비쿼터스정보와 미래사회 (2026-1 001, 2026-1 002)"
+GLSO0212,소프트웨어수학,3,3,0,2026-2,1,"1학년 교육과정에 포함된 기초수학2와 수학1을 권장선수 과목으로 함. 단, 첫 수업 시간에 배경지식 설문 조사를 통해 수강자의 수준에 맞추어 강의 내용을 조정할 예정임. (2026-2 001)","이 교과목에서는 선형대수와 편미분 및 수치해석의 핵심적인 내용을 다루므로, 이 교과목 이수 후에 더 심도 있는 수학적 이론을 배우기 위해서는 수학2, 선형대수, 수치해석의 이수를 권장함. (2026-2 001)"
+GLSO0214,SW진로설계,3,3,0,2026-1,1,없음 (2026-1 001),없음 (2026-1 001)
+GLSO0215,오픈소스프로그래밍,3,2,2,2026-1,1,소프트웨어설계 및 프로그래밍교과목 등 (2026-1 001),종합설계프로젝트2 (2026-1 001)
+GLSO0216,알고리즘실습,3,2,2,2026-1,2,"프로그래밍기초, 자료구조/자료구조응용 (2026-1 001, 2026-1 002)","운영체제, 데이터베이스 (2026-1 001, 2026-1 002)"
+GLSO0219,SW공학및테스팅,3,3,0,2026-1,1,없음 (2026-1 001),없음 (2026-1 001)
+GLSO0223,스타트업설계,3,3,0,2026-1,1,"특별히 과목을 지칭하지 않으나, SW개발이 반영되는 창업을 고려할 때 필요한 기본적인 코딩 능력이 갖추어 있기를 권장함 (2026-1 001)",과학기술정보통신부에서 운영하는 SW마에스트로 선발 과정에 응시하여 창업의 기회를 발전시켜 보기를 권장함 https://www.swmaestro.org/ (2026-1 001)
+GLSO0224,사물인터넷,3,3,0,2026-1,1,,
+GLSO0227,클라우드컴퓨팅,3,3,0,2026-2,1,운영체제 (2026-2 001),없음 (2026-2 001)
+GLSO0229,SW창업프로젝트,3,2,2,2026-2,1,"프로그래밍 기초, 소프트웨어 공학, 데이터베이스, 웹/앱 프로그래밍 (2026-2 001)","창업실전, 지식재산권과 특허, 린스타트업 실습 등. (2026-2 001)"
+ITEC0401,종합설계프로젝트1,4,3,2,2026-1;2026-2,6,"None (2026-1 001)
+기초창의공학 설계, 프로그래밍 언어 (2026-1 002, 2026-2 001)
+소프트웨어설계, 소프트웨어공학 (2026-2 002)
+없음 (2026-2 003)","None (2026-1 001)
+현장실습, 종합설계프로젝트2 (2026-1 002, 2026-2 001)
+종합설계프로젝트2 (2026-2 002)
+없음 (2026-2 003)"
+ITEC0402,종합설계프로젝트2,4,3,2,2026-1;2026-2,5,"종합설계프로젝트1 (2026-1 001, 2026-2 001)
+종합설계프로젝트1 (Capstone Design Project 1) (2026-1 003)
+SW 공학, SW 설계 (2026-2 002)","없음 (2026-1 001, 2026-1 003, 2026-2 002)
+None (2026-2 001)"
+ITEC0403,IT지식재산권,3,3,0,2026-1,1,없음 (2026-1 001),창업관련 과목 (2026-1 001)
+ITEC0414,소프트웨어테스팅 이론,3,3,0,2026-1,1,소프트웨어설계 또는 소프트웨어공학 (2026-1 001),없음 (2026-1 001)
+ITEC0415,고급문제해결,3,2,2,2026-1,1,"자료구조/자료구조응용, 알고리즘1 또는 알고리즘실습 과목을 수강했다고 가정하고 수업을 진행함. 수업 진행 및 실습 과제는 Python 언어를 사용함. (2026-1 001)","권장 후수 과목은 없으나, 코딩 테스트/코딩 인터뷰 관련 심화 학습을 권장함. (2026-1 001)"
+ITEC0416,고급웹프로그래밍,3,2,2,2026-1,1,"- 본 과목은 4학년 과목으로, 중급 수준 이상의 코딩 경험이 있으면 수강에 유리함 (2026-1 001)",- 팀 프로젝트 응용 관련 과목 또는 창업 관련 과목 (2026-1 001)
+ITEC0417,기계학습개론,3,3,0,2026-1;2026-2,3,"인공지능관련 과목 (2026-1 001, 2026-2 002)
+Linear algebra, probability & statistics (but not mandatory) (2026-2 001)","인공지능 관련 과목 (2026-1 001, 2026-2 002)
+Deep learning (2026-2 001)"
+ITEC0418,대규모병렬컴퓨팅,3,3,0,2026-2,1,"C 언어 (필수), C++ 언어 (강력히 권장), 컴퓨터 구조(강력히 권장), 자료구조/알고리즘(강력히 권장), 컴퓨터 그래픽스 (선택적), 운영체제 (선택적). (2026-2 001)","컴퓨터 그래픽스, 고급 C++ 언어. (2026-2 001)"
+ITEC0419,데이터과학기초,3,3,0,2026-1;2026-2,3,"이산수학, 자료구조, 프로그래밍기초 (2026-1 001)
+기초프로그래밍, 확률 및 통계 (2026-2 002)
+기초프로그래밍 (2026-2 003)","자연어처리개론 (2026-1 001)
+기계학습, 인공지능 (2026-2 002)
+기계학습개론 (2026-2 003)"
+ITEC0424,컴퓨터비전,3,3,0,2026-2,2,"- A foundation in Probability and Linear Algebra, data structures, algorithms, and the ability to program - Experience with image processing and computer vision will help, but it is not necessary - Please contact me if you are unclear if the course is a suitable fit for your background (2026-2 002)
+Linear Algebra: Foundations in matrix operations, eigenvalues, and eigenvectors. Probability and Statistics: Concepts of probability distributions, random variables, and hypothesis testing. Programming Fundamentals: Proficiency in Python programming, including data structures and algorithms. (2026-2 001)","Computer Vision related courses (2026-2 002)
+Computer Vision (2026-2 001)"
+MBIO0402,생물정보학개론,3,3,0,2026-1,1,"Data structures, Algorithm 1 (2026-1 001)","Machine learning, AI, Advanced probability theory (2026-1 001)"
+MOBI0224,딥러닝,3,3,0,2026-1;2026-2,2,"Linear Algebra: Foundations in matrix operations, eigenvalues, and eigenvectors. Probability and Statistics: Concepts of probability distributions, random variables, and hypothesis testing. Programming Fundamentals: Proficiency in Python programming, including data structures and algorithms. (2026-1 003, 2026-2 002)","Computer Vision (2026-1 003, 2026-2 002)"
+MTED0231,선형대수,3,3,0,2026-1;2026-2,5,"이산수학, 기초수학 관련 (2026-1 009, 2026-2 003, 2026-2 004)
+Students are expected to have a solid command of high school mathematics, particularly algebra and geometry (vectors in 2D and 3D space). While university-level calculus is not a strict prerequisite, a certain level of mathematical maturity is required to handle the abstract concepts presented in this course. (2026-1 010)
+High-school algebra and basic functions. Calculus is helpful but not required. (2026-2 002)","인공지능 관련 과목 (2026-1 009, 2026-2 003, 2026-2 004)
+Upon successful completion of this course, students are strongly encouraged to enroll in Machine Learning, Data Mining, Computer Graphics, or Numerical Analysis, as the concepts learned here will be directly applied in those fields. (2026-1 010)
+Probability and Statistics, Introduction to Machine Learning, Data Science. (2026-2 002)"
+STAT0452,수치해석,3,3,0,2026-2,1,"자료구조 (필수), 알고리즘 (필수), 선형대수 (선택적), 미적분학 (선택적) (2026-2 006)",병렬컴퓨팅 (필수) (2026-2 006)
+TCHR0499,컴퓨터 논리 및 논술지도,3,3,0,2026-1,1,컴퓨터 기본 교과목 (2026-1 001),컴퓨터 응용 교과목 (2026-1 001)
+TCHR0593,컴퓨터교육론,3,3,0,2026-2,1,없음 (2026-2 002),없음 (2026-2 002)
+TCHR0594,컴퓨터교재연구및지도법,3,3,0,2026-2,1,"프로그래밍 기초, 컴퓨터과학개론 (2026-2 001)","컴퓨터 구조, 운영체제, 인공지능 (2026-2 001)"

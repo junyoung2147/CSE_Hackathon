@@ -1,0 +1,2167 @@
+﻿term,course_no,professor,credit_system,language,summary,goals,textbooks_references,evaluation,notes,source_file
+2026-1,COME0331-003,김구진,3-3-0,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및  sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해한다.
+기본 자료구조를 다양한 분야에 활용할 수 있는 능력을 기른다.
+응용 문제에 따라 적합한 자료구조를 선정하여 활용한다.","Horowitz, Shani, & Anderson-Freed, Fundamentals of data structures in C, (2nd edition) Silicon-press.","* 자료구조 및 자료구조 응용 시험 일정
+중간고사: 
+기말고사:  
+
+* 평가방법
+- 자료구조: (중간+기말고사: 98%, 출석: 2%)
+- 자료구조응용: (중간+기말고사: 85~95%, 과제물+출석: 4~14%, 연구실안전교육 이수증 제출: 1%)
+** 성적 반영 비율은 제시된 범위 내에서 학기말에 담당교수가 확정
+- 자료구조와 자료구조응용을 동일 학기에 동시에 수강해야 하나, 학점은 과목 별로 부과됨.","* 자료구조 과목과 자료구조응용 과목을 동일 담당교수(김구진)의 분반으로 병행하여 수강신청을 하고, 병행하여 수강해야 합니다.
+* C 또는 C++언어  이론 과목과 실습 과목을  모두 선수강한 학생만 자료구조+자료구조응용 수업을 수강하고,   그렇지 않은 학생은 융합전공 (또는 연계전공)에서 개설되는 자료구조 과목을 수강해 주세요.
+(자료구조는 이론 수업에서 C코드로 알고리즘을 설명하며, 자료구조응용은  매시간 C로 과제 코드를 작성해서  제출해야 합니다. 자료구조응용 시험도  제한된 시간 내에 closed book으로 C 코드를 작성해서 제출하는 것입니다. )  
+* 부전공이나 복수전공 학생은 융합전공 (또는 연계전공)에서 개설되는 자료구조 과목을 수강해도 졸업요건이 만족되며  이 경우에는 자료구조응용 과목을 수강하지 않아도 됩니다. 
+* 대면 강의 예정이지만, 대학 학사 운영 지침 변경 시, 수업 방법(대면, 대면+비대면 혼합, 비대면)이 변경될 수 있음.
+* 수업 방식에 대해 LMS 과목 게시판에 공지할 예정이니, 개강 이전에 확인하기 바랍니다.
+* 연구실 안전교육을 이수해야 함 (자료구조응용 성적에 반영예정)
+* 자료구조응용 실습 과제 및 시험은 모두 Visual studio (버전 지정 예정) 기반입니다.
+
+기타:
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 결석할 경우 출석점수에서 감점을 당하지 않으려면 정당한 결석사유를 증명할 수 있는 근거 서류가 필요하며 수업시간 전에 미리 이메일로 알려야 함.
+- 수업일수의1/4이상 결석할 경우 F학점이주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 지정된 과목 게시판 (LMS 시스템)을 이용함
+- 학점 산정 시, 외국인 학생과 내국인 학생을 구별하지 않고 전체를 상대평가함.",raw/syllabus/2026_1_COME0331-003/Pub.json
+2026-1,COME0331-004,류은경,3-3-0,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및 sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해하고 다양한 분야에 활용할 수 있는 능력을 기른다.",,"* 평가방법
+
+- 자료구조: 중간 40%, 기말 45%, 과제 10%, 출석 5%
+
+- 자료구조응용: 중간 40%, 기말 45%, 과제+출석 15%","* 자료구조 과목과 자료구조응용 과목은 동일 담당교수의 분반으로 병행하여 수강해야 함
+
+* 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐",raw/syllabus/2026_1_COME0331-004/Pub.json
+2026-1,COMP0216-001,김구진,3-2-2,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및  sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해한다.
+기본 자료구조를 다양한 분야에 활용할 수 있는 능력을 기른다.
+응용 문제에 따라 적합한 자료구조를 선정하여 활용한다.","Horowitz, Shani, & Anderson-Freed, Fundamentals of data structures in C, (2nd edition) Silicon-press.","* 자료구조 및 자료구조 응용 시험 일정
+중간고사: 
+기말고사:  
+
+* 평가방법
+- 자료구조: (중간+기말고사: 98%, 출석: 2%)
+- 자료구조응용: (중간+기말고사: 85~95%, 과제물+출석: 4~14%, 연구실안전교육 이수증 제출: 1%)
+** 성적 반영 비율은 제시된 범위 내에서 학기말에 담당교수가 확정
+- 자료구조와 자료구조응용을 동일 학기에 동시에 수강해야 하나, 학점은 과목 별로 부과됨.","* 자료구조 과목과 자료구조응용 과목을 동일 담당교수(김구진)의 분반으로 병행하여 수강신청을 하고, 병행하여 수강해야 합니다.
+* C 또는 C++언어  이론 과목과 실습 과목을  모두 선수강한 학생만 자료구조+자료구조응용 수업을 수강하고,   그렇지 않은 학생은 융합전공 (또는 연계전공)에서 개설되는 자료구조 과목을 수강해 주세요.
+(자료구조는 이론 수업에서 C코드로 알고리즘을 설명하며, 자료구조응용은  매시간 C로 과제 코드를 작성해서  제출해야 합니다. 자료구조응용 시험도  제한된 시간 내에 closed book으로 C 코드를 작성해서 제출하는 것입니다. )  
+* 부전공이나 복수전공 학생은 융합전공 (또는 연계전공)에서 개설되는 자료구조 과목을 수강해도 졸업요건이 만족되며  이 경우에는 자료구조응용 과목을 수강하지 않아도 됩니다. 
+* 대면 강의 예정이지만, 대학 학사 운영 지침 변경 시, 수업 방법(대면, 대면+비대면 혼합, 비대면)이 변경될 수 있음.
+* 수업 방식에 대해 LMS 과목 게시판에 공지할 예정이니, 개강 이전에 확인하기 바랍니다.
+* 연구실 안전교육을 이수해야 함 (자료구조응용 성적에 반영예정)
+* 자료구조응용 실습 과제 및 시험은 모두 Visual studio (버전 지정 예정) 기반입니다.
+
+기타:
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 결석할 경우 출석점수에서 감점을 당하지 않으려면 정당한 결석사유를 증명할 수 있는 근거 서류가 필요하며 수업시간 전에 미리 이메일로 알려야 함.
+- 수업일수의1/4이상 결석할 경우 F학점이주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 지정된 과목 게시판 (LMS 시스템)을 이용함
+- 학점 산정 시, 외국인 학생과 내국인 학생을 구별하지 않고 전체를 상대평가함.",raw/syllabus/2026_1_COMP0216-001/Pub.json
+2026-1,COMP0216-002,류은경,3-2-2,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및 sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 잘 이해하고, 다양한 분야에 활용할 수 있는 능력을 기른다.",,"* 평가방법
+
+- 자료구조: 중간 40%, 기말 45%, 과제 10%, 출석 5%
+
+- 자료구조응용: 중간 40%, 기말 45%, 과제+출석 15%","* 자료구조 과목과 자료구조응용 과목은 동일 담당교수의 분반으로 병행하여 수강해야 함
+
+* 과제 및 중간·기말시험 제출 코드는 학생이 직접 작성해야 하며, 생성형 AI를 사용한 코드의 경우 0점 처리됨
+
+* 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐",raw/syllabus/2026_1_COMP0216-002/Pub.json
+2026-1,COMP0217-001,이우진,3-2-2,한국어,Java 프로그래밍을 통해 객체지향 개념을 이해하고 실습 및 과제 등을 통하여 객체 지향 프로그램의 구현 능력 및 문제해결 능력을 키운다.,Java 언어를 활용하여 객체지향 개념을 이해하고 객체지향 프로그래밍 스타일을 익히며 프로젝트 수행을 통한 실무 적응 능력을 기른다.,"주교재 : H. M. Deitel, P. J. Deitel , Java how to program - Early Objects, 10th Edition, Pearson, 2015.
+참고문헌 : 자바 관련 서적들","중간고사 : 30%, 기말고사 : 30%, 실습 : 15%, 숙제 5%, 프로젝트 : 10%, 퀴즈 및 출석 : 10%","- C 프로그래밍 언어에 대한 기본 지식을 가지고 있어야 합니다.
+  (첫 수업시간에 간단히 C 프로그래밍 능력 Test를 실시합니다)
+- 실습위주의 과목으로 매 실습시간에 실습문제에 대한 검사를 실시합니다.",raw/syllabus/2026_1_COMP0217-001/Pub.json
+2026-1,COMP0217-002,정창수,3-2-2,한국어,"Java 프로그래밍 언어를 통해 객체지향 프로그래밍 개념을 이해하고, 관련된 실습 및 과제 등을 수행하여 객체 지향 프로그램의 구현 능력 및 문제해결 능력을 키운다.",자바프로그래밍 언어를 활용하여 다양한 컴퓨터 문제를 해결하는 능력 향상 및 주어진 문제를 분석하고 이를 창의적으로 해결할 수 있는 프로그래밍 실력을 향상한다,,"중간시험 : 20% 
+기말시험: 30% 
+발표(팀프로젝트 발표): 30% (중간시험 이후 팀프로젝트 수행 및 최종 프로젝트 발표) 
+과제 : 10% 
+출석 10%
+
+ 
+중간고사와 기말고사는 실습 위주의 평가가 실시됨.","1. 결석할 경우 출석점수에서 감점을 당하지 않으려면 결석사유를 증명할 수 있는 근거 서류 필요
+2. 중간고사 또는기말고사에 결시할 경우, F학점이 주어짐
+3. 수업일수의1/4(즉, 16시간) 이상 결석할경우F학점이 주어짐
+4. 재이수 학생은 개정된 재이수 관련 규정 적용
+5. 반드시 프로그래밍 기초(C 언어)를 수강한 다음 Java 프로그래밍 과목을 수강하세요.
+- 해당 과목은 IT대학 및 컴퓨터학부 전공자들 위주로 수업을 진행할 예정이니, 타 과 학생들은 다른 융합(연계)전공 수업을 수강하기 바랍니다.
+- C 언어와 공통되는 내용은 생략하고 클래스 내용부터 수업을 시작합니다.
+- 강의 진도 및 내용은 상황에 따라 변경될 수 있습니다.
+6. 생성형 AI를 통해 도출된 결과물을 활용하여 과제 또는 시험 답안에 제출하는 행위를 허용하지 않으며, 이러한 행위는 부정행위로 처리될 수 있습니다.",raw/syllabus/2026_1_COMP0217-002/Pub.json
+2026-1,COMP0312-003,김명석,3-3-0,한국어,"To understand the key concepts of modern operating systems.
+The main topics that are covered in this course include process/memory virtualization, concurrency, and persistence.
+Many advanced techniques that implement the main topics will also be reviewed in this course.","This course introduces the basic concepts of operating systems, which include process management, memory management, file systems, and I/O management.
+This course also provides a detailed explanation of how those concepts are designed and implemented in modern operating systems.
+In addition, this course provides a set of comprehensive programming assignments and laboratories to help students improve practical programming skills in UNIX-like operating systems (e.g., GNU/Linux).","Operating Systems: Three Easy Pieces, by Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
+(reference) Operating System Concepts, by Abraham Silberschatz, Peter Baer Galvin, Greg Gagne
+(reference) Operating Systems Internals and Design Principles, by William Stallings","Attendance: 10%
+Mid-term : 30%
+Final : 40%
+Homework & Quiz : 20%","No make-up exam for those who miss the exams.
+No soliciting for a grade boost.
+No exemption from absence other than due to the military-related or family tragedy.
+By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_1_COMP0312-003/Pub.json
+2026-1,COMP0312-004,김용태,3-3-0,한국어,"본 교과목은 컴퓨터를 구동하는 운영체제의 기본적인 원리와 개념에 대해서 이해한다. 특히, 운영체제의 핵심 요소인 프로세스, 쓰레드, 스케쥴링, 동기화, 메모리 관리, I/O 시스템 등에 관해 학습한다.",창의: 컴퓨터 운영체제와 동작 원리에 대한 기본적인 이해,"주교재: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau, ""Operating Systems Three Easy Pieces,"" Arpaci-Dusseau Books
+부교재: Abraham Silberschatz, Peter Baer Galvin, Greg Gagne, ""Operating System Concepts, 10th Edition,"" Wiley","출석: 5%, 중간시험: 40%, 기말시험: 40%, 실습과제 및 프로젝트: 15%","1. 교재, 평가 방법 등의 구체적인 사항은 변경될 수 있으며 수업 첫 시간에 확정 공지함
+2. 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+3. 중간고사 또는 기말고사에 결시 할 경우 F학점이 주어짐
+4. 수업일수의 1/4 이상 결석할 경우 F학점이 주어짐",raw/syllabus/2026_1_COMP0312-004/Pub.json
+2026-1,COMP0312-005,한명균,3-3-0,English,"This course provides a comprehensive introduction to the fundamental principles and concepts of operating systems. Topics include processes, threads, scheduling, synchronization, memory management, I/O systems, and file systems. The course emphasizes how these components are designed, implemented, and integrated into modern operating systems. Students will also engage in programming assignments to gain hands-on experience in implementing key operating system features.","This course explores the fundamental concepts of operating systems, including process management, memory management, file systems, and I/O management.
+It offers an in-depth examination of how these concepts are designed and implemented in modern operating systems.
+The course also features comprehensive programming assignments, enabling students to design and implement key operating system features.","Operating Systems: Three Easy Pieces, by Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
+(reference) Operating System Concepts, by Abraham Silberschatz, Peter Baer Galvin, Greg Gagne","* Evaluation
+Attendance: 5%
+Midterm Exam: 35%
+Final Exam: 35%
+Assignment: 25%
+
+(These evaluation methods are tentative)
+
+* Prerequisite
+Basic understanding of computer systems, C programming experience, data structure","1. Course details such as textbooks and evaluation methods are subject to change and will be finalized during the first class.
+2. All course materials will be provided in English.
+3. Students must be able to develop programs in the C programming language.
+4. Any misconduct in assignments, exams, or attendance will result in a severe penalty on the grade.
+5. No soliciting for the final grades at the end of the semester. 
+6. No makeup exam for those who miss the exams.
+7. By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_1_COMP0312-005/Pub.json
+2026-1,COMP0315-001,정인욱,3-3-0,English,"In this course, formal language, automata, computability and related theories, which are the core of computational theory, are studied.
+It covers all the theories related to the basic structure of programming languages developed to actually operate computers.
+Through this course, the purpose is to develop the ability to understand computers from a scientific point of view, understand their principles, and in-depth understanding of practical methodologies.
+
+Main lecture sources are the textbook and PPT material.",.,"[ENGLISH]
+An Introduction to Formal Languages and Automataª, Sixth Edition
+Authored by Peter Linz
+Published by Jones and Bartlett Publishers
+
+[KOREAN]
+형식언어와 오토마타, Sixth Edition
+Authored by Peter Linz, 공역: 김응모, 엄영익, 박희진, 배상원
+홍릉과학출판사","Attendance 5%
+Assignment 25%
+Midterm exam 35%
+Final exam 35%","- Assignments are given once every two weeks, and assignments are uploaded and submitted to the LMS.
+- QnA will be held every other week to answer questions about class content
+- Missing mid or final exams will fail the class
+
+- If a student belonging to the program wishes to take this course, it is recommended that the application be completed during the time period when major students apply first. Otherwise, you may not be able to attend the course due to the excess capacity. (Due to classroom circumstances, only a small number of people can increase the number of students)",raw/syllabus/2026_1_COMP0315-001/Pub.json
+2026-1,COMP0319-002,이지연,3-3-0,한국어,"이 수업에서는 1) 컴퓨터 분야의 대표적인 알고리즘들을 살펴보고, 2) 문제 해결을 위한 다양한 방법론을 학습하여, 3) 알고리즘 설계 및 분석의 기본 원리를 익히는 것을 목표로 합니다.","1) 컴퓨터 분야의 대표적인 알고리즘들을 학습한다.
+2) 문제 해결을 위한 다양한 방법론을 학습한다. 
+3) 알고리즘 설계 및 분석의 기본 원리를 학습한다.",,"- 출석: 10%
+- 중간시험: 35%
+- 기말시험: 40%
+- 과제: 15%","- 기초적인 프로그래밍 및 자료구조 지식을 습득한 후에 수강할 것을 권장함.
+- 평가 방법 및 주별 강의 계획 등의 세부 사항은 변경될 수 있음.
+- 재이수 시 성적 취득 상한이 적용됨.",raw/syllabus/2026_1_COMP0319-002/Pub.json
+2026-1,COMP0319-003,이지연,3-3-0,한국어,"이 수업에서는 1) 컴퓨터 분야의 대표적인 알고리즘들을 살펴보고, 2) 문제 해결을 위한 다양한 방법론을 학습하여, 3) 알고리즘 설계 및 분석의 기본 원리를 익히는 것을 목표로 합니다.","1) 컴퓨터 분야의 대표적인 알고리즘들을 학습한다.
+2) 문제 해결을 위한 다양한 방법론을 학습한다. 
+3) 알고리즘 설계 및 분석의 기본 원리를 학습한다.",,"- 출석: 10%
+- 중간시험: 35%
+- 기말시험: 40%
+- 과제: 15%","- 기초적인 프로그래밍 및 자료구조 지식을 습득한 후에 수강할 것을 권장함.
+- 평가 방법 및 주별 강의 계획 등의 세부 사항은 변경될 수 있음.
+- 재이수 시 성적 취득 상한이 적용됨.",raw/syllabus/2026_1_COMP0319-003/Pub.json
+2026-1,COMP0321-001,소휘수,3-3-0,한국어,"본 강의는 컴파일러의 내부 구조 및 원리와 프로그래밍 언어의 변환 과정에 대해 상세히 살펴보고, 직접 여러 단계의 과제를 통해 컴파일러의 구성 요소들을 단계적으로 구현해보는 과정을 진행합니다.
+본 강의는 주요 프로그래밍 언어(C/Java/Python)를 원활히 다룰 수 있는 능력을 요구하니, 기본적인 프로그래밍 스킬에 익숙한 상태로 해당 강의에 참석하는 것을 강력하게 권장합니다.","컴파일러에 대한 이론 교육과 각 요소들을 단계적으로 구현하는 과제를 통해 컴파일러에 대해서 면밀히 학습하고, 이를 바탕으로 컴파일러 뿐 아니라 컴퓨터 과학과 공학을 구성하는 세부 전공들의 이론적 배경 및 필요성을 교육하고자 합니다.","주 교재: 강의 교안을 중심으로 수업이 진행됩니다.
+부교재 및 기타 참고서적: (부교재는 구입하지 않으셔도 괜찮습니다.)
+1) Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman, Compilers: Principles, Techniques, and Tools, Addison Wesley, 2nd edition, 2007
+2) Louden Kenneth, C., Compiler Construction: Principles and Practice, Course Technology, 1997
+3) Andrew W. Appel, ""Modern Compiler Implementation in C,"" Cambridge University Press, 2004.","- 출석 5%
+- 중간고사 30%
+- 기말고사 35%
+- 과제 30%: 단계적으로 컴파일러를 구현하는 프로그래밍 과제 출제 (C 언어 및 Python, Java.)
+-- LLM 사용 규정: 컴파일러 구현 과제 수행에 한하여 자유롭게 사용 가능하나, 최종 제출된 코드가 반드시 실행 가능해야 합니다. LLM을 통해서 생성한 코드 제출물이 제대로 컴파일이 되지 않거나 동작하지 않을 시 본인이 직접 수정하거나 여러 단계의 프롬프팅을 통하여 제대로 된 결과물로 개선하여야 합니다.","본 강의는 컴퓨터학부 3학년(또는 4학년생)을 대상으로 개설된 강의로, 타 전공 학생 및 복수전공/부전공 등의 과정을 수행 중인 학생들도 환영하나, 권장선수 교과목을 이수하지 않았거나 과제를 수행하는데 필요한 수준의 개발 역량을 보유하지 않았다면 과목 이수에 지장이 있을 수 있습니다. 컴파일러 과제 수행 및 과목 이해를 위해, 주요 프로그래밍 언어를 무리 없이 사용할 수 있어야 합니다. (C, Python, Java 권장)",raw/syllabus/2026_1_COMP0321-001/Pub.json
+2026-1,COMP0323-002,펑리메이,3-3-0,English,,,,,,raw/syllabus/2026_1_COMP0323-002/Pub.json
+2026-1,COMP0324-001,정든솔,3-3-0,English,"This course introduces model- and technique-oriented coding practices and the latest trends in artificial intelligence. It also aims to help students develop practical AI programming skills as general-purpose tools for solving problems in cutting-edge research areas, and to cultivate the ability to critically evaluate existing methods and technologies.","This course introduces model- and technique-oriented coding practices and the latest trends in artificial intelligence. It also aims to help students develop practical AI programming skills as general-purpose tools for solving problems in cutting-edge research areas, and to cultivate the ability to critically evaluate existing methods and technologies.","Primary textbook:
+Due to the difficulty of specifying a single required textbook, lecture notes compiled using the supplementary textbooks and references listed below will serve as the primary course materials.
+
+Supplementary textbook:
+Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems (2nd Edition), Aurélien Géron, 2019","Midterm and Final: In-person, written exam.
+Assignment: 1 or 2 coding and written report submissions in Python.
+Attendance: In accordance with university policy and regulations.","Announcements & assignments: All announcements will be posted via the LMS, and students are expected to check the LMS regularly. Assignment topics and schedules may be announced with topics/timelines that differ somewhat from those listed in the syllabus. Plan can be changed. 
+Use of generative AI (e.g., ChatGPT, Google Gemini): Use of generative AI is permitted, with the following restrictions and cautions:
+1. If generative AI (including ChatGPT) is used for an assignment, the student must clearly disclose its use in the relevant text and/or code.
+2. Students may freely use or refer to generative AI to write part or all of the text; however, the submitter bears full responsibility for factual accuracy of all submitted content, including cases where the student is unaware of inaccuracies or intentionally includes false statements.
+Programming language expectations: Students should be able to understand pseudocode. Prior completion of Introduction to Interactive Programming or Python Programming is recommended. Additionally, it is expected that students with at least three months of Python experience will be able to follow the course without major difficulty. Given Python’s low barrier to entry, students with the following experience are also expected to keep up without major difficulty: at least one year of experience with R or another OOP language.",raw/syllabus/2026_1_COMP0324-001/Pub.json
+2026-1,COMP0422-001,손정주,3-3-0,한국어,"본 교과목은 소프트웨어 공학의 배경과 효과적인 소프트웨어 개발 및 관리를 위한 소프트웨어 공학의 다양한 이론과 기술을 다룬다.
+보다 전문적인 소프트웨어 개발자로 성장하는 것을 목표로 하며, 자동화된 개발 환경과 소프트웨어 테스팅 및 디버깅 기술을 학습한다.","1) 효과적인 소프트웨어의 개발과 관리를 위한 소프트웨어 공학 이론 및 기술 실습
+2) 다양한 테스팅 및 디버깅 기법들 통해 소프트웨어 품질 보증과 결함 탐지 능력을 배양","교재 : Ian Sommerville, Software Engineering, 10th Edition, Addison-Wesley, 2016
+참고문헌 : 기타 소프트웨어 공학 및 테스팅, 디버깅 관련 서적","출석: 5%
+중간시험: 30%
+기말시험: 40% 
+과제 & 발표: 25%",교재는 참고용이며 그 외 기타 서적 및 자료를 활용,raw/syllabus/2026_1_COMP0422-001/Pub.json
+2026-1,ELEC0247-011,김정근,3-3-0,한국어,컴퓨터구조의 기본이 되는 디지털 논리회로 설계에 대해서 배운다.,기본적인 논리회로설계에 필요한 지식들에 대해서 습득하는 것이 본 강의의 목표입니다.,"Fundamentals of Logic Design (7th Edition) by Charles H. Roth, Jr. and Larry L. Kinney","- 중간고사: 50%
+- 기말고사: 50%
+* 평가 방법은 탄력적으로 변동될 수 있음.","컴퓨터구조 수업을 수강하기 전 해당 과목을 수강할 것을 강력하게 권장합니다.
+평가 비율은 탄력적으로 변동될 수 있음.",raw/syllabus/2026_1_ELEC0247-011/Pub.json
+2026-1,FUTR0201-001,정진선,3-3-0,한국어,"급변하는 시장 환경과 기술 진화 속에서 창업이 갖는 의미를 이해하고, 창업 과정을 학습하는 과목입니다. 창업 기회의 발견, 목표 고객 선정과 발굴 과정, 비즈니스 모델 설계, 시장 진입 전략 등 이론과 실제 사례를 통합해 실천적 통찰을 제공합니다. 수강생들은 팀 프로젝트와 실습을 통해 실제 창업가의 시각을 경험하며, 창업 역량과 비즈니스 사고력을 함양할 수 있습니다.","1. 창업의 의미와 필요성에 대한 이해
+2. 창업가로서 성장하기 위해 갖춰야 할 마인드와 역량 배양
+3. 비즈니스 모델과 시장 진입 전략 수립
+4. 실습과 팀 프로젝트를 통해 경험 기반 학습 강화",,"시험 - 객관식/단답형/서술형
+과제 - 별도 공지
+기타 - 수업 참여","교수자의 이론 강의를 기반으로 팀 단위로 실습과 토론을 통해 창업 과정에 도전해 봅니다. 아이템 발굴 - 고객 선정 - 비즈니스 모델 설계 - 시장 진입 - 제품 전략의 과정을 따라 한학기 수업이 운영되며, 교수자-학생, 학생-학생 간 소통을 중심으로 진행됩니다.",raw/syllabus/2026_1_FUTR0201-001/Pub.json
+2026-1,FUTR0208-001,류택형,3-3-0,한국어,"4차산업혁명이라는 변화가 시작하는 와중에 2019년 COVID-19의 세계적인 대유행은 우리의 삶과 우리가 살고 있는 세상을 완전히 바꾸어 놓은 후 변화의 속도는 더욱 가속화되고 있다  이러한 역사적 변화는 우리가 일하고 여행을 가고 커뮤니케이션하고 시간을 보내는 방식이 다시는 예전과 같지 않다.
+다양한 미래기술중 인공지능(AI)은 눈부신 발전을 이루어 다양한 분야에서 AI수요를 가속화시켰고 우리가 이 새로운 세계의 요구를 수용하기 위해  AI이용을 최적화할 수 있을지 다양한 사례와 함께 알아볼 것이다.
+이제 디지털 전환과 더불어 인공지능의 활용은 기업이나 사회에서는 선택적이겠지만 이제는 필수사항이 되었다.
+본 수업에서는 기속화되는 변화 가운데 눈여겨 볼만한 기술을 좀 더 깊이 알아보고  사회 전반에 새로운 기회와 도전을 어떻게 만들어 갈지 알아보고 공부하고자 한다.","- 다양한 산업과 더불어 학제간의 융합된 접근으로 사고하는 힘을 기른다
+
+- 4차 산업혁명에 대한 전반적인 이론과 개념을 설명하고 다른사람에게도 알려줄 수 있다.
+
+- 미래 핵심 인력으로 요구되는 전문성과 함께 책임 의식을 형성할 수 있다
+
+- 창의적인 접근을 통해 문제 해결하고 비판적 사고를 통한 논리적, 통합적 추론 역량을 배양한다.",,"1. 출석 10%: 부득이한 사유로 결석시, 다음 시간에 공적출석인정원(소속대학장 승인)을 제출한 경우에만 인정하며, 그외 모두 결석처리
+   - 지각 2회는 결석 1회로 처리
+
+2. 중간고사 20% : 서술형으로 작문 문제 출제
+
+3. 기말고사 20%: 단답형, 서술형 등 복합으로 문항 출제
+
+4. 과제 30%
+   - 수업과 관련된 동영상 시청후 문제 풀이 및 핵심내용 요약 정리 글쓰기 과제
+
+
+5. 기타 20%
+   -  수업에 적극적은 참여를 유도하기 위해 질문을 활성화","- 수업내 공지사항 및 기타 변경사항은 LMS(lms1.knu.ac.kr)를 수시로 확인 할 것.
+
+- lms 미사용으로 인한 결석이나 교과 일정 미파악에 따른 불이익을 당하지 않도록 유의하시기 바람.
+
+- 수업에 있어서 적극적인 활동 및 참여를 요구함
+
+- 출석 및 지각 철저 체크
+
+- 시험 부정행위시, 경북대학교 처벌규정에 의거 그 정상에 따라 수험자격박탈, 근신, 유기/무기정학, 또는 제적 처분 될 수 있으니, 각별히 유의하여 주시기 바람.
+
+** 강의는 모두 대면강의로 진행됩니다. 출석에 유념하세요.
+
+** 외국인학생도 상대평가 대상이므로 수업신청 전에 필히 심사숙고하길 바랍니다.
+
+**수업내에서 글쓰는 모든 과정에 생성형 AI(챗GPT, 구글 제미나이 외 등등 )의 활용시 0점 처리",raw/syllabus/2026_1_FUTR0208-001/Pub.json
+2026-1,ITEC0401-001,"고석주
+김경훈",4-3-2,한국어,"This Capstone Design Project (CDP) course is a team-based project class. Each team consists of 3~5 students. The details of class schedule will be discussed in the first class.
+- 이 수업은 팀 단위 프로젝트 수업입니다. 각 팀은 기본적으로 3~5명으로 구성됨.
+- 프로젝트 주제는 학생들이 팀을 구성하여 제안하고, 추후 산업체 멘토가 지정될 예정임
+- 세부 과제 정보 및 팀 구성 등은 첫 수업 시간에 안내함
+- 한학기 동안에 과제를 완수해야 함. 
+- 과제 결과물을 토대로 논문발표 등 추진 예정
+- 과제 후 해당 기업과의 연계 인턴쉽 권장",Team-based Project with SW Industry,None,"The grading will be done based on the project output (report, presentation, etc).
+* 출석: 10% (연구실 안전교육 이수증 제출 5% 포함)
+* 교수평가: 70% (멘토 평가 10% 포함)
+* 팀간평가: 10%
+* 팀원평가: 10%
+More details of evaluation will be given in the first class.
+* 기타(5%, 교수평가에 포함): 교내 LMS 연구실안전교육을 이수하고 이수증을 최종보고서에 첨부",The special notice will be given on the LMS class homepage.,raw/syllabus/2026_1_ITEC0401-001/Pub.json
+2026-1,ITEC0401-002,김재수,4-3-2,한국어,"- 본 강좌는 종합 설계 교과목으로서 프로젝트 작성을 중심으로 강좌를 진행하며, 담당 교수의 통상적인 강의는 이루어지지 않음
+- 학기 초에  학생들이 자율적으로 팀을 구성하고, 담당교수와 상의하여 산업체에서 저안한 프로젝트를 진행함
+- 각 팀 별로 프로젝트 진행 상황을 발표하고, 프로젝트 진행 상의 문제점이나 애로사항을 자문하여 해결하는 형태로 수업이 진행됨
+- 프로젝트 주제는 산업체에서 제안하는 내용을 팀 별로 배정하며 배정된 주제에 대해 팀 원들이 협력하여 문제를 해결하여야 함
+- 학기말에 각 팀별로 프로젝트 결과 발표와 함께 수행 보고서를 작성하여 제출함","- 학생들이 팀을 구성하여 컴퓨터와 관련되는 연구 주제를 선택하여 문제점을 분석하며, 이를 해결하기 위하여 창의적인 아이디어를 찾아 프로젝트를 진행한다.
+- 학생들은 프로젝트 진행을 통해 실제 산업 현장에서 발생하는 문제를 해결할 수 있는 시스템의 구조를 설계하고, 프로그래밍 언어들을 이용하여 코딩을 통하여 문제를 해결하는 방법을 연구하고 훈련한다.","- C/C++, 자바, 기타 프로그래밍 언어  및 관련 기술 문서","* 과제
+  -   프로젝트 계획서 제출, 중간 보고서 제출, 결과 보고서 제출
+
+* 평가방법
+  - 프로젝트 과제에 대한 평가는 다음 사항을 고려하여 교수 평가 40% + 팀간 평가 40% 으로 평가함.
+       # Creative Idea (33%)
+       # Documentations & Presentations (33%)
+       # The Level of Applied Thchnoledge (33%)
+  - 출석 5%와 안전 교육 이수 점수 5%를 부여함. (이수 증명서 제출)
+  - 기타 점수로 각 팀의 우수 팀원에 대하여 가산점으로 10% 를 부여함
+
+  - 등급 비율은  A+는 20% 이내, A0는 10% 이내, A-는 10% 이내, B+ 이하는 60% 이상 부여함
+  - 작품이 동작하지 않거나 터무니 없는 수준의 작품을 제작한 팀,  참여율이 저조한 학생은 C+ 이하로 F까지 부여할 수 있음
+
+* 선수과목
+  - 프로그래밍 언어 관련 과목, 기초창의공학설계","- 팀 당 수행실적 필수 요건 (아래 요건 중 1개 이상)
+  국내학술대회 논문발표 / 특허출원 / SW 등록 / 앱등록",raw/syllabus/2026_1_ITEC0401-002/Pub.json
+2026-1,MTED0231-009,김진욱,3-3-0,한국어,"본 강의는 선형 대수학의 기본 이론과 이를 공학 및 자연과학 문제에 적용하는 방법을 학습합니다. 연립일차방정식의 해법을 시작으로 행렬 대수, 벡터 공간, 고유값과 고유벡터, 직교성 등의 핵심 개념을 다룹니다. 특히 추상적인 벡터 공간의 개념을 이해하고, 이를 바탕으로 데이터 분석과 영상 처리 등 실질적인 응용 문제(예: 최소자승법, SVD)를 해결하는 능력을 기르는 것을 목표로 합니다.","본 강의는 소프트웨어 및 AI 분야의 핵심 기초인 선형대수학의 원리와 응용을 다룹니다. 연립방정식과 행렬 연산, 벡터 공간의 추상적 개념을 이해하고, 공학적 문제 해결에 필수적인 최소자승법(Least Squares)과 특이값 분해(SVD)를 심도 있게 학습합니다. 이를 통해 데이터의 기하학적 구조를 파악하고 머신러닝 및 그래픽스 알고리즘을 설계할 수 있는 수학적 사고력을 배양합니다.","Linear Algebra and its Applications 5th Edition
+David C Lay, Steven R. Lay, Judi J. McDonald","출석 : 5%
+중간고사 : 40%
+기말고사 : 45%
+과제 : 10%",없음,raw/syllabus/2026_1_MTED0231-009/Pub.json
+2026-1,TCHR0499-001,김승호,3-3-0,한국어,"이 강의는 컴퓨터학부에서 교직 과목을 이수하는 학생들에게 개설되는 강좌임.
+매주 주제를 달리하여 현재 초, 중등학교에서 시행되고 있는 컴퓨터 관련 강의와
+교육 현장에 대해서 각자의 의견을 설명하게 하고, 아울러 논술 형식으로 기술하게
+하여서, 본인이 생각하는 바를 제대로 기술할 수 있는 능력을 배양하도록 지도함",교직을 이수하는 하는데 필요한 논리적 논술 능력을 함양한다.,- 없음,"* 평가방법
+
+발표에 대한 내용과 제출한 글, 토론 내용, 시험 성적으로 평가함.",- 컴퓨터 학부 학생들 중 교직을 이수하는 학생 위주로 강의가 진행됨,raw/syllabus/2026_1_TCHR0499-001/Pub.json
+2026-1,COME0311-001,이종택,3-3-0,English,"In this course, students will learn the basic concept of probability and statistics. The first part will cover the topics of probability theory, random variables, and discrete distributions. After that, the second part will cover continuous distributions, normal distributions, descriptive statistics, statistical estimation, and sample distributions.",The main goal of this course is to provide students with the fundamentals of probabilistic and statistical analysis commonly used in engineering and science applications.,"Probability and Statistics for Engineers and Scientists (Hayter, Anthony)","- Attendance: 5%
+- Midterm Exam: 40%
+- Final Exam: 45%
+- Assignment: 10% 
+
+This grading scale and evaluation method are subject to change depending on the number of students taking the course.","- The lectures/exams/presentations will be held offline
+- The class will be conducted entirely in English.",raw/syllabus/2026_1_COME0311-001/Pub.json
+2026-1,COME0311-002,이종택,3-3-0,한국어,"컴퓨터학부에서 필요로 하는 확률과 통계에 대한 기초 지식을 배운다. 전반부는 확률의 기본 개념 중 확률이론, 확률변수, 이산형 확률분포 등에 대해서 학습한다. 후반부는 연속형 확률분포, 정규분포, 기술통계, 통계량 추정 및 표본분포 등에 대해서 배운다.",이 과목의 주요 목적은 AI를 포함한 공학과 과학에서 이용되는 확률과 통계의 기초를 학생들에게 제공하는 것이다.,,"- 출석 : 5%
+- 과제 : 10% (프로그래밍 기반)
+- 중간시험 : 40%
+- 기말시험 : 45%","- 이 수업은 대면 방식으로 진행합니다.
+- 강의 대화는 한국어로 진행되고, 강의 자료(슬라이드)는 영어로 주어집니다.",raw/syllabus/2026_1_COME0311-002/Pub.json
+2026-1,COMP0217-003,김경훈,3-2-2,한국어,Java 프로그래밍을 통해 객체지향 개념을 이해하고 실습 및 과제 등을 통하여 객체 지향 프로그램의 구현 능력 및 문제해결 능력을 키운다.,Java 언어를 활용하여 객체지향 개념을 이해하고 객체지향 프로그래밍 스타일을 익히며 프로젝트 수행을 통한 실무 적응 능력을 기른다.,"주교재 : H. M. Deitel, P. J. Deitel , Java how to program - Early Objects, 10th Edition, Pearson, 2015.
+참고문헌 : 자바 관련 서적들","- 중간고사 : 35%
+- 기말고사 : 35%
+- 과제 : 15%
+- 기타 : 10%
+- 출석 : 5%",- C 프로그래밍 기초 실력을 필요로 합니다.,raw/syllabus/2026_1_COMP0217-003/Pub.json
+2026-1,COMP0217-004,조규철,3-2-2,한국어,Java 프로그래밍 실습 및 과제를 통한 객체 지향의 개념의 학습 프로그래밍 능력의 향상을 목표로 합니다.,"Java 언어를 통한 객체지향 프로그래밍의 개념을 이해하고, 설계부터 검증까지 전반적인 소프트웨어 개발자로서의 능력 함양을 목표로 합니다.",,"- 출석 : 10%
+ - 중간시험 : 30%
+- 기말시험 : 40%
+- 과제 : 해당 챕터 (강의 후 실시)에 관련된 실습 문제
+           채점 서버에 업로드 후 채점까지 완료
+- 기타 : 수업태도 10%",- 강의 내용은 상황에 따라 변경될 수 있습니다.,raw/syllabus/2026_1_COMP0217-004/Pub.json
+2026-1,COMP0411-001,김용태,3-3-0,한국어,"본 교과목은 컴퓨터를 구성하는 프로세서와 주요 하드웨어의 기본 구조와 작동원리를 이해한다. 프로세서의 기본이 되는 명령어, 연산기 설계, 파이프라인 등을 이해하고, 메모리의 계층적 구조와 캐시 메모리 등을 학습한다.",창의: 컴퓨터 구조와 동작 원리에 대한 기본적인 이해,"교재:
+David Patterson, John Hennessy, ""Computer Organization and Design RISC-V Edition: The Hardware Software Interface,"" The Morgan Kaufmann.","출석: 5%, 중간시험: 28%, 기말시험: 37%, 실습과제 및 프로젝트: 30%","1. 교재, 평가 방법 등의 구체적인 사항은 변경될 수 있으며 수업 첫 시간에 확정 공지함
+2. 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+3. 중간고사 또는 기말고사에 결시 할 경우 F학점이 주어짐
+4. 수업일수의 1/4 이상 결석할 경우 F학점이 주어짐",raw/syllabus/2026_1_COMP0411-001/Pub.json
+2026-1,COMP0411-002,탁병철,3-3-0,English,"This course provides a rigorous introduction to the fundamental principles that govern the design and operation of modern computer systems, with an emphasis on computer architecture at the processor and memory-system level. Using Computer Organization and Design (David A. Patterson and John L. Hennessy) as the primary textbook, students will learn how hardware executes software, why particular architectural design choices exist, and how to evaluate those choices using clear performance and correctness criteria.
+The course is designed for second-year undergraduate students and aims to build a durable conceptual foundation that supports later study in operating systems, compilers, embedded systems, performance engineering, and security. The course focuses on the hardware structures and mechanisms that dominate modern computer organization.","1. Explain how programs execute on hardware by tracing the flow from high-level code to machine instructions and microarchitectural execution.
+2. Understand the role and structure of the Instruction Set Architecture (ISA) and explain how ISA design affects performance, complexity, and compatibility.
+3. Analyze processor datapaths and control to determine how instructions are fetched, decoded, executed, and retired.
+4. Reason about pipelining and identify and resolve pipeline hazards (data, control, and structural) using architectural techniques.
+5. Evaluate design trade-offs using basic performance models (e.g., CPI, clock rate, execution time) and principled reasoning about cost, complexity, and scalability.
+6. Understand memory hierarchy behavior including caches, locality, and the performance implications of hierarchy design.
+7. Explain virtual memory mechanisms (address translation, paging, TLBs) and relate them to protection, isolation, and system performance.
+8. Assess architectural choices critically, articulating strengths, weaknesses, and appropriate use cases for alternative designs.","Computer Organization and Design
+The Hardware/Software Interface RISC-V Edition
+by David A. Patterson, John L. Hennessy","* Assignment
+Two programming projects.
+
+* Evaluation
+Mid-term exam: about 30%
+Final exam: about 30%
+Programming assignments: 15%+15%
+There can be one or two quiz: 10%
+
+* Prerequisite
+C programming skill","There will be no tracking of late arrivals to the class. It will be either 'attended' or 'absent' for the lecture. Students will be allowed to skip 3/4 of the classes throughout the semester. There is no penalty for skipping class. However, if a student misses more than 3/4 of the classes (approximately 8 times or more), he/she will fail the course.",raw/syllabus/2026_1_COMP0411-002/Pub.json
+2026-1,COMP0413-001,백낙훈,3-3-0,한국어,"- 컴퓨터 그래픽스 프로그래밍의 핵심 개념 이해
+- OpenGL 로 3D 그래픽스 프로그램 작성
+- 3D 그래픽스 앱 개발에 필요한 테크닉 이해
+
+** 현 정원에서 더 이상의 증원은 없습니다.
+** 경북대학교 원격 수업 규정에 따라, 추가 분반 개설은 불가능합니다.
+** 수강 변경 기간 이후, 수강취소분에 대한 추가 수강신청 허용은 수강신청 시스템 입력 순서대로, 수시로 수강 정원까지 승인합니다.
+※ 수강에 관련된 전화/이메일/면담은 일체 응답하지 않습니다.
+
+** 주의: 해당 강의는 정확히는 ""컴퓨터 그래픽스 프로그래밍"" 과목입니다.
+C/C++ 언어로 컴퓨터 게임의 3차원 그래픽스 출력을 직접 만들어내는 프로그램 작성을 가르치는 과목입니다.
+""포토샵"", ""일러스트레이터"" 등의 그래픽 편집 프로그램 사용법 등은 전혀 언급하지 않습니다.
+
+** 주의: 본 강의는 ""콘텐츠 활용 수업"" (미리 제작된 강의 동영상 재생 방식 원격 수업) 으로 진행합니다.
+동영상 시청 등의 학습량이 상당히 많다는 점을 고려해서 신청하시기 바랍니다.
+동영상 시청은 LMS에서 자동으로 출석 체크를 하고, 매학기 출석 미달로 F 받는 경우가 매번 나왔다는 점에 주의하시기 바랍니다.","- 컴퓨터 그래픽스 프로그래밍의 핵심 개념 이해
+- OpenGL 로 3D 그래픽스 프로그램 작성
+- 3D 그래픽스 앱 개발에 필요한 테크닉 이해
+
+** 주의: 해당 강의는 정확히는 ""컴퓨터 그래픽스 프로그래밍"" 과목입니다.
+C/C++ 언어로 컴퓨터 게임의 3차원 그래픽스 출력을 직접 만들어내는 프로그램 작성을 가르치는 과목입니다.
+""포토샵"", ""일러스트레이터"" 등의 그래픽 편집 프로그램 사용법 등은 전혀 언급하지 않습니다.
+
+** 주의: 해당 강의는 ""원격 강의"" (녹화된 동영상 시청 방식) 로 진행됩니다.
+매주 제공되는 ""녹화된 동영상 강의"" (및 기타 강의자료) 들을 시청해야 합니다.
+LMS 게시판에서 질의 응답 등의 심화 학습을 진행합니다.","컴퓨터 그래픽스: OpenGL로 시작하기 (ISBN: 979-11-89961-16-9)
+컴퓨터 그래픽스: OpenGL활용하기 (ISBN: 979-11-89961-22-0)
+컴퓨터 그래픽스: OpenGL고급활용 (ISBN: 979-11-89961-23-7)
+- 교보문고 홈페이지에서 ""책이름""으로 검색 후, ""교보문고"" 탭 선택 후, 왼쪽 메뉴에서 ""POD"" 선택
+- 교보문고 홈페이지에서 ""책이름""으로 검색 후, ""ebook"" 탭 선택
+- 교보문고 POD 도서 및 ebook 으로 등록 완료
+
+(optional) Secondary Textbook is:
+Interactive Computer Graphics, 6th Ed., (ISBN: 978-02-737522-6-4)
+- Edward Angel & Dave Shreiner","- There will be a mid-term and also a final examination.
+- Mid-term examination: 40 to 50%
+- Final examination: 40 to 50%
+- Programming Assignments: 0 to 10%
+- Participating in the class hours: 0 to 10%
+- Programming assignments are relatively important in this course. You should submit all the assignments.
+- This course is absolutely against to all plagiarism.","중간고사 : 4월 25일 토요일 10:30 - 12:00 확정
+기말고사 : 6월 13일 토요일 10:30 - 12:00 확정
+중간고사, 기말고사는 반드시 대면 참석해야 성적이 나갑니다. (천재지변, 응급상황 등은 증빙 제출시 별도 대면시험)
+- 중간고사, 기말고사는 주관식 문제로만 출제 예정이며, 극히 제한적으로 일부 객관식 문제가 출제될 수도 있습니다.
+
+- 이 과목은 컴퓨터학부 4학년 과정이며, 프로그래밍 실습이 필수입니다.
+- C/C++ 프로그래밍 언어로 프로그램 작성을 할 수 있어야 합니다.
+- 매시간 예제 프로그램이 제공되고, 프로그램 작성이 가능해야 수업을 따라갈 수 있습니다.
+- 실습용 OpenGL 설치는 직접해야 하며, 문의를 받지 않습니다.
+- 매킨토시 기종은 애플의 폐쇄 정책에 따라, 실습용 OpenGL 설치가 공식적으로 지원되지 않으며, 설치에 성공해도 일부 기능이 전혀 작동하지 않습니다. (애플의 폐쇄 정책 때문임)
+- Check  lms1.knu.ac.kr  for more details.",raw/syllabus/2026_1_COMP0413-001/Pub.json
+2026-1,COMP0462-001,이천희,3-3-0,English,"This course covers various topics in data mining. Data mining is a multi-disciplinary subject related to database, statistics and machine learning. In this course, we will first learn the basic concepts of data mining and then study several data mining techniques such as frequent pattern mining, classification, and clustering.",We learn a basic concept of data mining and master various techniques in data mining.,,"Attendance: 10%
+Midterm/Final Exam: 80%
+Assignment: 10%",The programming assignments will be done in Python.,raw/syllabus/2026_1_COMP0462-001/Pub.json
+2026-1,EECS0312-001,정창수,3-2-2,한국어,"이 과목에서는 TCP/IP 기반 인터넷 통신 프로그램을 개발하기 위한 Socket 프로그래밍을 학습한다. 
+소켓 기본 함수, TCP 서버, UDP 서버, 멀티캐스트 등의 주제에 대하여 매주 예제 중심의 수업을 통해 Linux 환경에서의 Socket 프로그래밍 기법을  소개한다.",네트워크 기술의 기본 내용을 이해하고 TCP/IP 기반의 네트워크 프로그램을 개발할 수 있다.,,"출석: 10%
+과제:  10%
+중간고사 : 30%
+기말고사 : 50%","1. 프로그래밍에 대한 기본적인 지식이 필요 (특히 C 언어에 대한 이해도가 필요함)
+2. 수강을 위해 반드시 C언어에 대한 지식을 가지고 있어야 함
+3. 소켓 프로그래밍 과제를 수행하기 위해서는 각자 리눅스 환경을 구축해야 됨 (Windows의 sub-system은 사용 불가함)
+4. 매주 Linux 기반 소켓 프로그래밍 과제를 부여함
+5. 중간고사나 기말고사에 결시할 경우, F학점이 주어짐
+6. 생성형 AI를 통해 도출된 결과물을 활용하여 과제 또는 시험 답안에 제출하는 행위를 허용하지 않으며, 이러한 행위는 부정행위로 처리함",raw/syllabus/2026_1_EECS0312-001/Pub.json
+2026-1,ELEC0462-001,서영균,3-2-2,한국어,"This course cover all the major ideas of Unix/Linux programming; file I/O, file systems, device I/O, terminal driver, timers, signals, processes, pipes,  and POSIX threads. Students will be expected to write programs that make full use of operating system services while learning how Unix/Linux works. Weªll play with Ubuntu system.","- 리눅스 운영 체제에 친숙해 진다 
+- C 언어 기반 시스템 프로그래밍을 수행할 수 있다 
+- 시스템 소프트웨어 아키텍처를 구축하고 이를 구현할 수 있다.",,"- Exam (시험): 60% (midterm, final)
+- Lab (13%)/homework(25%): 38% 
+- Attendance, Quiz(퀴즈): 0% 
+- Certificate of lab safety training(안전관리 교육 이수증 제출): 2% 
+- This breakdown may be subject to change (위의 비율은 변동될 수 있음).","- 자기 노트북을 가지고 와서 실습하는 것을 매우 추천함(실습실 PC는 여러 학생들로 인해 환경 설정이 자주 변경될 수 있어 사용하는 것을 추천하지 않음)
+- C 프로그래밍에 능숙할 것
+- 재수강생은 B+ 이상 받지 못할 것임 
+- 수강 확정 후, 팀별 과제 예정이라 다른 학생에게 피해 줄 수 있어 취소 불가하니 주의해서 수강 부탁
+- 수업 자료는 영어로 제공
+- 연구실 안전교육 이수증 제출 필요 
+- 일부 주차 수업은 출장 등으로 비대면으로 진행될 수 있음 
+- 본 강의에서는 ChatGPT, Google Gemini 등을 포함한 생성형 AI를 통해 도출된 결과물을 ""있는 그대로"" 활용하여 과제 또는 시험 답안에 제출하는 행위를 일체 허용하지 않으며, 이러한 행위는 부정행위로 간주되어 F학점을 부여함",raw/syllabus/2026_1_ELEC0462-001/Pub.json
+2026-1,ELEC0462-002,한명균,3-2-2,한국어,"본 과목에서는 UNIX/LINUX 시스템 프로그래밍과 관련된 주요 개념을 학습하고, 저수준 API를 활용하여 시스템 프로그래밍을 직접 경험하는 것을 목표로 합니다.
+학생들은 리눅스 운영체제가 제공하는 다양한 서비스를 이해하고 이를 활용하여 보다 빠르고 효율적인 프로그램을 개발할 수 있는 역량을 갖추게 됩니다. 
+본 강의에서 다루는 주요 개념은 다음과 같습니다: File I/O, File system, Device I/O, Terminal Driver, Timer, Signal, Process, Shell, Thread, Pipe, Socket, etc.","- 리눅스 운영체제에 익숙해진다.
+- C 언어를 기반으로 시스템 프로그래밍을 수행할 수 있다.
+- 시스템 소프트웨어 아키텍처를 설계하고 구현할 수 있다.",,"출석: 5%
+중간시험: 30%
+기말시험: 30%
+과제: 35%
+(lab: 10%, project: 25%)
+
+(위의 점수 분포는 변동될 수 있음)","1. 교재 및 평가 방법 등의 세부 사항은 변경될 수 있으며, 첫 수업 시간에 확정하여 공지합니다.
+2. 수업 자료는 영어로 제공됩니다.
+3. C언어로 프로그램을 개발할 수 있어야 합니다.
+4. 과제, 시험, 출석과 관련된 부정행위가 적발될 경우 성적에 심각한 불이익이 부과됩니다.
+5. 시험에 결석하는 경우 추가 시험은 제공되지 않으며, 0점 처리 됩니다.
+6. 학교 규정에 따라 전체 수업의 1/4 이상 결석할 경우 F 학점이 부여됩니다.",raw/syllabus/2026_1_ELEC0462-002/Pub.json
+2026-1,FUTR0208-002,류택형,3-3-0,한국어,"4차산업혁명이라는 변화가 시작하는 와중에 2019년 COVID-19의 세계적인 대유행은 우리의 삶과 우리가 살고 있는 세상을 완전히 바꾸어 놓은 후 변화의 속도는 더욱 가속화되고 있다  이러한 역사적 변화는 우리가 일하고 여행을 가고 커뮤니케이션하고 시간을 보내는 방식이 다시는 예전과 같지 않다.
+다양한 미래기술중 인공지능(AI)은 눈부신 발전을 이루어 다양한 분야에서 AI수요를 가속화시켰고 우리가 이 새로운 세계의 요구를 수용하기 위해  AI이용을 최적화할 수 있을지 다양한 사례와 함께 알아볼 것이다.
+이제 디지털 전환과 더불어 인공지능의 활용은 기업이나 사회에서는 선택적이겠지만 이제는 필수사항이 되었다.
+본 수업에서는 기속화되는 변화 가운데 눈여겨 볼만한 기술을 좀 더 깊이 알아보고  사회 전반에 새로운 기회와 도전을 어떻게 만들어 갈지 알아보고 공부하고자 한다.","- 다양한 산업과 더불어 학제간의 융합된 접근으로 사고하는 힘을 기른다
+
+- 4차 산업혁명에 대한 전반적인 이론과 개념을 설명하고 다른사람에게도 알려줄 수 있다.
+
+- 미래 핵심 인력으로 요구되는 전문성과 함께 책임 의식을 형성할 수 있다
+
+- 창의적인 접근을 통해 문제 해결하고 비판적 사고를 통한 논리적, 통합적 추론 역량을 배양한다.",,"1. 출석 10%: 부득이한 사유로 결석시, 다음 시간에 공적출석인정원(소속대학장 승인)을 제출한 경우에만 인정하며, 그외 모두 결석처리
+   - 지각 2회는 결석 1회로 처리
+
+2. 중간고사 20% : 서술형으로 작문 문제 출제
+
+3. 기말고사 20%: 단답형, 서술형 등 복합으로 문항 출제
+
+4. 과제 30%
+   - 수업과 관련된 동영상 시청후 문제 풀이 및 핵심내용 요약 정리 글쓰기 과제
+
+
+5. 기타 20%
+   -  수업에 적극적은 참여를 유도하기 위해 질문을 활성화","- 수업내 공지사항 및 기타 변경사항은 LMS(lms1.knu.ac.kr)를 수시로 확인 할 것.
+
+- lms 미사용으로 인한 결석이나 교과 일정 미파악에 따른 불이익을 당하지 않도록 유의하시기 바람.
+
+- 수업에 있어서 적극적인 활동 및 참여를 요구함
+
+- 출석 및 지각 철저 체크
+
+- 시험 부정행위시, 경북대학교 처벌규정에 의거 그 정상에 따라 수험자격박탈, 근신, 유기/무기정학, 또는 제적 처분 될 수 있으니, 각별히 유의하여 주시기 바람.
+
+** 강의는 모두 대면강의로 진행됩니다. 출석에 유념하세요.
+
+** 외국인학생도 상대평가 대상이므로 수업신청 전에 필히 심사숙고하길 바랍니다.
+
+**수업내에서 글쓰는 모든 과정에 생성형 AI(챗GPT, 구글 제미나이 외 등등 )의 활용시 0점 처리",raw/syllabus/2026_1_FUTR0208-002/Pub.json
+2026-1,GLSO0214-001,안현숙,3-3-0,한국어,"소프트웨어 융합 기술은 미래 직업세계 변화에 중요한 영향을 미치고 있다. 본 교과목은 소프트웨어 융합 분야의 기술 변화와 발전 방향을 살펴봄으써, 제4차 산업혁명으로 인한 미래 직업세계의 변화에 대해 이해하고, 이를 통해 수강생들이 스스로 자신의 진로를 설계할 수 있도록 하는 것을 목적으로 한다. 빅데이터, 머신러닝, 인공지능, IoT, 로봇기술 등의 기술들을 이해하고, 이로 인한 일자리의 변화를 예측하여 미래 직업에 필요한 직무 역량을 정의하여 본인의 진로를 설계할 수 있도록 한다.",본 수업은 4차 산업혁명시대에 걸맞는 SW진로 분야에 대해 탐색하고 그 분야에 종사하고 있는 동문선배 특강을 통해 본인의 진로에 대한 로드맵을 완성시켜 나가는 데 목적이 있다.,"* 주교재
+- 강의자료(PPT)
+
+
+* 참고교재
+
+- 제레미 리프킨, 한계비용 제로사회, 민음사. 2014.
+
+- 샘 라이트스톤, 프로그래머로 사는 법, 한빛미디어, 2012.
+
+- 피트 구들리프, 훌륭한 프로그래머 되는 법, 한빛미디어, 2015.
+
+- 톰 드마르코, 티모시 리스터, 피플웨어, 인사이트, 2014.","출석 :10%
+과제: 50%
+발표: 40%
+
+(2022. 1학기부터 SW진로설계는 S/U과목으로 변경됨)","본 수업은 자기주도적 학습을 기반으로 학생 참여형 수업으로 진행함.
+이론 중심의 강의가 아닌 수강생들이 스스로 학습하고 소통하면서 스스로 자신의 진로를 체계적으로 설계해 나가도록 진행함.",raw/syllabus/2026_1_GLSO0214-001/Pub.json
+2026-1,GLSO0215-001,정설영,3-2-2,한국어,"본 수업에서는 현대적인 소프트웨어 개발의 전 과정을 경험하고, 오픈소스 정신에 입각한 협업 문화 속에서 지속 가능한 소프트웨어를 개발하고 배포하는 실전 역량을 쌓는 것을 목표로 한다. 이를 위해, 먼저 협업의 기반이 되는 분산 버전 관리 시스템인 “Git”의 동작 원리와 사용법을 익히고, “Git”을 중심으로 한 협업 플랫폼인 “Github”에서 코드 리뷰와 Pull Request를 통해 프로젝트를 함께 개선하는 방법을 실습한다. 다음으로, 단순히 동작하는 코드를 넘어, “테스트 주도 개발”과 “리팩토링”을 통해 코드의 품질을 지속적으로 개선하고 유지보수하기 좋은 코드를 작성하는 원리를 학습한다. 나아가, 이러한 개발 과정을 자동화하는 “CI/CD(지속적 통합/배포)” 파이프라인을 구축해보고, “Docker” 통해 어떤 환경에서든 동일하게 동작하는 애플리케이션을 패키징하고 배포하는 기술을 경험한다. 또한, 팀프로젝트를 통해 협업문화를 기반으로 아이디어 구상부터 개발, 테스트, 배포에 이르는 소프트웨어 개발의 전 생명주기를 주도하는 경험을 완성한다.","본 강의는 학생들이 오픈소스 소프트웨어 생태계에 대한 이해와 실제 참여 역량을 개발하는 것을 목표로 한다. 구체적으로, Git을 비롯한 분산 버전 관리 시스템의 효과적인 활용법을 습득하고, 실제 오픈소스 프로젝트에 기여하는 전 과정을 경험함으로써 협업 능력을 향상시킨다. 나아가 학생 스스로 오픈소스 프로젝트를 기획, 개발, 공개하고 유지보수하는 전체 생명주기를 실습함으로써 현대 소프트웨어 개발 환경에서 요구되는 실무 역량을 배양한다.",,"- 출석 및 기타 10%
+- 실습 및 과제 20%
+- 중간과제(개별 포트폴리오) 30%
+- 기말팀프로젝트 40%
+
+※ 평가방법은 수업 진행 상황에 따라 변경될 수 있습니다.","* Pro Git 온라인 배포판
+  - (영문) https://git-scm.com/book/en/v2
+  - (한글) https://git-scm.com/book/ko/v2",raw/syllabus/2026_1_GLSO0215-001/Pub.json
+2026-1,GLSO0216-001,배준현,3-2-2,한국어,"본 교과목은 알고리즘의 설계 원리를 탐색하고 알고리즘을 구현할 수 있는 능력을 배양하는 것을 목표로 한다.
+알고리즘의 시간 복잡도와 성능 분석 방법에 대한 기본적인 이해를 바탕으로
+분할정복법, 동적계획법, 탐욕법, 백트래킹, 분기한정법 등의 다양한 알고리즘 설계 원리를 탐색한다.
+또한, 알고리즘 설계 원리를 응용하여 여러가지 알고리즘 관련 문제들을 
+프로그래밍 언어를 사용하여 실제로 구현할 수 있는 능력을 키우도록 다양한 실험과 실습을 수행한다.
+마지막으로, 알고리즘 문제의 계산 복잡도를 이해하고, 난해한 문제(NP-문제)를 풀 수 있는 방법에 대해서 이해한다.",주어진 문제를 해결할 수 있는 절차를 명확하게 정의할 수 있는 알고리즘 설계 역량을 키운다.,"Richard E. Neapolitan, Foundations of Algorithms 5th Edition. Jones and Bartlett. 2015.
+(번역판) Richard E. Neapolitan, 도경구 역. 알고리즘 기초 5판. 홍릉과학출판사. 2017.","출석: 10% (연구실 안전교육 수강 5% 포함)
+실습과제: 10% 
+중간시험: 40%
+기말시험: 40%","1.
+본 교과목은 프로그래밍기초(C), 자료구조/자료구조응용 과목을 선수강하지 않고는 강의를 소화하고 따라가기 힘든 과목임.
+본 교과목은 매주 프로그래밍 과제(3~5문제)를 수행해야 하므로, 절대적인 시간과 노력이 많이 필요한 과목임.
+수업교재 및 강의자료는 C++ 언어를 기반으로 참조 구현을 슈도 코드로 제공하며, 과제에 대한 풀이/해설 코드는 제공하지 않음.
+단, 높은 수준의 C++ 프로그래밍 능력을 요구하지 않고, 표준입출력(cin/cout), STL(벡터, 맵, 우선순위 큐 등)을 활용할 수 있으면 될 것임.
+
+2.
+중간/기말 시험은 오픈북으로 출제되며, 교재의 내용 참조를 필요충분 조건으로 할 수 있음.
+따라서, 상기한 강의교재를 준비하지 않아서 생기는 모든 불이익은 수강생의 책임으로 간주함.
+(강의는 원서를 기준으로 진행될 것이나, 번역서를 사용하여도 강의 수강에는 큰 지장이 없을 것임)
+
+실험실 안전교육 수강증 확인 (중간고사 전후).",raw/syllabus/2026_1_GLSO0216-001/Pub.json
+2026-1,GLSO0216-002,배준현,3-2-2,한국어,"본 교과목은 알고리즘의 설계 원리를 탐색하고 알고리즘을 구현할 수 있는 능력을 배양하는 것을 목표로 한다.
+알고리즘의 시간 복잡도와 성능 분석 방법에 대한 기본적인 이해를 바탕으로
+분할정복법, 동적계획법, 탐욕법, 백트래킹, 분기한정법 등의 다양한 알고리즘 설계 원리를 탐색한다.
+또한, 알고리즘 설계 원리를 응용하여 여러가지 알고리즘 관련 문제들을 
+프로그래밍 언어를 사용하여 실제로 구현할 수 있는 능력을 키우도록 다양한 실험과 실습을 수행한다.
+마지막으로, 알고리즘 문제의 계산 복잡도를 이해하고, 난해한 문제(NP-문제)를 풀 수 있는 방법에 대해서 이해한다.",주어진 문제를 해결할 수 있는 절차를 명확하게 정의할 수 있는 알고리즘 설계 역량을 키운다.,"Richard E. Neapolitan, Foundations of Algorithms 5th Edition. Jones and Bartlett. 2015.
+(번역판) Richard E. Neapolitan, 도경구 역. 알고리즘 기초 5판. 홍릉과학출판사. 2017.","출석: 10% (연구실 안전교육 수강 5% 포함)
+실습과제: 10% 
+중간시험: 40%
+기말시험: 40%","1.
+본 교과목은 프로그래밍기초(C), 자료구조/자료구조응용 과목을 선수강하지 않고는 강의를 소화하고 따라가기 힘든 과목임.
+본 교과목은 매주 프로그래밍 과제(3~5문제)를 수행해야 하므로, 절대적인 시간과 노력이 많이 필요한 과목임.
+수업교재 및 강의자료는 C++ 언어를 기반으로 참조 구현을 슈도 코드로 제공하며, 과제에 대한 풀이/해설 코드는 제공하지 않음.
+단, 높은 수준의 C++ 프로그래밍 능력을 요구하지 않고, 표준입출력(cin/cout), STL(벡터, 맵, 우선순위 큐 등)을 활용할 수 있으면 될 것임.
+
+2.
+중간/기말 시험은 오픈북으로 출제되며, 교재의 내용 참조를 필요충분 조건으로 할 수 있음.
+따라서, 상기한 강의교재를 준비하지 않아서 생기는 모든 불이익은 수강생의 책임으로 간주함.
+(강의는 원서를 기준으로 진행될 것이나, 번역서를 사용하여도 강의 수강에는 큰 지장이 없을 것임)
+
+실험실 안전교육 수강증 확인 (중간고사 전후).",raw/syllabus/2026_1_GLSO0216-002/Pub.json
+2026-1,GLSO0219-001,이우진,3-3-0,한국어,"소프트웨어 공학 전반의 개념들을 파악하고 소프트웨어 개발 생명주기별로 사용되는 다양한 개념 및 방법들을 자세히 익힌다.
+소프트웨어 테스팅 기법을 단계별로 익히고 다양한 오픈소스 테스팅 도구들을 활용한다.",소프트웨어 개발 공정 및 소프트웨어 테스팅 기법들을 이해하고 실제 프로젝트에 적용할 수 있는 능력을 배양한다.,"교재 : IAN Sommerville, Software Engineering, -10th Edition, Addison-Wesley, 2016
+         Paul C. Jorgensen, Software Testing, A Craftsman’s Approach, fourth edition, CRC Press, 2014
+참고문헌 : 기타 SE 및 테스팅 관련 서적","중간/기말 시험을 통한 평가
+숙제(10%), 개인별 프로젝트(20%)를 통한 평가","Java 와 연관된 내용을 수업에 일부 다룸
+개인별 과제를 진행하며 Use Case Diagram. Class Diagram, Testing 자료를 보고서로 제출하여야함.",raw/syllabus/2026_1_GLSO0219-001/Pub.json
+2026-1,GLSO0223-001,백태산,3-3-0,한국어,"소프트웨어 전공 학생들을 대상으로 실제 창업 프로젝트를 수행하는 과정을 통해 창업의 전 과정을 경험하도록 합니다. 수업은 강의, 워크숍, 팀 프로젝트, 발표 및 토론 등 다양한 형태로 진행됩니다. 학생들은 팀을 구성하여 창업 아이디어를 구상하고, 이를 바탕으로 비즈니스 모델을 설계하며, 초기 프로토타입을 개발하게 됩니다. 시장 조사와 전략 수립을 통해 실현 가능한 사업 계획을 작성하고, 최종 발표를 통해 프로젝트를 공유하며 피드백을 받습니다. 이 과정에서 학생들은 창의적 사고, 문제 해결 능력, 기술적 역량, 그리고 팀워크를 강화하게 됩니다.","● 창의적 아이디어 발굴: 학생들이 혁신적이고 창의적인 소프트웨어 기반 창업 아이디어를 발굴하고, 이를 실현 가능한 비즈니스로 발전시킬 수 있도록 격려합니다.
+● 비즈니스 모델 설계: 학생들이 각종 비즈니스 모델 도구와 프로세스를 사용하여 효과적인 비즈니스 모델을 설계하고 검증할 수 있도록 합니다.
+● 기술적 역량 강화: 학생들이 소프트웨어 개발 기술과 도구를 사용하여 초기 프로토타입을 개발하고, 기술적 문제 해결 능력을 향상 시킬 수 있도록 지원합니다.
+● 시장 분석과 전략 수립: 학생들이 목표 시장을 분석하고, 이를 바탕으로 효과적인 마케팅 및 사업 전략을 수립하는 능력을 개발합니다.
+● 팀워크 및 협업 능력 강화: 학생들이 팀 프로젝트를 통해 효과적인 협력과 리더십을 발휘하며, 팀원들과의 협력을 통해 공동의 목표를 달성하는 경험을 제공합니다.
+● 창업 생태계 이해: 학생들이 현대의 창업 생태계와 기술적 기회를 이해하고, 이를 바탕으로 자신의 아이디어를 현실화하는 방법을 학습합니다.",교재 및 참고문헌은 수업에서 제공되는 강의자료 및 온라인 자료를 활용,"● 수업 내용의 특성 상 지필고사 시행에 어려움이 있어 프로젝트
+● 팀 프로젝트 : 프로젝트 계획서, 중간 보고서, 최종 발표 및 보고서, 토론 및 질의 응답을 통해 과제/발표/토론 평가
+
+출석(20%) : 교칙에 의거한 평가
+과제(40%) : 
+      - 팀 단위 과제(제안서, 발표 자료, R&D 계획서, 결과 보고서 등) 수업 진행 중 팀 단위로 제출 하는 과제(30%)
+      - 팀 내에서 다른 팀원을 평가하는 팀원 다면 평가(20%)
+      - 교수 평가 (50%) 
+발표(40%) : 
+      - 팀 단위로 창업 주제를 정하고 이와 관련된 발표 자료 작성 및 PT능력을 평가 요소에 반영함
+      - 팀 단위로  다른 팀을 평가하는 다면 평가(60%)
+      - 교수 평가(40%)를 백분위 점수로 산출하고 추후 순위를 기반으로 상대평가 적용
+
+팀 프로젝트는 수강인원에 따라 개인 프로젝트로 변경될 수 있음","- 구체적인 강좌 운영 방식 및 팀 단위 결과물의 범위, 평가 방법 등 전반적인 내용은 1주차 수업 시간에 학생들과 토론 후 조정할 예정 입니다.
+- 본 수업은 스타트업 설계를 위해 필요한 사업계획서 및 창의적 사고력 향상, 실제 사업에 대한 현장 경험 등을 전달하는데 목적을 두고 있습니다.",raw/syllabus/2026_1_GLSO0223-001/Pub.json
+2026-1,ITEC0403-001,김진욱,3-3-0,한국어,"4차 산업혁명 시대, 소프트웨어와 데이터는 단순한 기술적 결과물을 넘어 기업의 생존을 결정짓는 핵심 '무형자산(Intangible Asset)'으로 자리 잡았습니다. 특히 생성형 AI(Generative AI)의 등장은 기존의 저작권 및 기술 보호 체계에 전례 없는 법적·윤리적 도전을 제기하고 있습니다. 이제 개발자와 엔지니어에게 지식재산권(IP) 지식은 선택이 아닌, 자신의 코드를 방어하고 비즈니스 가치를 극대화하기 위한 필수 생존 도구가 되었습니다.
+본 강의는 법학 전공자가 아닌 IT 전공생을 대상으로, 딱딱한 법리 해석을 지양하고 현장 중심의 실무 전략을 학습하는 데 중점을 둡니다. 커리큘럼은 크게 세 가지 축으로 구성됩니다.
+첫째, [스타트업 빌드업 전략]입니다. 아이디어 발굴부터 시제품 제작, 투자 유치, 그리고 엑시트(Exit)에 이르는 스타트업 생애 주기별 IP 전략을 다룹니다. 특허를 통해 기술 진입장벽을 구축하고, 상표와 영업비밀을 활용해 기업 가치(Valuation)를 높이는 구체적인 방법론을 학습합니다.
+둘째, [AI 및 최신 기술 이슈 심화]입니다. 웹 크롤링과 데이터 마이닝의 합법성, AI가 생성한 결과물의 소유권 분쟁, 딥페이크와 퍼블리시티권 등 교과서 밖의 최신 쟁점을 다룹니다. 또한, Copilot 등 AI 코딩 도구 활용 시 발생할 수 있는 라이선스 오염 문제를 분석하여 안전한 개발 가이드라인을 수립합니다.
+셋째, [오픈소스 컴플라이언스와 실무 계약]입니다. 깃허브(GitHub) 시대의 필수 문법인 다양한 오픈소스 라이선스(GPL, MIT 등)의 권리와 의무를 명확히 이해하고, 개발 용역 계약 및 비밀유지계약(NDA) 등 실무에서 마주할 계약서의 독소 조항을 해독하는 능력을 기릅니다.","IT 전공자들은 향후 CTO(최고기술책임자)나 창업자가 될 가능성이 높기 때문에, 단순 법리보다는 '내 기술을 돈으로 바꾸고 방어하는 전략'과 'AI 시대의 새로운 리스크 관리'에 초점을 맞추어 관려된 IT지식 재산권 내용을 배운다",매 수업시간 마다 별도 강의자료 제공,"출석 : 5%
+중간고사 : 35%
+기말고사 : 35%
+과제 : 10%
+발표 : 15%","창업에 관심이 있거나, 생성형 AI관련 지적 재산권 이슈 사항에 관심이 있는 학생들을 대상으로 진행하는 수업입니다.
+이론수업과 토론수업을 병행하여 진행합니다.",raw/syllabus/2026_1_ITEC0403-001/Pub.json
+2026-1,ITEC0415-001,배준현,3-2-2,한국어,"자료구조와 알고리즘 교과목에서 배운 내용을 토대로
+다양한 자료구조와 고급 알고리즘 설계 기법을 적용하여
+난이도가 높은 문제를 효율적으로 해결하는 방법을 학습한다.","자료구조와 알고리즘 지식을 토대로 난이도가 높은 문제를 이해하여 해석하고
+다양한 자료구조와 알고리즘 설계 기법을 적용하여 해당 문제를 해결할 수 있는 역량을 키운다.","다음 text book을 토대로 매주 1~2 문제의 토픽을 정하여 강의 진행.
+(강의는 배포된 PDF 파일을 위주로 강의하므로 교재는 구매하지 않아도 무방함)
+
+CLRS, Introduction to Algorithms, 3rd Ed.
+S. Skiena, The Algrithm Design Manual, 3rd Ed.
+S. Halim & F. Halim, Competitive Programming.
+A. Laaksonen, Competitive Programmer's Handbook.","출석: 10%
+중간시험: 40%
+기말시험: 40%
+과제: 10%","예제 코드와 실습 과제가 Python 언어를 사용하므로, 기초적인 Python 프로그래밍 능력을 요구함.",raw/syllabus/2026_1_ITEC0415-001/Pub.json
+2026-1,ITEC0419-001,이성현,3-3-0,한국어,"데이터 과학의 기본 개념과 분석 과정 전반을 이해하고, 파이썬을 활용한 데이터 다루기 기초와 필수 통계 개념을 학습하는 이론 중심의 과목입니다. 데이터 기반 사고와 해석 능력 향상을 목표로 합니다.","데이터 과학의 핵심 개념과 전체 분석 절차를 이해하도록 합니다.
+데이터 수집·정제·요약·해석 과정에 대한 기본 역량을 갖추도록 합니다.
+파이썬을 활용한 기본적인 데이터 다루기와 분석 방법을 이해하도록 합니다.
+통계적 사고와 데이터 기반 의사결정 능력을 기초 수준에서 함양하도록 합니다.",,"중간시험, 기말시험이 있습니다.",파이썬 프로그래밍 역량이 필수입니다. 이론 이해도가 성적에서 중요한 비중을 차지합니다.,raw/syllabus/2026_1_ITEC0419-001/Pub.json
+2026-1,MBIO0402-001,정인욱,3-3-0,English,"Bioinformatics is the discipline that organizes, analyzes, and infers biological information (genomes, transcriptomes, proteins, etc.) using computational approaches. With the rapid growth of large-scale biological data, many biological questions have effectively become computational problems.
+David Baker, who developed the AI-based AlphaFold technology capable of predicting protein structures, received the 2024 Nobel Prize in Chemistry. This has significantly accelerated research in drug discovery. In addition, recent advances in measurement technologies have enabled biological phenomena to be observed as large-scale datasets, leading to active research driven by bioinformatics.
+This course is designed for 4th-year computer science undergraduates. Over one semester (15 weeks), students learn along the flow: “Problem definition → Data → Algorithms → Evaluation → Interpretation”, covering:
+•	Basic biology (genomes/genes, transcription/translation, sequence alphabets)
+•	Biological data, standard file formats, and databases
+•	Core algorithms (dynamic programming for alignment, BLAST-style search, HMMs, phylogenetics)
+•	NGS-based analysis pipelines (transcriptomics and variants)
+•	Introductory ML/statistics (clustering, classification/hypothesis testing, model evaluation)
+•	Use of LLMs and AI tools",Learning how computer science is used in bioinformatics to bridge biology and computation.,"Lectures are delivered primarily through PowerPoint lecture notes (announced via LMS).
+Recommended references:
+•	Main text: Understanding Bioinformatics (Zvelebil & Baum) — broad coverage of bioinformatics
+•	Reference: Bioinformatics Algorithms (Compeau & Pevzner) — algorithm-focused","Attendance & Others	5%
+Midterm Exam	35%
+Final Exam	30%
+Assignments (2)	30%
+Total	100%","Since we are dealing with biological data, we will go through very basic biological context at the beginning of the semester. You do not need to have knowledge on biology.",raw/syllabus/2026_1_MBIO0402-001/Pub.json
+2026-1,MOBI0224-003,이재협,3-3-0,한국어,"This course introduces fundamental concepts and modern advancements in computer vision, enabling students to build, train, and evaluate deep learning models for visual tasks. Topics include image classification, object detection, segmentation, and generative models, with a strong focus on convolutional neural networks (CNNs) and state-of-the-art deep learning techniques. Hands-on assignments and projects using Python and frameworks like TensorFlow or PyTorch will solidify theoretical understanding through practical implementation.
+
+By the end of the course, students will be able to:
+
+Understand and implement key algorithms and techniques in computer vision.
+Develop deep learning models for real-world applications such as face recognition, autonomous driving, and medical image analysis.
+Critically evaluate research papers and apply insights to new challenges.","By the end of this course, students will be able to:
+
+Understand the fundamental principles of computer vision and its applications.
+Analyze and implement key techniques in image processing, feature extraction, and object recognition.
+Build, train, and evaluate deep learning models for various computer vision tasks, including classification, detection, and segmentation.
+Utilize modern tools and frameworks, such as TensorFlow or PyTorch, to develop and deploy computer vision models.
+Conduct experiments and analyze results using platforms like Google Colab.
+Critically review computer vision research papers and identify future trends and challenges in the field.
+Apply computer vision solutions to real-world problems in domains such as healthcare, autonomous systems, and augmented reality.",Only lecture notes & Github,"There will be no traditional exams for this course. Instead, assessments will include assignments and project-based evaluations.
+The midterm evaluation will consist of a proposal presentation for the final project, which substitutes for a traditional final exam.
+The final evaluation will involve the submission and presentation of the project deliverables after the midterm period.
+Additionally, students will be assessed through a demo project assignment to demonstrate practical application of the concepts learned.","There will be no exams for this course. Instead, assessment will be based on assignments and a final project.
+Students will be required to perform experiments using Google Colab.
+The free version of Colab is sufficient for most tasks; however, students are allowed to use the paid version if needed for specific requirements or enhanced performance.",raw/syllabus/2026_1_MOBI0224-003/Pub.json
+2026-1,COMP0414-001,김동균,3-3-0,한국어,"- 본 강좌는 TCP/IP 프로토콜에 대한 자세한 동작 과정을 학습한다. 또한, IP 주소체계, IP 패킷전달 방법, 트랜스포트 프로토콜, 응용계층 프로토콜에 대해 학습한다. 고급과정으로 미래인터넷기술과 네트워크 보안 기법에 대해 학습한다.","데이타통신과 네트워크 프로그래밍 과목을 선수 과목으로 이수 하는 것을 권장함
+인터넷에서 사용되고 있는 다양한 계층 별 프로토콜에 대한 이해를 목표로 함","1) Data Communications & Networks with TCP/IP Protocol Suite (6th Edition), Behrouz Forouzan
+2) Data and Computer Communications, William Stallings
+3) Computer Networking: A top-Down Approach, J. F. Kurose and K.W. Ross 
+4) Papers
+
+- References: IETF RFCs and Internet Drafts, etc","1. 출석(10%)
+2. 중간고사(40%)
+3. 기말고사(40%)
+4. 과제(10%)",데이타통신과 네트워크 프로그래밍 과목을 선수 과목으로 이수 하는 것을 권장함,raw/syllabus/2026_1_COMP0414-001/Pub.json
+2026-1,COMP0417-001,김재수,3-3-0,한국어,"- 본 강좌는 인터넷 사회에서 발생하는 윤리적 문제에 대한 통찰을 통해 인터넷 사회의 역기능을 최소화하고 인터넷 사회를 살아가는 사회 구성원으로서 갖추어야 할 바람직한 가치관과 행동 양식에 대하여 학습하고 문제점에 대하여 함께 토론을 해 봅니다.
+
+- 그룹별 토론식 수업이 있음 ; 다양한 미디어 활용 예정 
+
+- IT와 연관된 여러 가지 윤리 문제를 탐색하고 이를 해결할 수 있는 방안을 함께 논의할 예정","- 이 과목은 컴퓨터의 발달과 사회 전반에 걸친 컴퓨터의 역할이 지대함에 따라 생길 수 있는 여러 문제에 대해서 윤리적 차원에서 접근함.
+- 먼저, 인터넷 윤리와 기존의 윤리가 어떻게 다르며 또 왜 이것이 컴퓨터를 전공하는 학생들이 배워야 하는지에 대해서 설명함.
+- 그 후 사생활 보호, 언론의 자유, 지적 재산권, 컴퓨터를 이용한 범죄, 작업 현장에서의 문제 등을 살핀 후 전문인으로서의 윤리와 책임을 다룸.
+- 이 사회에 이미 만연해 있는 컴퓨터 관련 여러 현상을 윤리적 및 철학적 관점에서 접근하여 조명해 봄으로 해서 졸업 후 보다 이 사회에 도움이 될 수 있도록 함.","ㅇ 교재
+   - 교재명: A gift of fire : social, legal, and ethical issues for computing technology 
+   - by Sara Baase | 2013 (4th Edition)
+
+ㅇ 교재의 번역서
+   - 번역서 명: 불의 선물 : 인터넷 윤리
+   - 생능출판사, 2011년 |  정진욱, 안성진, 이재규 옮김
+
+ㅇ 참고 문헌
+   - 4차 산업혁명 시대의 인터넷 윤리 : [3판] |  인터넷윤리실천협의회 지음 | 이한미디어 |  2017년
+   - 인터넷 윤리 : 올바른 인터넷 생활을 위한 지침서 |  최희식, 김상균지음 | 한빛아카데미 | 2016년
+   - Computer Ethics(by Tom Forester and Perry Morrison)
+   - Cyber Ethics (by Richard A. Apinello) 
+
+ㅇ LMS 사이트에 Hand-outs 제공","본 과목은 4학년 과목으로 A학점을 50%까지 부여할 수 있음
+
+- 중간고사: 35%
+- 기말고사: 35%
+- 출석: 10%
+- 과제: 10% 
+- 수업 참여도(발표 및 토론): 10% 
+
+* 비율은 변동 가능 있음","1. *수강 취소 절대 불가* (수강 신청 못한 다른 학우들에게 피해를 입히는 일 없도록 하기 위해): 증원 요청 시 문의
+2. 중간 또는 기말시험 결시일 경우 F 확정 
+3. 팀 또는 개별 프로젝트 수행 할 수도 있음.
+4. ****** 수업 시수의 1/4 이상 결석 시, F학점 받게 됨. 타협 없음 ********
+5. 개강 2주 이후에 4명 단위의 토론 그룹 조직 예정 
+6. 한국어 수업이나, 교재 및 강의 자료는 영어로 제공
+7. http://lms.knu.ac.kr을 자주 사용할 것. (긴급 공지, 출석, 시험 점수 등이 posting됨)",raw/syllabus/2026_1_COMP0417-001/Pub.json
+2026-1,COMP0419-001,이천희,3-3-0,한국어,"정보 검색은 수많은 자료(주로 문서)로부터 사용자가 원하는 정보를 정확하고 빠르게 검색하는 기술이다. 인터넷의 보급으로 정보의 양이 많아지고 종류가 다양해짐으로써, 정보 검색은 더욱 중요해졌다. 본 과목에서는 정보 검색의 기본 개념인 불리안 검색, 색인, 압축, 벡터 모델, 평가 방법 등을 배울 것이다. 또한, 정보 검색 기술의 필요성을 이해하기 위해 Python 프로그래밍 예제도 다룰 예정이다.",정보 검색의 필요성 및 기본 원리를 이해한다.,,"출석 점수 10%
+중간/기말 시험 80%
+프로그래밍 과제 등을 통한 평가 10%","- 프로그래밍 과제는 파이썬으로 진행하고, 파이썬의 기본 문법에 대한 설명은 하지 않을 예정입니다.",raw/syllabus/2026_1_COMP0419-001/Pub.json
+2026-1,COMP0460-001,김경훈,2-1-2,한국어,"컴퓨터 관련 연구의 다양한 문제 중에서 관심있는 문제를 정의하고
+이를 해결할 수 있는 연구방법을 배운다. 
+학생은 관련 자료를 조사하여 해결 방법을 상호 비교 분석하며
+성능향상을 위한 새로운 해결 방안을 제안한다.","컴퓨터 관련 연구의 다양한 문제 중에서 관심있는 문제를 정의하고
+이를 해결할 수 있는 연구방법을 배운다. 
+학생은 관련 자료를 조사하여 해결 방법을 상호 비교 분석하며
+성능향상을 위한 새로운 해결 방안을 제안한다.",없음,"- 출석 : 50%
+- 연구노트 작성 : 50%","학생은 다양한 문제 중에서 본인이 관심이 있는 주제를 선정하고, 이를 주간 연구미팅을 통해서 해결책을 논의하고 그 내용으로 연구노트를 작성해야 합니다.",raw/syllabus/2026_1_COMP0460-001/Pub.json
+2026-1,COMP0460-003,이성현,2-1-2,한국어,"본 과목은 학생들이 자연어 처리(Natural Language Processing) 및 기계학습(Machine Learning) 분야의 최신 연구 동향을 스스로 탐구하고, 실제 문제 해결을 통해 창의적인 연구 성과를 도출하는 것을 목표로 하는 실습 중심의 연구 지향적 과목이다. 학생들은 국제 탑티어 학술대회(ACL, NeurIPS, ICML, ICLR 등)에서 발표된 최신 연구논문들을 분석하고 이해하는 과정을 통해 해당 분야의 핵심 이론과 기술을 습득한다. 이를 바탕으로 스스로 연구 문제를 정의하고, 적절한 방법론을 선택하여 실험을 설계하고 수행하며, 그 결과를 분석하여 의미 있는 연구 성과로 발전시키는 전 과정을 경험한다. 본 과정에서는 이론적 지식의 단순한 습득보다는 문제 발견 능력, 창의적 사고력, 실험 설계 및 수행 능력, 그리고 연구 결과의 해석 및 발표 능력을 기르는 데 중점을 둔다. 학생들은 개별 또는 팀 단위로 프로젝트를 수행하며, 정기적인 세미나와 피드백 세션을 통해 연구 진행 상황을 공유하고 개선 방향을 모색한다. 최종적으로 학생들은 자신만의 독창적인 아이디어를 구현한 프로토타입 시스템이나 실험 결과를 바탕으로 한 연구 보고서를 완성하여 문제 해결 능력과 연구 역량을 동시에 함양하게 된다.","본 과목을 통해 학생들은 자연어 처리 및 기계학습 분야의 최신 연구 동향을 이해하고, 관련 핵심 이론과 기술을 자기주도적으로 학습할 수 있는 능력을 기른다. 실제 연구 문제를 발견하고 해결하는 전 과정을 경험함으로써 창의적 문제 해결 능력과 실험적 사고력을 함양한다. 최종적으로 독립적인 연구자로서의 기본 소양을 갖추고, 학술적 성과를 도출하여 효과적으로 발표할 수 있는 역량을 습득한다.",국제 탑티어 학술대회 연구논문을 주로 참고할 예정임.,"중간 진행상황 점검 (40%)
+연구 주제 발표 및 계획서 제출 (10%)
+중간 발표 및 진행상황 미팅 (20%)
+예비 실험 결과 발표 (10%)
+
+최종 연구논문 (50%)
+연구논문 완성도 및 학술적 기여도 (30%)
+실험 설계의 타당성 및 결과 분석의 충실성 (20%)
+
+참여도 및 태도 (10%)
+연구 수행 과정에서의 자기주도성 및 창의성 (10%)",경북대학교 데이터 및 언어지능 연구실 학부연구생만 수강가능함.,raw/syllabus/2026_1_COMP0460-003/Pub.json
+2026-1,COMP0460-004,이종택,2-1-2,한국어,"[컴퓨터학]컴퓨터 비전, 기계학습 중심의 인공지능 기술을 활용한 연구 중심 수업.","Computer Vision, Machine Learning, Deep Learning 기술을 활용하여 다양한 분야(예: 로봇 비전, 의료-재활 AI, 스마트시티-교통, 안전)에 적용.
+ 
+상기 분야에서 필드에서 실제 필요한 문제를 해결하기 위해 아래와 같은 과정을 거침:
+1) 기반 과목 공부
+2) 최신 연구와 개발 동향 분석
+3) 구현 및 테스트
+4) 발표 및 리포트 작성",관련 논문,"* S/U 평가
+- 연구 노트 작성
+- 주기적인 미팅 참석 및 토론
+- 과제 구현 
+- 결과 발표",지도교수의 연구 분야와 관련된 주제로 진행하기에 지도교수와 사전협의 완료한 학생만 수강 가능. (이메일 요청),raw/syllabus/2026_1_COMP0460-004/Pub.json
+2026-1,COMP0460-006,소휘수,2-1-2,한국어,"컴파일러 (LLVM 및 MLIR) 분야, 신뢰성 (소프트 에러, 적대적 공격, Out-of-distribution 등) 분야 관련 연구 중심의 수업을 진행합니다.","학생들과 사전에 연구 주제를 확정하고, 각 연구 주제에 대해 학기동안 다음 과정을 수행합니다.
+- 연구주제 관련 논문 탐색
+- 주요 논문을 읽고 내용 발표 및 토론
+- 연구 관련 오픈소스 SW 설치 혹은 직접 구현
+- 연구 결과 정리",연구와 관련된 논문 및 관련 자료를 연구 현황에 맞춰 제공할 예정입니다.,"* S/U 기반 평가
+- 매주 연구 미팅/세미나 진행을 통한 발표 및 토론
+- 연구노트 작성
+- 결과 정리",지도교수의 연구 분야를 기반으로 연구 중심 활동을 진행합니다. 본 과목은 수강 신청 전에 반드시 교수와의 사전 합의가 완료된 학생만 수강할 수 있습니다.,raw/syllabus/2026_1_COMP0460-006/Pub.json
+2026-1,GLSO0224-001,펑리메이,3-3-0,English,,,,,,raw/syllabus/2026_1_GLSO0224-001/Pub.json
+2026-1,ITEC0402-001,정설영,4-3-2,한국어,"This Capstone Design Project 2 (CDP2) course is a team-based project class. Each team consists of 3~4 students. Some or all teams may work with the project issues that will be proposed by the CSE professors and Industry experts. The details of class schedule will be discussed in the first class.
+
+- 이 수업은 팀 단위 프로젝트 수업입니다. 각 팀은 기본적으로 3~4명으로 구성됨
+- 모든 프로젝트는 기업과 함께 산학협력프로젝트로 진행 예정
+- 세부 프로젝트 정보 및 팀 구성은 개강 전 공지 예정
+- 프로젝트 결과물을 토대로 논문발표, SW등록, 특허출원 등 추진 예정
+- 과제 수행 후 해당 기업과 연계 현장실습 권장","창의:SW관련새로운기술혹은서비스개념을적용할수있다.
+융합:작품개발에SW융합개념을적용할수있다.
+비판:작품개발시기존서비스혹은제품을비판적으로분석할수있다.
+탐색:새로운개념및기술을탐색하여SW개발설계에적용할수있다.
+소통:팀단위프로젝트수행을위해팀원간소통을원활하게할수있다.
+책임:개발한SW에대한사회적책임성및공공성을검토할수있다.
+창의:학사과정동안에배운SW이론및기술을토대로새로운SW작품을팀단위로개발할수있다.",None,"The grading will be done based on the project output (report, presentation, etc).
+
+More details of evaluation will be given in the first class.",The special notice will be given on the ABEEK class homepage.,raw/syllabus/2026_1_ITEC0402-001/Pub.json
+2026-1,ITEC0402-002,권영우,4-3-2,한국어,,,,,,raw/syllabus/2026_1_ITEC0402-002/Pub.json
+2026-1,ITEC0402-003,김동균,4-3-2,한국어,"- 이 수업은 팀 단위 프로젝트 수업으로 진행하며, 모든 프로젝트는 기업과 함께 산학협력프로젝트로 진행된다. 
+- 프로젝트 팀 선정시 선착순으로 구성한다.
+
+- 1주차 수업에서 팀을 구성하며, 각 팀은 기본적으로 4명으로 구성된다. 
+- 2주차 수업에서 팀별 프로젝트 주제 제안 및 확정한다. 
+- 3주차부터 팀(과제)별 프로젝트 계획서 및 추진 현황을 발표함 (개별 미팅, 세부 일정은 추후 공지)
+- 전체 발표: 중간 발표, 최종 발표
+- 최종 발표 후, 결과보고서 작성/제출 
+- 프로젝트 결과물을 토대로 논문발표(국내학술대회), SW등록, 특허출원 등 추진 (팀당 1건 이상)
+- 과제 수행 후 해당 기업과 연계 현장실습 권장",컴퓨터학 전공 지식을 바탕으로 한 다양한 소프트웨어 개발 경험 배양,별도 교재 없음,"1. 출석(10%)
+2. 과제(40%)
+3. 발표(50%)",LMS 공지사항으로 수업 관련 진행 내용 확인,raw/syllabus/2026_1_ITEC0402-003/Pub.json
+2026-1,ITEC0414-001,최윤자,3-3-0,한국어,"테스팅은 소프트웨어 검증 기법 중에 가장 기초적이면서도 산업현장에서 가장 많이 사용되고 있는 기법이다. 그러나, 소프트웨어 개발자들 중 테스트 기법을 이론적으로 제대로 이해하고 있는 사람이 드물어 비효율적이고 효과적이지 못한 테스트들이 많이 수행되고 있다. 이것은 소프트웨어의 품질 수준에막대한 영향을 미치고 있다.
+특히, AI 가 코딩 인력을 대체하고 있는 추세가 가속화함에 따라 AI 가 생성한 코드에 대한 엄밀한 검증능력이 소프트웨어 개발자들에게 필수적인 기술스펙으로 자리잡고 있다. 
+
+본 강의를 통하여 소프트웨어 테스트의 기본 개념과 목적을 이해하고 효과적이고 효율적인 테스트 작성 및 수행 방법을 학습하여 신뢰할 수 있는 소프트웨어를 개발할 수 있는 기본 능력을 갖춘다.","- 소프트웨어 결함으로 인한 사회적인 충격과 파장을 이해하고 개발자로서의 책임감을 고취한다. 
+- 소프트웨어 검증의 기본이론을 학습하여 결함을 최소화하는 개발과 검증방식을 이해하고 응용할 수 있는 능력을 배양한다.
+- 소프트웨어의 잠재적인 결함을 식별하기 위한 테스트 이론들을 학습하고 식별하고자 하는 결함의 유형에 따라 최적의 식별방법을 탐색할 수 있는 역량을 기른다.
+- 다양한 소프트웨어 검증 도구들의 자동화 방식을 이해하고 AI 에 의해 생성된 코드를 포함한 다양한 소프트웨어의 검증에 적용할 수 있는 능력을 기른다
+- 현재의 소프트웨어 개발방식 및 검증방식의 문제점들을 이해하고 비판적인 사고로 문제해결에 적극적인 태도를 함양한다.","교재: 매주 배포되는 강의자료
+참고문헌: 
+1. Software Testing and Analysis by Mauro Pezze and Michal Young
+2. Introduction to Software Testing, second edition, by Paul Ammann and Jeff Offutt","- 중간 시험 35%, 기말 시험  35%,  개별 과제 20%, 과제 발표 10% 의 비중으로 평가함
+- 과제는 다수의 수업 시간 중 실시되는 퀴즈와  2~3 개의 개별 실습과제로 부여됨
+- 발표는 실습과제의 결과를 발표하는 형식이며, 실습과제 우수 수행자의 경우 5% 이내의 기타 점수 부여
+- 상대평가를 원칙으로 함","- 기본적인 프로그래밍에 대한 이해 및 프로그래밍 경험 필수
+- 소프트웨어설계 또는 소프트웨어공학 과목 중 한 과목은 이수한 학생들에게 권장함
+- 과제 수행시에 AI 의 사용은 허용하나, 시험에서의 부정행위는 엄벌에 처함",raw/syllabus/2026_1_ITEC0414-001/Pub.json
+2026-1,ITEC0416-001,이상윤,3-2-2,한국어,"최신 웹 기술과 실무에서 활용되는 도구를 학습하여 고급 웹 애플리케이션을 설계, 개발, 배포하는 역량을 키우는 것을 목표로 합니다.
+프론트엔드와 백엔드 기술, 배포 환경 구성, 실시간 웹 기술 등 풀스택 개발자의 기본기를 다지고 실습 중심의 수업으로 실무에서 필요한 기술을 배양합니다.","- 최신 웹 기술과 프레임워크의 이해 및 활용 능력 배양
+- 프론트엔드와 백엔드 개발 기술 통합 및 배포 환경 구성 능력 습득
+- 실시간 웹 애플리케이션 개발 및 성능 최적화 경험 제공
+- 실습 중심의 학습을 통해 실무 능력 강화","- 다양한 온라인 학습 자료 및 온라인 동영상을 활용하여 수업을 진행하고
+- 강의의 핵심 내용을 쉽게 이해할 수 있도록 별도로 강의 자료 및 컨텐츠를 구성하고 수업에 활용함",,"1. 첫 수업 시간에 수업 내용의 수준 및 난이도를 학생들과 협의 후 강의 계획에 수정 반영할 예정임
+2. 학생들과 협의한 수업 난이도를 반영하여 실습 중심으로 수업을 진행할 예정이며, 수업 중 실습 한 내용을 중심으로  평가를 실시하고 성적에 반영합니다.
+3. 강의 진도 및 내용은 상황에 따라 변경될 수 있습니다.",raw/syllabus/2026_1_ITEC0416-001/Pub.json
+2026-1,CAIB0222-001,김수연,3-3-0,한국어,"This course is designed to bridge the gap between academic machine learning and industry application by focusing on the end-to-end design, deployment, and operation of production-ready ML systems. Moving beyond model accuracy, the curriculum covers the entire lifecycle of an ML project, starting with foundational data engineering, labeling strategies, and feature engineering, before advancing to model development and rigorous offline evaluation techniques. A significant portion of the course is dedicated to operationalizing models, addressing deployment strategies, handling data distribution shifts, implementation of monitoring systems, and building robust models. By integrating theoretical principles with hands-on tutorials, students will gain practical experience in building reliable and maintainable machine learning applications.","The goal of this course is to equip students with the theoretical foundations and practical competencies required to design, deploy, and operate machine learning systems in real-world production settings. Rather than focusing solely on model development, the course addresses the entire machine learning lifecycle, including data collection and engineering, feature pipeline design, experiment tracking, rigorous offline and online evaluation, deployment architectures, and continuous monitoring for data and concept drift. Emphasis is placed on building systems that are not only performant, but also reliable, scalable, reproducible, and maintainable under realistic operational and organizational constraints.",,"- Attendance (10%): Regular attendance and active participation in class discussions.
+
+- Midterm Exam (20%): Assessment of core concepts and theoretical foundations of ML systems design.
+
+- Hands-on Assignments (40%): Weekly in-class practical tasks focusing on implementation and real-time problem-solving.
+
+- Final Project Presentation (30%): Demonstration and presentation of a complete, production-ready machine learning system.","Laptop Requirement: As this is a hands-on, practice-oriented course, students are required to bring their personal laptops to every class.
+본 교과목은 실습 위주로 진행되므로, 매 수업 시간마다 개인용 노트북을 지참해 주시기 바랍니다.",raw/syllabus/2026_1_CAIB0222-001/Pub.json
+2026-1,CAIB0233-001,이재협,3-3-0,한국어,"This course introduces fundamental concepts and modern advancements in computer vision, enabling students to build, train, and evaluate deep learning models for visual tasks. Topics include image classification, object detection, segmentation, and generative models, with a strong focus on convolutional neural networks (CNNs) and state-of-the-art deep learning techniques. Hands-on assignments and projects using Python and frameworks like TensorFlow or PyTorch will solidify theoretical understanding through practical implementation.
+
+By the end of the course, students will be able to:
+
+Understand and implement key algorithms and techniques in computer vision.
+Develop deep learning models for real-world applications such as face recognition, autonomous driving, and medical image analysis.
+Critically evaluate research papers and apply insights to new challenges.","By the end of this course, students will be able to:
+
+Understand the fundamental principles of computer vision and its applications.
+Analyze and implement key techniques in image processing, feature extraction, and object recognition.
+Build, train, and evaluate deep learning models for various computer vision tasks, including classification, detection, and segmentation.
+Utilize modern tools and frameworks, such as TensorFlow or PyTorch, to develop and deploy computer vision models.
+Conduct experiments and analyze results using platforms like Google Colab.
+Critically review computer vision research papers and identify future trends and challenges in the field.
+Apply computer vision solutions to real-world problems in domains such as healthcare, autonomous systems, and augmented reality.",Only lecture notes & Github,"There will be no traditional exams for this course. Instead, assessments will include assignments and project-based evaluations.
+The midterm evaluation will consist of a proposal presentation for the final project, which substitutes for a traditional final exam.
+The final evaluation will involve the submission and presentation of the project deliverables after the midterm period.
+Additionally, students will be assessed through a demo project assignment to demonstrate practical application of the concepts learned.","There will be no exams for this course. Instead, assessment will be based on assignments and a final project.
+Students will be required to perform experiments using Google Colab.
+The free version of Colab is sufficient for most tasks; however, students are allowed to use the paid version if needed for specific requirements or enhanced performance.",raw/syllabus/2026_1_CAIB0233-001/Pub.json
+2026-1,CAIB0234-001,남우정,3-3-0,한국어,"본 강의에서는 인공지능의 핵심 이론인 딥러닝 및 신경망에 대해 전반적으로 교육하며
+인공지능 연구동향, 딥러닝 이론에 대해 학습합니다.",본 강의에서는 인공지능의 핵심 이론 딥러닝에 대해 전반적으로 교육하고 습득합니다.,추후 공지,"중간, 기말, 과제, 출석으로 평가 진행",본 강의는 파이썬을 기반으로 진행됩니다.,raw/syllabus/2026_1_CAIB0234-001/Pub.json
+2026-1,CLTR0819-002,서명수,3-3-0,한국어,"자연과학과 공학에서 다루는 여러 가지 수학분야를 공부하는데 기반이 되는 평면기하와 공간기하, 벡터와 벡터공간, 행렬과 행렬식, 복소수 등의 기본적인 내용과 미적분학을 다루는 수학I을 공부하기에 필요한 기본적인 미적분학의 개념을 강의하고 수학을 이해하는데 기반이 되는 수학적인 논리를 살펴본다.","1. 평면과 공간의 거리 개념을 기반으로 표현되는 여러 가지 도형과 도형의 이동을 이해하고 방정식의 변형에 담겨있는 도형의 변화를 이해한다.
+2. 벡터의 개념과 벡터의 연산을 이해하고 벡터를 통한 직선과 평면의 이해의 효율성을 알고 추상적인 벡터공간을 알아가며 벡터공간의 여러 가지 용어들을 이해한다.
+3. 행렬과 행렬의 연산, 행렬식을 알고 선형연립방정식의 해를 구할 수 있으며, 행렬로 표현되는 문제들 이해하고 해결할 수 있는 토대를 마련한다.
+4. 복소수와 복소수의 다양한 규칙들을 알고 적용할 수 있다.","교재 : 대학수학의 기초2, 기하벡터행렬 편
+참고 문헌 : (1) Advanced Engineering Mathematics, Peter V. O’neil 지음, CENGAGE Learning.
+           (2) 미분적분학(9판), James Stewart외 2인 지음, 수학교재편찬위원회 옮김, 경문사","중간고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기말고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기타 : 20점 만점으로 출석, 과제, 퀴즈, LMS활용 등을 활용하여 평가함","1. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있습니다.
+2. 시험 일시 : 중간고사, 기말고사 시험기간 중 수업시간에 시행될 예정입니다. (추후 일정을 공지함) 
+3. 본 강좌는 대면강의로 진행 될 예정입니다. 질병에 따른 사회적 거리두기 등의 상황이 발생할 경우 LMS공지, 수업시간, 문자 등을 통하여 공지합니다.
+4. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배되니 유의하세요.",raw/syllabus/2026_1_CLTR0819-002/Pub.json
+2026-1,COME0301-001,김구진,3-3-0,한국어,"컴퓨터/소프트웨어/IT 주요 분야에 바탕이 되는 이산치 수학의 기본이론을 배운다.  
+컴퓨터를 구성하는 디지털 회로의 기반이 되는 논리학, 반복적인 계산과 알고리즘의 바탕이 되는 수열과 점화식, 
+실생활의 데이터를 다루기 위한 확률이론, 컴퓨터 내의 자료 표현방법인 그래프와 트리 등의 기본 개념을 습득하고, 
+이러한 개념들이 컴퓨터 시스템의 설계에 어떻게 활용되는지 알아본다.","본 강의의 목표는 이산수학의 핵심 개념과 사고 방식을 이해하여, 문제를 단순 계산이 아닌 구조와 논리의 관점에서 분석할 수 있는 능력을 기르는 데 있다. 
+강의를 통해 학생들은 컴퓨터과학, 알고리즘 설계, 데이터 구조, 네트워크 분석, 인공지능 등의 기초 이론으로서 이산수학을 배우고  
+체계적 사고력과 문제 해결의 이론적 기반을 갖추는 것을 목표로 한다.","Susanna S. Epp, Discrete Mathematics with Applications, 4th Edition, Brooks/Cole. 2011.","* 평가방법
+- 중간+기말고사: 85-95%
+- 출석+과제+퀴즈: 5-15%
+* 성적 반영 비율은 제시된 범위 내에서 학기말에 담당교수가 확정
+* closed book 시험","* 대면 강의 예정이지만, 대학 학사 운영 지침 변경 시, 수업 방법(대면, 대면+비대면 혼합, 비대면)이 변경될 수 있음.
+
+기타:
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 결석할 경우 출석점수에서 감점을 당하지 않으려면 정당한 결석사유를 증명할 수 있는 근거서류가 필요하며 수업시간 전에 미리 이메일로 알려야 함.
+- 수업일수의1/4이상 결석할 경우 F학점이 주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 과제 제출 등은 지정된 과목 게시판 (LMS 시스템)을 이용함
+- 학점 산정 시, 외국인 학생과 내국인 학생을 구별하지 않고 전체를 상대평가함.",raw/syllabus/2026_1_COME0301-001/Pub.json
+2026-1,COME0331-005,이은주,3-3-0,한국어,"자료구조에 대한 기본 개념, 특히 배열, 스택, 큐, 리스트, 트리, 그래프, 정렬, 해싱의 이론을 배운다.","자료구조에 대한 기본적인 개념을 이해하고, 다양한 문제 해결에 적용할 수 있다.","main textbook: Horowitz,Shani,Anderson-Freed,Fundamentals of datastructures in C,(2nd edition) Silicon-press.","- 중간고사: 35~40%, 기말고사:40~50%, 퀴즈와 과제:10~15%","1.중요사항
+- 자료구조 과목과 자료구조응용 과목을 동일 담당교수의 분반으로 병행하여 수강신청을 하고, 병행하여 수강해야 함.(재이수의 경우 제외)
+- 자료구조나 자료구조 응용 한 과목만 신청한 경우 수강이 어려움. (재이수의 경우 제외)
+- C언어에  익숙해야 함. 
+2. 기타
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 LMS를 이용함",raw/syllabus/2026_1_COME0331-005/Pub.json
+2026-1,COMP0216-003,이은주,3-2-2,한국어,"자료구조 이론 시간에 배운 개념(배열, 스택, 큐, 리스트, 트리, 그래프, 정렬, 해싱)에 대해 실제 문제를 통해 실습하여 적용능력을 익힌다.","자료구조에 대한 기본적인 개념을 이해하고, 다양한 문제 해결에 적용할 수 있다.","main textbook: Horowitz,Shani,Anderson-Freed,Fundamentals of datastructures in C,(2nd edition) Silicon-press.","- 중간고사: 35~40%, 기말고사:40~50%, 과제:10~15%,  안전교육 미이수: 전체 100점환산점수에서 1점 감점.","1.중요사항
+- 자료구조 과목과 자료구조응용 과목을 동일 담당교수의 분반으로 병행하여 수강신청을 하고, 병행하여 수강해야 함.(재이수의 경우 제외)
+- 자료구조나 자료구조 응용 한 과목만 신청한 경우 수강이 어려움. (재이수의 경우 제외)
+- C언어가 익숙해야 함.(모든 응용과제가 C언어로 구현해야 하므로 C언어의 개념(배열, 포인터, 파일 입출력 포함)에 익숙하지 않으면 수업내용을 소화하기가 어려움.
+2. 기타
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 LMS를 이용함
+- 안전교육이수해야 함(안전교육이수여부 성적에 반영됨)",raw/syllabus/2026_1_COMP0216-003/Pub.json
+2026-1,COMP0217-005,정기숙,3-2-2,한국어,"Java 프로그래밍을 통해 객체지향프로그래밍의 기본 개념을 이해하고, 관련 실습 및 과제를  수행하며 프로그램 구현능력과 문제해결 능력을 키운다.",Java 언어를 활용하여 객체지향 개념을 이해하고 객체지향 프로그래밍 스타일을 익히며 프로젝트 수행을 통한 실무 적응 능력을 기른다.,"교재: Power Java 4판, 천인국 & 천명준 공저, 인피니티북스, 2026","출석 10%, 중간고사 30%, 기말고사 30%, 과제 15%, 기타(팀프로젝트) 15%","- 프로그래밍기초 혹은 기초프로그래밍 과목을 이수한 학생만 수강할 수 있음
+- 첫 주 수업부터 진도를 나감
+- 강의 세부내용 및 일정은 강의 진행상황에 따라 일부 조정될 수도 있음
+- 수업시간의 1/4 결석 시 F등급을 부여함",raw/syllabus/2026_1_COMP0217-005/Pub.json
+2026-1,COMP0218-002,권영우,3-3-0,한국어,,,,,,raw/syllabus/2026_1_COMP0218-002/Pub.json
+2026-1,COMP0219-001,정든솔,3-3-0,한국어,"이 강의는 인공지능(머신러닝, 딥러닝)을 이해하고, 응용하는 데 필요한 수학적 심화 개념과 계산 방법을 학습하여, 이후 딥러닝이나 머신러닝의 심화된 개념을 이해하는 데 부족함이 없이 이해할 수 있는 것을 목표로 합니다.  
+주요 내용으로는 선형대수학, 벡터 미적분학, 확률 이론 심화, EM 알고리즘 등이 있어, 뒤에는 머신러닝 기법 들이 포함되어 있습니다.","이 강의는 인공지능(머신러닝, 딥러닝)을 이해하고, 응용하는 데 필요한 수학적 심화 개념과 계산 방법을 학습하여, 이후 딥러닝이나 머신러닝의 심화된 개념을 이해하는 데 부족함이 없이 이해할 수 있는 것을 목표로 합니다.","인공지능을 위한 기초수학 저자: 이상구, 이재화 (http://matrix.skku.ac.kr/math4ai/)
+머신러닝을 위한 수학: 故 이융 교수님 (https://yung-web.github.io/home/courses/mathml.html)
+Mathematics for Machine Learning, Marc Peter Deisenroth (https://mml-book.github.io/)
+혁신융합대학사업 교육 콘텐츠 일부 반영","- 출석: 5%
+ - 중간시험: 45%
+ - 기말시험: 50% 
+
+중간 및 기말시험은 대면 지필고사로 진행합니다.","본 수업은 대면 방식으로 진행하며 강의는 한국어로 진행됩니다. 다만, 수업자료 혹은 시험지는 영어로 작성될 수 있습니다. 
+Lectures will be provided in Korean. Some course materials and exams can be provided in English.",raw/syllabus/2026_1_COMP0219-001/Pub.json
+2026-1,COMP0315-002,윤겨레,3-3-0,한국어,"본과목에서는 계산이론의 중심이 되는 형식언어, 오토마타, 계산가능성 및 이와 관련된 이론들을 배운다.
+이는 컴퓨터를 실제로 조작하기 위해서  개발된 프로그래밍 언어의 기본 구조에 관련된 제반 이론을 다루고 있다.
+본 과목을 통해서, 컴퓨터를 과학적인 입장에서 보는 시각을 키우고,  그 원리를 이해하며, 실제적인 방법론들을 심도있게 이해하는 능력을 키우는 것을 목적으로 한다.",컴퓨터를 조작하기 위해 개발된 프로그래밍 언어의 기본구조에 관련된 제반 이론을 이해한다.,,"- 출석 10%
+- 시험 80%
+- 과제 10%  
+(정확한 비중은 학기말에 결정됨)",- 재수강 학생의 경우 최고 A-학점,raw/syllabus/2026_1_COMP0315-002/Pub.json
+2026-1,COMP0319-004,남덕윤,3-3-0,한국어,"이 수업에서는 알고리즘 설계 및 분석의 기본 원리를 살펴보고, 알고리즘의 런타임 분석, 계산 복잡성, 알고리즘 패러다임 등을 학습하고자 합니다.","- 계산 문제의 수학적 모델링 지식 습득
+- 알고리즘과 프로그래밍 간의 관계 이해
+- 성능 측정 및 분석 기법 습득",,"- 중간시험 35%
+- 기말시험 40%
+- 과제 25%","- 자료 구조 및 프로그래밍 과목 선수강 필요
+- 강의 내용은 진도에 따라 변경될 수 있으며, 변경 시 미리 공지 예정",raw/syllabus/2026_1_COMP0319-004/Pub.json
+2026-1,COMP0411-003,김명석,3-3-0,한국어,"- Understand the fundamental architecture of modern computer processors and learn the basic principles
+- Develop perspective on general computer systems from the H/W aspect
+- Understand how the CPU interacts with memory and I/O devices to carry out the job","This course introduces basic concepts of computer science and engineering.
+This course also provides a detailed explanation of how those concepts are designed and implemented in modern CPUs.
+In addition, this course aims to develop students' ability for problem-solving and creative design.","Computer Organization and Design, The Hardware/Software Interfaces (RISC-V) David A Patterson and John L. Hennessy
+(reference) Computer Systems A Programmer's Perspective Bryant and O'Hallaron","- Attendance: 10%
+- Mid-term : 30%
+- Final : 40%
+- Homework & Quiz : 20%","No make-up exam for those who miss the exams.
+No soliciting for a grade boost.
+No exemption from absence other than due to the military-related or family tragedy.
+By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_1_COMP0411-003/Pub.json
+2026-1,COMP0414-002,고석주,3-3-0,한국어,"- 이 강의는 인터넷 프로토콜 관련 강의로서 IT 분야에 진출하고자 하는 학생에게 필수 과목임.
+- SW관련 융합전공, 연계전공, 복수전공, 부전공 학생의 수강을 적극 권장함.
+- 본 강의에서는 TCP/IP 인터넷 관련 각종 프로토콜의 개요 및 특성을 파악함.
+- IP 주소체계, 인터넷 패킷 전달방식, TCP/IP 프로토콜 및 다양한 응용계층 프로토콜을 분석함.
+- 특히, 최근에 등장하고 있는 차세대 인터넷 관련 기술에 대한 주요 이슈를 포함함.","* 다양한 TCP/IP 프토토콜 동작에 대한 학습을 통한 인터넷 통신 방식 이해
+* 사물인터넷(IoT) 등 인터넷 관련 서비스에 대한 이해 및 응용 개발 능력 함양","- 교재: TCP/IP Protocol Suite, written by Behrouz Forouzan","1. 출석 (10%): 무단결석시 1회당 1점 감점 
+2. 과제물 (10%): 과제물 내용은 수업시간에 별도 공지
+3. 시험: 중간고사 (40%), 기말고사 (40%)
+- 시험을 통해 교재, 강의 내용을 충실히 이행하였는지 여부를 평가함","- SW관련 융합전공, 연계전공, 복수전공, 부전공 학생의 수강을 적극 권장함.
+- 강의자료는 LMS 게시판에 공지함.",raw/syllabus/2026_1_COMP0414-002/Pub.json
+2026-1,COMP0453-001,배진학,3-2-2,한국어,"- 컴퓨터를 이용한 SW 문제해결 과정을 이해하고, IT 분야의 주요 기술들에 대한 개념을 배운다.
+- 파이썬 언어의 문법과 프로그래밍 기법을 배운다.
+- 파이썬을 이용하여 간단한 프로그램을 구현하는 방법을 학습한 이후, 심화 내용으로 파이썬의 확장성을 활용하여 다양하게 응용할 수 있는 방법을 배운다.","- 주어진 문제를 논리적으로 분석하고, 창의적/효율적으로 해결하는 능력을 배양한다.
+- 프로그래밍을 위해 필요한 기본적인 IT 기술들에 대한 원리와 개념을 이해하고 활용방법을 익힌다.
+- 파이썬 언어의 문법을 이해하고, 프로그래밍 능력 향상을 위해 다양한 실습 과제들을 연습한다.",,"- 출석 : 20%
+
+- 중간 시험 : 30%
+  + 프로그래밍 실습 문제
+
+- 기말 시험 : 50%
+  + 프로그래밍 실습 문제
+
+- 수업중 과제를 출제할 수 있음. 이 경우 해당 과제 점수는 중간/기말 시험 점수에 합산하여 최종 계산","- 개인 노트북을 사용해도 되나 노트북이 맥북일 경우 실습실 윈도우 PC 사용 권고(실습 내용중 일부는 맥북에서 동작하지 않을 수도 있음) 
+- 다른 파이썬 도서를 보유하고 있을 경우 교재를 구입하지 않아도 됨(수업중에는 필요한 내용을 정리한 ppt 자료를 사용하여 설명하고 배포)  
+- 1학년 과목이므로 고학년 학생은 가급적 수강 신청을 하지 않길 바라며 26학번이 아닌 경우 성적은 최고 A- 부여 예정",raw/syllabus/2026_1_COMP0453-001/Pub.json
+2026-1,ITEC0417-001,남우정,3-3-0,한국어,"본 강의에서는 기계학습의 전반적인 이론과 개념에 대해 공부한다.
+기계학습 및 인공지능이 어떤식으로 응용되는지에 대해서도 공부하며 프로그래밍을 통해 학습의 능률을 올린다.","본 강의에서는 기계학습의 전반적인 개념과 이론을 이해하고 응용분야에 대해 이해하는것을 목표로 한다.
+수학적 증명과 실전 프로그래밍을 통해 학습의 능률을 올린다.","패턴인식 개정판 오일석 저 https://product.kyobobook.co.kr/detail/S000201027253
+https://smartstore.naver.com/majorbook","본 강의는 중간, 기말, 과제를 통해 평가합니다.",본 강의는 python 언어를 기반으로 진행합니다.,raw/syllabus/2026_1_ITEC0417-001/Pub.json
+2026-1,MTED0231-010,강네이트,3-3-0,English,"This course serves as a rigorous foundation in linear algebra, specifically tailored for students in Computer Science and Artificial Intelligence. The curriculum is designed to balance computational proficiency with a deep conceptual understanding of the subject. We will begin by mastering the mechanics of systems of linear equations, including Gaussian elimination, and matrix algebra. From there, we will explore the geometric and algebraic properties of determinants. The core of the course focuses on abstract Vector Spaces, where we will examine subspaces, linear independence, and dimension, culminating in the Rank-Nullity Theorem. Finally, we will cover Linear Transformations and introduce the fundamental concepts of Eigenvalues and Eigenvectors. This course is essential for students intending to pursue advanced studies in machine learning, computer graphics, and data science.","The primary objective of this course is to equip students with the mathematical fluency required for advanced studies in Computer Science and Artificial Intelligence. By linking abstract mathematical concepts to the ""Basic knowledge on artificial intelligence and software"" competence, this course aims to transition students from simple calculation to deep structural understanding. Students will first master the mechanics of linear systems and matrix algebra, developing the critical thinking skills necessary to analyze data structures. Furthermore, by exploring vector spaces and linear transformations, students will gain the theoretical literacy needed to understand modern machine learning models. Ultimately, this course fosters a logical and rigorous approach to problem-solving that is foundational for any professional in the IT engineering field.",,"The evaluation for this course is strictly divided into three components totaling 100%. The Midterm Exam (40%) will assess the student's mastery of the first half of the curriculum, specifically Systems of Linear Equations, Matrix Algebra, and Determinants. The Final Exam (50%) will be comprehensive, covering all topics with a strong emphasis on Vector Spaces, Linear Independence, and Linear Transformations. The final 10% is allocated to Attendance, which is strictly monitored through random, unannounced in-class quizzes. These quizzes are participation-based; they are not graded for mathematical accuracy, but failure to submit a quiz slip will result in a recorded absence for that day.
+
+In addition to the standard evaluation criteria, students have the opportunity to earn Extra Credit (up to 5% bonus points added to the final grade) through active class participation, such as consistently asking insightful questions or volunteering answers during lectures. Please be advised that academic integrity is strictly enforced; any instance of cheating or plagiarism on exams will result in an immediate grade of 'F' for the course.","Please be aware that this entire course, including all lectures, assignments, and exams, will be conducted in English. Attendance is mandatory and will be monitored via random quizzes during lectures; submission of these quizzes constitutes your attendance record for the day (regardless of the score). The final grade will be calculated based on a Midterm Exam (40%), a Final Exam (50%), and Attendance (10%). Additionally, students who actively participate in class discussions may earn up to 5% in bonus points. Academic integrity is taken very seriously; any instance of cheating or plagiarism will result in an immediate failure of the course.",raw/syllabus/2026_1_MTED0231-010/Pub.json
+2026-1,CLTR0819-003,정선미,3-3-0,한국어,"자연과학과 공학에서 다루는 여러 가지 수학분야를 공부하는데 기반이 되는 평면기하와 공간기하, 벡터와 벡터공간, 행렬과 행렬식, 복소수 등의 기본적인 내용과 미적분학을 다루는 수학I을 공부하기에 필요한 기본적인 미적분학의 개념을 강의하고 수학을 이해하는데 기반이 되는 수학적인 논리를 살펴본다.","1. 평면과 공간의 거리 개념을 기반으로 표현되는 여러 가지 도형과 도형의 이동을 이해하고 방정식의 변형에 담겨있는 도형의 변화를 이해한다.
+2. 벡터의 개념과 벡터의 연산을 이해하고 벡터를 통한 직선과 평면의 이해의 효율성을 알고 추상적인 벡터공간을 알아가며 벡터공간의 여러 가지 용어들을 이해한다.
+3. 행렬과 행렬의 연산, 행렬식을 알고 선형연립방정식의 해를 구할 수 있으며, 행렬로 표현되는 문제들 이해하고 해결할 수 있는 토대를 마련한다.
+4. 복소수와 복소수의 다양한 규칙들을 알고 적용할 수 있다.","교재 : 대학수학의 기초2, 기하벡터행렬 편
+참고 문헌 : (1) Advanced Engineering Mathematics, Peter V. O’neil 지음, CENGAGE Learning.
+           (2) 미분적분학(9판), James Stewart외 2인 지음, 수학교재편찬위원회 옮김, 경문사","중간고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기말고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기타 : 20점 만점으로 출석, 과제, 퀴즈, LMS활용 등을 활용하여 평가함","1. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있습니다.
+2. 시험 일시 : 중간고사, 기말고사 시험기간 중 수업시간에 시행될 예정입니다. (추후 일정을 공지함) 
+3. 본 강좌는 대면강의로 진행 될 예정입니다. 질병에 따른 사회적 거리두기 등의 상황이 발생할 경우 LMS공지, 수업시간, 문자 등을 통하여 공지합니다.
+4. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배되니 유의하세요.",raw/syllabus/2026_1_CLTR0819-003/Pub.json
+2026-1,CLTR0819-004,문지원,3-3-0,한국어,"자연과학과 공학에서 다루는 여러 가지 수학분야를 공부하는데 기반이 되는 평면기하와 공간기하, 벡터와 벡터공간, 행렬과 행렬식, 복소수 등의 기본적인 내용과 미적분학을 다루는 수학I을 공부하기에 필요한 기본적인 미적분학의 개념을 강의하고 수학을 이해하는데 기반이 되는 수학적인 논리를 살펴본다.","1. 평면과 공간의 거리 개념을 기반으로 표현되는 여러 가지 도형과 도형의 이동을 이해하고 방정식의 변형에 담겨있는 도형의 변화를 이해한다.
+2. 벡터의 개념과 벡터의 연산을 이해하고 벡터를 통한 직선과 평면의 이해의 효율성을 알고 추상적인 벡터공간을 알아가며 벡터공간의 여러 가지 용어들을 이해한다.
+3. 행렬과 행렬의 연산, 행렬식을 알고 선형연립방정식의 해를 구할 수 있으며, 행렬로 표현되는 문제들 이해하고 해결할 수 있는 토대를 마련한다.
+4. 복소수와 복소수의 다양한 규칙들을 알고 적용할 수 있다.","교재 : 대학수학의 기초2, 기하벡터행렬 편
+참고 문헌 : (1) Advanced Engineering Mathematics, Peter V. O’neil 지음, CENGAGE Learning.
+           (2) 미분적분학(9판), James Stewart외 2인 지음, 수학교재편찬위원회 옮김, 경문사","중간고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기말고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기타 : 20점 만점으로 출석, 과제, 퀴즈, LMS활용 등을 활용하여 평가함","1. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있습니다.
+2. 시험 일시 : 중간고사, 기말고사 시험기간 중 수업시간에 시행될 예정입니다. (추후 일정을 공지함) 
+3. 본 강좌는 대면강의로 진행 될 예정입니다. 질병에 따른 사회적 거리두기 등의 상황이 발생할 경우 LMS공지, 수업시간, 문자 등을 통하여 공지합니다.
+4. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배되니 유의하세요.",raw/syllabus/2026_1_CLTR0819-004/Pub.json
+2026-1,COME0301-002,김진욱,3-3-0,한국어,"본 수업은 Set Theory, Logic, Graph Theory 등 컴퓨터 공학의 기본 수학 이론과 도구들을 소개합니다. 특히, 해당 이론들을 바탕으로 컴퓨터 공학의 기본이 되는 수학적 표현 및 문제풀이 방법을 배웁니다.
+
+본 과목을 학습하게 되면 세부적으로 다음의 내용들을 이해하게 됩니다.
+
+1.중고등 수학에서 왜 제일 먼저 집합과 명제를 배울까?
+2. 집합은 무한을 탐구하기 위해 만들어졌다는 사실
+3. 무한에도 급이 있다는 사실... 모두 다 같은 무한이 아니다...
+4. 세르비아 이발사의 역설, 러셀의 역설을 아시나요? 
+5. 현대수학의 거장 힐베르트를 아시나요?
+6.  완전한 수학을 만들기 위한 수학자들의 노력으로 공리계의 중요한 3가지 성질 ""일관성, 건전성 그리고 완전성""의 개념이 대두되었으나..
+7. 산술의 공리를 포함하는 공리계는 태생적으로 불완전하다는 사실을 알려준 괴델의 불완전성 정리.. 즉, 직관적으로는 참인데 증명 불가능한 명제 존재한다는 사실
+8. 계산하는 기계를 연구하는 수학자들.  수 많은 가상 기계들 중 가장 실제 존재할법한 기계처럼 생겼던 튜링머신..
+9. 오토마타라고 불리는 여러 가상의 계산 기계들.. 
+10. 유니버설 튜링머신에서 언급한 정지문제는 괴델이 언급한 불완정성 정리의 엘런튜링 버전라는 사실
+
+더불어 수학과 컴퓨터의 역사를 배우고 수학적으로 말하는 방법과 수학적으로 씌여진 문장들을 읽고 이해할수 있게 됩니다.",컴퓨터 탄생의 역사 및 발전 방향과 더불어 수학의 기본 개념과 논리 전개 방식 그리고 컴퓨터 공학에 필요한 수학의 기초에 대해 학습한다.,"* 아래 교재는 수업 준비를 위해 활용됩니다.
+  - 이산수학 및 응용, Susanna S. Epp 저
+
+* 유튜브에서 이산수학 관련 다양한 영상들을 선별하여 수업 중간중간 활용합니다.","* 중간고사와 기말고사는 대면 방식으로 시험 진행
+  - 중간고사 35%
+  - 기말고사 35%
+  - 출석 5%
+  - 과제 25%",수업 및 평가 일정에 부득이하게 참여가 어려운 경우 수업은 최소 하루 전 그리고 평가는 1주일전 에는 LMS로 사정을 보고하고 그에 대한 확인을 받아야 함,raw/syllabus/2026_1_COME0301-002/Pub.json
+2026-1,COME0301-003,김진욱,3-3-0,한국어,"본 수업은 Set Theory, Logic, Graph Theory 등 컴퓨터 공학의 기본 수학 이론과 도구들을 소개합니다. 특히, 해당 이론들을 바탕으로 컴퓨터 공학의 기본이 되는 수학적 표현 및 문제풀이 방법을 배웁니다.
+
+본 과목을 학습하게 되면 세부적으로 다음의 내용들을 이해하게 됩니다.
+
+1.중고등 수학에서 왜 제일 먼저 집합과 명제를 배울까?
+2. 집합은 무한을 탐구하기 위해 만들어졌다는 사실
+3. 무한에도 급이 있다는 사실... 모두 다 같은 무한이 아니다...
+4. 세르비아 이발사의 역설, 러셀의 역설을 아시나요? 
+5. 현대수학의 거장 힐베르트를 아시나요?
+6.  완전한 수학을 만들기 위한 수학자들의 노력으로 공리계의 중요한 3가지 성질 ""일관성, 건전성 그리고 완전성""의 개념이 대두되었으나..
+7. 산술의 공리를 포함하는 공리계는 태생적으로 불완전하다는 사실을 알려준 괴델의 불완전성 정리.. 즉, 직관적으로는 참인데 증명 불가능한 명제 존재한다는 사실
+8. 계산하는 기계를 연구하는 수학자들.  수 많은 가상 기계들 중 가장 실제 존재할법한 기계처럼 생겼던 튜링머신..
+9. 오토마타라고 불리는 여러 가상의 계산 기계들.. 
+10. 유니버설 튜링머신에서 언급한 정지문제는 괴델이 언급한 불완정성 정리의 엘런튜링 버전라는 사실
+
+더불어 수학과 컴퓨터의 역사를 배우고 수학적으로 말하는 방법과 수학적으로 씌여진 문장들을 읽고 이해할수 있게 됩니다.",컴퓨터 탄생의 역사 및 발전 방향과 더불어 수학의 기본 개념과 논리 전개 방식 그리고 컴퓨터 공학에 필요한 수학의 기초에 대해 학습한다.,"* 아래 교재는 수업 준비를 위해 활용됩니다.
+  - 이산수학 및 응용, Susanna S. Epp 저
+
+* 유튜브에서 이산수학 관련 다양한 영상들을 선별하여 수업 중간중간 활용합니다.","* 중간고사와 기말고사는 대면 방식으로 시험 진행
+  - 중간고사 35%
+  - 기말고사 35%
+  - 출석 5%
+  - 과제 25%",수업 및 평가 일정에 부득이하게 참여가 어려운 경우 수업은 최소 하루 전 그리고 평가는 1주일전 에는 LMS로 사정을 보고하고 그에 대한 확인을 받아야 함,raw/syllabus/2026_1_COME0301-003/Pub.json
+2026-1,COMP0206-001,이성희,3-2-2,한국어,C언어의 다양한 문법 요소를 익히고 실습 및 프로젝트 수행을 통해 프로그래밍의 기초를 다진다.,"- 주어진 문제를 프로그래밍할 수 있는 문제로 재정의하는 능력을 기른다.
+- 재정의한 문제를 C언어를 사용하여 프로그래밍하는 능력을 기른다.
+- C언어의 핵심적인 내용을 배운다.","- C 기초 플러스, 저자 Stephen Prata, 역자 윤성일, 이선민, 조혜란, 성안당, 2017
+- Perfect C, 강환수, 강환일, 이동규 공저, Infinity Books, 2021","- 중간 시험 : 40%
+- 기말 시험 : 30%
+- 기타(실습, 과제, 퀴즈, 출석) : 30%
+- 중간 및 기말시험은 이론 + 실습 시험으로 구성됨","- 1학년 과목이자 프로그래밍기초인 만큼 열심히 성실하게 수업을 수강해야지 학점 이수가 가능함.
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 반드시 0점 처리함.
+- 재이수 학생은 최대 학점이 A-이며 재이수 학생에 대해 추가 증원은 받지 않음.
+- 복수전공 및 타전공 학생들은 계절학기 수강을 권장함.",raw/syllabus/2026_1_COMP0206-001/Pub.json
+2026-1,COMP0206-002,이호경,3-2-2,한국어,"C 언어의 다양한 문법 요소를 익히고, 실습 및 프로젝트 수행을 통해 실제문제를 정의하고 프로그래밍하는 방법을 배운다.",파워포인트 자료를 이용한 강의 및 컴퓨터를 이용한 실습,"주교재: Perfect C, 강환수, 강환일, 이동규 공저, Infinity Books, 2016
+부교재: C언어를 이용한 기초프로그래밍 실습, 류은경 외 3인, 홍릉과학출판사, 2013 ( pdf로 제공됨 )","- 중간 35%, 기말 40%, 출석 및 참여도 5%, 실습 및 과제 20%","- 첫 주 수업에 필히 참석하여야 함
+- 중간고사 또는 기말고사에 결시할경우, F학점 부여
+- 수업 내용 및 범위는 수강생 실력 및 진행 상황에 따라 일부 조정될 수 있음",raw/syllabus/2026_1_COMP0206-002/Pub.json
+2026-1,COMP0207-001,이성희,3-1-4,한국어,C언어의 다양한 문법 요소를 익히고 실습 및 프로젝트 수행을 통해 프로그래밍의 기초를 다진다.,"- 주어진 문제를 프로그래밍할 수 있는 문제로 재정의하는 능력을 기른다.
+- 재정의한 문제를 C언어를 사용하여 프로그래밍하는 능력을 기른다.
+- C언어의 핵심적인 내용을 배운다.","- C 기초 플러스, 저자 Stephen Prata, 역자 윤성일, 이선민, 조혜란, 성안당, 2017
+- Perfect C, 강환수, 강환일, 이동규 공저, Infinity Books, 2021","- 중간 시험 : 40%
+- 기말 시험 : 30%
+- 기타(실습, 과제, 퀴즈, 출석) : 30%
+- 중간 및 기말시험은 이론 + 실습 시험으로 구성됨","- 1학년 과목이자 프로그래밍기초인 만큼 열심히 성실하게 수업을 수강해야지 학점 이수가 가능함.
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 반드시 0점 처리함.
+- 재이수 학생은 최대 학점이 A-이며 재이수 학생에 대해 추가 증원은 받지 않음.
+- 복수전공 및 타전공 학생들은 계절학기 수강을 권장함.",raw/syllabus/2026_1_COMP0207-001/Pub.json
+2026-1,COMP0207-002,이호경,3-1-4,한국어,"C 언어의 다양한 문법 요소를 익히고, 실습 및 프로젝트 수행을 통해 실제문제를 정의하고 프로그래밍하는 방법을 배운다.",파워포인트 자료를 이용한 강의 및 컴퓨터를 이용한 실습,"주교재: Perfect C, 강환수, 강환일, 이동규 공저, Infinity Books, 2016
+부교재: C언어를 이용한 기초프로그래밍 실습, 류은경 외 3인, 홍릉과학출판사, 2013 ( pdf로 제공됨 )","- 중간 35%, 기말 40%, 출석 및 참여도 5%, 실습 및 과제 20%","- 연계전공 이외 학생의 수강을 허용하지 않음
+- 첫 주 수업에 필히 참석하여야 함
+- 중간고사 또는 기말고사에 결시할경우, F학점 부여
+- 수업 내용 및 범위는 수강생 실력 및 진행 상황에 따라 일부 조정될 수 있음",raw/syllabus/2026_1_COMP0207-002/Pub.json
+2026-1,COMP0218-001,백낙훈,3-3-0,한국어,"- 컴퓨터학부 1학년 학생을 대상으로,
+- 컴퓨터 및 인공지능의 기본 원리와 관련 용어들을 폭넓게 소개하며,
+- 컴퓨터 및 인공지능 관련 분야의 유명 사건 및 관련 인물들을 소개하는,
+- 폭넓은 상식을 습득하도록 설계되었습니다.
+
+※ 수강 변경 기간 이후, 수강취소분에 대한 추가 수강신청 허용은 ""수강신청 시스템 기준""으로 선착순 입니다.
+※ 수강신청 시스템 입력 순서대로, 수시로 수강 정원까지 승인합니다.
+※ 수강증원 전화/이메일/면담은 일체 응답하지 않습니다.","- 컴퓨터 과학의 여러 분야들을 소개함
+- 향후 4년간 배울 과목들을 미리 소개함
+- 컴퓨터의 역사에 대해서 배움",,"- There will be a mid-term and also a final examination.
+- Mid-term examination: 40 to 50%
+- Final examination: 40 to 50%
+- Assignments: 0 to 10%
+- Participating in the class hours: 0 to 10%
+- This course is absolutely against to all plagiarism.","- 주교재를 기준으로 수업 및 시험을 실시하며, PPT는 수업중 설명에만 사용하고 별도로 제공하지 않습니다.
+- 매주 주교재의 일정 부분을 ""읽기 숙제""로 설정합니다.
+- 강의 중에 설명하지 않은 부분이더라도 매주 할당된 주교재 ""읽기 숙제"" 부분은 시험 범위에 들어갑니다.
+** 수강 변경 기간 이후, 수강취소분에 대한 추가 수강신청 허용은 ""수강신청 시스템 기준""으로 선착순 입니다.
+※ 수강신청 시스템 입력 순서대로, 수시로 수강 정원까지 승인합니다.
+※ 수강증원 전화/이메일/면담은 일체 응답하지 않습니다.",raw/syllabus/2026_1_COMP0218-001/Pub.json
+2026-1,COMP0332-001,김경훈,1-0-2,한국어,"본 강의는 1학년 학생의 프로그래밍 실력 향상을 위해서 다양한 연습 문제를 직접 코딩을 해보는 강의이다. 
+학생들은 C언어 관련 수업 내용을 수강하고, 본 실습시간에 다양한 문제를 해결하는 과정에서 발생하는 문제점을 해결하도록 한다.","본 강의를 통해서 기초 프로그래밍 능력의 향상을 목표로 한다. 
+다양한 문제 해결을 직접 코딩으로 해결하여 새로운 문제를 스스로 해결할 수 있는 능력을 키운다.",수업 시간에 다양한 문제 배포,"- 중간시험 : 30%
+- 기말시험 : 30%
+- 과제 : 30%
+- 출석 : 10%",1학년 학생을 주로 대상으로 합니다.,raw/syllabus/2026_1_COMP0332-001/Pub.json
+2026-1,COMP0332-002,김경훈,1-0-2,한국어,"본 강의는 1학년 학생의 프로그래밍 실력 향상을 위해서 다양한 연습 문제를 직접 코딩을 해보는 강의이다. 
+학생들은 C언어 관련 수업 내용을 수강하고, 본 실습시간에 다양한 문제를 해결하는 과정에서 발생하는 문제점을 해결하도록 한다.","본 강의를 통해서 기초 프로그래밍 능력의 향상을 목표로 한다. 
+다양한 문제 해결을 직접 코딩으로 해결하여 새로운 문제를 스스로 해결할 수 있는 능력을 키운다.",강의 시간에 실습 자료 배포,"- 중간시험 : 30%
+- 기말시험 : 30%
+- 과제 : 30%
+- 출석 : 10%",1학년 학생을 주로 대상으로 합니다.,raw/syllabus/2026_1_COMP0332-002/Pub.json
+2026-1,CLTR0819-005,류선미,3-3-0,한국어,"자연과학과 공학에서 다루는 여러 가지 수학분야를 공부하는데 기반이 되는 평면기하와 공간기하, 벡터와 벡터공간, 행렬과 행렬식, 복소수 등의 기본적인 내용과 미적분학을 다루는 수학I을 공부하기에 필요한 기본적인 미적분학의 개념을 강의하고 수학을 이해하는데 기반이 되는 수학적인 논리를 살펴본다.","1. 평면과 공간의 거리 개념을 기반으로 표현되는 여러 가지 도형과 도형의 이동을 이해하고 방정식의 변형에 담겨있는 도형의 변화를 이해한다.
+2. 벡터의 개념과 벡터의 연산을 이해하고 벡터를 통한 직선과 평면의 이해의 효율성을 알고 추상적인 벡터공간을 알아가며 벡터공간의 여러 가지 용어들을 이해한다.
+3. 행렬과 행렬의 연산, 행렬식을 알고 선형연립방정식의 해를 구할 수 있으며, 행렬로 표현되는 문제들 이해하고 해결할 수 있는 토대를 마련한다.
+4. 복소수와 복소수의 다양한 규칙들을 알고 적용할 수 있다.","교재 : 대학수학의 기초2, 기하벡터행렬 편
+참고 문헌 : (1) Advanced Engineering Mathematics, Peter V. O’neil 지음, CENGAGE Learning.
+           (2) 미분적분학(9판), James Stewart외 2인 지음, 수학교재편찬위원회 옮김, 경문사","중간고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기말고사 : 90점 만점으로 단답형과 서술형 문제로 출제
+기타 : 20점 만점으로 출석, 과제, 퀴즈, LMS활용 등을 활용하여 평가함","1. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있습니다.
+2. 시험 일시 : 중간고사, 기말고사 시험기간 중 수업시간에 시행될 예정입니다. (추후 일정을 공지함) 
+3. 본 강좌는 대면강의로 진행 될 예정입니다. 질병에 따른 사회적 거리두기 등의 상황이 발생할 경우 LMS공지, 수업시간, 문자 등을 통하여 공지합니다.
+4. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배되니 유의하세요.",raw/syllabus/2026_1_CLTR0819-005/Pub.json
+2026-1,COMP0206-003,소휘수,3-2-2,한국어,"본 과목은 범용 절차 지향 언어인 C언어를 기반으로 프로그래밍에 대한 기본적인 이론을 학습하고, 이를 바탕으로 기초적인 프로그래밍을 실습하는 것을 목표로 한다.","C언어의 기본적인 문법 및 C언어를 기반으로 한 기초 프로그래밍 실습을 통해, 단순히 C언어를 배우는 것이 아닌 프로그래밍의 기초를 학습하고, 나아가 컴퓨터 공학 및 과학적인 사고로 문제를 해결하며 다른 언어를 습득할 수 있는 기초를 마련할 수 있도록 합니다.",,"- 중간고사: 35%
+- 기말고사: 35%
+- 과제 및 실습: 25%
+- 출석: 5%",프로그래밍 능력은 컴퓨터공학 및 과학 전반에 필수적이므로 성실한 수강을 권장합니다.,raw/syllabus/2026_1_COMP0206-003/Pub.json
+2026-1,COMP0332-003,권영우,1-0-2,한국어,,,,,,raw/syllabus/2026_1_COMP0332-003/Pub.json
+2026-2,CAIB0211-001,김수연,3-3-0,English,"This course provides a comprehensive introduction to Natural Language Processing (NLP), teaching students how to computationally process, analyze, and generate human language for real-world applications. Students will learn fundamental text processing techniques including tokenization, linguistic analysis, and feature extraction methods. The curriculum covers both traditional machine learning approaches and modern deep learning methods, including word embeddings, neural language models, and transformer architectures. Students will gain hands-on experience implementing NLP solutions for tasks such as sentiment analysis, machine translation, question answering, and text generation. By course completion, students will be equipped to design, implement, and evaluate NLP systems.","By the end of this course, students will be able to understand the fundamental challenges and computational approaches in processing human language, implement text preprocessing pipelines and feature extraction techniques for NLP tasks, and apply both traditional machine learning and modern deep learning methods to language problems. Students will work effectively with word embeddings, neural language models, and transformer architectures while designing, implementing, and evaluating NLP systems for real-world applications.",,"Midterm 
+Cover the topics discussed in the first half of this semester.
+
+Final 
+Cover whole topics discussed in this class.
+
+Other
+Weekly quiz","Main textbook will be this link. https://web.stanford.edu/~jurafsky/slp3/
+This course is not recommended for students who are not majoring in Computer Science, or for Computer Science majors who have not completed the prerequisite courses.",raw/syllabus/2026_2_CAIB0211-001/Pub.json
+2026-2,CLTR0246-010,도금숙,3-3-0,한국어,"오늘날 생명현상의 개념을 이해하고 우리 생활과 연관 시키는 것은 그 어느 때보다 중요시되고 있다. 생물학은 건강이나 우리가 살고 있는 지구의 환경과 연관되어 있으며, 해마다 점점 그 범위가 넓어지고 있는 광범위한 분야이다. 그러므로 인간과 생물학의 관계를 이해하는 것은 중요하다. 따라서 생물학의 주요개념을 강조함으로써 생물체의 특성과 구조, 그리고 다양한 생명현상을 이해시키는데 중점을 둔다.",생명체의 기본 단위인 세포에서 일어나는 여러 가지 물질 대사들에 대한 이해를 기반으로 다양한 생명현상에 대한 탐구를 통해 생명과학적 지식을 확장한다.,캠벨 생명과학 포커스 4판 (대표저자: 전상학) (출판사: 바이오사이언스),"1. 중간고사: 45%= 선택형, 배합형, 단답형, 완성형, 약술형 등 다양한 형태의 문항 출제
+2. 기말고사: 45%= 선택형, 배합형, 단답형, 완성형, 약술형 등 다양한 형태의 문항 출제
+3. 출석: 10%= 출석 및 수업태도를 점수에 반영
+
+* 시험 및 성적평가: 중간·기말고사 대면시험 2회 실시 원칙","* 본 강좌의 모든 내용은 체계적으로 연계되어 있음으로 결석이나 지각으로 불이익을 당하지 않도록 유의하시기 바랍니다.
+* 전체 강의일정은 수강학생들의 관심도에 따라 다소 변경될 수 있습니다.
+* 수강 관련 문의는 이메일(dogs1004@hanmail.net)로 문의해주세요.
+* 중간고사, 기말고사는 대면시험을 원칙으로 실시합니다.",raw/syllabus/2026_2_CLTR0246-010/Pub.json
+2026-2,COME0311-004,강네이트,3-3-0,English,"This course introduces probability and statistics for computer science students who build and evaluate data-driven systems. Topics include counting, descriptive statistics, probability axioms, conditional probability, Bayes' rule, random variables, expectation, variance, joint and conditional distributions, covariance, correlation, standard probability models, law of large numbers, central limit theorem, confidence intervals, hypothesis testing, and simple linear regression. Examples are drawn from computing contexts such as error rates, latency, A/B testing, and benchmark evaluation.","This course develops students' critical thinking and exploration competencies through probability and statistical reasoning. Students will learn to model uncertainty, analyze random phenomena, summarize and interpret data, apply standard probability distributions, construct confidence intervals, perform hypothesis tests, and interpret simple regression results in computer science contexts. The course also strengthens convergence-oriented thinking by connecting mathematical models with practical computing problems such as error rates, latency, A/B testing, and benchmark evaluation.","Required: Joseph K. Blitzstein and Jessica Hwang, Introduction to Probability, 2nd edition, CRC Press.
+Required supplement: OpenIntro Statistics, available free online at https://www.openintro.org/book/os/.
+Weekly lecture notes will be posted on the LMS and will serve as the primary in-class reference.","Final grades are based on Quiz 1 (10%), Midterm Exam (30%), Quiz 2 (10%), Final Exam (40%), and Attendance (10%). In the portal grading scale, Quiz 1 and Quiz 2 are recorded together under ""Other"" (20%).
+
+The midterm exam covers the first half of the course. The final exam covers the second half only. Quiz 2 covers post-midterm material only and is not cumulative.
+
+Attendance is part of the final grade. Excused absences include sick leave, bereavement leave, reserve military duty, and other approved cases, but every excused absence requires proper documentation. Without documentation, the absence is treated as unexcused. Three or more unexcused absences result in zero credit for the attendance component, and the student may receive a failing course grade depending on overall performance. Repeated unexcused absences may result in a failing grade for the course.
+
+Late arrival counts as present, but each late arrival reduces the course total by 0.5 points. Thoughtful in-class participation may receive bonus credit at the instructor's discretion; this is separate from attendance.
+
+All quizzes and exams must be completed independently. Academic dishonesty will be handled according to university policy.","Grading: Quiz 1 10%, Midterm 30%, Quiz 2 10%, Final 40%, Attendance 10%.
+
+The midterm covers the first half of the course. The final covers the second half only. Quiz 2 covers post-midterm material only and is not cumulative.
+
+Attendance matters. Excused absences include sick leave, bereavement leave, reserve military duty, and other approved cases, but every excused absence requires proper documentation. Without documentation, the absence is treated as unexcused. Three or more unexcused absences result in zero credit for the attendance component, and the student may receive a failing course grade depending on overall performance.
+
+Late arrival counts as present, but each late arrival reduces the course total by 0.5 points. Thoughtful participation may receive bonus credit at the instructor's discretion; this is separate from attendance.
+
+All quizzes and exams must be completed independently. Academic dishonesty will be handled according to university policy.",raw/syllabus/2026_2_COME0311-004/Pub.json
+2026-2,COME0311-005,김명석,3-3-0,한국어,"컴퓨터학부에서 필요로 하는 확률과 통계에 대한 기초 지식을 배운다. 전반부는 확률의 기본 개념에 대해서 확률이론, 확률변수, 이산형 확률변수, 연속형 확률변수 등에 대해서 학습한다. 
+후반부는 통계에 대해서 데이터 수집, 데이터 분석, 통계적 추정, 회귀분석 방법 등에 대해서 배운다.",이 과목의 주요 목적은 AI를 포함한 공학과 과학에서 이용되는 확률과 통계의 기초를 학생들에게 제공하는 것이다.,"Probability and Statistics for Engineers and Scientists (Hayter, Anthony 저)
+Probability and Statistics for Engineers and Scientists (Walpole 저)","- 출석 : 10%
+- 과제 : 10%(문제 풀이 또는 프로그래밍 기반)
+- 중간시험 : 40%
+- 기말시험 : 40%","Basically, offline class
+The lecture is provided in Korean
+No make-up exam for those who miss the exams.
+No soliciting for a grade boost.
+No exemption from absence other than due to the military-related or family tragedy.
+By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_2_COME0311-005/Pub.json
+2026-2,COME0331-003,김구진,3-3-0,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및  sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해한다.
+기본 자료구조를 다양한 분야에 활용할 수 있는 능력을 기른다.
+응용 문제에 따라 적합한 자료구조를 선정하여 활용한다.","Horowitz, Shani, & Anderson-Freed, Fundamentals of data structures in C, (2nd edition) Silicon-press.","* 자료구조 및 자료구조 응용 시험 일정
+중간고사: 
+기말고사:  
+
+* 평가방법
+- 자료구조: (중간+기말고사: 98%, 출석: 2%)
+- 자료구조응용: (중간+기말고사: 85~95%, 과제물+출석: 4~14%, 연구실안전교육 이수증 제출: 1%)
+** 성적 반영 비율은 제시된 범위 내에서 학기말에 담당교수가 확정
+- 자료구조와 자료구조응용을 동일 학기에 동시에 수강해야 하나, 학점은 과목 별로 부과됨.","* ""IT대학 컴퓨터학부"" 개설 자료구조 과목은 자료구조응용과 세트 과목이며, 자료구조와 자료구조응용 모두 동일 담당교수(김구진)의 분반으로 병행하여 수강신청을 하고, 병행하여 수강해야 합니다.
+    둘 중 한 과목만 신청하는 경우 두 과목 모두 F학점으로 처리되니 주의 바랍니다.
+---
+* C 또는 C++언어  이론 과목과 실습 과목을  모두 선수강한 학생만 본 세트 과목을 수강하세요.
+(세트 과목 자료구조는 이론 수업에서 C코드로 알고리즘을 설명하며, 자료구조응용은  매시간 C로 과제 코드를 작성해서  제출해야 합니다. 자료구조응용 시험도  제한된 시간 내에 closed book으로 C 코드를 작성해서 제출하는 것입니다. )  
+
+* 대면 강의 예정이지만, 대학 학사 운영 지침 변경 시, 수업 방법(대면, 대면+비대면 혼합, 비대면)이 변경될 수 있음.
+* 수업 방식에 대해 LMS 과목 게시판에 공지할 예정이니, 개강 이전에 확인하기 바랍니다.
+* 연구실 안전교육을 이수해야 함 (자료구조응용 성적에 반영예정)
+* 자료구조응용 실습 과제 및 시험은 모두 Visual studio (버전 지정 예정) 기반입니다.
+
+기타:
+- 학점 산정 시, 외국인 학생과 내국인 학생을 구별하지 않고 전체를 상대평가함.
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 결석할 경우 출석점수에서 감점을 당하지 않으려면 정당한 결석사유를 증명할 수 있는 근거 서류가 필요하며 수업시간 전에 미리 이메일로 알려야 함.
+- 수업일수의1/4이상 결석할 경우 F학점이주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 지정된 과목 게시판 (LMS 시스템)을 이용함",raw/syllabus/2026_2_COME0331-003/Pub.json
+2026-2,COME0368-001,이지연,3-3-0,한국어,"본 강의는 정보보호의 기술적 요소에 대해서 이론과 실습 과제를 통해서 살펴본다. 먼저, 정보보호와 관련된 다양한 기법(사용자 인증, 접근 제어, 암호화 등)에 대해서 학습하고, 네트워크 및 웹 환경에서 발생가능한 공격 유형과 방어 방법을 습득한다.","1. 정보보호의 기본 개념과 원리를 이해한다.
+2. 정보보호에 대한 다양한 위협과 공격 유형을 학습한다.
+3. 정보보호를 위한 대응 및 방어 방법을 습득한다.
+4. 기업과 개인이 정보보호를 실천하는 방법을 이해하고 적용한다.","Reference Books:
+Computer Security – Principles and Practice 3/e, William Stallings and Lawrie Brown
+Cryptography and Network Security, Behrouz A. Forouzan","- 출석: 10%
+- 기말시험: 45%
+- 과제: 40%
+- 참여: 5%","- 평가 방법 및 주별 강의 계획 등의 세부 사항은 변경될 수 있음.
+- 재이수 시 성적 취득 상한이 적용됨.
+- 3학년 수강 가능함.",raw/syllabus/2026_2_COME0368-001/Pub.json
+2026-2,COMP0216-001,김구진,3-2-2,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및  sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해한다.
+기본 자료구조를 다양한 분야에 활용할 수 있는 능력을 기른다.
+응용 문제에 따라 적합한 자료구조를 선정하여 활용한다.","Horowitz, Shani, & Anderson-Freed, Fundamentals of data structures in C, (2nd edition) Silicon-press.","* 자료구조 및 자료구조 응용 시험 일정
+중간고사: 
+기말고사:  
+
+* 평가방법
+- 자료구조: (중간+기말고사: 98%, 출석: 2%)
+- 자료구조응용: (중간+기말고사: 85~95%, 과제물+출석: 4~14%, 연구실안전교육 이수증 제출: 1%)
+** 성적 반영 비율은 제시된 범위 내에서 학기말에 담당교수가 확정
+- 자료구조와 자료구조응용을 동일 학기에 동시에 수강해야 하나, 학점은 과목 별로 부과됨.","* ""IT대학 컴퓨터학부"" 개설 자료구조 과목은 자료구조응용과 세트 과목이며, 자료구조와 자료구조응용 모두 동일 담당교수(김구진)의 분반으로 병행하여 수강신청을 하고, 병행하여 수강해야 합니다.
+    둘 중 한 과목만 신청하는 경우 두 과목 모두 F학점으로 처리되니 주의 바랍니다.
+---
+* C 또는 C++언어  이론 과목과 실습 과목을  모두 선수강한 학생만 자료구조+자료구조응용 수업을 수강하세요.
+(자료구조는 이론 수업에서 C코드로 알고리즘을 설명하며, 자료구조응용은  매시간 C로 과제 코드를 작성해서  제출해야 합니다. 자료구조응용 시험도  제한된 시간 내에 closed book으로 C 코드를 작성해서 제출하는 것입니다. )  
+* 부전공이나 복수전공 학생은 융합전공 (또는 연계전공)에서 개설되는 자료구조 과목을 수강해도 졸업요건이 만족되며  이 경우에는 자료구조응용 과목을 수강하지 않아도 됩니다. 
+* 대면 강의 예정이지만, 대학 학사 운영 지침 변경 시, 수업 방법(대면, 대면+비대면 혼합, 비대면)이 변경될 수 있음.
+* 수업 방식에 대해 LMS 과목 게시판에 공지할 예정이니, 개강 이전에 확인하기 바랍니다.
+* 연구실 안전교육을 이수해야 함 (자료구조응용 성적에 반영예정)
+* 자료구조응용 실습 과제 및 시험은 모두 Visual studio (버전 지정 예정) 기반입니다.
+
+기타:
+- 학점 산정 시, 외국인 학생과 내국인 학생을 구별하지 않고 전체를 상대평가함.
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 결석할 경우 출석점수에서 감점을 당하지 않으려면 정당한 결석사유를 증명할 수 있는 근거 서류가 필요하며 수업시간 전에 미리 이메일로 알려야 함.
+- 수업일수의1/4이상 결석할 경우 F학점이주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 지정된 과목 게시판 (LMS 시스템)을 이용함",raw/syllabus/2026_2_COMP0216-001/Pub.json
+2026-2,COMP0224-001,손정주,3-3-0,한국어,"본 강좌는 소프트웨어 설계의 핵심 개념을 소개하며, 실제 문제 해결 능력을 강화하는 데 초점을 맞춥니다. 특히, 팀 프로젝트를 통해 이러한 개념을 실제 상황에서 활용하고, 학생들의 협력과 문제 해결 능력을 함께 발전시키는 기회를 제공합니다.","- 소프트웨어 개발 요구사항 도출 및 분석
+- 다양한 아키텍쳐 및 디자인 모델과 실제 구현의 연관관계 이해 및 경험
+- 객체지향 방법론의이해",,"- 출석: 5%
+- 중간시험: 30%, 기말시험: 35%
+- 과제: 30%
+  - 팀 프로젝트: 25%
+  - 개인 과제: 5% (소규모 과제 최대 2회)
+- 상대평가를 원칙으로 함.","- 학기에 걸쳐 팀 프로젝트를 수행 (단, 주로 설계에 초점이 맞추어져 있으며, 구현은 프로토타입 레벨. 테스팅과 유지보수는 마지막에 개념적으로만 학습하며 프로젝트 범위에 포함되지 않는다). 
+- 필수는 아니나 객체지향 프로그래밍에 익숙할 경우 좀 더 수월함.
+- 재이수생에 대한 학점 부여는 대학의 규정을 따름.
+- 본 강의는 챗GPT를 포함한 생성형 AI의 사용을 과제 및 프로젝트에 허용하나, 사용여부를 명시적으로 표기하여야 함.",raw/syllabus/2026_2_COMP0224-001/Pub.json
+2026-2,COMP0225-001,김용태,3-2-2,한국어,"본 교과목은 디지털설계의 기본이 되는 논리회로의 이론적인 내용과 실습을 포함한다. 다양한 디지털 조합회로와 순차회로의 동작 방식을 이해하고, 디지털설계를 위한 언어인 Verilog HDL의 기본적인 문법과 설계 기법을 학습한다. 이를 통해,  디지털 집적회로의 설계 방식을 이해하고, 하드웨어(마이크로프로세서, 디지털 컴퓨터, 임베디드 시스템)를 설계할 수 있는 기본적인 능력을 배양한다.","창의: 디지털회로의 기본적인 이해와 설계
+융합: 디지털회로와 시스템 설계를 통한 응용 및 융합
+
+전공능력: 컴퓨터 SW 시스템 설계능력
+지식: 디지털 논리회로의 기본 원리와 Verilog HDL 기반 설계, 시뮬레이션, 합성 절차를 이해함.
+기술: Verilog 코딩과 EDA 툴을 활용하여 디지털 회로를 구현, 시뮬레이션, 합성 및 검증할 수 있음.
+태도: 정확한 디지털 회로 구현과 오류 분석을 위해 논리적 사고, 반복 검증, 문제 해결 중심의 태도를 갖춤.","교재:
+Samir Palnitkar, ªVerilog HDL: A Guide to Digital Design and Synthesisª, 2nd edition, Pearson
+장훈 역, ªVerilog HDL: 디지털 설계와 합성의 길잡이ª, 홍릉과학출판사
+
+참고문헌:
+M. Mano and M. Ciletti, ªDigital Design: With an Introduction to the Verilog HDL, VHDL, and System Verilogª, 6th edition, Pearson","중간시험: 30%, 기말시험: 30%,  프로젝트(실습과제포함): 35%, 출석: 4%, 연구실안전교육이수: 1%","1. 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+2. 중간시험 또는 기말시험에 결시 할 경우 F학점이 주어짐
+3. 수업일수의 1/4 이상 결석할 경우 F학점이 주어짐
+4. 연구실/실험실 안전교육 이수 증명서를 중간 시험 이전에 제출해야함",raw/syllabus/2026_2_COMP0225-001/Pub.json
+2026-2,COMP0320-001,배준현,3-2-2,한국어,"본 과목은 자료구조/알고리즘1 과목에서 배운 개념과 이론을 토대로
+알고리즘을 종합적으로 이해하고 문제를 해결할 수 있는 역량을 향상시키는 것을 목표로 함.
+이를 위해 본 과목은 파이썬 언어를 활용하여 알고리즘과 자료구조를 이용한 문제해결을 위주로 진행함.",주어진 문제를 해결하기 위해 다양한 알고리즘 설계 기법과 적절한 자료구조를 활용하는 능력을 배양한다.,"주교재: 
+- 알고리즘 문제 해결 전략 1, 2. 구종만. 인사이트. 2012. (종만북)
+
+참고교재:
+- Introduction to Algorithms 4th Ed. CLRS.
+- Foundations of Algorithms 5th Ed. Richard E. Neapolitan.","출석 10% 
+중간시험 40%
+기말시험 40%
+과제 10%:","본 과목은 자료구조/알고리즘의 기초적인 내용을 이해하고 있다는 것을 전제로 진행합니다.
+본 과목은 Python 언어를 이용한 문제해결 실습 위주로 진행되므로 Python 언어의 기초적인 활용 능력이 요구됩니다.
+
+본 강의에서는 ChatGPT, Calude, Gemini 등 생성형 AI 도구의 활용을 학습 보조 목적에 한하여 적극적으로 허용합니다.
+단, 생성형 AI 활용에 관한 윤리를 준수해야 하고, 과제 또는 시험에서 생성형 AI를 활용한 경우 사용 여부와 활용 목적을 반드시 명시해야 합니다.",raw/syllabus/2026_2_COMP0320-001/Pub.json
+2026-2,COMP0322-001,서영균,3-2-2,한국어,"본 과목은 데이터베이스 시스템 및 데이터베이스 응용 프로그램을 설계, 사용 및 구현하는 데 필요한 기초 개념을 소개한다. 구체적으로, 데이터베이스 모델링 및 디자인, (관계형) 데이터베이스 관리 시스템 (DBMS)이 제공하는 언어 및 모델, 데이터베이스 시스템 구현 기술 등을 학습한다. 특히, (1) 논리적 데이터베이스 설계 (정형(관계형)/반정형/비정형), (2) DBMS 설치 및 사용 방법, (3) SQL, (4) JDBC 프로그래밍, (5) 색인 생성, (6) 쿼리 처리/최적화, (7) 트랜잭션 처리, (8) 웹 서버 프로그래밍 등 conventional한 DB 기술뿐만 아니라 (9)  벡터 데이터베이스 등 최신 LLM을 위한 데이터 처리 기술 등도 가능하면 다룬다. 본 강의에서 다뤄지는 다양한 실습 및 프로젝트를 통해 학생들은 데이터베이스 전반에 대한 체계적인 전공 지식을 함양할 수 있을 것으로 기대된다. 더 나아가, 졸업 후 데이터베이스 관리자, 데이터 엔지니어, 데이터 사이언티스트, 데이터 관련 연구자가 될 수 있도록 안내한다. SIGMOD/VLDB/ICDE/SIGKDD/ICDM 등 데이터베이스/데이터마이닝 관련 top-tier conference에 대해서도 소개한다.","개념적/논리적/물리적 데이터베이스 설계할 수 있고, SQL로 질의문/갱신문을 작성할 수 있고, JDBC를 이용해 데이터베이스 프로그래밍을 할 수 있고, JSP/Python 등을 이용한 웹 데이터베이스 프로그래밍을 할 수 있도록 강의한다.","- 필수 교재: Fundamentals of Database Systems, 7판, Ramez Elmasri and Shamkant B. Navathe(글로벌 에디션) 
+
+- 보조 교재:
+ - 데이터베이스 시스템 7판, Avi Silberschatz, Henry F. Korth, and S. Sudarshan (정연돈, 권준호, 김종욱, 서영균, 이동호 옮김), McGraw-Hill, 2021.08 (http://www.yes24.com/Product/Goods/103156919)
+ - 오라클로 배우는 데이터베이스 개론과 실습, 박우창, 남송휘, 한빛아카데미, 2020.07  (실습 관련)","- 중간: 25%,
+- 기말: 35%,
+- 실습: 12%,
+- 프로젝트(22%)+발표(5%): 27% (자유 주제 또는 지정 주제 예정)
+- 연구실안전교육 이수증 제출: 1% 
+
+** 사정에 따라 위의 점수 분포는 변동 될 수 있음 **","- (필독 - 선수 과목 안내) 본 과목의 선수 과목을 가급적 수강 요망
+- (필독 - 실습 안내) 매주 본인 노트북을 꼭 지참해 오기 바람 (RAM은 최소 8GB 이상, 16GB를 권장함) 
+- 첫째주부터 Oracle DBMS를 설치하여 실습함.
+- 수업 자료는 영어로 제공하나 한글로 수업함
+- 1/4 이상 결석 또는 과제 카피나 중간/기말 결시일 경우, F 확정 
+- 3주차 부터, 텀 프로젝트 (팀당 3명으로 구성) 시작
+- 재수강생은 B+ 이상 받지 못할 수 있음
+- 연구실 안전교육 이수증 제출 필요",raw/syllabus/2026_2_COMP0322-001/Pub.json
+2026-2,COMP0322-002,이천희,3-2-2,English,"This course covers core concepts and techniques in databases. In this course, we will learn how to manage large-scale data efficiently and effectively. We will study various techniques such as relational data model, SQL, functional dependencies and indexing structures. Also, we will learn how to use traditional RDBMSs and implement our own tiny DBMS.",We learn core concepts of databases and master various techniques in databases.,,"Attendance: 5%
+Midterm Exam: 35%
+Final Exam: 35%
+Assignment: 25%","* (Important – Exam Notice) The midterm and final exams will be held together with other sections, so they are scheduled for 6 PM or later on Wednesday during the exam period.
+Please make sure there are no time conflicts with other exams.
+
+** Required Textbook: There is a softcover version in addition to the hardcover. The softcover is more affordable.
+                                   (Fundamentals of Database Systems, 7th Edition, Ramez Elmasri and Shamkant B. Navathe (Global Edition))",raw/syllabus/2026_2_COMP0322-002/Pub.json
+2026-2,COMP0328-001,정기숙,3-2-2,한국어,본 과목은 코틀린 언어 기반의 안드로이드앱 개발 과정으로 구성되어 있습니다. 수강생은 안드로이드 스튜디오 개발환경의 프로그래밍을 직접 실습해 보면서 안드로이드앱 개발에 대한 기본 개념과 기술을 배울 수 있습니다.,"앱 서비스를 통해 해결할 수 있는 문제를 발견하고 정의할 수 있다.
+다양한 전공지식 및 기술을 활용하여 통합적으로 주어진 문제를 해결할 수 있다.","참고교재:
+Do it! (기초 문법부터 안드로이드 활용까지!) 코틀린 프로그래밍, 황영덕, 이지스퍼블리싱, 2019","출석 5%
+중간시험(이론+실기) 45%
+기말시험(실기) 20%  
+과제 10%
+개인 프로젝트 20%","1. 자바프로그래밍 혹은 기타 객체지향프로그래밍 과목을 이수한 학생만 수강하기 바랍니다.
+2. 안드로이드폰 소지자는 첫 수업에 USB 연결 케이블을 준비해 주세요.
+3. 첫 수업에 반드시 참석해야 합니다.
+4. 주교재의 전체 내용을 다루기에는 시간이 부족하므로, 다음 내용은 저자 직강의 동영상 보조자료를 활용하여 개인 학습을 하기 바랍니다.
+    17장. 저장소 데이터 보관하기
+    18장. 네트워크 프로그래밍
+    19장. 위치 정보 활용하기
+    20장. 파이어베이스 연동과 인증 기능
+    21장. 파이어스토어, 스토리지, FCM
+    22장. 제트팩 컴포즈
+5. 주별강의 내용 및 일정은 강의 진행 상황에 따라 일부 조정될 수 있습니다.",raw/syllabus/2026_2_COMP0328-001/Pub.json
+2026-2,COMP0411-005,김용태,3-3-0,한국어,"본 교과목은 컴퓨터를 구성하는 프로세서와 주요 하드웨어의 기본 구조와 작동원리를 이해한다. 프로세서의 기본이 되는 명령어, 연산기 설계, 파이프라인 등을 이해하고, 메모리의 계층적 구조와 캐시 메모리 등을 학습한다.","창의: 컴퓨터 구조와 동작 원리에 대한 기본적인 이해
+전공능력: 컴퓨터/SW 시스템 설계능력
+지식: CPU, 메모리, 입출력장치, 명령어 집합, 데이터 표현 등 컴퓨터 시스템의 구조와 동작 원리를 이해함.
+기술: 명령어 실행 과정, 데이터 처리 흐름, 메모리 접근 방식 등을 분석하고 하드웨어 구성 요소 간의 동작을 해석할 수 있음.
+태도: 하드웨어와 소프트웨어의 연계성을 고려하여 시스템을 논리적이고 체계적으로 분석하려는 태도를 갖춤.","교재:
+David Patterson, John Hennessy, ""Computer Organization and Design RISC-V Edition: The Hardware Software Interface,"" The Morgan Kaufmann.","출석: 5%, 중간시험: 40%, 기말시험: 40%, 실습과제 및 프로젝트: 15%","1. 교재, 평가 방법 등의 구체적인 사항은 변경될 수 있으며 수업 첫 시간에 확정 공지함
+2. 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+3. 중간고사 또는 기말고사에 결시 할 경우 F학점이 주어짐
+4. 수업일수의 1/4 이상 결석할 경우 F학점이 주어짐",raw/syllabus/2026_2_COMP0411-005/Pub.json
+2026-2,COMP0411-006,김정근,3-3-0,English,"Ultimate goal: Students can understand the internal mechanism of modern computer hardware components including CPU, GPU, memory hierarchy, and domain-specific processors. And students can also get design optimization insights from both theoretical and empirical studies.
+- 변화하고 있는 현재 추세에 따라, 새로운 강의 진행 방식을 따릅니다. (Computer Architecture 2.0, 추후 강의 오리엔테이션에서 안내)","Students will get the following knowledge and designing experience after taking this course:
+- Basic performance metrics of computer hardware
+- Various ISA (Instruction Set Architecture) with its design tradeoffs
+  * x86_64, MIPS, RISC-V, ARM
+- Internal structures of CPU: Datapath, ALU(Arithmetic and Logical Unit), Caches, Interconnection networks
+- Basic and advanced concepts of pipelining (pipeline, superscalar, in-order/out-of-order pipelines)
+- The principle of locality and memory hierarchy (caches and memory systems)",,"* Midterm Exam: 40%
+* Final Exam: 40%
+* Assignments: 20%
+  - C/C++/Python-based modeling of some hardware components
+  - Implementing simple programs using a certain ISA's assembly language
+
+(These evaluation methods are tentative, please attend the first classroom to get more detailed information about the evaluation methods.)","* Students must attend and take the exam in person at least once during the examination period in order to receive a grade.
+   - 학생들은 반드시 두 번의 시험들 중 한 번 이상은 참석해야 학점을 부여 받을 수 있음. 그 외, 출석으로 인한 추가적인 불이익 전무 (예: 출석 점수 차등 부여 등).
+* Students are expected to be proficient in C and Python programming. In particular, Python will be the primary language used for programming assignments.
+  - 학생들은 반드시 C/Python 프로그래밍에 능숙(익숙)해야 함. 특히, 파이썬의 경우 programming assignment에서 주로 사용되는 언어인 것을 고려해야 함.
+* 시험지 작성(서술형)의 경우, 한국어/영어 중 자유롭게 선택하여 서술 가능. (단, 단답형 주관식 및 연산 등 비 서술형 문제는 영문으로 작성)",raw/syllabus/2026_2_COMP0411-006/Pub.json
+2026-2,COMP0423-001,손정주,3-3-0,한국어,"본 교과목은 프로그래밍 언어의 설계 원리를 학습하는 과목으로, 구문, 의미론, 주요 언어 기능을 중심으로 프로그래밍 언어의 구조와 동작 원리를 다룬다. 
+학생들은 과제와 시험을 통해 프로그래밍 언어에 대한 체계적이고 종합적인 이해를 함양한다.","- 구문과 의미론을 포함한 프로그래밍 언어의 기초 개념을 학습한다.
+- 프로그래밍 언어의 주요 구성 요소를 명세하고 구현하는 능력을 기른다.",,"- 출석 5%
+- 중간고사 35%, 기말고사 35%
+- 과제 25% (개인 과제, 세부 내용은 수업 중 안내)","# Plagiarism and Cheating
+  - Plagiarism and cheating are serious academic offences. Any form of academic dishonesty, including copying assignments, using unauthorised materials, or submitting work that is not your own, will not be tolerated. 
+    Consequences may include failing the assignment, failing the course, or further disciplinary actions.",raw/syllabus/2026_2_COMP0423-001/Pub.json
+2026-2,COMP0428-001,백낙훈,3-3-0,한국어,"- 공학도(특히 IT계열 공학도)를 위한 경영으로서, 기술과 경영의 융합된 지식을 학습하는 것을 추구한다. 
+- 세부항목으로는 컴퓨터학부의 특성에 맞는 IT기술의 역사와 동향을 공부하여, 이를 바탕으로 미래 IT 산업과 환경변화를 예측하는 방법을 배운다. 
+- 본 강의는 기업의 임원진, 창업 등에 관심있는 학생들을 위한 강의로서 기술적 아이디어가 어떤 과정을 거쳐 사회적 가치로 만들어지는 지에 대해 공부한다.
+** 컴퓨터학부 학생에게 우선권이 있으며, 강의 내용, 평가 방법 등도 컴퓨터학부 학생에게 맞추어 제공됩니다.
+
+** 수강정원 초과에 따른 조치
+- 현재 수강가능한 최대 인원으로 설정하여, 더 이상의 증원은 없습니다.
+- 경북대학교 원격 수업 규정에 따라, 추가 분반 개설도 불가능합니다.
+- 수강 변경 기간 이후, 수강취소분에 대한 추가 수강신청 허용은 ""수강신청 시스템 기준""으로 처리합니다.
+- 수강 변경 기간에 수시로 학교 수강신청 시스템에 접속, 그 시간 기준으로 수용 가능한 인원까지 선착순으로 ""허용"" 처리하고, 그 이후는 ""반려"" 처리합니다.
+- 그외, 수강 증원, 수강 신청 허용을 요청하는 전화/이메일/면담은 일체 응답하지 않습니다.","- IT 분야의 첨단 기술에 대해 탐색하고 그 기술을 바탕으로 한 기업경영에 필요한 경영에 관한 것을 배운다. 
+- 이 강의는 IT기술에 대한 미래 비전에 대해 성찰하고 자기 생각을 발표하는 태도를 평가한다.
+- 이 강의는 기술과 경영을 융합한 인재를 위한 기술경영을 교육하는 것을 목표로 한다.","IT기술경영 기초편 (ISBN 979-11-89961-28-2)
+미국IT분야의성공과실패 (ISBN 979-11-89961-30-5)
+- 교보문고 ""전자책"" 도서로 등록 예정 (늦어질 수도 있음)
+
+IT기술경영의 실제 (ISBN 979-11-89961-29-9)
+미국IT분야의성공과실패 (ISBN 979-11-89961-30-5)
+- 교보문고 ""바로출판 POD"" 도서로 등록 예정 (늦어질 수도 있음)
+
+기술과 경영
+- 박용태
+- 생능출판사 (ISBN: 978-89-7509-04-4)","중간고사 : 10월 27일 화요일 10:30 - 12:00 확정
+기말고사 : 12월 15일 화요일 10:30 - 12:00 확정
+- Mid-term examination: 40 ~ 45%
+- Final examination: 40 ~ 45%
+- Indivisual Project: 5 ~ 10%
+- Participating in the class hours: 5 ~ 10%
+- This course is absolutely against to all plagiarism. 
+- For re-taking students, the grades are restricted to be below B+.","중간고사 : 10월 27일 화요일 10:30 - 12:00 확정
+기말고사 : 12월 15일 화요일 10:30 - 12:00 확정
+- 많은 내용이 별도 PPT로 제공되지만, 주교재를 통한 학습이 더 중요하며, 경우에 따라서는 PPT를 제공하지 않을 수도 있습니다.
+- 강의는 플립드 러닝 방식으로, 미리 녹화된 동영상을 시청하고, 수업 시간에는 이에 관련된 이론수업으로 진행될 가능성이 높습니다.",raw/syllabus/2026_2_COMP0428-001/Pub.json
+2026-2,COMP0432-001,고석주,2-2-0,한국어,본 강의는 SW기술 최신 동향 및 진로 탐색 관련 특강 수업임.  (외부 전문가 초청 특강),"*  SW 기술 최신 동향을 파악할 수 있다
+* 졸업 후 진로 설계에 도움을 얻을 수 있다.",매 특강시 강연자료 배포,"- 성적은 S/U로 부여됨
+- 모든 세미나에 참석해야 함
+- 각 세미나 후에 “특강 참석 보고서”를 즉석에서 제출해야 함 (보고서 양식은 수업전에 배포함)
+- 기타 상세한 사항은 첫 수업(개강) 시간에 공지함","* 모든 수강생은 수업시작 10분전에 입실을 완료해야 함 (출석 확인)
+* 매주 특강 참석 보고서를 제출해야 함 (서식은 LMS 게시판 참고)
+* 타 대학교 학생(학점교류)은 온라인 수업 참여 (Zoom): 세부 사항은 별도 공지 예정",raw/syllabus/2026_2_COMP0432-001/Pub.json
+2026-2,COMP0436-001,윤겨레,3-3-0,한국어,"본 교과목은 증강현실(Augmented Reality, AR)의 기술적 원리와 그 응용을 인간-컴퓨터 상호작용(HCI) 관점에서 다룬다.
+AR을 구성하는 핵심 기술 요소를 이해하는 것을 기초로, 궁극적으로 ""사용자가 AR 환경에서 어떻게 지각하고, 상호작용하고, 콘텐츠를 만들어내는가""에 강의의 초점을 둔다.
+또한 최신 ISMAR/CHI 등의 논문을 통해 최근 연구 동향을 함께 다룬다. 학기 말에는 팀 단위 텀 프로젝트를 통해 AR 프로토타입 설계 및 사용자 상호작용 요소를 직접 구현·평가한다.","1.  AR을 구성하는 핵심 기술 요소의 원리를 이해한다.
+2. HCI 관점에서 AR 특화 상호작용 기법을 분석하고 설계할 수 있다.
+3. 최신 AR/HCI 연구 논문을 소개한다.
+4. 팀 프로젝트를 통해 실제 AR 프로토타입을 설계 및 구현하고, 사용자 상호작용 관점에서 평가할 수 있다.",,"출석 10%
+중간 고사 35%
+기말고사 대체 프로젝트 제안 발표 10%
+기말고사 대체 프로젝트 35%
+기타 참여 점수 10%","본 강의계획서에 명시된 평가 방법, 강의 진도, 강의 자료는 강의 운영 상황에 따라 변경될 수 있으며, 변경 시 수업 중 공지됩니다.
+400번대 과목이지만 3학년 수준에서도 충분히 수강할 수 있는 수준입니다.",raw/syllabus/2026_2_COMP0436-001/Pub.json
+2026-2,COMP0455-001,윤겨레,3-3-0,English,Human-Computer Interaction (HCI) is a core of computer science to enable humans to benefit interacting from computers. This course aims at covering the fundamental knowledge and design guidelines for effective and usable HCI systems. Students will also be provided with an opportunity of prototyping an actual HCI system.,"This course is designed to deliver an intuitive and instructive discussion of the principles underlying the design of effective interactive technologies.
+We will discuss how to design and apply digital technologies in the real world with numerous examples.
+Also, students will also be provided with an opportunity to prototype an actual system.
+At least 5 recent papers in HCI field will be introduced (by professor).
+(***Although it is a 4th-year course, the difficulty level is manageable enough for 3rd-year students.***)
+(***4학년 과목이지만 3학년 학생들도 충분히 수강 가능한 난이도입니다.***)",,"- Attendence - 10 %
+- Midterm 35 %
+- Project proposal & presentation - 10 %
+- Final(Project) - 35 %
+- Participation 10 %","(***Although it is a 4th-year course, the difficulty level is manageable enough for 3rd-year students.***)
+(***4학년 과목이지만 3학년 학생들도 충분히 수강 가능한 난이도입니다.***)
+ The content of the lecture may vary depending on the situation.
+At least 5 recent papers in will be introduced. (by professor)",raw/syllabus/2026_2_COMP0455-001/Pub.json
+2026-2,COMP0458-001,펑리메이,3-3-0,English,"- Acquiring a solid foundation in wireless networks
+- Developing familiarity with the wireless communication environment for students in the field of Computer Science and Engineering","Upon successfully completing this course, students will attain a solid grasp of the fundamentals of wireless networks. 
+They will acquire knowledge in various areas including wireless transmission media, wireless transmission protocols, multiplexing technologies, cellular concepts, and more.","1. ""Wireless Communications,"" Andreas F. Molisch
+2. ""Introduction to wireless & mobile systems,"" Darma Prakash Agrawal","-Attendance: 10%
+-Mid-term exam: 40%
+-Final exam: 50%","Students interested in enrolling in this course are advised to be prepared in the following areas:
+1) Possess a fundamental understanding of computer networks.
+2) Have the ability to comprehend and follow the course lectures delivered in English and take all exams in English.",raw/syllabus/2026_2_COMP0458-001/Pub.json
+2026-2,EECS0312-001,정창수,3-2-2,한국어,"이 과목에서는 TCP/IP 기반 인터넷 통신 프로그램을 개발하기 위한 Socket 프로그래밍을 학습한다. 
+소켓 기본 함수, TCP 서버, UDP 서버, 멀티캐스트 등의 주제에 대하여 매주 예제 중심의 수업을 통해 Linux 환경에서의 Socket 프로그래밍 기법을  소개한다.",네트워크 기술의 기본 내용을 이해하고 TCP/IP 기반의 네트워크 프로그램을 개발할 수 있다.,,"출석: 10%
+과제:  10%
+중간시험 : 30%
+기말시험: 50% (상황에 따라 팀프로젝트로 변경될 수 있음)","1. 프로그래밍에 대한 기본적인 지식이 필요 (특히 C 언어에 대한 이해도가 필요함)
+2. 수강을 위해 반드시 C언어에 대한 지식을 가지고 있어야 함
+3. 소켓 프로그래밍 과제를 수행하기 위해서는 각자 리눅스 환경을 구축해야 됨 (Windows의 sub-system은 사용 불가함)
+4. 매주 Linux 기반 소켓 프로그래밍 과제를 부여함
+5. 중간고사나 기말고사에 결시할 경우, F학점이 주어짐
+6. 생성형 AI를 통해 도출된 결과물을 활용하여 과제 또는 시험 답안에 제출하는 행위를 허용하지 않으며, 이러한 행위는 부정행위로 처리함",raw/syllabus/2026_2_EECS0312-001/Pub.json
+2026-2,ELEC0462-001,한명균,3-2-2,English,"This course aims to help students learn key concepts of UNIX/Linux system programming and gain hands-on experience by using low-level APIs.
+Students will develop the ability to understand various services provided by the Linux operating system and use them to build faster and more efficient programs.
+The main topics covered in this course include: File I/O, File System, Device I/O, Terminal Driver, Timer, Signal, Process, Shell, Thread, Pipe, Socket, and more.","- Gain familiarity with the Linux operating system
+- Acquire the ability to perform system programming in C
+- Learn to design and implement system software architectures",,"- Attendance: 5%
+- Midterm Exam: 30%
+- Final Exam: 30%
+- Assignments: 35% 
+  (Lab: 10%, Project: 25%)
+
+(These evaluation methods are tentative)","1. Course details such as textbooks and evaluation methods are subject to change and will be finalized during the first class.
+2. All course materials will be provided in English.
+3. Students must be able to develop programs in the C programming language.
+4. Any misconduct in assignments, exams, or attendance will result in a severe penalty on the grade.
+5. No soliciting for the final grades at the end of the semester. 
+6. No makeup exam for those who miss the exams.
+7. By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_2_ELEC0462-001/Pub.json
+2026-2,ELEC0462-002,이성희,3-2-2,한국어,"이 과정은 UNIX/LINUX 시스템 프로그래밍과 관련된 주요 개념에 대해 배우고, 하위레벨 API를 사용하여 시스템 프로그래밍을 해 봅니다. 학생들은 본 강의를 통해 UNIX/LINUX 운영체제가 제공하는 다양한 서비스에 대해 이해하고, 이를 활용하여 보다 빠르고 효율적인 프로그램을 개발할 수 있게 됩니다. 본 강의에서 다루는 주요개념은 다음과 같습니다. 
+File I/O, File system, Device I/O, Terminal Driver, Timer, Signal, Process, Thread,  Pipe, Socket, Semaphore.","- 리눅스 운영 체제에 친숙해 진다 
+- C 언어 기반 시스템 프로그래밍을 수행할 수 있다 
+- 시스템 소프트웨어 아키텍처를 구축하고 이를 구현할 수 있다.",,"- 시험: 60% (중간 25%, 기말 35%)
+- 과제: 40%","- C 프로그래밍에 능숙해야 함
+- 재수강생 최대 평점 B+ 부여
+- 1/4이상 출석 미달 시, F 부여",raw/syllabus/2026_2_ELEC0462-002/Pub.json
+2026-2,ELEC0462-003,이성희,3-2-2,한국어,"이 과정은 UNIX/LINUX 시스템 프로그래밍과 관련된 주요 개념에 대해 배우고, 하위레벨 API를 사용하여 시스템 프로그래밍을 해 봅니다. 학생들은 본 강의를 통해 UNIX/LINUX 운영체제가 제공하는 다양한 서비스에 대해 이해하고, 이를 활용하여 보다 빠르고 효율적인 프로그램을 개발할 수 있게 됩니다. 본 강의에서 다루는 주요개념은 다음과 같습니다. 
+File I/O, File system, Device I/O, Terminal Driver, Timer, Signal, Process, Thread,  Pipe, Socket, Semaphore.","- 리눅스 운영 체제에 친숙해 진다 
+- C 언어 기반 시스템 프로그래밍을 수행할 수 있다 
+- 시스템 소프트웨어 아키텍처를 구축하고 이를 구현할 수 있다.",,"- 시험: 60% (중간 25%, 기말 35%)
+- 과제: 40%","- C 프로그래밍에 능숙해야 함
+- 재수강생 최대 평점 B+ 부여
+- 1/4이상 출석 미달 시, F 부여",raw/syllabus/2026_2_ELEC0462-003/Pub.json
+2026-2,GLSO0227-001,권영우,3-3-0,한국어,"오늘날의 ICT 기술은 클라우드를 기반으로 이루어져 있다고 해도 과언이 아니다.  이 수업은 클라우드 컴퓨팅을 이루고 있는 여러 종류의 이론적 배경(네트워크, 클라우드 운영체제, 원격 실행, 스토리지, 장애 대응 등)에 대해서 다루고 있으며,
+최신 상용 기술을 직접 다뤄보며, 기술의 발전 상황에 대해서 이해할 수 있도록 한다.","* 클라우드 컴퓨팅의 기본적인 배경 기술에 대한 이해
+  - 클라우드 컴퓨팅의 특징
+  - 클라우드 컴퓨팅의 디자인 이슈
+  - 네트워크 및 통신 기술
+  - 동시성 문제
+  - 가상화 기법
+  - 보안 이슈
+
+ * 상용 클라우드 컴퓨팅 플랫폼에 대한 이해와 이를 이용한 SW 개발
+  - Amazon AWS 실습",직접 제공,"중간시험: 30%
+기말시험: 40%
+과제: 20% (Amazon AWS를 사용한 실습)
+출석: 5%
+  - 0 ~ 4회 결석: 감점 없음
+  - 5 ~ 7회 결석: 50 ~ 90% 감점
+발표: 5%
+  - 주제 미정","Amazon AWS, MS Azure 등과 같은 최신 클라우드 환경에서의 실습이 있음.",raw/syllabus/2026_2_GLSO0227-001/Pub.json
+2026-2,ITEC0401-001,김재수,4-3-2,한국어,"- 본 강좌는 종합 설계 교과목으로서 프로젝트 작성을 중심으로 강좌를 진행하며, 담당 교수의 통상적인 강의는 이루어지지 않음
+- 학기 초에  학생들이 자율적으로 팀을 구성하고, 담당교수와 상의하여 산업체에서 저안한 프로젝트를 진행함
+- 각 팀 별로 프로젝트 진행 상황을 발표하고, 프로젝트 진행 상의 문제점이나 애로사항을 자문하여 해결하는 형태로 수업이 진행됨
+- 프로젝트 주제는 산업체에서 제안하는 내용을 팀 별로 배정하며 배정된 주제에 대해 팀 원들이 협력하여 문제를 해결하여야 함
+- 학기말에 각 팀별로 프로젝트 결과 발표와 함께 수행 보고서를 작성하여 제출함","- 학생들이 팀을 구성하여 컴퓨터와 관련되는 연구 주제를 선택하여 문제점을 분석하며, 이를 해결하기 위하여 창의적인 아이디어를 찾아 프로젝트를 진행한다.
+- 학생들은 프로젝트 진행을 통해 실제 산업 현장에서 발생하는 문제를 해결할 수 있는 시스템의 구조를 설계하고, 프로그래밍 언어들을 이용하여 코딩을 통하여 문제를 해결하는 방법을 연구하고 훈련한다.","- C/C++, 자바, 기타 프로그래밍 언어  및 관련 기술 문서","* 과제
+  -   프로젝트 계획서 제출, 중간 보고서 제출, 결과 보고서 제출
+
+* 평가방법
+  - 프로젝트 과제에 대한 평가는 다음 사항을 고려하여 교수 평가 40% + 팀간 평가 40% 으로 평가함.
+       # Creative Idea (33%)
+       # Documentations & Presentations (33%)
+       # The Level of Applied Thchnoledge (33%)
+  - 출석 5%와 안전 교육 이수 점수 5%를 부여함. (이수 증명서 제출)
+  - 기타 점수로 각 팀의 우수 팀원에 대하여 가산점으로 10% 를 부여함
+
+  - 등급 비율은  A+는 20% 이내, A0는 10% 이내, A-는 10% 이내, B+ 이하는 60% 이상 부여함
+  - 작품이 동작하지 않거나 터무니 없는 수준의 작품을 제작한 팀,  참여율이 저조한 학생은 C+ 이하로 F까지 부여할 수 있음
+
+* 선수과목
+  - 프로그래밍 언어 관련 과목, 기초창의공학설계","- 팀 당 수행실적 필수 요건 (아래 요건 중 1개 이상)
+  국내학술대회 논문발표 / 특허출원 / SW 등록 / 앱등록",raw/syllabus/2026_2_ITEC0401-001/Pub.json
+2026-2,ITEC0401-002,정설영,4-3-2,한국어,"This Capstone Design Project 1 (CDP1) course is a team-based project class. Each team consists of 3~4 students. Some or all teams may work with the project issues that will be proposed by the CSE professors and Industry experts. The details of class schedule will be discussed in the first class.
+
+- 이 수업은 팀 단위 프로젝트 수업입니다. 각 팀은 기본적으로 3~4명으로 구성됨
+- 모든 프로젝트는 기업과 함께 산학협력프로젝트로 진행 예정
+- 세부 프로젝트 정보 및 팀 구성은 개강 전 공지 예정
+- 프로젝트 결과물을 토대로 논문발표, SW등록, 특허출원 등 추진 예정
+- 과제 수행 후 해당 기업과 연계 현장실습 권장","창의:SW관련새로운기술혹은서비스개념을적용할수있다.
+융합:작품개발에SW융합개념을적용할수있다.
+비판:작품개발시기존서비스혹은제품을비판적으로분석할수있다.
+탐색:새로운개념및기술을탐색하여SW개발설계에적용할수있다.
+소통:팀단위프로젝트수행을위해팀원간소통을원활하게할수있다.
+책임:개발한SW에대한사회적책임성및공공성을검토할수있다.
+창의:학사과정동안에배운SW이론및기술을토대로새로운SW작품을팀단위로개발할수있다.",None,"The grading will be done based on the project output (report, presentation, etc).
+
+More details of evaluation will be given in the first class.",The special notice will be given on the ABEEK class homepage.,raw/syllabus/2026_2_ITEC0401-002/Pub.json
+2026-2,ITEC0401-004,권영우,4-3-2,한국어,,,,,,raw/syllabus/2026_2_ITEC0401-004/Pub.json
+2026-2,ITEC0402-001,고석주,4-3-2,한국어,"This Capstone Design Project 2 (CDP2) course is a team-based project class. Each team consists of 3~5 students. Some or all teams may work with the project issues that will be proposed by the CSE professors and Industry experts. The details of class schedule will be discussed in the first class.
+- 이 수업은 팀 단위 프로젝트 수업입니다. 각 팀은 기본적으로 3~5명으로 구성됨.
+- 프로젝트 주제는 컴퓨터학부 교수진 및 산업체에서 제안하는 과제로 할 예정임
+- 세부 과제 정보 및 팀 구성 등은 첫 수업 시간에 안내함
+- 한학기 동안에 과제를 완수해야 함. 
+- 과제 결과물을 토대로 논문발표 등 추진 예정
+- 과제 후 해당 기업과의 연계 인턴쉽 권장",Team-based Project with SW Industry,None,"The grading will be done based on the project output (report, presentation, etc).
+* 출석: 10% (연구실 안전교육 이수증 제출 5% 포함)
+* 교수평가: 70% (멘토 평가 10% 포함)
+* 팀간평가: 10%
+* 팀원평가: 10%
+More details of evaluation will be given in the first class.
+* 기타(5%, 교수평가에 포함): 교내 LMS 연구실안전교육을 이수하고 이수증을 최종보고서에 첨부",The special notice will be given on the LMS class homepage.,raw/syllabus/2026_2_ITEC0402-001/Pub.json
+2026-2,ITEC0402-002,권영우,4-3-2,한국어,"본 강의는 학과에서 배운 전공 이론을 바탕으로 산업 현장의 실제 문제를 기획, 설계, 구현, 평가하는 실무형 팀 프로젝트입니다. 학생들은 참여 기업이 제시하는 과제를 해결하기 위해 기업 멘토 및 지도교수와 협력하며, 아이디어 도출부터 최종 결과물(시제품 또는 소프트웨어) 완성까지의 전체 개발 주기를 주도적으로 경험합니다.","핵심 목표: 산업 현장 요구에 부합하는 실전 문제 해결 능력 및 융합적 사고력 배양
+
+주요 활동:
+산학 연계: 기업 실무진과의 멘토링 및 피드백 교류
+프로젝트 수행: 요구사항 분석 ➔ 기획 및 설계 ➔ 구현 및 테스트 ➔ 최종 발표
+협업 경험: 역할 분담, 일정 관리, 갈등 해결 등 팀워크 역량 강화
+
+기대 효과: 실무 프로세스 이해도 증진, 커뮤니케이션 스킬 향상, 취업 시 활용 가능한 수준 높은 실무 포트폴리오 구축",없,"총 3번의 발표가 있습니다.
+ - 수행 계획 발표 
+ - 중간 결과 발표 
+ - 최종 결과 발표
+
+평가는 발표, 보고서, 동료평가, 학술논문의 우수성 등을 종합적으로 고려하여 평가합니다.",사전에 팀을 구성한 경우는 꼭 이메일로 알려주기 바랍니다.,raw/syllabus/2026_2_ITEC0402-002/Pub.json
+2026-2,ITEC0417-001,정인욱,3-3-0,English,"Here's a brief course description:
+This course offers a hands-on introduction to the core methods of classical machine learning. Students will learn how to build, train, and evaluate models for both supervised tasks like classification and unsupervised tasks like clustering and dimensionality reduction. Key topics include regression, Bayesian methods, support vector machines, ensemble methods, principal component analysis, and matrix factorization. Throughout the course, emphasis is placed on understanding how models generalize, how to evaluate them honestly, and how to apply them to real data. By the end, students will be equipped to select and apply the right machine learning method to practical problems.","Understand the pros and cons of various ML techniques and be able to apply the most efficient one to a given problem.
+Practical knowledge of ML is the critical objective.","1. An Introduction to Statistical Learning (ISL) by James
+2. Mathematics for Machine Learning by Deisenroth, Faisal, Ong","Attendance 10%
+Midterm Exam 30%
+Final Exam 30%
+Assignment 30%",None,raw/syllabus/2026_2_ITEC0417-001/Pub.json
+2026-2,ITEC0418-001,백낙훈,3-3-0,한국어,"- Focusing on the capability of parallel programming capability.
+- Also focusing on the capability of CUDA programming.
+- Massively parallel programming abilities will be increases in this course.
+
+** 주의: 이 강의는 (녹화된 동영상을 제공하는) ""온라인 강의""로 진행됩니다. 별도의 off-line 수업이나, zoom 실시가 강의가 제공되지 않을 가능성이 매우 높습니다.
+
+** 주의: CUDA 프로그래밍이 가능한 기기가 있어야 수업을 따라갈 수 있습니다. 
+NVIDIA 그래픽 카드가 있거나, 컴퓨터학부 실습실의 PC를 사용하거나, NVIDIA 그래픽 카드를 포함시킨 클라우드 계정 (아마존, 구글, 네이버 클라우드 등)을 확보해야 수강, 숙제 제출 등이 가능합니다.
+온라인 강의의 특성상, NVIDIA 그래픽 카드의 확보 및 실습 환경 세팅은 수강생이 직접 해결해야 하며, 별도의 실습 환경을 제공하기가 불가능합니다.
+(You should be able to use any CUDA-capable device, including almost all models of NVIDIA graphics card. A cloud computing account with an NVIDIA card can be a solution.)
+
+*** 수강정원 초과에 따른 조치
+- 현재 수강가능한 최대 인원으로 설정하여, 더 이상의 증원은 없습니다.
+- 경북대학교 원격 수업 규정에 따라, 추가 분반 개설도 불가능합니다.
+- 수강 변경 기간 이후, 수강취소분에 대한 추가 수강신청 허용은 ""수강신청 시스템 기준""으로 처리합니다.
+- 수강 변경 기간에 수시로 학교 수강신청 시스템에 접속, 그 시간 기준으로 수용 가능한 인원까지 선착순으로 ""허용"" 처리하고, 그 이후는 ""반려"" 처리합니다.
+- 그외, 수강 증원, 수강 신청 허용을 요청하는 전화/이메일/면담은 일체 응답하지 않습니다.","- 대규모 병렬 처리에 대한 이론적 지식과 실제 코딩 능력을 함께 기른다.
+- 온라인 강의 방식으로 단기간에 필요한 내용을 풍부하게 습득하도록 한다.
+- CUDA로 실질적인 문제 해결이 가능한 코딩 능력을 기른다.","주교재:
+Handouts distributed in the class hours.
+Check the LMS (lms1.knu.ac.kr) for the materials.
+
+부교재:
+Programming Massively Parallel Processors, 4th Ed., 
+Wen-mei W. Hwu, David B. Kirk, and Izzat El, Morgan Kaufmann Publishers, 2022
+(ISBN: 978-03-239123-1-0)
+
+Programming in Parallel with CUDA, 
+Richard Ansorge, Cambridge University Press, 2022
+(ISBN: 978-11-084795-3-0)
+
+CUDA 프로그래밍 기초편 (ISBN 979-11-89961-25-1) 
+교보문고 전자책 (10월 중 발간예정)
+
+CUDA 프로그래밍의 실제 (ISBN 979-11-89961-27-5) 
+교보문고 POD 도서 (10월 중 발간예정)","중간고사 : 10월 24일 토요일 10:30 - 12:00 확정
+기말고사 : 12월 12일 토요일 10:30 - 12:00 확정
+중간고사, 기말고사는 반드시 대면 참석해야 성적이 나갑니다. 
+- There will be a mid-term and also a final examination.
+- Additional individual programming projects will be assigned.
+- Mid-term examination: 40 ~ 45%
+- Final examination: 40 ~ 45%
+- Programming Project: 5 ~ 10%
+- Participating in the class hours: 5 ~ 10%
+- Programming assignments are relatively important in this course. You should submit all the assignments.
+- This course is absolutely against to all plagiarism. 
+- For re-taking students, the grades are restricted to be below B+.","중간고사 : 10월 24일 토요일 10:30 - 12:00 확정
+기말고사 : 12월 12일 토요일 10:30 - 12:00 확정
+중간고사, 기말고사는 반드시 대면 참석해야 성적이 나갑니다. 
+- 중간고사, 기말고사는 ""서술형 주관식"" 문제만 출제 예정이며, 극히 제한적으로 일부 ""단답형"" 문제 또는 ""객관식"" 문제가 출제될 수도 있습니다.
+- 이 과목은 컴퓨터학부 4학년 과정이며, 프로그래밍 실습이 필수입니다.
+- 모든 과제는 C/C++ 로 진행됩니다.
+- 모든 자료는 LMS 사이트 (lms1.knu.ac.kr) 참고.
+- 강의 예제로, 행렬과 벡터가 자주 사용됨. 행렬 곱하기 등의 기본 연산은 알고 있어야 함.",raw/syllabus/2026_2_ITEC0418-001/Pub.json
+2026-2,ITEC0419-002,김진욱,3-3-0,한국어,"데이터 과학은 빅데이터, 머신러닝, 인공지능 등의 분야에서 기초가 되는 학문이다. 본 과목에서는 데이터 획득, 데이터 탐색과 분석, 데이터 시각화 방법 등을 학습하고, 기계학습의 기초 등 데이터 과학의 제반 이론에 대해 폭넓게 탐구한다.
+특히 최근 chatGPT가 세상을 빠르게 변화시키고 있으며 chatGPT를 데이터 과학의 실무에 활용하는 것은 중요한 역량으로 판단되기에, 이번 학기에는 chatGPT를 적극 이용하여 데이터 수집/정제/분석 하는 다양한 방법들에 대해 익히며, 실기 평가도 이런 역량을 평가하는 방안을 고민하고 있다. 
+이를 위해 수강생들은 chatGPT와 google COLAB의 기본적인 사용법은 숙지하고 수업에 참여해주기 바랍니다.","chatGPT를 활용하요 데이터 과학자에게 요구되는 기본 업무을 수행하는 역량을 배양함
+- 데이터 획득 
+- 데이터 탐색과 분석
+- 데이터 시각화
+- 데이터 마이닝
+- 데이터 분류
+- 통계적 분석","Computational and Inferential Thinking: The Foundations of Data Science
+2nd Edition by Ani Adhikari, John DeNero, David Wagner, 2021","출석 5%
+과제 5%
+중간시험 45%
+기말시험 45%
+합계 : 100%","본 교과목은 데이터 과학의 전반적인 내용을 이론적으로 폭넓게 다루는 과목임.
+머신러닝/인공지능의 주요 기초 지식은 다루지만, 관련 내용을 깊이 있게 다루지 않음
+(해당 내용은 기계학습개론/인공지능 교과목 수강 권장)
+Python 언어를 활용하여 프로젝트를 수행함",raw/syllabus/2026_2_ITEC0419-002/Pub.json
+2026-2,ITEC0424-002,이종택,3-3-0,English,"- This course is designed for senior undergraduates with a background in machine learning. 
+- The class aims to provide students with a comprehensive understanding of the fundamental principles and techniques used in computer vision.
+
+- The class will be conducted entirely in English.
+- All course materials, including lectures, assignments, and exams, will be provided in English.
+- Students are required to submit their assignments and exam answers in English.
+
+- You can download textbook via https://szeliski.org/Book/","Computer Vision enables machines to ""see"" images (i.e., understand images and videos). 
+In this course, students learn and implement computer vision algorithms. We'll also discuss modern visual learning approaches.","Computer Vision: Algorithms and Applications, 2nd ed. 
+(https://szeliski.org/Book/)","- Attendance: 10%
+- Midterm Exam: 35% 
+- Final Exam: 35% 
+- Assignments: 20% 
+
+This grading scale and evaluation method are subject to change depending on the number of students taking the course.","- The lectures/exams/presentations will be held offline
+- The class will be conducted entirely in English.",raw/syllabus/2026_2_ITEC0424-002/Pub.json
+2026-2,STAT0452-006,백낙훈,3-3-0,한국어,"- 수치 해석 알고리즘의 분석과 구현 과정을 학습하는 것을 추구한다. 
+- 세부항목으로는 컴퓨터학부의 특성에 맞추어 수치 계산의 다양한 문제들과 방법들, 알고리즘, 분석 과정 등을 배운다. 
+- 본 강의는 일반적인 알고리즘의 다양한 분야들 중에서도 수치 관련 문제들과 알고리즘들을 알아보고, 실제 구현 과정을 자세하게 배운다.
+** 컴퓨터학부 학생에게 우선권이 있으며, 강의 내용, 평가 방법 등도 컴퓨터학부 학생에게 맞추어 제공됩니다.
+
+** 수강정원 초과에 따른 조치
+- 현재 수강가능한 최대 인원으로 설정하여, 더 이상의 증원은 없습니다.
+- 경북대학교 원격 수업 규정에 따라, 추가 분반 개설도 불가능합니다.
+- 수강 변경 기간 이후, 수강취소분에 대한 추가 수강신청 허용은 ""수강신청 시스템 기준""으로 처리합니다.
+- 수강 변경 기간에 수시로 학교 수강신청 시스템에 접속, 그 시간 기준으로 수용 가능한 인원까지 선착순으로 ""허용"" 처리하고, 그 이후는 ""반려"" 처리합니다.
+- 그외, 수강 증원, 수강 신청 허용을 요청하는 전화/이메일/면담은 일체 응답하지 않습니다.","공학 분야 수학 문제를 해결하기 위한 수치 알고리즘을 소개하고, 이의 구현을 추구한다.
+다루는 분야는 선형 대수, 미적분, 일반 선형 방정식 등을 포괄하며,
+주교재 전체를 1학기에 모두 다루는 것을 목표로 한다.",,"- Mid-term examination: 40 ~ 45%
+- Final examination: 40 ~ 45%
+- Indivisual Project: 5 ~ 10%
+- Participating in the class hours: 5 ~ 10%
+- This course is absolutely against to all plagiarism. 
+- For re-taking students, the grades are restricted to be below B+.","- 강의 내용이 별도 PPT로 제공되지만, 주교재를 통한 학습이 더 중요하며, 시험 범위는 주교재를 기준으로 출제합니다.",raw/syllabus/2026_2_STAT0452-006/Pub.json
+2026-2,TCHR0593-002,김재수,3-3-0,한국어,"- 정보·컴퓨터 교육의 필요성과 교육  과정에 대해 설명할 수 있다.
+- 정보 교육 과정에서 다루는 학습내용을 파악할 수 있다.
+- 교수·학습 이론에 대한 이해를 바탕으로 정보·컴퓨터 교육을 위한 수업을 설계할 수 있다.","컴퓨터 교육 교과 과정의 구성과 전개 방식을 이해한다.
+컴퓨터 교육을 위한 기존 방법들을 탐색하고 문제점을 발굴한다.
+컴퓨터 교육 기술을 개발하고 능력을 함양한다.
+컴퓨터 교수법 및 교재 연구, 강의 방법 및 실습 지도 방법 등을 학습한다.",,"출석: 10%
+중간시험+기말시험: 70% (지필고사 등)
+발표+토론: 20%  (보고서 작성 + 발표 등)","* 컴퓨터학부 학생들 중 교직을 이수하는 학생에 한하여 수강이 가능합니다.
+* 컴퓨터 교육에 관련된 영상, 발표 자료 등이 수업에 활용될 예정입니다.
+* 학습 지도안 및 수업 실연 등의 발표 및 토론 위주로 수업이 진행될 예정입니다.
+* 위의 모든 사항은 대학 일정이나 사정에 따라 변할 수 있습니다.",raw/syllabus/2026_2_TCHR0593-002/Pub.json
+2026-2,TCHR0594-001,김승호,3-3-0,한국어,"이 강의는 컴퓨터를 전공한 사람이 초, 중등교에서 컴퓨터 또는 관련 수업을 맡을 사람을 대상으로 함. 
+
+따라서 이 강의에서는 현재 쓰이고 있는 초중등 학교의 컴퓨터 관련 교재를 중심으로 수업 현장에서 어떻게 수업에 임할 것인가를 다룸. 이를 위해서 교육부의 정책을 검토하고, 교재를 분석하며, 교재의 미비한 부분을 수정 보완해 봄. 끝으로 교육 현장에서 필요한 수업 지도안을 작성해 봄.","-  현재 쓰이고 있는 초중등 학교의 컴퓨터 관련 교재를 중심으로 수업 현장에서 어떻게 수업에 임할 것인가를 이해함
+ -  이를 위해서 교육부의 정책을 검토하고, 교재를 분석하며, 교재의 미비한 부분을 수정 보완해 봄. 
+ -  교육 현장에서 필요한 수업 지도안을 작성 능력 습득.","-  현재 초등 및 중등학교에서 쓰이는 교과서를 중심으로 강의를 진향함
+- 기타 수업 자료와 필요한 자료","발표와 교재 연구, 교안 작성 능력 등을 종합하여 평가함",*  컴퓨터 학부 학생들 중 교직을 이수하는 학생에 한하여 수강을 권장함(교직 이수자 이외는 별도 면담 후 수강 가능 여부 결정),raw/syllabus/2026_2_TCHR0594-001/Pub.json
+2026-2,COMP0224-002,이호경,3-3-0,한국어,"본 강의에서는 객체지향 소프트웨어 개발 방법론인 Unified Process에 대하여 학습한다. 
+Unified Process는 객체지향 분석, 설계, 구현, 테스팅 등 전 과정을 다루고 있다. 본 강의에서는 객체지향 분석과 설계까지의 과정을 다룬다. 
+이 과정에서 설계 언어인 UML(UnifiedModelingLanguage)를 익히고, 이를 이용하여 분석 및 설계 결과를 모델한다. 
+주별강의 계획 중에서 분석 및 설계를 제외한 부분은 경우에 따라 분석 설계관련 내용으로 대체할 수 있다. 
+수업을 듣는 모든 학생은 학기 중,  1개의 프로젝트를 진행한 후 분석결과와 설계결과를 최종 발표한다.","객체지향 요구분석의 이해 및 실습
+객체지향 설계의 이해 및 실습","교재 : Alan Dennis, Systems Analysis and Design with UML : An Object-Oriented Approach, third edition, Wiley, 2010
+부교재 : 기타 UML 관련 서적/소프트웨어 분석 설계 관련 책","출석 : 10% 중간고사 : 20%, 기말고사 : 30%, Term Project : 30%, 기타 10%(기타에는 태도, 발표, 토론 등이 포함될 수 있음)
+
+
+본 수업은 이론 습득과 더불어 실습을 중요시하며
+
+과제로 프로젝트 진행하고 진도에 따라 발표평가를 진행합니다. 
+프로젝트의 주제는 자유입니다. 다른 과목에서 소프트웨어를 개발하고 있거나/진행한 적이 있다면 그 주제를 사용해도 되며, 인터넷에서 찾은 그럴 듯한 주제도 상관없습니다.  
+발표태도 발표능력, 프로젝트 과제의 창의성, 사업성 등은  평가 대상이 아니며,  주어지는 프로젝트를 분석하고 설계 하는 능력을 집중 평가합니다.  
+분석 및 설계가 이 수업의 학습 주제인 만큼 수업과정을 차분히 따라오면 프로젝트 진행에 어려움이 없을 것입니다. 
+
+코딩이 필수 사항은 아니지만 설계 결과를 코딩에 반영한 경우 가점이 있습니다. 
+다만 분석/설계와 다른 프로그램 결과를 제출하는 경우에는 감점합니다.","- C++ 또는 Java, C#, 파이썬 등의 객체지향 프로그래밍 언어에 대한 경험이 있고, 객체지향의 주요 개념을 이해하고 있으면 수강에 유리함
+- 선택한 소프트웨어 프로젝트에 대해  분석 및 설계를  진행하고 2차례 정도 발표하여야 함, 분석 설계 위주의 수업이지만 설계 결과를 코드로 변환하는 내용도 간단하게 다룸
+- 본 과목은 객체지향방법론에서 객체지향 분석 및 설계를 진행하는 과목입니다. 소프트웨어 개발 직전까지 프로젝트 생성 및 진행방법은 프로젝트 과목에서 다루며 / 설계 이후 코딩/ 테스팅/ 유지보수 등은 다루지 않습니다. 
+- c, 파스칼, Fortran 등과 같은 절차형 언어를 위한 구조적 방법론 , 즉 structured analysis and design(구조적 분석 설계(DFD, miniSpec, Data Dictionary)) 방법론은 다루지 않습니다. 다만 수강생의 요청이 있다면 강의 가능합니다. 
+   객체지향 언어를 사용할 예정이 없는 학생은 (c 언어만 사용할 예정인 학생은) 본과목 보다는 구조적분석설계 방법론을 배우길 권합니다. 
+- 경우에 따러 수업 중에 디자인 패턴을 다룰 수 있습니다. 
+- 데이타베이스 설계, data modeling, E-R diagram 작성이 가능한 학생은 설계과정 학습에 유리합니다. 
+
+- 주별 강의 내용 및 진도는 학생의 학습정도에 따라 변할 수 있습니다.",raw/syllabus/2026_2_COMP0224-002/Pub.json
+2026-2,COMP0312-001,탁병철,3-3-0,English,"To develop an understanding of the key concepts of modern operations systems. The main topics that are covered in this course include processes, threads, scheduling, synchronization, memory management, I/O systems, and file systems.
+There will be two programming assignments.
+There will be multiple quizzes.","Understand core components of modern OS.
+Understand the relationship between OS components.
+Acquire detailed knowledge of OS concepts through intensive programming assignments.","Operating System Concepts, 9th Edition (or higher) by Abraham Silberschatz, Peter Baer Galvin, Greg Gagne","* Evaluation
+mid-term: 30%
+final: 30%
+projects: 40%
+(extra credit: 10%)
+
+* Prerequisite
+Basic understanding of computer systems, C/java programming experience, data structure","No makeup exam for those who miss the exams.
+No soliciting for the final grades at the end of the semester. 
+There will be no exception to applying the attendance rules. By the school rule, if you miss 1/4 of the classes, you will get F.
+Under no circumstances, you will be excused from absences except for family tragedy and military service.",raw/syllabus/2026_2_COMP0312-001/Pub.json
+2026-2,COMP0322-003,이천희,3-2-2,한국어,"본 과목은 데이터베이스의 핵심 개념 및 기술을 다루는 과목으로, 주로 대규모 데이터를 효율적으로/효과적으로 관리하는 위한 방법론을 배우는 과목입니다. 관계형 데이터 모델, SQL, 함수 종속성, 인덱스 등의 다양한 기술을 배우고, 널리 사용되는 기존 RDBMS를 사용하는 방법과 자신만의 mini DBMS를 구현하는 것을 실습으로 할 예정입니다.","데이터베이스의 핵심 개념을 배우고, 다양한 데이터베이스 기술을 습득한다.",,"출석: 5%
+중간시험: 35%
+기말시험: 35%
+과제: 25%","* (필독 - 시험 안내)  중간/기말고사는 타 분반과 함께 치러야 하기 때문에 시험 기간 중 수요일 저녁 6시 이후에 치를 예정.
+                             다른 과목과 시험 시간이 겹치는지 반드시 확인 필요.
+
+** 필수 교재: 하드 커버 말고 소프트 커버 버전도 있고, 소프트 커버가 더 저렴함
+                 (Fundamentals of Database Systems, 7판, Ramez Elmasri and Shamkant B. Navathe(글로벌 에디션))",raw/syllabus/2026_2_COMP0322-003/Pub.json
+2026-2,COMP0322-004,한명균,3-2-2,한국어,"본 과목은 데이터베이스 시스템 및 데이터베이스 응용 프로그램을 설계, 사용, 구현하는데 필요한 핵심 개념과 기술을 다루는 과목입니다. 대규모 데이터를 효율적으로 관리하는 방법론을 배우는 과목으로 관계형 데이터 모델, SQL, 함수 종속성, 인덱스 등의 다양한 기술을 학습합니다. 또한, 널리 사용되는 기존 RDBMS를 사용하는 방법과 간단한 DBMS 내부 구현을 진행하는 실습도 진행합니다.","데이터베이스의 핵심 개념을 배우고, 다양한 데이터베이스 기술을 습득한다.",,"출석: 5%
+중간시험: 35%
+기말시험: 40%
+과제: 20%
+
+(사정에 따라 위의 점수 분포는 변동될 수 있음)","1. Course details such as textbooks and evaluation methods are subject to change and will be finalized during the first class.
+2. All course materials will be provided in English.
+3. Students must be able to develop programs in the JAVA programming language.
+4. Any misconduct in assignments, exams, or attendance will result in a severe penalty on the grade.
+5. No soliciting for the final grades at the end of the semester. 
+6. No makeup exam for those who miss the exams.
+7. By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_2_COMP0322-004/Pub.json
+2026-2,COMP0323-002,펑리메이,3-3-0,English,"This course introduces the fundamental principles of data and information representation, modulation and demodulation, and communication on network devices. The topics covered include:
+
+1. An overview of data communication systems and transmission media.
+2. Digital and analog signal fundamentals.
+3. Data modulation and demodulation, along with encoding and decoding techniques.
+4. Data link control protocols.
+5. Multiplexing technologies, including TDM, FDM, and others.","This course aims to provide a comprehensive overview of the broad field of data and computer communications. It covers a range of topics, including data signals, transmission media, modulation and demodulation, control protocols, multiplexing, and more.
+
+By the end of the course, students will gain a systematic understanding of how digital and analog signals represent data, the processes of modulating and demodulating signals for transmission and reception, and how transmission systems efficiently transmit modulated signals.","William Stallings, Data and Computer Communications","Attendance:5%
+Assignments: 20%
+Mid-term Exam: 35%
+Final exam: 40%",Students who wish to enroll in this course should possess a basic understanding of data communications and computer networks.,raw/syllabus/2026_2_COMP0323-002/Pub.json
+2026-2,COMP0324-003,남우정,3-3-0,한국어,"본 강의에서는 인공지능의 전반적인 이론과 개념에 대해 공부한다.
+인공지능 기본 이론, 응용 작동원리에 대해 공부하며 프로그래밍을 통해 학습의 능률을 올린다.","본 강의에서는 인공지능의 전반적인 개념과 이론을 이해하고 응용분야에 대해 이해하는것을 목표로 한다.
+실전 프로그래밍을 통해 학습의 능률을 올린다.",교재는 추후 공지하겠습니다.,"본 강의는 중간, 기말, 과제를 통해 평가합니다.",본 강의는 python 언어를 기반으로 진행합니다.,raw/syllabus/2026_2_COMP0324-003/Pub.json
+2026-2,COMP0328-002,정기숙,3-2-2,한국어,본 과목은 코틀린 언어 기반의 안드로이드앱 개발 과정으로 구성되어 있습니다. 수강생은 안드로이드 스튜디오 개발환경의 프로그래밍을 직접 실습해 보면서 안드로이드앱 개발에 대한 기본 개념과 기술을 배울 수 있습니다.,"앱 서비스를 통해 해결할 수 있는 문제를 발견하고 정의할 수 있다.
+다양한 전공지식 및 기술을 활용하여 통합적으로 주어진 문제를 해결할 수 있다.","참고교재:
+Do it! (기초 문법부터 안드로이드 활용까지!) 코틀린 프로그래밍, 황영덕, 이지스퍼블리싱, 2019","출석 5%
+중간시험(이론+실기) 45%
+기말시험(실기) 20%  
+과제 10%
+개인 프로젝트 20%","1. 자바프로그래밍 혹은 기타 객체지향프로그래밍 과목을 이수한 학생만 수강하기 바랍니다.
+2. 안드로이드폰 소지자는 첫 수업에 USB 연결 케이블을 준비해 주세요.
+3. 첫 수업에 반드시 참석해야 합니다.
+4. 주교재의 전체 내용을 다루기에는 시간이 부족하므로, 다음 내용은 저자 직강의 동영상 보조자료를 활용하여 개인 학습을 하기 바랍니다.
+    17장. 저장소 데이터 보관하기
+    18장. 네트워크 프로그래밍
+    19장. 위치 정보 활용하기
+    20장. 파이어베이스 연동과 인증 기능
+    21장. 파이어스토어, 스토리지, FCM
+    22장. 제트팩 컴포즈
+5. 주별강의 내용 및 일정은 강의 진행 상황에 따라 일부 조정될 수 있습니다.",raw/syllabus/2026_2_COMP0328-002/Pub.json
+2026-2,COMP0414-001,김동균,3-3-0,한국어,"- 본 강좌는 TCP/IP 프로토콜에 대한 자세한 동작 과정을 학습한다. 또한, IP 주소체계, IP 패킷전달 방법, 트랜스포트 프로토콜, 응용계층 프로토콜에 대해 학습한다. 고급과정으로 미래인터넷기술과 네트워크 보안 기법에 대해 학습한다.","데이타통신과 네트워크 프로그래밍 과목을 선수 과목으로 이수 하는 것을 권장함.
+인터넷에서 사용되고 있는 다양한 계층 별 프로토콜에 대한 이해를 목표로 함.","Textbooks: 
+1) Data Communications & Networks with TCP/IP Protocol Suite (6th Edition), written by Behrouz Forouzan
+2) Computer Networking: A Top-Down Approach(9th Edition), written by J. F. Kurose and K.W. Ross
+3) Data and Computer Communications, written by William Stallings
+4) Additional materials
+
+References: IETF RFCs and Internet Drafts, etc","1. 출석(10%)
+2. 중간고사(40%)
+3. 기말고사(40%)
+4. 과제(10%)",데이타통신과 네트워크 프로그래밍 과목을 선수 과목으로 이수하는 것을 권장함,raw/syllabus/2026_2_COMP0414-001/Pub.json
+2026-2,COMP0460-001,남덕윤,2-1-2,한국어,"컴퓨터 공학 전공자로서 해결해야할 연구 주제를 고민하고,  새로운 해결 방법을 찾아가는 과정에 대해 학습하고자 한다.","컴퓨터 공학 전공자로서 해결해야할 연구 주제를 고민하고,  새로운 해결 방법을 찾아가는 과정에 대해 학습하고자 한다.",관련 논문,"- 중간, 기말 리포트: 80%
+- 출석: 20%","- 사전에 담당교수와 협의된 학생들만 수강 신청하세요. (Only students who have consulted with and received prior approval from Prof. Nam should register for this course.)
+- 최종 보고서는 국내외 논문 제출 예정",raw/syllabus/2026_2_COMP0460-001/Pub.json
+2026-2,GLSO0212-001,박혜영,3-3-0,한국어,"본 강의는 SW 융합형 인재가 갖추어야할 기본 수학 이론과 관련한 전반적인 내용을 다룸. 
+데이터과학, 인공지능 및 SW 분야 전공자들에게 반드시 필요한 수학 이론인 선형대수와 편미분 관련 내용을 중심으로 하며, 
+이론적인 내용에 그치지 않고 수학 이론이 실제 데이터 처리 어떻게 활용될 수 있는지를 함께 다룸.",선형대수 및 편미분관련 수학이론을 데이터 분석과 소프트웨어 프로그래밍에 적용하여 그 개념을 확립한다.,"첫 강의 시간에 강의 교안을 별도 배포할 예정이며, 관련 참고문헌도 첫 강의시간에 소개할 예정임.","*과제
+연습문제 풀이 
+
+* 평가방법
+- 과제 평가 방법: 중간+기말 필답고사 (80~90%) + 과제 (10~20%) 
+- 강의참여도(토론, 게시판 등)에 따른 가산점이 부여될 수 있음.
+
+* 선수과목
+1학년 교육과정에 포함된 기초수학2와 수학1을 수강하였다는 전제하에 강의가 설계되어 있으나, 
+고등학교 수준의 미적분을 알고 있으면 수강 가능.
+첫 수업시간에 사전지식 설문조사를 통하여 수강생의 수준을 파하여 강의 난이도를 조정할 예정임.","강의 내용은 다소 변경될 수 있으며, 첫 강의시간에 공지할 예정임.  
+
+수강증원은 제한된 인원에 한에 가능하므로,  
+증원을 원하는 학생은 YES에 신청하기 전에 첫 수업 전까지 반드시 교수에게 먼저 이메일로 연락하여,
+필요한 절차를 안내받기 바랍니다. 
+개별 연락 없이 YES에 신청한 학생은 신청반려됩니다.",raw/syllabus/2026_2_GLSO0212-001/Pub.json
+2026-2,GLSO0229-001,이호경,3-2-2,한국어,"1. 창업 아이디어 구체화 및 검증문제 정의: 시장에 존재하는 페인포인트(불편함)를 파악하고 SW로 해결할 수 있는 방안을 기획합니다.아이디어톤 참여: 혼자 준비하기 어렵다면 학과개최 SW 창업 아이디어, mvp개발 해커톤에 참여해 보세요. 제한된 시간 내에 아이디어를 고도화하고 피드백을 받을 수 있습니다. 2. 창업mvp 프로젝트 진행 및 실행 경우에 따라 학생의 요청에 의해 외부전문가를 초청하여 활용할 수 도 있습니다.","""소프트웨어 기술을 활용하여 시장의 문제를 해결하고, 실제 작동하는 서비스(MVP)를 직접 개발하여 사업화 가능성을 검증하는 것
+ 1. 기획: 융합형 문제 해결 능력 (Problem Solving)불편함 발견: 일상이나 산업 현장에서 페인포인트(불편함)를 명확히 정의합니다.BM 설계: 아이디어를 수익 모델(Business Model)로 구체화하는 능력을 키웁니다.고객 검증: 가설을 세우고 인터뷰나 설문을 통해 실제 고객의 목소리를 반영합니다.🛠️ 2. 개발: MVP 구현 및 협업 능력 (Agile Development)최소 기능 제품 제작: 완벽한 기능이 아니더라도 핵심 가치를 보여줄 수 있는 웹/앱 서비스를 직접 개발합니다.린/애자일 방식 체득: 빠르게 만들고 피드백을 받아 수정하는 현대적 소프트웨어 개발 프로세스를 경험합니다.팀 협업: 기획자, 개발자, 디자이너 간의 소통 방식과 깃허브(GitHub) 등을 활용한 협업 툴 사용법을 익힙니다.🚀",,"중간시험  - 아이디어 발표평가
+기말 시험 - 사업계획서 발표
+과제  - MVP 시연 발표","sw, AI와 같이 시스템 개발을 염두에 둔 창업 프로젝트를 진행하는 과목, 
+단 다른 분야의 주제도 MVP개발이 필요하다면 
+린 스타트업 이론에 따라 진행",raw/syllabus/2026_2_GLSO0229-001/Pub.json
+2026-2,ITEC0417-002,남우정,3-3-0,한국어,"본 강의에서는 기계학습의 전반적인 이론과 개념에 대해 공부한다.
+기계학습 및 인공지능이 어떤식으로 응용되는지에 대해서도 공부하며 프로그래밍을 통해 학습의 능률을 올린다.
+인공지능이 활용되는 항공드론분야, 컴퓨터비전 등에 대해서도 선행공부를 진행함.","본 강의에서는 기계학습의 전반적인 개념과 이론을 이해하고 응용분야에 대해 이해하는것을 목표로 한다.
+수학적 증명과 실전 프로그래밍을 통해 학습의 능률을 올린다.","패턴인식 개정판 오일석 저 https://product.kyobobook.co.kr/detail/S000201027253
+https://smartstore.naver.com/majorbook","본 강의는 중간, 기말, 과제를 통해 평가합니다.",본 강의는 python 언어를 기반으로 진행합니다.,raw/syllabus/2026_2_ITEC0417-002/Pub.json
+2026-2,ITEC0424-001,이재협,3-3-0,한국어,"This course introduces fundamental concepts and modern advancements in computer vision, enabling students to build, train, and evaluate deep learning models for visual tasks. Topics include image classification, object detection, segmentation, and generative models, with a strong focus on convolutional neural networks (CNNs) and state-of-the-art deep learning techniques. Hands-on assignments and projects using Python and frameworks like TensorFlow or PyTorch will solidify theoretical understanding through practical implementation.
+
+By the end of the course, students will be able to:
+
+Understand and implement key algorithms and techniques in computer vision.
+Develop deep learning models for real-world applications such as face recognition, autonomous driving, and medical image analysis.
+Critically evaluate research papers and apply insights to new challenges.","By the end of this course, students will be able to:
+
+Understand the fundamental principles of computer vision and its applications.
+Analyze and implement key techniques in image processing, feature extraction, and object recognition.
+Build, train, and evaluate deep learning models for various computer vision tasks, including classification, detection, and segmentation.
+Utilize modern tools and frameworks, such as TensorFlow or PyTorch, to develop and deploy computer vision models.
+Conduct experiments and analyze results using platforms like Google Colab.
+Critically review computer vision research papers and identify future trends and challenges in the field.
+Apply computer vision solutions to real-world problems in domains such as healthcare, autonomous systems, and augmented reality.",Only lecture notes & Github,"There will be no traditional exams for this course. Instead, assessments will include assignments and project-based evaluations.
+The midterm evaluation will consist of a proposal presentation for the final project, which substitutes for a traditional final exam.
+The final evaluation will involve the submission and presentation of the project deliverables after the midterm period.
+Additionally, students will be assessed through a demo project assignment to demonstrate practical application of the concepts learned.","There will be no exams for this course. Instead, assessment will be based on assignments and a final project.
+Students will be required to perform experiments using Google Colab.
+The free version of Colab is sufficient for most tasks; however, students are allowed to use the paid version if needed for specific requirements or enhanced performance.",raw/syllabus/2026_2_ITEC0424-001/Pub.json
+2026-2,COMP0461-001,소휘수,2-1-2,한국어,"컴파일러 (LLVM 및 MLIR) 분야, 신뢰성 (소프트 에러, 적대적 공격, Out-of-distribution 등) 분야 관련 연구 중심의 심화 수업을 진행합니다.","학생들과 사전에 연구 주제를 확정하고, 각 연구 주제에 대해 학기동안 다음 과정을 수행합니다.
+- 연구주제 관련 논문 탐색
+- 주요 논문을 읽고 내용 발표 및 토론
+- 연구 관련 오픈소스 SW 설치 혹은 직접 구현
+- 연구 결과 정리",연구와 관련된 논문 및 관련 자료를 연구 현황에 맞춰 제공할 예정입니다.,"* S/U 기반 평가
+- 매주 연구 미팅/세미나 진행을 통한 발표 및 토론 후 연구노트 작성
+- 결과 정리",지도교수의 연구 분야를 기반으로 연구 중심 활동을 진행합니다. 본 과목은 수강 신청 전에 반드시 교수와의 사전 합의가 완료된 학생만 수강할 수 있습니다.,raw/syllabus/2026_2_COMP0461-001/Pub.json
+2026-2,COMP0461-002,이종택,2-1-2,한국어,"[심화컴퓨터학]컴퓨터 비전, 기계학습 중심의 인공지능 기술을 활용한 연구 중심 수업.","Computer Vision, Machine Learning, Deep Learning 기술을 활용하여 다양한 분야(예: 로봇 비전, 의료-재활 AI, 스마트시티-교통, 안전)에 적용.
+ 
+상기 분야에서 필드에서 실제 필요한 문제를 해결하기 위해 아래와 같은 과정을 거침:
+1) 기반 과목 공부
+2) 최신 연구와 개발 동향 분석
+3) 구현 및 테스트
+4) 발표 및 리포트 작성",관련 논문,"* S/U 평가
+- 연구 노트 작성
+- 주기적인 미팅 참석 및 토론
+- 과제 구현 
+- 결과 발표",지도교수의 연구 분야와 관련된 주제로 진행하기에 지도교수와 사전협의 완료한 학생만 수강 가능. (이메일 요청),raw/syllabus/2026_2_COMP0461-002/Pub.json
+2026-2,CAIB0216-002,이성현,3-3-0,한국어,"강화 학습 입문 과정은 에이전트-환경 상호작용 프레임워크, 보상, 탐색-활용 트레이드오프와 같은 기초 개념부터 시작하여 마르코프 결정 과정(MDP)과 벨만 방정식을 통해 수학적 기초를 다집니다. 학생들은 알려진 환경에서 정확한 해를 구하는 동적 프로그래밍 방법부터 시작하여, 전체 에피소드 학습을 위한 몬테카를로 방법, 그리고 온라인 학습을 위한 Q-러닝 및 SARSA와 같은 시간차 학습 알고리즘에 이르기까지 핵심 알고리즘 접근 방식을 단계적으로 학습합니다. 이 과정에서는 이산 상태 공간에 대한 테이블 방식과 연속 또는 대규모 상태 공간에 대한 신경망을 이용한 함수 근사 기법을 모두 다루며, 정책 경사법과 액터-크리틱 알고리즘을 소개합니다.","본 과정을 마치면 학생들은 강화 학습 원리에 대한 포괄적인 이해를 바탕으로 실제 문제를 마르코프 결정 과정(Markov Decision Process, MDP)으로 정식화하고, 가치 기반 방법(Q-러닝, SARSA), 정책 기반 방법(정책 경사법), 액터-크리틱 접근법을 포함한 기본적인 강화 학습 알고리즘을 구현 및 비교하며, 복잡한 상태 공간에 적합한 함수 근사 기법을 적용할 수 있게 됩니다. 또한, 다양한 환경에서 알고리즘 성능을 비판적으로 평가하며, 상태 공간 크기, 행동 공간 유형, 가용 컴퓨팅 자원과 같은 문제 특성에 따라 특정 강화 학습 방법을 언제 적용해야 하는지 이해하게 될 것입니다.",,"출석일수 3/4 미달 시, 학점 부여할 수 없음.
+중간기말은 오프라인 closed-book 시험으로 진행.","수학적인 내용이 많습니다. 코딩은 클로드 코드가 어차피 해줄꺼고, 우리는 알고리즘의 원리를 이해하고 클로드 코드가 짠 부분 중 어느 부분이 틀린지 확인하는데 더 초점을 맞춰야해서 수학을 배우는거니 수강신청 하기전에 고려하세요.",raw/syllabus/2026_2_CAIB0216-002/Pub.json
+2026-2,CLTR0211-006,서명수,3-3-0,한국어,"미분과 적분은 자연현상이나 사회현상을 설명할 수 있는 가장 강력한 수학적 도구중 하나이다. 따라서, 공학계열 학생들에게 미분과 적분은 전공을 학습하기 위한 필수적인 기반이라 볼 수 있다. 또한 논리적, 창의적인 문제해결능력과 수학적 의사소통능력을 기르는데 중요한 역할을 한다. 이 강좌의 목표로 학생들이 미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","Calculus : concepts and contexts 5e, James Stewart, Stephen Kokoska
+
+Publisher: CENGAGE","1. 중간고사(45%), 기말고사(45%), 기타(과제 및 출석 등) (10%)
+
+2. 과제 : 강의계획서에 제시된 과제 및 연구문제","1. 본 강좌는 IT대학 학생들만 수강 가능함.
+
+2. 본 강좌는 IT대학 수강학생 전체를 대상으로 공동시험, 공동출제, 공동 평가함. (수강신청시 IT대학의 수학II와 동시에 수강신청하지 않기를 바람)
+
+3. 시험 일시:  중간고사 10/26(월), 오후 6시30분, 기말고사 12/14(월), 오후 6시30분
+
+4. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있음.
+
+5. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배됨.",raw/syllabus/2026_2_CLTR0211-006/Pub.json
+2026-2,COME0311-006,정든솔,3-3-0,한국어,"인공지능을 포함한 컴퓨터 학부 과목 에서 필요로 하는 확률과 통계에 대한 기초 지식에 대해 학습한다. 확률이론, 확률변수, 이산형 확률 분포 등에 대해 학습하고, 연속형 확률분포, 정규분포, 기술통계, 통계량 추정 등에 대해 학습한다.",이 과목의 주요 목적은 AI를 포함한 공학과 과학에서 이용되는 확률과 통계의 기초를 학생들에게 제공하는 것이다.,"Probability and Statistics for Engineers and Scientists (Hayter, Anthony 저)","- 출석 10%
+- 중간시험: 45%
+- 기말시험: 45% 
+퀴즈가 있을 수 있음.","- 본 수업은 대면 방식으로 진행되는 한국어 강의로, 강의 자료는 영어로 제공될 예정입니다. 
+-",raw/syllabus/2026_2_COME0311-006/Pub.json
+2026-2,COMP0204-001,이우진,6-4-4,한국어,"C 언어의 다양한 문법 요소를 익히고, 실습 및 프로젝트 수행을 통해 실제문제를 정의하고 프로그래밍하는 방법을 배운다.",프로그래밍 개념을 이해하고 C 언어 문법을 활용하여 다양한 문제들을 코딩할 수 있는 능력을 배양한다.,"Perfect C, 강환수 & 신용현 공저, 3판, Infinity Books, 2021","- 중간 30%, 기말 30%, 실습  10%, 퀴즈 및 출석 30%
+- 중간 및 기말시험은  이론（60%） + 실습시험（40%）으로 구성됨","- 수업 진행과정에서 생성형 AI(ChatGPT, 등)를 절대 사용하면 안됩니다. 
+- 1학년 2학기 신입생과목이므로 신입생과 재학생 그룹을 분리하여 평가합니다.",raw/syllabus/2026_2_COMP0204-001/Pub.json
+2026-2,COMP0204-002,이우진,6-4-4,한국어,"C 언어의 다양한 문법 요소를 익히고, 실습 및 프로젝트 수행을 통해 실제문제를 정의하고 프로그래밍하는 방법을 배운다.",프로그래밍 개념을 이해하고 C 언어 문법을 활용하여 다양한 문제들을 코딩할 수 있는 능력을 배양한다.,"Perfect C, 강환수 & 신용현 공저, 3판, Infinity Books, 2021","- 중간 30%, 기말 30%, 실습  10%, 퀴즈 및 출석 30%
+- 중간 및 기말시험은  이론（60%） + 실습시험（40%）으로 구성됨","- 수업 진행과정에서 생성형 AI(ChatGPT, 등)를 절대 사용하면 안됩니다. 
+- 1학년 2학기 신입생과목이므로 신입생과 재학생 그룹을 분리하여 평가합니다.
+- 강의자료는 영어와 한국어로 제공합니다.",raw/syllabus/2026_2_COMP0204-002/Pub.json
+2026-2,COMP0205-001,정창수,3-2-2,한국어,"창의적인 공학인재 양성을 위해 필요한 기본적인 소양을 학습한다. 이를 위하여 공학적문제나 인생의 문제를 창의적으로 풀 수 있는 여러가지 방법을 이론적으로 배우고 실습한다.
+
+1.창의적사고개발
+2.문제 분석 기법실습
+3.공학적프로세스의 중요성 이해
+4.의사소통방법이해
+5.분석 및 설계의시각적표현","창의적인 아이디어 도출을 위한 사고법을 학습하고 실습한다.
+발산한 아이디어를 정리하고 우수한 아이디어를 선택하기 위한 수렵적 사고를 배우고 실습한다.
+발산 및 수렴 사고를 통한 아이디어 결과를 소프트웨어 분석으로 발전시킨다.","주교재/부교재/참고자료
+- 창의공학설계(개정판), 김대수, 김경동, 생능출판사, 2023","1. 중간고사 (30%),  출석(10%), 과제 (10%), 발표(팀프로젝트 활동: 50%) 
+* 위의 모든 사항은 대학사정이나 학사일정등 사정에 따라 변할 수 있습니다.","- 1학년을 위한 기본 과목이므로 신입생만 수강 가능. 단, 특별한 경우에는 담당교수와 상의 요함
+- 재수강은 권장하지 않음
+- 중간고사 또는 기말고사를 결시한 경우, 평점 F 부여
+- 1/4 이상 결석 시, 평점 F 부여
+- 강의 내용은 사정에 의해 변경될 수 있음
+- 생성형 AI를 통해 도출된 결과물을 활용하여 과제 또는 시험 답안에 제출하는 행위를 허용하지 않으며, 이러한 행위는 부정행위로 처리함",raw/syllabus/2026_2_COMP0205-001/Pub.json
+2026-2,COMP0312-002,김명석,3-3-0,한국어,"To understand the key concepts of modern operating systems.
+The main topics that are covered in this course include process/memory virtualization, concurrency,  and persistence.
+Many advanced techniques that implement the main topics will also be reviewed in this course.","This course introduces the basic concepts of operating systems, which include process management, memory management, file systems, and I/O management.
+This course also provides a detailed explanation of how those concepts are designed and implemented in modern operating systems.
+In addition, this course provides a set of comprehensive programming assignments and laboratories to help students improve practical programming skills in UNIX-like operating systems (e.g., GNU/Linux).","Operating Systems: Three Easy Pieces, by Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
+(reference) Operating System Concepts, by Abraham Silberschatz, Peter Baer Galvin, Greg Gagne
+(reference) Operating Systems Internals and Design Principles, by William Stallings 
+(reference) 쉽게 배우는 운영체제 (조성호)","Attendance: 10%
+Mid-term : 30%
+Final : 40%
+Homework & Quiz : 20%","No make-up exam for those who miss the exams.
+No soliciting for a grade boost.
+No exemption from absence other than due to the military-related or family tragedy.
+By the school rule, if you miss 1/4 of the classes, you will get F.",raw/syllabus/2026_2_COMP0312-002/Pub.json
+2026-2,COMP0312-003,김명석,3-3-0,한국어,"To understand the key concepts of modern operating systems.
+The main topics that are covered in this course include process/memory virtualization, concurrency, and persistence.
+Many advanced techniques that implement the main topics will also be reviewed in this course.","This course introduces the basic concepts of operating systems, which include process management, memory management, file systems, and I/O management.
+This course also provides a detailed explanation of how those concepts are designed and implemented in modern operating systems.
+In addition, this course provides a set of comprehensive programming assignments and laboratories to help students improve practical programming skills in UNIX-like operating systems (e.g., GNU/Linux).","Operating Systems: Three Easy Pieces, by Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
+(reference) Operating System Concepts, by Abraham Silberschatz, Peter Baer Galvin, Greg Gagne
+(reference) Operating Systems Internals and Design Principles, by William Stallings
+(reference) 쉽게 배우는 운영체제 (조성호)","Attendance: 10%
+Mid-term : 30%
+Final : 40%
+Homework & Quiz : 20%","No make-up exam for those who miss the exams.
+No soliciting for the final grades at the end of the semester.
+If you send an email or talk to me directly to get the grades raised, I will get your grades demoted.
+There will be no exception to the absence rules.
+By the school rule, if you miss 1/4 of the classes, you will get F",raw/syllabus/2026_2_COMP0312-003/Pub.json
+2026-2,COMP0322-005,소휘수,3-2-2,English,"This course introduces the fundamental concepts of database systems for efficient data management, including database concepts and architectures, entity–relationship and relational data models, Structured Query Language (SQL), storage structures and database indexing, relational algebra and relational calculus, and transaction management. 
+Students will implement a mini database management system using a relational database management system. These practical exercises are expected to help students develop a deeper understanding of database systems.",Learn the core concepts of databases through lectures and understand how the theories are applied in practice through hands-on exercises.,,"Attendance: 5%
+Midterm Examination: 35%
+Final Examination: 35%
+Assignments: 25%
+
+*Any changes to the grading distribution will be announced in advance.","Specific details, including the assessment methods and the schedule and coverage of course chapters, may be subject to change. Any changes will be announced through LMS and explained during the course orientation.",raw/syllabus/2026_2_COMP0322-005/Pub.json
+2026-2,COMP0324-004,정든솔,3-3-0,한국어,"본 과목은 CNN, RNN 등 인공 신경망의 기본 모델을 학습하는 것을 목표로 선형 분류기 등 기초 인공 지능 모델부터 학습합니다. 또한 학생들이 이후 첨단 연구 분야의 문제 해결을 위한 범용 도구로서 실무적인 AI 프로그래밍 기술을 습득할 수 있도록 기초를 학습하고, 기존의 방법론과 기술을 비판적으로 평가할 수 잇는 능력을 함양하는 것을 목적으로 합니다.","본 과목은 CNN, RNN 등 인공 신경망의 기본 모델을 학습하는 것을 목표로 선형 분류기 등 기초 인공 지능 모델부터 학습합니다. 또한 학생들이 이후 첨단 연구 분야의 문제 해결을 위한 범용 도구로서 실무적인 AI 프로그래밍 기술을 습득할 수 있도록 기초를 학습하고, 기존의 방법론과 기술을 비판적으로 평가할 수 잇는 능력을 함양하는 것을 목적으로 합니다.","수업 자료: 하나의 교재를 지정하는 것이 어려워, 아래 보충 자료를 종합한 수업 자료를 통해 수업을 진행할 예정입니다. 
+
+보충 자료:
+Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems (2nd Edition), Aurélien Géron, 2019","중간 고사 및 기말 고사: 지필고사 
+출석: 대학 규정에 따른 출석","모든 공지사항은 LMS를 통해 게시되며, 학생들은 정기적으로 LMS 공지사항을 확인 해야합니다. 강의 주제 및 일정은 강의계획서에 기재된 내용과 다소 변경이 있을 수 있으며, 변경사항은 모두 LMS 로 공지될 예정입니다. 특별히 과제나 프로젝트가 없고, 중간고사와 기말고사로만 평가하는 과목입니다. 참고 바랍니다.",raw/syllabus/2026_2_COMP0324-004/Pub.json
+2026-2,COMP0454-001,이종택,3-3-0,한국어,"이 강의는 인공지능(머신러닝, 딥러닝)을 이해하는 데 필요한 기본적인 수학적 개념과 계산 방법을 학습하는 것을 목표로 합니다.
+주요 내용으로는 선형대수학, 다변수 미적분학, 기초 통계와 확률 이론, 최적화와 모델링을 포함합니다.
+
+중간고사 이전
+- 선형대수학
+중간고사 이후
+- 다변수 미적분학
+- 기초 통계와 확률 이론
+- 최적화 및 모델링 소개","이 강의는 인공지능(머신러닝, 딥러닝)을 이해하는 데 필요한 기본적인 수학적 개념과 계산 방법을 학습하기 위해 선형대수학, 다변수 미적분학, 기초 통계와 확률 이론를 배우는 것을 목표로 합니다.","인공지능을 위한 기초수학 저자: 이상구, 이재화 (http://matrix.skku.ac.kr/math4ai/)
+혁신융합대학사업 교육 콘텐츠 일부 반영","- 출석: 5%
+- 중간시험: 45%
+- 기말시험: 50%","이 수업은 대면 방식으로 진행합니다.
+강의, 강의 자료 및 시험은 모두 한국어로 진행됩니다.
+
+Lectures, course materials, and exams will all be provided in Korean.",raw/syllabus/2026_2_COMP0454-001/Pub.json
+2026-2,ELEC0462-004,정창수,3-2-2,한국어,"이 과정은 UNIX/LINUX 시스템 프로그래밍과 관련된 주요 개념에 대해 학습하고, 하위레벨 API를 사용하여 시스템 프로그래밍을 구현하는 능력을 향상한다. 본 강의를 통해 UNIX/LINUX 운영체제가 제공하는 다양한 서비스에 대해 이해하고, 이를 활용하여 효율적인 시스템 프로그램을 개발할 수 있다. 본 강의에서 다루는 주요개념은 다음과 같습니다. 
+File I/O, File system, Device I/O, Terminal Driver, Timer, Signal, Process, Thread,  Pipe, Socket, Semaphore.","- 리눅스 운영 체제에 친숙해 진다 
+- C 언어 기반 시스템 프로그래밍을 수행할 수 있다 
+- 시스템 소프트웨어 아키텍처를 구축하고 이를 구현할 수 있다.",수업시간에 제공하는 강의자료로 대체 가능,"출석: 10%
+과제: 10%
+중간시험: 20%
+발표: 30% (팀프로젝트 수행 및 발표: 소스 코드 + 보고서 발표)
+기말시험: 30%","- 프로그래밍 기초(C 프로그래밍)과목을 반드시 수강한 학생에 한해서 수강 신청하세요.
+- 1/4이상 출석 미달 시, F 부여
+- 중간고사나 기말고사에 결시할 경우, F 학점이 주어짐
+- 강의 진도 및 내용은 상황에 따라 변경될 수 있습니다.
+- 팀프로젝트를 수행합니다.
+- 생성형 AI를 통해 도출된 결과물을 활용하여 과제 또는 시험 답안에 제출하는 행위를 허용하지 않으며, 이러한 행위는 부정행위로 처리함",raw/syllabus/2026_2_ELEC0462-004/Pub.json
+2026-2,ITEC0401-003,김동균,4-3-2,한국어,"- 이 수업은 팀 단위 프로젝트 수업으로 진행하며, 모든 프로젝트는 기업과 함께 산학협력프로젝트로 진행된다. 
+- 프로젝트 팀 선정시 선착순으로 구성한다.
+
+- 1주차 수업에서 팀을 구성하며, 각 팀은 기본적으로 4명으로 구성된다. (상황에 따라 변경 가능)
+- 2주차 수업에서 팀별 프로젝트 주제 제안 및 확정한다. 
+- 3주차부터 팀(과제)별 프로젝트 계획서 및 추진 현황을 발표함 (개별 미팅, 세부 일정은 추후 공지)
+- 전체 발표: 중간 발표 1, 중간 발표 2, 최종 발표
+- 최종 발표 후, 결과보고서 작성/제출 
+- 프로젝트 결과물을 토대로 논문발표(국내학술대회), SW등록, 특허출원 등 추진 (팀당 1건 이상)
+- 과제 수행 후 해당 기업과 연계 현장실습 권장",컴퓨터학 전공 지식을 바탕으로 한 다양한 소프트웨어 개발 경험 배양.,별도 교재 없음.,"1. 출석(10%)
+2. 과제(40%)
+3. 발표(50%)",LMS 공지사항으로 수업 관련 진행 내용 확인.,raw/syllabus/2026_2_ITEC0401-003/Pub.json
+2026-2,ITEC0419-003,류은경,3-3-0,한국어,"데이터과학의 기본 개념과 데이터 기반 문제해결 과정을 이해하고, 데이터의 탐색·시각화·분석 및 해석에 필요한 기초 원리를 학습한다. 인과관계와 데이터 해석, 탐색적 데이터 분석을 바탕으로 분류, 회귀, 군집화 등 대표적인 데이터과학 방법과 모델 평가의 기본 개념을 익힌다. 또한 실제 데이터 문제에 적절한 분석 방법을 선택하고 결과와 한계를 합리적으로 해석하는 능력을 기른다.","- 데이터과학의 기본 개념과 데이터 기반 문제해결 과정을 이해한다.
+- 데이터 탐색·시각화와 분류·회귀·군집화 등 주요 분석 방법의 기본 원리를 이해하고, 문제에 적합한 방법을 선택할 수 있다.
+- 데이터와 분석 결과를 올바르게 해석하고, 분석의 한계와 편향 가능성을 고려하여 결과를 합리적으로 판단할 수 있다.","- 1. Computational and Inferential Thinking: The Foundations of Data Science
+(저자: Ani Adhikari, John DeNero, David Wagner, https://github.com/data-8/textbook?tab=readme-ov-file))
+- 2. Data Science: A First Introduction with Python
+(저자: Tiffany Timbers, Trevor Campbell, Melissa Lee, Joel Ostblom, Lindsey Heagy, https://python.datasciencebook.ca/index.html)","출석 5%
+과제 20%
+중간시험 35%
+기말시험 40%
+합계 : 100%","- 본 교과목은 데이터과학의 전반적인 기초 개념을 다루는 입문 교과목임.
+- 중간고사 또는 기말고사에 결시한 경우 F로 처리됨.
+- 강의 내용 및 일정은 수업 진행 상황에 따라 일부 변경될 수 있음.",raw/syllabus/2026_2_ITEC0419-003/Pub.json
+2026-2,MOBI0224-002,이재협,3-3-0,한국어,"This course introduces fundamental concepts and modern advancements in computer vision, enabling students to build, train, and evaluate deep learning models for visual tasks. Topics include image classification, object detection, segmentation, and generative models, with a strong focus on convolutional neural networks (CNNs) and state-of-the-art deep learning techniques. Hands-on assignments and projects using Python and frameworks like TensorFlow or PyTorch will solidify theoretical understanding through practical implementation.
+
+By the end of the course, students will be able to:
+
+Understand and implement key algorithms and techniques in computer vision.
+Develop deep learning models for real-world applications such as face recognition, autonomous driving, and medical image analysis.
+Critically evaluate research papers and apply insights to new challenges.","By the end of this course, students will be able to:
+
+Understand the fundamental principles of computer vision and its applications.
+Analyze and implement key techniques in image processing, feature extraction, and object recognition.
+Build, train, and evaluate deep learning models for various computer vision tasks, including classification, detection, and segmentation.
+Utilize modern tools and frameworks, such as TensorFlow or PyTorch, to develop and deploy computer vision models.
+Conduct experiments and analyze results using platforms like Google Colab.
+Critically review computer vision research papers and identify future trends and challenges in the field.
+Apply computer vision solutions to real-world problems in domains such as healthcare, autonomous systems, and augmented reality.",Only lecture notes & Github,"There will be no traditional exams for this course. Instead, assessments will include assignments and project-based evaluations.
+The midterm evaluation will consist of a proposal presentation for the final project, which substitutes for a traditional final exam.
+The final evaluation will involve the submission and presentation of the project deliverables after the midterm period.
+Additionally, students will be assessed through a demo project assignment to demonstrate practical application of the concepts learned.","There will be no exams for this course. Instead, assessment will be based on assignments and a final project.
+Students will be required to perform experiments using Google Colab.
+The free version of Colab is sufficient for most tasks; however, students are allowed to use the paid version if needed for specific requirements or enhanced performance.",raw/syllabus/2026_2_MOBI0224-002/Pub.json
+2026-2,CLTR0211-007,김명옥,3-3-0,한국어,"미분과 적분은 자연현상이나 사회현상을 설명할 수 있는 가장 강력한 수학적 도구중 하나이다. 따라서, 공학계열 학생들에게 미분과 적분은 전공을 학습하기 위한 필수적인 기반이라 볼 수 있다. 또한 논리적, 창의적인 문제해결능력과 수학적 의사소통능력을 기르는데 중요한 역할을 한다. 이 강좌의 목표로 학생들이 미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","Calculus : concepts and contexts 5e, James Stewart, Stephen Kokoska
+
+Publisher: CENGAGE","1. 중간고사(45%), 기말고사(45%), 기타(과제 및 출석 등) (10%)
+
+2. 과제 : 강의계획서에 제시된 과제 및 연구문제","1. 본 강좌는 IT대학 학생들만 수강 가능함.
+
+2. 본 강좌는 IT대학 수강학생 전체를 대상으로 공동시험, 공동출제, 공동 평가함. (수강 신청시 IT대학의 수2와 동시에 수강신청하지않기를 바람)
+
+3. 시험 일시:  중간고사 10/26(월), 오후 6시30분, 기말고사 12/14(월), 오후 6시30분
+
+4. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있음.
+
+5. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배됨.",raw/syllabus/2026_2_CLTR0211-007/Pub.json
+2026-2,COME0331-004,배진학,3-3-0,한국어,"* 프로그래밍에 많이 사용되는 기본적인 자료구조의 동작 원리를 이해하고, C 언어로 해당 자료구조를 표현하고 처리하는 방법을 배운다. 
+* 또한, 코드가 동작할 때 얼마나 효율적으로 동작하는지를 분석하여 이를 복잡도를 사용하여 표현하는 방법을 배운다.","* 프로그램을 구현하기 위해 필요한 기본적인 자료구조들의 원리를 이해한다.
+* C언어를 사용하여 해당 자료구조들을 표현한다.
+* 프로그램 코드를 분석하여 정확성과 효율성을 평가한다.",,"* 중간고사 : 40%, 기말고사 : 50%, 출석 : 10%
+* 중간고사와 기말고사는 필기 시험
+* 중간고사 혹은 기말고사에 결시할 경우 F학점 부여
+* 1/4이상 결석시 F학점 부여
+* 과제 없음(과제는 자료구조실습 과목에서 제출)","* 본 과목은 이론 과목으로 수업시간에는 이론적인 내용만 설명할 예정이며, 관련 코드 실습은 자료구조실습에서 다룰 예정입니다.
+* 중간/기말고사 시험은 자료구조 이론에 대한 필기시험을 실시합니다. 
+* 중간/기말고사에 결시할 경우 F학점을 부여합니다.
+* 출석점수는 학교 규정을 따릅니다.(1/4이상 결석시 F학점)",raw/syllabus/2026_2_COME0331-004/Pub.json
+2026-2,COME0331-005,류은경,3-3-0,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및 sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해하고 다양한 분야에 활용할 수 있는 능력을 기른다.",,"* 평가방법
+
+- 자료구조: 중간 40%, 기말 45%, 과제 10%, 출석 5%
+
+- 자료구조응용: 중간 40%, 기말 45%, 과제+출석 15%","* 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐",raw/syllabus/2026_2_COME0331-005/Pub.json
+2026-2,COMP0333-001,배준현,3-2-2,한국어,"본 교과목은 파이썬 프로그래밍 언어의 기본적인 개념과 활용법을 익히고,
+파이썬 언어를 활용하여 데이터를 이해하고 분석하는 방법을 배우는 것을 목표로 한다.","파이썬 언어의 기본 문법과 기본 자료구조의 활용법을 익혀, 파이썬 언어로 문제를 해결할 수 있는 능력을 키운다.
+데이터 분석을 위한 기본 개념을 배우고, 파이썬 언어를 활용하여 데이터를 이해하고 분석할 수 있는 능력을 키운다.","주교재:
+강의자료 PDF가 제공됩니다.
+
+부교재: 
+- (따라하며 배우는) 파이썬과 데이터 과학, 천인국 외, 생능출판사, 2023.
+- 파이썬으로 시작하는 컴퓨터 과학 입문, 존 M. 젤, 인사이트, 2017.
+- 파이썬을 이용한 데이터 분석의 정석, 채진석, 루비페이퍼, 2021.","출석: 10%
+과제: 10%
+중간시험: 40%
+기말시험: 40%","본 강의에서는 ChatGPT, Calude, Gemini 등 생성형 AI 도구의 활용을 학습 보조 목적에 한하여 적극적으로 허용합니다.
+단, 생성형 AI 활용에 관한 윤리를 준수해야 하고, 과제 또는 시험에서 생성형 AI를 활용한 경우 사용 여부와 활용 목적을 반드시 명시해야 합니다.",raw/syllabus/2026_2_COMP0333-001/Pub.json
+2026-2,COMP0334-001,배진학,1-0-2,한국어,"* 본 과목은 자료구조실습의 내용을 확장하여 실습한다. 자료구조에서 배운 내용 중 자료구조실습에서 다루지 못한 내용을 실습한다. 
+* C언어를 사용하여 Array, Structure, Stack, Queue 등의 자료구조를 직접 구현하고 실행함으로써 각 자료구조들의 동작을 실제 확인한다.","* 프로그램을 구현하기 위해 필요한 기본적인 자료구조들의 원리를 이해한다.
+* C언어를 사용하여 해당 자료구조들을 표현한다.
+* 구현된 코드를 실행하여 효율성과 정확성을 검증한다.",,"* 중간고사 : 40%, 기말고사 : 50%, 출석 : 10%
+* 수업중에 출제하는 과제는 중간고사와 기말고사 점수에 합산하여 계산한다.
+   ex. 중간고사 이전에 출제한 과제 점수의 총 합이 15점이면 중간고사 만점은 25점으로 한다.
+* 중간고사, 기말고사는 실기로만 평가하고 시험중 인터넷 사용은 불가하다.
+* 중간고사 혹은 기말고사에 결시한 경우 F학점을 부여한다.","* 자료구조에서 배운 내용을 실습하는 수업이므로, 자료구조 과목을 이미 이수했거나 2학기에 이수 예정인 학생만 수강해야 합니다. 
+* 실습 위주로 수업이 진행되고 시험도 실습시험을 실시합니다.
+* 실습시, 시험시 인터넷 사용은 금지되니 느리더라도 스스로 할 수 있도록 연습해야 합니다.
+* 중간/기말고사에 결시할 경우 F학점을 부여합니다.
+* 출석점수는 학교 규정을 따릅니다.(1/4이상 결석시 F학점)",raw/syllabus/2026_2_COMP0334-001/Pub.json
+2026-2,COMP0335-001,배진학,3-1-4,한국어,"* 본 과목은 자료구조 과목에서 배운 이론을 실제 코드로 구현하는 실습과목이다. 
+* C언어를 사용하여 Array, Structure, Stack, Queue 등의 자료구조를 직접 구현하고 실행함으로써 각 자료구조들의 동작을 실제 확인한다.","* 프로그램을 구현하기 위해 필요한 기본적인 자료구조들의 원리를 이해한다.
+* C언어를 사용하여 해당 자료구조들을 표현한다.
+* 구현된 코드를 실행하여 효율성과 정확성을 검증한다.",,"* 중간고사 : 40%, 기말고사 : 50%, 출석 : 10%
+* 수업중에 출제하는 과제는 중간고사와 기말고사 점수에 합산하여 계산한다.
+   ex. 중간고사 이전에 출제한 과제 점수의 총 합이 15점이면 중간고사 만점은 25점으로 한다.
+* 중간고사, 기말고사는 실기로만 평가하고 시험중 인터넷 사용은 불가하다.
+* 중간고사 혹은 기말고사에 결시한 경우 F학점을 부여한다.","* 자료구조에서 배운 내용을 실습하는 수업이므로, 자료구조 과목을 이미 이수했거나 2학기에 이수 예정인 학생만 수강해야 합니다. 
+* 실습 위주로 수업이 진행되고 시험도 실습시험을 실시합니다.
+* 실습시, 시험시 인터넷 사용은 금지되니 느리더라도 스스로 할 수 있도록 연습해야 합니다.
+* 중간/기말고사에 결시할 경우 F학점을 부여합니다.
+* 출석점수는 학교 규정을 따릅니다.(1/4이상 결석시 F학점)",raw/syllabus/2026_2_COMP0335-001/Pub.json
+2026-2,COMP0335-002,류은경,3-1-4,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을 습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및 sorting algorithm, hashing algorithm, search tree에 대해 배운다.","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 잘 이해하고, 다양한 분야에 활용할 수 있는 능력을 기른다.",,"중간 40%, 기말 45%, 과제 10%,  출석 5%","- 본 교과목은 ""자료구조""과목을 병행해서 듣거나, 이미 이수한 학생을 대상으로 수업이 진행됩니다. 
+- AI는 개념 이해, 문법 확인, 오류 원인 파악 등 학습 보조 목적으로 활용할 수 있다.
+- 실습 과제 및 중간·기말시험의 제출 코드는 학생이 직접 작성해야 한다. (생성형 AI를 활용하여 작성한 코드를 제출한 경우. 부정행위로 간주)
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+
+(기타 주의사항)
+- 자료구조실습과 자료구조응용은 동일과목으로 지정되어 있음
+- 자료구조응용을 기수강한 학생이 자료구조실습 과목을 수강할 경우 **재이수**로 처리됨",raw/syllabus/2026_2_COMP0335-002/Pub.json
+2026-2,MTED0231-002,강네이트,3-3-0,English,"This course introduces linear algebra for computer science and engineering students. Topics include systems of linear equations, matrices, Gaussian elimination, matrix inverses, LU factorization, determinants, vector spaces, subspaces, basis and dimension, orthogonality, projections, least squares, linear transformations, eigenvalues, diagonalization, symmetric matrices, and singular value decomposition. The course emphasizes both computation and geometric interpretation, with examples connected to machine learning, computer graphics, and data analysis.","By the end of this course, students will be able to reason about uncertainty, model random phenomena, summarize and analyze data, apply standard probability distributions, conduct basic statistical inference, and interpret regression and testing results in computer science applications.","Required: Gilbert Strang, Introduction to Linear Algebra, 5th or 6th edition, Wellesley-Cambridge Press.
+Optional reference: David C. Lay, Linear Algebra and Its Applications.
+Weekly lecture notes will be posted on the LMS and will serve as the primary in-class reference.","Final grades are based on Quiz 1 (10%), Midterm Exam (30%), Quiz 2 (10%), Final Exam (40%), and Attendance (10%). In the portal grading scale, Quiz 1 and Quiz 2 are recorded together under ""Other"" (20%).
+
+The midterm exam covers the first half of the course. The final exam covers the second half only. Quiz 2 covers post-midterm material only and is not cumulative.
+
+Attendance is part of the final grade. Excused absences include sick leave, bereavement leave, reserve military duty, and other approved cases, but every excused absence requires proper documentation. Without documentation, the absence is treated as unexcused. Repeated unexcused absences may result in a failing grade for the course.
+
+Late arrival counts as present, but each late arrival reduces the course total by 0.5 points. Thoughtful in-class participation may receive bonus credit at the instructor's discretion; this is separate from attendance.
+
+All quizzes and exams must be completed independently. Academic dishonesty will be handled according to university policy.","Grading: Quiz 1 10%, Midterm 30%, Quiz 2 10%, Final 40%, Attendance 10%.
+
+The midterm covers the first half of the course. The final covers the second half only. Quiz 2 covers post-midterm material only.
+
+Attendance matters. Excused absences include sick leave, bereavement leave, reserve military duty, and other approved cases, but every excused absence requires proper documentation. Without documentation, the absence is treated as unexcused. Three or more unexcused absences result in zero credit for the attendance component, and the student may receive a failing course grade depending on overall performance.
+
+Late arrival counts as present, but each late arrival reduces the course total by 0.5 points. Thoughtful participation may receive bonus credit at the instructor's discretion; this is separate from attendance.
+
+All quizzes and exams must be completed independently. Academic dishonesty will be handled according to university policy.",raw/syllabus/2026_2_MTED0231-002/Pub.json
+2026-2,MTED0231-003,김진욱,3-3-0,한국어,"본 강의는 선형 대수학의 기본 이론과 이를 공학 및 자연과학 문제에 적용하는 방법을 학습합니다. 연립일차방정식의 해법을 시작으로 행렬 대수, 벡터 공간, 고유값과 고유벡터, 직교성 등의 핵심 개념을 다룹니다. 특히 추상적인 벡터 공간의 개념을 이해하고, 이를 바탕으로 데이터 분석과 영상 처리 등 실질적인 응용 문제를 해결하는 능력을 기르는 것을 목표로 합니다.","본 강의는 소프트웨어 및 AI 분야의 핵심 기초인 선형대수학의 원리와 응용을 다룹니다. 연립방정식과 행렬 연산, 벡터 공간의 추상적 개념을 이해하고, 공학적 문제 해결에 필수적인 최소자승법(Least Squares)과 특이값 분해(SVD)를 심도 있게 학습합니다. 이를 통해 데이터의 기하학적 구조를 파악하고 머신러닝 및 그래픽스 알고리즘을 설계할 수 있는 수학적 사고력을 배양합니다.","Linear Algebra and its Applications 5th Edition
+David C Lay, Steven R. Lay, Judi J. McDonald","출석 : 5%
+중간고사 : 45%
+기말고사 : 45%
+과제 : 5%",없음,raw/syllabus/2026_2_MTED0231-003/Pub.json
+2026-2,CLTR0211-008,이철우,3-3-0,한국어,"미분과 적분은 자연현상이나 사회현상을 설명할 수 있는 가장 강력한 수학적 도구중 하나이다. 따라서, 공학계열 학생들에게 미분과 적분은 전공을 학습하기 위한 필수적인 기반이라 볼 수 있다. 또한 논리적, 창의적인 문제해결능력과 수학적 의사소통능력을 기르는데 중요한 역할을 한다. 이 강좌의 목표로 학생들이 미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","Calculus : concepts and contexts 5e, James Stewart, Stephen Kokoska
+
+Publisher: CENGAGE","1. 중간고사(45%), 기말고사(45%), 기타(과제 및 출석 등) (10%)
+
+2. 과제 : 강의계획서에 제시된 과제 및 연구문제","1. 본 강좌는 IT대학 학생들만 수강 가능함.
+
+2. 본 강좌는 IT대학 수강학생 전체를 대상으로 공동시험, 공동출제, 공동 평가함.(수강신청시 IT대학의 수2와 동시에 수강신청하지않기를 바람)
+
+3. 시험 일시:  중간고사 10/26(월), 오후 6시30분, 기말고사 12/14(월), 오후 6시30분
+
+4. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있음.
+
+5. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배됨.",raw/syllabus/2026_2_CLTR0211-008/Pub.json
+2026-2,COME0331-006,백태산,3-3-0,한국어,"본 과목에서는 컴퓨터소프트웨어를 구성하는 가장 중요한 요소 중의 하나인 자료구조에 대하여 깊이있는 이해를 함으로써 주어진 환경에서 최상의 성능을 갖는 소프트웨어를 개발(설계 및 구현)할 수 있는 기술을  습득함을 목표로 한다. 본 과목에서는 공학 실무에 필요한 기술, 방법, 최신 공학도구들을 사용할수있는 능력을 배양하며, Array, Stack, Queue, List, Tree, Graph 및  sorting algorithm, hashing algorithm, search tree에 대해 배운다","기본 자료구조인 연결리스트, 스택, 큐, 트리, 그래프, 정렬, 해싱 등의 개념을 이해한다.
+기본 자료구조를 다양한 분야에 활용할 수 있는 능력을 기른다.
+응용 문제에 따라 적합한 자료구조를 선정하여 활용한다",,"* 평가방법- 자료구조: (중간+기말고사: 70%, 출석: 20%, 과제: 20%)","* 대면 강의 예정이지만, 대학 학사 운영 지침 변경 시, 수업 방법(대면, 대면+비대면 혼합, 비대면)이 변경될 수 있음.
+* 수업 방식에 대해 LMS 과목 게시판에 공지할 예정이니, 개강 이전에 확인하기 바랍니다.
+기타:
+- 과제물, 시험, 출석 등에서 부정 행위 발견 시에는 0점 처리함
+- 중간고사 또는 기말고사에 결시할 경우, F학점이 주어짐
+- 결석할 경우 출석점수에서 감점을 당하지 않으려면 정당한 결석사유를 증명할 수 있는 근거 (교칙에 정해진 범위 내)서류가 필요하며 수업시간 전에 미리 이메일로 알려야 함.
+- 수업일수의1/4이상 결석할 경우 F학점이주어짐
+- 수강에 필요한 강의자료 및 공지사항 알림, 숙제 제출 등은 지정된 과목 게시판 (LMS 시스템)
+을 이용",raw/syllabus/2026_2_COME0331-006/Pub.json
+2026-2,COMP0336-001,배준현,3-2-2,한국어,"본 과목은 객체지향 프로그래밍의 개념을 이해하고 활용할 수 있는 역량을 키우는 것을 목표로 한다.
+본 과목에서는 순수한 객체지향 언어인 자바의 문법과 개념의 이해를 바탕으로, OOP(Object-Oriented Programming)의 개념을 이해하고 응용하는 프로그래밍 실습을 진행한다.","실세계의 문제를 객체를 통해 분석하고 객체지향적인 프로그램 설계를 통해 문제를 해결할 수 있다.
+자바 프로그래밍 언어를 활용하여 객체지향 설계를 적용한 객체지향 프로그램을 실제로 작성할 수 있다.","주교재: 
+강의자료 PDF가 제공됩니다.
+
+부교재:
+우종정, 쉽게 배우는 자바 프로그래밍 2판, 한빛아카데미, 2020.
+H. Deitel, Java How to Program, 2011, Pearson Education, 2011.","출석: 10% (연구실안전교육 5% 포함)
+과제: 10% 
+중간시험: 40%
+기말시험: 40%","본 강의에서는 ChatGPT, Calude, Gemini 등 생성형 AI 도구의 활용을 학습 보조 목적에 한하여 적극적으로 허용합니다.
+단, 생성형 AI 활용에 관한 윤리를 준수해야 하고, 과제 또는 시험에서 생성형 AI를 활용한 경우 사용 여부와 활용 목적을 반드시 명시해야 합니다.",raw/syllabus/2026_2_COMP0336-001/Pub.json
+2026-2,ELEC0247-002,백태산,3-3-0,한국어,"본 강좌는 디지털 시스템의 핵심 기초가 되는 논리회로의 동작 원리와 설계 방법을 다룬다. 아날로그와 디지털의 개념 이해를 시작으로, 수의 체계와 디지털 코드를 학습하여 데이터 표현 방식을 익힌다. 이어 기본 논리 게이트의 특성과 불 대수(Boolean Algebra), 카르노 맵(Karnaugh Map)을 이용한 논리식 간소화 기법을 배운다. 이를 바탕으로 가산기, 디코더, 멀티플렉서 등의 '조합논리회로'와 플립플롭, 카운터, 레지스터 등의 '순서논리회로'를 설계하고 해석하는 능력을 배양한다. 최종적으로 디지털 메모리의 구조를 이해함으로써 컴퓨터 시스템 및 임베디드 시스템 설계의 기반이 되는 논리적 사고력과 하드웨어 분석 능력을 갖추는 것을 목표로 한다.","디지털 논리회로의 기초 이론과 메모리 구조를 이해하고, 불 대수 및 카르노 맵을 활용한 조합·순서논리회로의 설계 및 해석 능력을 배양하며, 디지털 시스템의 하드웨어적 문제를 논리적이고 분석적인 자세로 해결하는 능력을 갖춘다",,"중간고사 (30%): Ch.01~Ch.06 범위에 대한 지필 평가를 실시하며, 기본 이론 지식과 논리식 간소화 문제 해결 능력을 평가한다.
+기말고사 (30%): Ch.07~Ch.11 범위(필요시 전범위 누적)에 대한 지필 평가를 실시하며, 조합논리회로 및 순서논리회로의 설계와 해석 역량을 종합적으로 평가한다.
+과제 및 수시퀴즈 (20%): 주요 단원(카르노 맵 간소화, 회로 설계 등) 종료 후 개별 과제물 또는 단답형 퀴즈를 부여하여 지속적인 학습 성취도를 확인한다.
+출석 (20%): 대학 학칙 규정을 준수하여 반영하며, 무단지각 및 결석 시 비율에 따라 감점 처리한다.","평가 방식: 중간고사, 기말고사, 수시 퀴즈 및 과제, 출석을 종합하여 평가합니다. (세부 비율은 평가방법 탭에 공지)
+과제 및 실습: 논리식 간소화 및 회로 설계와 관련하여 개인별 과제가 부여될 수 있으며, 기한 내 제출이 원칙입니다.
+선행 지식: 특별한 선행 교과목을 요구하지는 않으나, 기본적인 2진수 개념과 컴퓨터 하드웨어에 대한 흥미가 있다면 수강에 도움이 됩니다.
+기타: 수업 중 질문과 피드백을 환영하며, 학사 일정에 따라 진도는 일부 조정될 수 있습니다.",raw/syllabus/2026_2_ELEC0247-002/Pub.json
+2026-2,MTED0231-004,김진욱,3-3-0,한국어,"본 강의는 선형 대수학의 기본 이론과 이를 공학 및 자연과학 문제에 적용하는 방법을 학습합니다. 연립일차방정식의 해법을 시작으로 행렬 대수, 벡터 공간, 고유값과 고유벡터, 직교성 등의 핵심 개념을 다룹니다. 특히 추상적인 벡터 공간의 개념을 이해하고, 이를 바탕으로 데이터 분석과 영상 처리 등 실질적인 응용 문제를 해결하는 능력을 기르는 것을 목표로 합니다.","본 강의는 소프트웨어 및 AI 분야의 핵심 기초인 선형대수학의 원리와 응용을 다룹니다. 연립방정식과 행렬 연산, 벡터 공간의 추상적 개념을 이해하고, 공학적 문제 해결에 필수적인 최소자승법(Least Squares)과 특이값 분해(SVD)를 심도 있게 학습합니다. 이를 통해 데이터의 기하학적 구조를 파악하고 머신러닝 및 그래픽스 알고리즘을 설계할 수 있는 수학적 사고력을 배양합니다.","Linear Algebra and its Applications 5th Edition
+David C Lay, Steven R. Lay, Judi J. McDonald","출석 : 5%
+중간고사 : 45%
+기말고사 : 45%
+과제 : 5%",없음,raw/syllabus/2026_2_MTED0231-004/Pub.json
+2026-1,CLTR0211-025,김명옥,3-3-0,한국어,"미분과 적분은 자연현상이나 사회현상을 설명할 수 있는 가장 강력한 수학적 도구중 하나이다. 따라서, 공학계열 학생들에게 미분과 적분은 전공을 학습하기 위한 필수적인 기반이라 볼 수 있다. 또한 논리적, 창의적인 문제해결능력과 수학적 의사소통능력을 기르는데 중요한 역할을 한다. 이 강좌의 목표로 학생들이 미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","미분과 적분의 직관적인 원리와 논리적인 전개형식을 이해하고, 이를 바탕으로 문제해결 방법들을 익히고, 여러가지 응용문제를 해결할 수 있는 문제해결능력을 기르는 데 있다.","Calculus : concepts and contexts 5e, James Stewart, Stephen Kokoska
+
+Publisher: CENGAGE","1. 중간고사(45%), 기말고사(45%), 기타(과제 및 출석 등) (10%)
+
+2. 시험유형 : 단답형과 서술형의 혼합으로 출제 
+
+3. 과제 : 강의계획서에 제시된 과제 및 연구문제","1. 본 강좌는 IT대학 학생들만 수강 가능함.
+
+2. 본 강좌는 IT대학 수강학생 전체를 대상으로 공동시험, 공동출제, 공동 평가함.
+
+3. 시험 일시:  추후 공지 (중간고사 8주, 기말고사 15주)
+
+4. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있음.
+
+5. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배됨.",raw/syllabus/2026_1_CLTR0211-025/Pub.json
+2026-1,CLTR0212-001,이은영,3-3-0,한국어,"수학 I에서 배운 일변수 함수에서의 미분과 적분을 기초로 하여, 이변수 이상의 함수의 미분과 적분을 다룬다. 또한 공간 상의 점에 벡터를 대응시키는 벡터장의 미분과 적분을 공부한다. 이들 새로운 형태의 적분과 일변수 함수의 적분, 이중적분, 삼중 적분과의 연관성은 고차원 상에서 미적분학의 기본정리와 유사한 그린정리, 스톡정리, 발산정리에 의하여 설명되어진다. 궁극적으로 본 강의의 목적은 논리적 사고력의 향상 뿐 아니라 자연과학 및 공학분야에서 필요로 하는 수학적 기본지식과 문제 해결력을 기르는데 있다.",자연과학에서 발생할 수 있는 수학관련 문제의 분석 및 해결을 위한 미적분한 내용을 습득한다.,"Calculus: Early Transcendentals, 9th edition  (Metric Version) by James Stewart, Daniel Clegg, Saleem Watson
+
+Publisher: CENGAGE","1. 중간고사 : 45%= 단답형, 서술형 등 다양한 형태의 문항 출제 
+2. 기말고사 : 45%= 단답형, 서술형 등 다양한 형태의 문항 출제
+3. 기타(과제 및 출석 등) : 10%","수업방식, 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있음. 
+LMS 공지사항에 공지 함. 
+시험 일정 및 장소는 추후 공지.",raw/syllabus/2026_1_CLTR0212-001/Pub.json
+2026-1,CLTR0213-020,김봉재,3-3-0,한국어,"- 물리학 I 수업은 뉴튼역학에 관한 기초개념을 익히는 과정으로, 역학, 파동에 관한 기본 개념 및 심화 학습을 하는 과목입니다.
+- 교육내용: 물리 단위, 벡터, 선운동, 뉴턴의 운동 법칙, 원운동, 에너지, 강체, 파동, 진동.
+- 먼저 변위, 속도, 가속도 등 운동을 기술하는데 필요한 용어와 원래를 배운 후, 힘, 에너지 등에 관해 배우게 될 예정입니다.
+- 단계적인 문제 풀이 방법을 통해 개념과 원리를 반복적으로 익히는 것이 중요합니다.","창의: 첨단인으로서  ""창의적 접근을 통한 문제해결"" 의 역량",,"- 평가방법
+- 중간고사 및 기말고사 각 40%
+- 출석, 참여도, 과제, 퀴즈 20%","- 1주차에 수업 전반에 관한 소개 및 오리엔테이션이 있을 예정입니다.
+- 중간고사 및 기말고사는 시험기간 중 강의실 출석으로 실시 예정입니다.
+- 숙제 문제는 각 챕터마다 수시로 제출 예정입니다.
+- 휴강 및 보강은 수업 시간에 공지합니다.",raw/syllabus/2026_1_CLTR0213-020/Pub.json
+2026-2,CLTR0212-018,김명옥,3-3-0,한국어,"수학1에서 배운 일변수 함수에서의 미분과 적분을 기초로 하여, 2변수이상의 함수의 미분과 적분을 다룬다. 또한 공간상의 점에 벡터를 대응시키는 벡터장의 미분과 적분을 공부한다. 이들 새로운 형태의 적분과 일변수 함수의 적분, 중적분, 삼중적분과의 연관성은 고차원상에서 미적분학의 기본정리와 유사한 그린정리, 스톡정리, 발산정리에 의하여 설명되어진다. 궁극적으로 본 강의의 목적은 논리적 사고력의 향상뿐아니라 자연과학 및 공학분야에서 필요로 하는 수학적 기본지식과 문제해결력을 기르는데 있다.",수학적 사유를 통해서 문제의 본질을 이해하고 문제의 결과에 도달하는 탐구의 과정을 통해 탐색능력의 향샹을 가질 수 있다.,"Calculus : concepts and contexts 5e, James Stewart, Stephen Kokoska/ Publisher: CENGAGE","1. 중간고사 45%, 기말고사 45%, 기타(출석 및 과제 ) 10%
+
+2. 과제 : 강의계획서에 제시된 과제 및 연구문제","1. 본 강좌는 IT대학 학생들(모바일공학 전공제외)만 수강 가능함.
+
+2. 본 강좌는 IT대학 수강학생 전체를 대상으로 공동시험, 공동 평가함.
+
+3. 시험 일시:  중간고사 10/26(월),오후 6시30분, 기말고사 12/14(월),오후 6시30분
+
+4. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있음.
+
+5. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배됨.",raw/syllabus/2026_2_CLTR0212-018/Pub.json
+2026-2,CLTR0213-002,박상국,3-3-0,한국어,"물리학은 과학과 기술의 근간이 되고 현대 문명의 발전을 이끌어 온 기초학문이다. 물리학의 여러 영역 중 본 강의에서 주로 다루는 고전역학은 물리이론의 가장 기초가 되는 학문이며 특히 일상생활에서 자주 경험할 수 있는 역학적 상황을 잘 설명해주는 영역이다. 운동의 가장 기본적인 양상인 병진, 회전, 그리고 진동운동을 뉴턴의 여러 운동이론을 기반으로 하여 논리적으로 기술하는 방법을 학습한다.",운동의 여러 양상에서 요구되는 물리량을 논리적인 과정을 통해서 제시하는 방법을 습득한다. 또한 이를 바탕으로 수강생 각자의 관련 전공분야를 깊이있게 이해하는 능력을 배양하는 것이 본 강의의 주된 목표이다.,"주교재 : 대학물리학 에센스, 대학물리학 교재편찬위원회 역, 북스힐
+        (International Student Edition, Raymond A. Serway, John W. Jewett 원저)
+
+참고문헌 : 물리학 (Tipler & Mosca 원저)","1. 출석(10%): 결석 및 지각 횟수에 따라 출석 점수 감점
+2. 중간시험(35%): 전반부 강의내용과 관련된 문제 출제
+3. 기말시험(35%): 후반부 강의내용과 관련된 문제 출제
+4. 과제 및 기타(20%): 선별된 연습문제 혹은 추가문제 풀어서 제출","* 출석 미달이나 과제 제출 일정의 미준수로 인한 불이익을 당하지 않도록 유의 바람
+* 중간 및 기말시험은 모두 대면으로 진행(특별한 사유없이 시험에 응하지 않을 경우 성적을 받을 수 없음)
+* 수강생의 이해 정도에 따라 수업내용 및 진도는 일부 조정될 수 있음
+* 본 강의는 대면강의로 진행되지만 필요시(예. 공휴일로 인한 휴강 등) 온라인으로 보강을 진행",raw/syllabus/2026_2_CLTR0213-002/Pub.json
+2026-2,CLTR0214-014,조현석,3-3-0,한국어,"물리학은 가장 기초적인 과학의 한 분야로, 다른 자연과학 및 공학의 기본이 되며, 자연현상의 기본적인 원리를 이해하는 것을 목적으로 한다.
+이공계를 전공하는 1학년 학부생들에게 필요한 기본적인 물리학의 개념과 원리를 배움으로서 자연 현상을 물리학적으로 이해하고, 그 현상에 대한 물리적인 문제들을 해결할 수 있는 능력을 배양하고자 한다.","강의목표 : 물리학의 기초가 되는 전기, 자기 및 광학에 대해 이해하고 현대물리학의 기초를 배운다.",,"중간시험 : 40%
+기말시험 : 40%
+과제 : 20%","강의 계획표를 참고하여 수업 전 예습, 수업 후 복습을 권장합니다.
+강의 일정은 수업 진행에 따라 달라질 수 있습니다. 
+시험에는 계산기 사용은 허용되지 않습니다.",raw/syllabus/2026_2_CLTR0214-014/Pub.json
+2026-2,CLTR0819-001,최진호,3-3-0,한국어,"자연과학과 공학에서 다루는 여러 가지 수학분야를 공부하는데 기반이 되는 평면기하와 공간기하, 벡터와 벡터공간, 행렬과 행렬식, 복소수 등의 기본적인 내용과 미적분학을 다루는 수학I을 공부하기에 필요한 기본적인 미적분학의 개념을 강의하고 수학을 이해하는데 기반이 되는 수학적인 논리를 살펴본다.","1. 평면과 공간의 거리 개념을 기반으로 표현되는 여러 가지 도형과 도형의 이동을 이해하고 방정식의 변형에 담겨있는 도형의 변화를 이해한다.
+2. 벡터의 개념과 벡터의 연산을 이해하고 벡터를 통한 직선과 평면의 이해의 효율성을 알고 추상적인 벡터공간을 알아 가며 벡터공간의 여러 가지 용어들을 이해한다.
+3. 행렬과 행렬의 연산, 행렬식을 알고 선형연립방정식의 해를 구할 수 있으며, 행렬로 표현되는 문제들 이해하고 해결할 수 있는 도태를 마련한다.
+4. 명제와 논리연산, 연역적인 증명, 수학적 귀납법을 이해하고 복소수와 복소수의 다양한 규칙들을 알고 적용할 수 있다.
+5. 수학I의 미분적분학을 공부하기 위한 미분적분학의 기초를 다진다.","교재 : 강의노트(기하, 벡터, 행렬, 미적분), 자료 
+참고 문헌 : (1) Advanced Engineering Mathematics, Peter V. O’neil 지음, CENGAGE Learning.
+                 (2) 미분적분학(9판), James Stewart외 2인 지음, 수학교재편찬위원회 옮김, 경문사","# 평가 점수를 바탕으로 한 상대평가
+ ""평가 점수(100점 만점) = 중간고사(100점)*0.4 + 기말고사(100점)*0.4 + 과제점수(10점) + 출석점수(10점)""
+중간고사 40%, 기말고사 40% [각, 100점 만점 시험]
+출석 10% : 결석 2회(3시간)까지 10점 만점, 이후 1회(1.5시간) 추가 결석마다 1.5점씩 감점, 지각은 0.5점 감점, ""지각 2회 = 결석 1회"", ""부정출석 1회 = 결석처리 및 추가 3점 감점""
+ - 출석점수 예시: ""결석 0회, 결석 1회(1.5시간), 결석 2회(3시간) = 10점"", ""결석 3회(4.5시간) = 8.5점"", ""결석 4회(6시간) = 7점"", ..., ""결석 8회(12시간) = 1점"", ""결석 9회 이상 = 낙제(F학점)""
+과제 10% : 총 2회 과제 제출, 제출된 과제를 3점~5점으로 평가
+
+# 낙제(F학점)기준 
+ - 시험성적 평균 10점 미만(중간기말 점수 합산 20점 미만, 200점 기준)
+ - 시험 미응시 2회(미응시 = 결석 1회)
+ - 부정출석 2회 이상(부정출석 1회 = 결석처리 및 추가 출석점수 3점 감점)
+ - 결석 시간 12시간 초과(결석 횟수 8회 초과)
+ - 수업 방해 및 시험 부정행위","1. 강의 일정 및 평가 방법 등은 사정에 따라 변경될 수 있습니다.
+2. 강의교재는 정해진 것이 없고 강의노트로 제공되며 각 장별로 강의노트가 준비되면 pdf파일로 학습관리시스템(LMS)의 강의자료실에 업로드할 에정입니다. 
+3. 강의자료에 오타나 오류가 있으면 정오표가 제공될 예정입니다.
+4. 시험 일시 : 중간고사, 기말고사 시험기간 중 수업시간에 시행될 예정입니다. (추후 일정을 공지함) 
+5. 본 강좌는 대면강의로 진행 될 예정입니다. 질병에 따른 사회적 거리두기 등의 상황이 발생할 경우 LMS공지, 수업시간, 문자 등을 통하여 공지합니다.
+6. 동영상, 강의자료 등 수업관련 자료를 외부로 유출하는 행위는 저작권에 위배되니 유의하세요.",raw/syllabus/2026_2_CLTR0819-001/Pub.json

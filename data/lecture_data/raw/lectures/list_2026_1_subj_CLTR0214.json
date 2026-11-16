@@ -1,0 +1,14 @@
+{
+ "timestamp": "2026-11-16T19:41:11.533",
+ "success": true,
+ "code": null,
+ "msg": null,
+ "data": [],
+ "statusCode": 200,
+ "_query": {
+  "year": "2026",
+  "smstr": "1",
+  "sbjetCd": "CLTR0214",
+  "collected_at": "2026-11-16T19:41:14"
+ }
+}
