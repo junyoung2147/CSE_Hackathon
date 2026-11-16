@@ -5,24 +5,28 @@
 
 ## 다시 만들기
 ```
-python data/scripts/crawl_lectures.py --year 2026 --smstr 1 2 --syllabus   # raw 수집 (이미 받은 것은 건너뜀)
-python data/scripts/build_csv.py                                          # raw → CSV
+python data/lecture_data/scripts/crawl_lectures.py --year 2026 --smstr 1 2 --syllabus   # raw 수집 (이미 받은 것은 건너뜀)
+python data/lecture_data/scripts/build_csv.py                              # raw → CSV (subjects.csv는 이미 있으면 건너뜀, 새로 쓰려면 --overwrite)
 ```
 새 학기는 `--year`·`--smstr`만 바꿔 실행한다. 학기 중 계획서가 바뀌었으면 `--refresh`를 붙인다.
-`data/raw/syllabus/`(약 23MB)는 git에 올리지 않는다. 필요하면 위 명령으로 다시 받는다.
+`data/lecture_data/raw/syllabus/`(약 23MB)는 git에 올리지 않는다. 필요하면 위 명령으로 다시 받는다.
 
 ## 파일과 키
 - 학기는 `term`(`2026-1`), 분반은 `term + course_no`, 과목은 `subject_code`로 연결한다.
 - 모든 텍스트는 원문 그대로다(HTML 태그만 제거). 영어 강의는 계획서도 영어다.
-- 출처: 각 행의 `source_file`은 `data/` 기준 raw 경로다. 사이트는 SPA라 계획서별 URL이 없다. 원문을 보려면 조회 페이지에서 학기를 고르고 강좌번호(course_no)로 검색한 뒤 행을 더블클릭한다.
+- 출처: 각 행의 `source_file`은 `data/lecture_data/` 기준 raw 경로다. 사이트는 SPA라 계획서별 URL이 없다. 원문을 보려면 조회 페이지에서 학기를 고르고 강좌번호(course_no)로 검색한 뒤 행을 더블클릭한다.
 
 | 파일 | 한 행 | 주요 컬럼 |
 |---|---|---|
-| `subjects.csv` | 과목 | subject_name, credit(학점), lecture_hours(이론 시수), practice_hours(실습 시수), offered_terms(개설 학기), section_count(분반 수), prerequisites(선수과목), followups(후수과목) |
+| `subjects.csv` | 과목 (그래프 노드) | subject_name, credit(학점), lecture_hours(이론 시수), practice_hours(실습 시수), offered_terms(개설 학기), section_count(분반 수), prerequisites(선수과목), followups(후수과목) |
 | `sections.csv` | 분반 | subject_code, section(분반), professor, time_slots(교시), time_real(실제 시간), room, language(`Kor`/`Eng`/`Pre`), capacity(정원), listed_in(이 분반이 조회된 전공 코드들, 교양 과목 목록에서 나온 분반은 `교양`), has_syllabus |
 | `syllabus.csv` | 분반의 계획서 일반사항 | professor(교수), credit_system(학점-이론-실습), summary(개요), goals(목표), textbooks_references(교재·참고문헌), evaluation(평가 방법), notes(수강 참고사항) |
 | `syllabus_weeks.csv` | 분반 × 주차 | week, content(주차 내용), method(수업 방법) |
 | `syllabus_books.csv` | 분반 × 교재 | title, author, publisher, year, isbn, book_type_code(원본 코드) |
+
+### subjects.csv = 그래프 노드 테이블 (123행)
+- 시간표에 있는 87과목 + 교육과정(`data/curriculum_data/curriculum_data_csv/curriculum.csv`)에만 있는 36과목.
+- 교육과정에만 있는 과목은 2026년 미개설 등이라 `section_count=0`이고, offered_terms·prerequisites·followups가 비어 있다. 학점·시수는 교육과정 값이다
 
 ### 교양 5과목
 기초수학2(CLTR0819), 수학 I(CLTR0211), 수학 II(CLTR0212), 물리학 I(CLTR0213), 물리학 II(CLTR0214)는 전교 분반을 모두 sections에 넣었다. 계획서는 과목·학기마다 1개만 받았다. 고르는 순서는 컴퓨터학부 분반, 그다음 전자공학부·전기공학과·기계공학부 분반, 그것도 없으면 강좌번호가 가장 앞선 분반이다. 그래서 교양 분반 대부분은 `has_syllabus=N`이다.

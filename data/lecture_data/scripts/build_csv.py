@@ -1,9 +1,12 @@
 """data/raw의 강의 목록·강의계획서 JSON을 사람이 읽는 CSV로 변환한다.
 
-사용법: python data/scripts/build_csv.py
-출력(data/processed/): subjects, sections, syllabus, syllabus_weeks, syllabus_books
-컬럼 설명은 data/processed/README.md 참고.
+사용법: python data/lecture_data/scripts/build_csv.py [--overwrite]
+출력(data/lecture_data/lecture_data_csv/): subjects, sections, syllabus, syllabus_weeks, syllabus_books
+subjects에는 교육과정(data/curriculum_data)에만 있는 과목도 넣어 그래프 노드 테이블로 쓴다.
+subjects.csv는 사람이 직접 고치는 파일이라 이미 있으면 --overwrite 없이는 덮어쓰지 않는다.
+컬럼 설명은 data/lecture_data/lecture_data_csv/README.md 참고.
 """
+import argparse
 import csv
 import html
 import json
@@ -14,7 +17,8 @@ from pathlib import Path
 from crawl_lectures import EXCLUDED_SUBJECTS
 
 DATA = Path(__file__).resolve().parents[1]
-RAW, OUT = DATA / "raw", DATA / "processed"
+RAW, OUT = DATA / "raw", DATA / "lecture_data_csv"
+CURRICULUM = DATA.parent / "curriculum_data" / "curriculum_data_csv" / "curriculum.csv"
 SOURCE_URL = "https://knuin.knu.ac.kr/public/stddm/lectPlnInqr.knu"
 
 # 원본 필드 → CSV 컬럼
@@ -101,8 +105,32 @@ def merge_texts(items):
     return "\n".join(f"{t} ({', '.join(srcs)})" for t, srcs in groups.items())
 
 
+def add_curriculum_subjects(subjects):
+    """교육과정에만 있는 과목을 subjects에 추가한다(계획서 값은 비움). 겹치는 과목은 학점·시수가 같은지 확인."""
+    with open(CURRICULUM, encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+    added = 0
+    for r in rows:
+        attrs = {"subject_code": r["course_code"], "subject_name": r["course_name_ko"], "credit": r["credits"],
+                 "lecture_hours": r["theory_hours"], "practice_hours": r["lab_hours"]}
+        s = subjects.get(r["course_code"])
+        if s:
+            # 학교현장실습처럼 교육과정 쪽 시수가 빈 값이면 비교하지 않는다
+            assert not r["lab_hours"] or all(s[k] == attrs[k] for k in ("credit", "lecture_hours", "practice_hours")),                 f"시간표·교육과정 학점·시수 불일치: {r['course_code']}"
+            continue
+        # 전공마다 과목명 표기가 다르면 첫 값을 쓴다
+        subjects[r["course_code"]] = {**attrs, "offered_terms": "", "section_count": 0,
+                                      **{c: "" for c in PREREQ_COLS.values()}}
+        added += 1
+    print(f"교육과정에만 있는 과목 {added}개를 subjects에 추가")
+    return {r["course_code"] for r in rows}
+
+
 def main():
     """raw 전체를 읽어 CSV를 만들고 자체 점검 결과를 출력한다."""
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--overwrite", action="store_true", help="직접 고친 subjects.csv도 새로 쓴다")
+    args = ap.parse_args()
     sections, subj_attrs = build_sections()
     syllabus, weeks, books, missing = [], [], [], []
     prereq_items = defaultdict(lambda: {c: [] for c in PREREQ_COLS.values()})
@@ -136,8 +164,12 @@ def main():
         s["offered_terms"] = ";".join(sorted(s["offered_terms"]))
         for col in PREREQ_COLS.values():
             s[col] = merge_texts(prereq_items[code][col])
+    curriculum_codes = add_curriculum_subjects(subjects)
 
-    write("subjects.csv", sorted(subjects.values(), key=lambda s: s["subject_code"]))
+    if (OUT / "subjects.csv").exists() and not args.overwrite:
+        print("subjects.csv: 이미 있어서 건너뜀 (직접 고친 내용 보호, 새로 쓰려면 --overwrite)")
+    else:
+        write("subjects.csv", sorted(subjects.values(), key=lambda s: s["subject_code"]))
     write("sections.csv", list(sections.values()))
     write("syllabus.csv", syllabus)
     write("syllabus_weeks.csv", weeks)
@@ -147,6 +179,7 @@ def main():
     keys = {(s["term"], s["course_no"]) for s in sections.values()}
     assert len(keys) == len(sections)
     assert all(s["subject_code"] in subjects for s in sections.values())
+    assert curriculum_codes <= subjects.keys()
     assert all((r["term"], r["course_no"]) in keys for r in syllabus + weeks + books)
     for col in ["summary", "goals"]:
         print(f"syllabus.{col} 빈 값: {sum(1 for r in syllabus if not r[col])}/{len(syllabus)}")
