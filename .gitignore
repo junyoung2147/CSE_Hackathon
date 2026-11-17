@@ -1,3 +1,4 @@
 .vscode
 CLAUDE.md
 project-overview.md
+__pycache__/
