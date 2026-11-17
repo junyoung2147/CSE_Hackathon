@@ -15,16 +15,35 @@ class Subject(Base):
     prerequisites = Column(Text, nullable=True)
     followups = Column(Text, nullable=True)
 
+
 class CourseEdge(Base):
     __tablename__ = "course_edges"
 
-id = Column(Integer, primary_key=True, autoincrement=True)
-from_code = Column(String(32), nullable=False, index=True)
-from_name = Column(String(200), nullable=True)
-to_code = Column(String(32), nullable=False, index=True)
-to_name = Column(String(200), nullable=True)
-type = Column(String(32), nullable=False, default="pre")
-or_with = Column(String(100), nullable=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    from_code = Column(String(32), nullable=False, index=True)
+    from_name = Column(String(200), nullable=True)
+    to_code = Column(String(32), nullable=False, index=True)
+    to_name = Column(String(200), nullable=True)
+    type = Column(String(32), nullable=False, default="pre")
+    or_with = Column(String(100), nullable=True)
+
+
+class Curriculum(Base):
+    __tablename__ = "curriculum"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    major_name = Column(String(100), nullable=False, index=True)
+    basis_year = Column(Integer, nullable=True)
+    grade = Column(Integer, nullable=True, index=True)
+    semester = Column(String(20), nullable=True, index=True)
+    category = Column(String(50), nullable=True)
+    course_code = Column(String(32), nullable=False, index=True)
+    course_name_ko = Column(String(200), nullable=True)
+    credits = Column(Integer, nullable=True)
+    theory_hours = Column(Integer, nullable=True)
+    lab_hours = Column(Integer, nullable=True)
+    is_required = Column(Boolean, default=False)
+    note = Column(Text, nullable=True)
 
 
 class Section(Base):
