@@ -1,3 +1,4 @@
+import re
 from collections import defaultdict
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,6 +8,7 @@ from sqlalchemy.orm import Session
 from database import Base, engine, get_db
 from models import (
     CourseEdge,
+    Curriculum,
     Section,
     Subject,
     Syllabus,
@@ -18,7 +20,7 @@ from models import (
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="KNU CSE Hackathon Backend", version="0.2.0")
+app = FastAPI(title="KNU CSE Hackathon Backend", version="0.3.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -46,7 +48,8 @@ class TimetableSaveRequest(BaseModel):
 def _parse_list(raw: str | None) -> list[str]:
     if not raw:
         return []
-    return [item.strip() for item in raw.split(",") if item.strip()]
+    return [item.strip() for item in re.split(r"[;,]", raw) if item.strip()]
+
 
 def _is_edge_satisfied(edge: CourseEdge, completed_codes: set[str]) -> bool:
     if edge.from_code in completed_codes:
@@ -56,7 +59,6 @@ def _is_edge_satisfied(edge: CourseEdge, completed_codes: set[str]) -> bool:
         if any(code in completed_codes for code in alt_codes):
             return True
     return False
-
 
 
 @app.get("/health")
@@ -113,7 +115,7 @@ def get_roadmap(
             "to_code": e.to_code,
             "to_name": e.to_name,
             "type": e.type,
-            "or_with": e.or_with,
+            "or_with": _parse_list(e.or_with),
         }
         for e in edges
     ]
@@ -123,6 +125,44 @@ def get_roadmap(
         "total": len(nodes),
         "subjects": nodes,
         "edges": edge_list,
+    }
+
+
+@app.get("/api/curriculum")
+def get_curriculum(
+    major_name: str | None = Query(None, description="전공명 (예: 심화컴퓨팅전공)"),
+    grade: int | None = Query(None, description="학년"),
+    semester: str | None = Query(None, description="학기 (예: 1학기)"),
+    db: Session = Depends(get_db),
+):
+    query = db.query(Curriculum)
+    if major_name:
+        query = query.filter(Curriculum.major_name == major_name)
+    if grade is not None:
+        query = query.filter(Curriculum.grade == grade)
+    if semester:
+        query = query.filter(Curriculum.semester == semester)
+
+    rows = query.order_by(Curriculum.major_name, Curriculum.grade, Curriculum.semester, Curriculum.course_code).all()
+    return {
+        "total": len(rows),
+        "items": [
+            {
+                "major_name": r.major_name,
+                "basis_year": r.basis_year,
+                "grade": r.grade,
+                "semester": r.semester,
+                "category": r.category,
+                "course_code": r.course_code,
+                "course_name_ko": r.course_name_ko,
+                "credits": r.credits,
+                "theory_hours": r.theory_hours,
+                "lab_hours": r.lab_hours,
+                "is_required": r.is_required,
+                "note": r.note,
+            }
+            for r in rows
+        ],
     }
 
 

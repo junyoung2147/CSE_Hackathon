@@ -4,11 +4,20 @@ from pathlib import Path
 from sqlalchemy.orm import Session
 
 from database import Base, SessionLocal, engine
-from models import CourseEdge, Section, Subject, Syllabus, SyllabusBook, SyllabusWeek
+from models import (
+    CourseEdge,
+    Curriculum,
+    Section,
+    Subject,
+    Syllabus,
+    SyllabusBook,
+    SyllabusWeek,
+)
 
 DEFAULT_DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DEFAULT_CSV_DIR = DEFAULT_DATA_DIR / "lecture_data" / "lecture_data_csv"
 DEFAULT_EDGES_CSV = DEFAULT_DATA_DIR / "graph_data" / "edges.csv"
+DEFAULT_CURRICULUM_CSV = DEFAULT_DATA_DIR / "curriculum_data" / "curriculum.csv"
 
 
 def _to_int(val: str | None) -> int | None:
@@ -30,12 +39,16 @@ def load_csv(path: Path) -> list[dict]:
     with path.open("r", encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
 
-def seed_all(db: Session, csv_dir: Path, edges_csv: Path) -> dict[str, int | str]:
+
+def seed_all(
+    db: Session,
+    csv_dir: Path,
+    edges_csv: Path,
+    curriculum_csv: Path,
+) -> dict[str, int | str]:
     counts: dict[str, int | str] = {}
-    
+
     if db.query(Subject).first() is None:
-
-
         subjects_rows = load_csv(csv_dir / "subjects.csv")
         db.bulk_save_objects([
             Subject(
@@ -111,7 +124,7 @@ def seed_all(db: Session, csv_dir: Path, edges_csv: Path) -> dict[str, int | str
             if r.get("term") and r.get("course_no")
         ])
         counts["syllabus_weeks"] = len(weeks_rows)
-    
+
         books_rows = load_csv(csv_dir / "syllabus_books.csv")
         db.bulk_save_objects([
             SyllabusBook(
@@ -130,7 +143,7 @@ def seed_all(db: Session, csv_dir: Path, edges_csv: Path) -> dict[str, int | str
             if r.get("term") and r.get("course_no")
         ])
         counts["syllabus_books"] = len(books_rows)
-        
+
     if db.query(CourseEdge).first() is None and edges_csv.exists():
         edge_rows = load_csv(edges_csv)
         db.bulk_save_objects([
@@ -147,6 +160,28 @@ def seed_all(db: Session, csv_dir: Path, edges_csv: Path) -> dict[str, int | str
         ])
         counts["course_edges"] = len(edge_rows)
 
+    if db.query(Curriculum).first() is None and curriculum_csv.exists():
+        curriculum_rows = load_csv(curriculum_csv)
+        db.bulk_save_objects([
+            Curriculum(
+                major_name=r["major_name"].strip(),
+                basis_year=_to_int(r.get("basis_year")),
+                grade=_to_int(r.get("grade")),
+                semester=(r.get("semester") or "").strip() or None,
+                category=(r.get("category") or "").strip() or None,
+                course_code=r["course_code"].strip(),
+                course_name_ko=(r.get("course_name_ko") or "").strip() or None,
+                credits=_to_int(r.get("credits")),
+                theory_hours=_to_int(r.get("theory_hours")),
+                lab_hours=_to_int(r.get("lab_hours")),
+                is_required=_to_bool(r.get("is_required")),
+                note=(r.get("note") or "").strip() or None,
+            )
+            for r in curriculum_rows
+            if r.get("major_name") and r.get("course_code")
+        ])
+        counts["curriculum"] = len(curriculum_rows)
+
     db.commit()
     return counts or {"message": "already_seeded"}
 
@@ -154,10 +189,11 @@ def seed_all(db: Session, csv_dir: Path, edges_csv: Path) -> dict[str, int | str
 if __name__ == "__main__":
     csv_dir = Path(os.getenv("CSV_DIR", str(DEFAULT_CSV_DIR)))
     edges_csv = Path(os.getenv("EDGES_CSV", str(DEFAULT_EDGES_CSV)))
+    curriculum_csv = Path(os.getenv("CURRICULUM_CSV", str(DEFAULT_CURRICULUM_CSV)))
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
-        result = seed_all(db, csv_dir, edges_csv)
+        result = seed_all(db, csv_dir, edges_csv, curriculum_csv)
         print("Seed result:", result)
     finally:
         db.close()
