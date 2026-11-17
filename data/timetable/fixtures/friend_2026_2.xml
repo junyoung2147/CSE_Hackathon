@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <table year="2026" semester="2" status="1" identifier="FakeId2026s2">
+    <subject id="8050576">
+      <internal value="CLTR0003-001"/>
+      <name value="실용화법"/>
+      <professor value="김령환"/>
+      <time value="수 1A,1B,2A,금 2B,3A,3B">
+        <data day="2" starttime="108" endtime="126" place="산격동 캠퍼스 사범대학-216"/>
+        <data day="4" starttime="126" endtime="144" place="산격동 캠퍼스 사범대학-216"/>
+      </time>
+      <place value="산격동 캠퍼스 사범대학 216"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+    <subject id="8053231">
+      <internal value="COME0331-004"/>
+      <name value="자료구조"/>
+      <professor value="배진학"/>
+      <time value="월 5B,6A,6B,수 5B,6A,6B">
+        <data day="0" starttime="162" endtime="180" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-348"/>
+        <data day="2" starttime="162" endtime="180" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-348"/>
+      </time>
+      <place value="산격동 캠퍼스 IT대학5호관(IT융복합관) 348"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+    <subject id="8053263">
+      <internal value="COMP0324-004"/>
+      <name value="인공지능"/>
+      <professor value="정든솔"/>
+      <time value="화 2B,3A,3B,목 1A,1B,2A">
+        <data day="1" starttime="126" endtime="144" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B101"/>
+        <data day="3" starttime="108" endtime="126" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B101"/>
+      </time>
+      <place value="산격동 캠퍼스 IT대학5호관(IT융복합관) B101"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+    <subject id="8053476">
+      <internal value="ELEC0247-002"/>
+      <name value="논리회로"/>
+      <professor value="백태산"/>
+      <time value="월 8B,9A,9B,수 7A,7B,8A">
+        <data day="0" starttime="198" endtime="216" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B102"/>
+        <data day="2" starttime="180" endtime="198" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B102"/>
+      </time>
+      <place value="산격동 캠퍼스 IT대학5호관(IT융복합관) B102"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+    <subject id="8053479">
+      <internal value="COME0311-005"/>
+      <name value="확률및통계"/>
+      <professor value="김명석"/>
+      <time value="화 8B,9A,9B,목 8B,9A,9B">
+        <data day="1" starttime="198" endtime="216" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B101"/>
+        <data day="3" starttime="198" endtime="216" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B101"/>
+      </time>
+      <place value="산격동 캠퍼스 IT대학5호관(IT융복합관) B101"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+    <subject id="8053487">
+      <internal value="COMP0411-005"/>
+      <name value="컴퓨터구조"/>
+      <professor value="김용태"/>
+      <time value="월 1A,1B,2A,수 2B,3A,3B">
+        <data day="0" starttime="108" endtime="126" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B101"/>
+        <data day="2" starttime="126" endtime="144" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-B101"/>
+      </time>
+      <place value="산격동 캠퍼스 IT대학5호관(IT융복합관) B101"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+    <subject id="8053492">
+      <internal value="ELEC0462-002"/>
+      <name value="시스템프로그래밍"/>
+      <professor value="이성희"/>
+      <time value="금 5A,5B,금 6A,6B,금 7A,7B,금 8A,8B">
+        <data day="4" starttime="156" endtime="204" place="산격동 캠퍼스 IT대학5호관(IT융복합관)-355"/>
+      </time>
+      <place value="산격동 캠퍼스 IT대학5호관(IT융복합관) 355"/>
+      <credit value="3"/>
+      <closed value="0"/>
+    </subject>
+  </table>
+  <primaryTables>
+    <primaryTable year="2026" semester="2" identifier="FakeId2026s2"/>
+    <primaryTable year="2026" semester="1" identifier="FakeId2026s1"/>
+    <primaryTable year="2025" semester="겨울" identifier="FakeId2025w"/>
+  </primaryTables>
+</response>
