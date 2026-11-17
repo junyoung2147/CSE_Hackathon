@@ -44,7 +44,7 @@ def test_fetch_all():
     assert len(out["semesters"]) == 1
     sem = out["semesters"][0]
     assert (sem["year"], sem["semester"], len(sem["courses"])) == (2026, "2", 7)
-    assert sem["courses"][2] == {"course_no": "COMP0324-004", "subject_code": "COMP0324",
+    assert sem["courses"][2] == {"course_no": "COMP0324-004",
                                  "name": "인공지능", "professor": "정든솔", "credit": 3}
     assert out["skipped"] == [{"year": 2026, "semester": "1", "reason": "비공개"},
                               {"year": 2025, "semester": "겨울", "reason": "과목 없음"}]

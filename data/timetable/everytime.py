@@ -55,7 +55,6 @@ def parse_table(root):
         credit = _value(s, "credit")
         courses.append({
             "course_no": course_no,
-            "subject_code": course_no.split("-")[0],
             "name": _value(s, "name"),
             "professor": _value(s, "professor"),
             "credit": int(credit) if credit.isdigit() else None,
