@@ -44,3 +44,69 @@ details summary { cursor: pointer; font-size: 13.5px; font-weight: 600; color: #
   .graph { height: 60vh; flex: none; }
   .panel { width: 100%; border-left: none; border-top: 1px solid #e5e7eb; }
 }
+
+/* ---- 학기 열 · 과목 노드 · 진로 ---- */
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand select { font: inherit; font-size: 13.5px; padding: 4px 8px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; }
+.careers { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 8px 16px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+.careers .label { font-size: 12.5px; color: #6b7280; margin-right: 4px; }
+.career { border: 1.5px solid #cbd5e1; background: #fff; border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer; }
+.career.on { border-color: #4f46e5; background: #4f46e5; color: #fff; font-weight: 600; }
+
+.course-node { position: relative; display: flex; align-items: center; justify-content: center; gap: 4px; border-radius: 10px; padding: 4px 8px; font-size: 12.5px; text-align: center; cursor: pointer; transition: opacity .2s; }
+.course-node .course-name { line-height: 1.25; }
+.course-node .badge { position: absolute; top: -8px; right: 6px; background: #f97316; color: #fff; font-size: 10px; font-weight: 700; border-radius: 6px; padding: 1px 5px; }
+.course-node .react-flow__handle { opacity: 0; }
+.sem-header { font-weight: 700; font-size: 15px; color: #374151; text-align: center; padding: 8px 0; }
+.sem-divider { border-left: 2px dashed #d1d5db; width: 0; pointer-events: none; }
+.react-flow__node-semester, .react-flow__node-divider { cursor: default; }
+
+.stats { display: flex; gap: 8px; margin: 12px 0 4px; }
+.stats div { flex: 1; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 8px; text-align: center; }
+.stats b { display: block; font-size: 18px; }
+.stats span { font-size: 11.5px; color: #6b7280; }
+.chip.target { border: 2px solid #4f46e5; font-weight: 600; }
+.chip.on { border-color: #111827; background: #111827; color: #fff; }
+
+/* ---- 성적 · 현황 ---- */
+.course-node .grade { position: absolute; bottom: -8px; left: 6px; background: #16a34a; color: #fff; font-size: 10px; font-weight: 700; border-radius: 6px; padding: 1px 5px; }
+.course-node .grade.taking { background: #d97706; }
+.grade-picker { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin: 4px 0 8px; font-size: 12.5px; }
+.grade-picker span { color: #6b7280; margin-right: 4px; }
+.grade-picker .g { border: 1px solid #d1d5db; background: #fff; border-radius: 6px; padding: 3px 7px; font-size: 12px; cursor: pointer; }
+.grade-picker .g.on { background: #16a34a; border-color: #16a34a; color: #fff; font-weight: 700; }
+.req { margin: 8px 0; }
+.req-head { display: flex; justify-content: space-between; font-size: 13px; }
+.bar { height: 8px; background: #f1f5f9; border-radius: 999px; overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: #4f46e5; }
+.bar i.full { background: #16a34a; }
+.extra { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; margin-top: 10px; }
+.extra input { width: 70px; padding: 4px 6px; border: 1px solid #d1d5db; border-radius: 6px; }
+button.primary { background: #4f46e5; color: #fff; border: none; border-radius: 8px; padding: 8px 12px; font-weight: 600; cursor: pointer; }
+button.primary:disabled { background: #a5b4fc; cursor: default; }
+.ok { color: #15803d; }
+
+/* ---- 탭 ---- */
+.tabs { display: flex; gap: 4px; }
+.tabs button { border: none; background: none; padding: 6px 10px; font-size: 14px; color: #6b7280; cursor: pointer; border-bottom: 2px solid transparent; }
+.tabs button.on { color: #111827; font-weight: 700; border-bottom-color: #4f46e5; }
+
+/* ---- 시간표 ---- */
+.tt { flex: 1; overflow: auto; padding: 16px; }
+.tt-input { display: flex; gap: 8px; max-width: 900px; }
+.tt-input input { flex: 1; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 8px; font: inherit; }
+.tt-input button:not(.primary) { border: 1px solid #d1d5db; background: #fff; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.tt-tabs { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+.tt-body { display: flex; gap: 16px; align-items: flex-start; }
+.tt-grid { flex: 1; display: grid; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; max-width: 900px; }
+.tt-day { text-align: center; font-weight: 600; font-size: 13px; padding: 6px 0; border-bottom: 1px solid #e5e7eb; }
+.tt-hours { position: relative; border-right: 1px solid #e5e7eb; }
+.tt-hours span { position: absolute; right: 4px; font-size: 10.5px; color: #9ca3af; transform: translateY(-50%); }
+.tt-col { position: relative; border-left: 1px solid #f1f5f9; background-image: repeating-linear-gradient(#fff 0, #fff 53px, #f1f5f9 53px, #f1f5f9 54px); }
+.tt-block { position: absolute; left: 2px; right: 2px; border-radius: 6px; padding: 4px; font-size: 11px; overflow: hidden; display: flex; flex-direction: column; gap: 2px; }
+.tt-block b { font-size: 11.5px; }
+.tt-block span { color: #4b5563; }
+.tt-list { width: 320px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; }
+.tt-list h3 { margin: 0 0 8px; font-size: 14px; }
+.tt-list ul { list-style: none; padding: 0; margin: 0 0 12px; }
+.tt-list li { font-size: 12.5px; padding: 5px 0; border-top: 1px solid #f3f4f6; }
