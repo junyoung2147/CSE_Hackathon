@@ -60,23 +60,39 @@ export function layoutBySemester(g: MajorGraph) {
   return { positions, height }
 }
 
-export function toFlowEdges(es: Edge[], focus: Set<string>, active: boolean): FlowEdge[] {
-  return es.map((e, i) => {
+/**
+ * 선을 언제 그리나
+ * - 진로나 과목을 골랐을 때(active): 그 경로 선만 진하게, 나머지는 숨김
+ * - 기본 화면: 내가 들었거나 듣고 있는 과목(start)에서 나가는 선만 그린다
+ *   (아무것도 안 들었으면 1학년 과목에서 나가는 선만 옅게)
+ */
+export function toFlowEdges(
+  es: Edge[],
+  focus: Set<string>,
+  active: boolean,
+  start: Set<string>,
+  firstYear: Set<string>,
+): FlowEdge[] {
+  const fresh = start.size === 0
+  return es.flatMap((e, i) => {
     const onPath = active && e.type === 'pre' && focus.has(e.from) && focus.has(e.to)
     const isRel = e.type === 'rel'
-    return {
+    const fromMine = start.has(e.from)
+    const show = active ? onPath : fresh ? firstYear.has(e.from) && !isRel : fromMine
+    if (!show) return []
+    return [{
       id: `e${i}-${e.from}-${e.to}`,
       source: e.from,
       target: e.to,
       type: 'default',
       animated: false,
       style: {
-        stroke: onPath ? '#4f46e5' : isRel ? '#9ca3af' : '#cbd5e1',
-        strokeWidth: onPath ? 2.5 : 1.2,
+        stroke: onPath ? '#4f46e5' : isRel ? '#9ca3af' : fresh ? '#cbd5e1' : '#60a5fa',
+        strokeWidth: onPath ? 2.5 : fresh ? 1.2 : 1.6,
         strokeDasharray: isRel ? '6 4' : undefined,
-        opacity: active && !onPath ? 0.15 : 0.9,
+        opacity: fresh ? 0.6 : 0.9,
       },
       zIndex: onPath ? 1 : 0,
-    }
+    }]
   })
 }

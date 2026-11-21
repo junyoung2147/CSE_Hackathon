@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
-import { followupsOf, nameOf, prereqGroupsOf, relatedOf, SEMESTER_LABELS, subjectByCode, type Course } from './data'
+import { followupsOf, nameOf, relatedOf, SEMESTER_LABELS, splitPrereqs, subjectByCode, type Course } from './data'
 import type { LocalSection } from './syllabus'
 import { GRADES, type Scale } from './progress'
+import AdviceBox from './AdviceBox'
 
 type Props = {
   code: string
   course?: Course
   completed: Set<string>
+  taking: Set<string>
+  inMajor: (code: string) => boolean // 지금 고른 전공 교육과정에 있는 과목인지
   grade: string | undefined // undefined = 미이수
   scale: Scale
   onToggle: (code: string) => void
@@ -23,13 +26,15 @@ function Chip({ code, done, onSelect }: { code: string; done: boolean; onSelect:
   )
 }
 
-export default function SubjectPanel({ code, course, completed, grade, scale, onToggle, onGrade, onSelect, pathCount }: Props) {
+export default function SubjectPanel({ code, course, completed, taking, inMajor, grade, scale, onToggle, onGrade, onSelect, pathCount }: Props) {
   // 계획서: 처음 열 때 syllabus.ts를 불러와서 이 과목 분반들을 찾는다
   const [sections, setSections] = useState<LocalSection[] | null>(null)
   const [secIdx, setSecIdx] = useState(0)
+  const [asking, setAsking] = useState<string[] | null>(null) // 상담 중인 선수과목 묶음
   useEffect(() => {
     setSections(null)
     setSecIdx(0)
+    setAsking(null)
     let alive = true
     import('./syllabus').then((m) => alive && setSections(m.sectionsOf(code)))
     return () => {
@@ -38,7 +43,7 @@ export default function SubjectPanel({ code, course, completed, grade, scale, on
   }, [code])
 
   const s = subjectByCode.get(code)
-  const pre = prereqGroupsOf(code)
+  const { taken, missing } = splitPrereqs(code, completed, taking)
   const post = followupsOf(code)
   const rel = relatedOf(code)
   const isDone = completed.has(code)
@@ -87,21 +92,53 @@ export default function SubjectPanel({ code, course, completed, grade, scale, on
 
       <section>
         <h3>선수과목 {pathCount > 0 && <small>(거슬러 올라가면 {pathCount}과목)</small>}</h3>
-        {pre.length === 0 ? (
-          <p className="muted">없음</p>
-        ) : (
-          <div className="chips">
-            {pre.map((group) => (
+        {taken.length + missing.length === 0 && <p className="muted">없음</p>}
+        {taken.length > 0 && (
+          <div className="chips" style={{ marginBottom: 8 }}>
+            {taken.map((group) => (
               <span key={group.join('|')} className="chip-group">
                 {group.map((c, i) => (
                   <span key={c} className="chip-group">
                     {i > 0 && <span className="or">또는</span>}
-                    <Chip code={c} done={completed.has(c)} onSelect={onSelect} />
+                    <Chip code={c} done={completed.has(c) || taking.has(c)} onSelect={onSelect} />
                   </span>
                 ))}
               </span>
             ))}
           </div>
+        )}
+        {missing.length > 0 && (
+          <>
+            <p className="small muted" style={{ margin: '4px 0' }}>아직 안 들은 선수과목 (권장)</p>
+            <ul className="missing">
+              {missing.map((group) => {
+                const other = !group.some(inMajor)
+                return (
+                  <li key={group.join('|')}>
+                    <span className="chip-group">
+                      {group.map((c, i) => (
+                        <span key={c} className="chip-group">
+                          {i > 0 && <span className="or">또는</span>}
+                          <Chip code={c} done={false} onSelect={onSelect} />
+                        </span>
+                      ))}
+                      {other && <span className="tag">타 전공</span>}
+                    </span>
+                    <button className="ask" onClick={() => setAsking(group)}>꼭 들어야 하나요?</button>
+                  </li>
+                )
+              })}
+            </ul>
+          </>
+        )}
+        {asking && (
+          <AdviceBox
+            code={code}
+            missing={asking}
+            completedCodes={[...completed]}
+            notes={sections?.[0]?.notes ?? null}
+            onClose={() => setAsking(null)}
+          />
         )}
       </section>
 

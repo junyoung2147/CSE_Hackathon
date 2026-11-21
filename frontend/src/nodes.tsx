@@ -5,8 +5,8 @@ import { NODE_H, NODE_W } from './layout'
 export const COLORS: Record<Status, { bg: string; border: string; text: string }> = {
   done: { bg: '#dcfce7', border: '#16a34a', text: '#14532d' },
   taking: { bg: '#fef3c7', border: '#d97706', text: '#78350f' },
-  available: { bg: '#ffffff', border: '#60a5fa', text: '#1e3a8a' },
-  locked: { bg: '#f8fafc', border: '#cbd5e1', text: '#64748b' },
+  next: { bg: '#ffffff', border: '#60a5fa', text: '#1e3a8a' },
+  none: { bg: '#ffffff', border: '#d1d5db', text: '#374151' },
 }
 
 export type CourseNodeData = {

@@ -25,11 +25,10 @@ function RoadmapApp() {
   const [grades, setGrades] = useState<Grades>(store.loadGrades) // 과목코드 → 성적('' = 미입력)
   const [taking, setTaking] = useState<string[]>(store.loadTaking) // 이번 학기 수강 중
   const [extra, setExtra] = useState<number>(store.loadExtra) // 지도에 없는 교양·기타 학점
-  const [scale, setScale] = useState<Scale>(store.loadScale)
+  const [scale] = useState<Scale>(store.loadScale)
   useEffect(() => store.saveGrades(grades), [grades])
   useEffect(() => store.saveTaking(taking), [taking])
   useEffect(() => store.saveExtra(extra), [extra])
-  useEffect(() => store.saveScale(scale), [scale])
   const completed = useMemo(() => new Set(Object.keys(grades)), [grades])
   const takingSet = useMemo(() => new Set(taking), [taking])
 
@@ -105,7 +104,11 @@ function RoadmapApp() {
     return [...deco, ...courseNodes]
   }, [graph, positions, height, completed, takingSet, grades, selected, targets, focus, active])
 
-  const flowEdges = useMemo(() => toFlowEdges(graph.edges, focus, active), [graph, focus, active])
+  const flowEdges = useMemo(() => {
+    const start = new Set([...completed, ...takingSet])
+    const firstYear = new Set(graph.courses.filter((c) => c.col <= 1).map((c) => c.code))
+    return toFlowEdges(graph.edges, focus, active, start, firstYear)
+  }, [graph, focus, active, completed, takingSet])
 
   // 고른 경로가 한 화면에 들어오게 확대 / 아무것도 안 고르면 전체 보기
   useEffect(() => {
@@ -159,8 +162,7 @@ function RoadmapApp() {
         <div className="legend">
           <span><i style={{ background: COLORS.done.bg, borderColor: COLORS.done.border }} />이수</span>
           <span><i style={{ background: COLORS.taking.bg, borderColor: COLORS.taking.border }} />수강 중</span>
-          <span><i style={{ background: COLORS.available.bg, borderColor: COLORS.available.border }} />수강 가능</span>
-          <span><i style={{ background: COLORS.locked.bg, borderColor: COLORS.locked.border }} />선수과목 필요</span>
+          <span><i style={{ background: COLORS.next.bg, borderColor: COLORS.next.border }} />다음 후보</span>
           <span className="mode">{hasBackend ? '백엔드 연결' : '로컬 모드'}</span>
         </div>
       </header>
@@ -213,6 +215,8 @@ function RoadmapApp() {
             code={selected}
             course={graph.courseByCode.get(selected)}
             completed={completed}
+            taking={takingSet}
+            inMajor={(c) => graph.courseByCode.has(c)}
             grade={grades[selected]}
             scale={scale}
             onToggle={toggle}
@@ -228,7 +232,6 @@ function RoadmapApp() {
             grades={grades}
             scale={scale}
             extra={extra}
-            onScale={setScale}
             onExtra={setExtra}
             onSelect={setSelected}
             onOpenTimetable={() => setView('timetable')}

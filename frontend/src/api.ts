@@ -48,3 +48,23 @@ export async function loadEverytime(link: string): Promise<EverytimeResult> {
   if (!res.ok) throw new Error(body.detail || `HTTP ${res.status}`)
   return body
 }
+
+export type Advice = { answer: string; sources: string[] }
+
+/**
+ * 선수과목 상담 (LLM). 백엔드 POST /api/advise — 준영님 작업.
+ * 요청: { subject_code, completed_codes, question } → 응답: { answer, sources }
+ * 백엔드가 없거나 아직 엔드포인트가 없으면 null (화면에서 계획서 문구로 대신 보여줌)
+ */
+export async function askAdvice(subjectCode: string, completedCodes: string[], question: string): Promise<Advice | null> {
+  if (!hasBackend) return null
+  const res = await fetch(`${API}/api/advise`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user_id: USER, subject_code: subjectCode, completed_codes: completedCodes, question }),
+  })
+  if (res.status === 404) return null
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(body.detail || `HTTP ${res.status}`)
+  return body
+}

@@ -110,3 +110,17 @@ button.primary:disabled { background: #a5b4fc; cursor: default; }
 .tt-list h3 { margin: 0 0 8px; font-size: 14px; }
 .tt-list ul { list-style: none; padding: 0; margin: 0 0 12px; }
 .tt-list li { font-size: 12.5px; padding: 5px 0; border-top: 1px solid #f3f4f6; }
+
+/* ---- 선수과목 상담 ---- */
+.missing { list-style: none; padding: 0; margin: 0; }
+.missing li { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 0; border-top: 1px solid #f3f4f6; }
+.tag { font-size: 10.5px; background: #f3f4f6; color: #6b7280; border-radius: 6px; padding: 2px 6px; margin-left: 4px; }
+.ask { flex-shrink: 0; border: 1px solid #4f46e5; color: #4f46e5; background: #fff; border-radius: 999px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+.ask:hover { background: #eef2ff; }
+.advice { margin-top: 10px; border: 1.5px solid #c7d2fe; background: #f8faff; border-radius: 10px; padding: 10px 12px; }
+.advice-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.advice-head .x { border: none; background: none; color: #6b7280; cursor: pointer; font-size: 12px; }
+.advice-src { margin-top: 8px; border-top: 1px dashed #c7d2fe; padding-top: 6px; }
+.advice-src h4 { margin: 8px 0 4px; font-size: 12.5px; color: #374151; }
+.advice-ask { display: flex; gap: 6px; margin-top: 8px; align-items: flex-end; }
+.advice-ask textarea { flex: 1; font: inherit; font-size: 12.5px; padding: 6px; border: 1px solid #d1d5db; border-radius: 8px; resize: vertical; }
