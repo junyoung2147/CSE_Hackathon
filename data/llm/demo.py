@@ -1,4 +1,4 @@
-"""데모 시나리오 실호출. 발표 전에 돌려 캐시를 채운다. 실행: python -m llm.demo (data/ 에서)"""
+"""데모 시나리오 실호출 (돌릴 때마다 약 10회 호출). 실행: python -m llm.demo (data/ 에서)"""
 from . import api
 from . import context as ctx
 

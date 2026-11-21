@@ -103,8 +103,7 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
                          targets=ctx.codes_text(_known(targets)), careers=ctx.careers_text(),
                          curriculum=ctx.curriculum_text(major))
         funcs = {f.__name__: f for f in (get_subject, get_graduation, suggest_plan_roadmap)}
-        return client.cached(["chat", mode, system, conversation],
-                             lambda: _run_tools(system, conversation, funcs))
+        return _run_tools(system, conversation, funcs)
 
     if mode == "prereq":
         if subject not in ctx._db()["subjects"]:
@@ -116,10 +115,7 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
                          prereqs="\n\n".join(ctx.subject_detail(c) for c in unmet),
                          completed=ctx.codes_text(completed))
         turns = conversation or [{"role": "user", "text": FIRST_PREREQ_MSG}]
-        return client.cached(["chat", mode, system, turns], lambda: {
-            "reply": client.generate(system, _contents(turns)).text or "",
-            "suggest_action": None,
-        })
+        return {"reply": client.generate(system, _contents(turns)).text or "", "suggest_action": None}
 
     raise ValueError(f"알 수 없는 mode: {mode}")
 
@@ -137,14 +133,10 @@ def plan_roadmap(conversation, major, current_targets, completed):
                      curriculum=ctx.curriculum_text(major), edges=ctx.edges_text(major))
     turns = conversation + [{"role": "user", "text": PLAN_MSG}]
 
-    def call():
-        parsed = client.generate(system, _contents(turns), schema=RoadmapPlan).parsed
-        if parsed is None:
-            raise client.LLMError("로드맵 응답을 해석하지 못했습니다")
-        return parsed.model_dump()
-
-    raw = client.cached(["plan_roadmap", system, turns], call)
-    return validate_plan(raw, allowed, set(current), set(done))
+    parsed = client.generate(system, _contents(turns), schema=RoadmapPlan).parsed
+    if parsed is None:
+        raise client.LLMError("로드맵 응답을 해석하지 못했습니다")
+    return validate_plan(parsed.model_dump(), allowed, set(current), set(done))
 
 
 def validate_plan(raw, allowed, current, done):

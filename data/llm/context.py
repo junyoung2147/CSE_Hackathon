@@ -1,4 +1,9 @@
-"""data/ 아래 CSV를 읽어 prompt에 넣을 텍스트를 만든다."""
+"""data/ 아래 데이터를 읽어 prompt에 넣을 텍스트를 만든다.
+
+데이터 출처는 load_table 하나로만 바뀐다. 기본은 CSV, 백엔드는 use_loader()로 DB 함수를 꽂는다.
+테이블 이름은 backend/models.py의 __tablename__, 컬럼 이름은 CSV 헤더와 같다.
+loader 규칙: 행을 id 순서(= CSV 순서)로 돌려준다. 순서가 바뀌면 같은 데이터라도 prompt 텍스트가 달라진다.
+"""
 import csv
 from functools import lru_cache
 from pathlib import Path
@@ -8,39 +13,73 @@ LECTURE = DATA / "lecture_data/lecture_data_csv"
 CURR = DATA / "curriculum_data"
 WEEK_CHARS = 120  # 주차 내용이 길어서 자름
 
+# 테이블 이름 → CSV 경로. 뒤의 4개는 아직 백엔드 테이블이 없음 (README 제안 참고)
+TABLES = {
+    "subjects": LECTURE / "subjects.csv",
+    "sections": LECTURE / "sections.csv",
+    "syllabus": LECTURE / "syllabus.csv",
+    "syllabus_weeks": LECTURE / "syllabus_weeks.csv",
+    "curriculum": CURR / "curriculum.csv",
+    "course_edges": DATA / "graph_data/edges.csv",
+    "careers": DATA / "career_data/careers.csv",
+    "career_subjects": DATA / "career_data/career_subjects.csv",
+    "graduation_credits": CURR / "out/graduation_credits.csv",
+    "graduation_rules": CURR / "out/graduation_rules.csv",
+}
 
-def _read(path):
+
+def csv_loader(table):
     """CSV를 dict 목록으로 읽는다 (BOM 허용)."""
-    with open(path, encoding="utf-8-sig") as f:
+    with open(TABLES[table], encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
+
+
+load_table = csv_loader
+
+
+def use_loader(fn):
+    """데이터 출처를 바꾼다. fn(table_name) -> [dict]. 읽어 둔 데이터도 비운다."""
+    global load_table
+    load_table = fn
+    _db.cache_clear()
+
+
+def _yes(v):
+    """CSV 'Y'/'N'과 DB True/False를 똑같이 판정한다 (backend seed의 _to_bool과 같은 기준)."""
+    return str(v).strip().lower() in {"1", "true", "yes", "y"}
+
+
+def _rows(table):
+    """load_table 결과에서 None을 ''로 바꾼다. DB의 빈 값(None)이 'None'으로 찍히지 않게."""
+    return [{k: "" if v is None else v for k, v in r.items()} for r in load_table(table)]
 
 
 @lru_cache
 def _db():
-    """모든 CSV를 한 번만 읽어 둔다."""
-    subjects = {r["subject_code"]: r for r in _read(LECTURE / "subjects.csv")}
-    sec_code = {(r["term"], r["course_no"]): r["subject_code"] for r in _read(LECTURE / "sections.csv")}
+    """모든 테이블을 한 번만 읽어 둔다."""
+    subjects = {r["subject_code"]: r for r in _rows("subjects")}
+    sec_code = {(r["term"], r["course_no"]): r["subject_code"] for r in _rows("sections")}
     syllabus = {}  # subject_code -> 개요가 있는 첫 계획서
-    for r in _read(LECTURE / "syllabus.csv"):
+    for r in sorted(_rows("syllabus"), key=lambda r: (r["term"], r["course_no"])):  # DB는 순서 보장 안 됨
         code = sec_code.get((r["term"], r["course_no"]))
         if code and r["summary"] and code not in syllabus:
             syllabus[code] = r
     weeks = {}
-    for r in _read(LECTURE / "syllabus_weeks.csv"):
+    for r in sorted(_rows("syllabus_weeks"), key=lambda r: int(r["week"] or 0)):
         weeks.setdefault((r["term"], r["course_no"]), []).append(r)
     curriculum = {}
-    for r in _read(CURR / "curriculum.csv"):
+    for r in _rows("curriculum"):
         curriculum.setdefault(r["major_name"], []).append(r)
     return {
         "subjects": subjects,
         "syllabus": syllabus,
         "weeks": weeks,
         "curriculum": curriculum,
-        "edges": _read(DATA / "graph_data/edges.csv"),
-        "careers": _read(DATA / "career_data/careers.csv"),
-        "career_subjects": _read(DATA / "career_data/career_subjects.csv"),
-        "credits": _read(CURR / "out/graduation_credits.csv"),
-        "rules": _read(CURR / "out/graduation_rules.csv"),
+        "edges": _rows("course_edges"),
+        "careers": _rows("careers"),
+        "career_subjects": _rows("career_subjects"),
+        "credits": _rows("graduation_credits"),
+        "rules": _rows("graduation_rules"),
     }
 
 
@@ -68,7 +107,7 @@ def curriculum_text(major):
     major_codes(major)
     return "\n".join(
         f"- {r['course_code']} {r['course_name_ko']} | {r['grade']}학년 {r['semester']} | "
-        f"{r['category']} | {'필수' if r['is_required'] == 'Y' else '선택'} | {r['credits']}학점"
+        f"{r['category']} | {'필수' if _yes(r['is_required']) else '선택'} | {r['credits']}학점"
         for r in _db()["curriculum"][major]
     )
 

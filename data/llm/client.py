@@ -1,6 +1,4 @@
-"""Gemini 호출, 응답 캐시, 429 재시도를 맡는 얇은 래퍼."""
-import hashlib
-import json
+"""Gemini 호출과 429·503 재시도를 맡는 얇은 래퍼. 응답 저장은 하지 않는다 (백엔드 몫)."""
 import os
 import time
 from pathlib import Path
@@ -9,7 +7,6 @@ from google import genai
 from google.genai import errors, types
 
 HERE = Path(__file__).resolve().parent
-CACHE_DIR = HERE / "cache"
 ENV_FILE = HERE.parent / ".env"  # data/.env
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")  # 3.6/3.8-flash는 11/21 테스트 때 503(수요 과다)
 
@@ -60,14 +57,3 @@ def generate(system, contents, schema=None, tools=None):
                 continue
             raise LLMError(f"Gemini 호출 실패 ({getattr(e, 'code', '?')})") from e
 
-
-def cached(key_obj, fn):
-    """key_obj(JSON 직렬화 가능)의 해시로 결과를 캐시한다. 같은 입력이면 다시 호출하지 않는다."""
-    raw = json.dumps([MODEL, key_obj], ensure_ascii=False, sort_keys=True)
-    path = CACHE_DIR / f"{hashlib.sha256(raw.encode()).hexdigest()}.json"
-    if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
-    result = fn()
-    CACHE_DIR.mkdir(exist_ok=True)
-    path.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
-    return result

@@ -1,6 +1,4 @@
 """가짜 client로 돌리는 오프라인 테스트. 실행: python -m llm.test_api (data/ 에서)"""
-import tempfile
-from pathlib import Path
 from types import SimpleNamespace as NS
 
 from . import api, client
@@ -18,7 +16,6 @@ def fake(responses):
         return responses.pop(0)
 
     client.generate = gen
-    client.CACHE_DIR = Path(tempfile.mkdtemp())
     return calls
 
 
@@ -36,16 +33,6 @@ def test_plan_filters_codes():
     assert out["remove"] == [cur], out
     assert out["reasons"] == {good: "a"}, out
     assert set(out["dropped"]) == {"FAKE0000", done, "COMP9999"}, out
-
-
-def test_cache_hit():
-    """같은 입력이면 두 번째는 호출하지 않는다."""
-    calls = fake([NS(function_calls=None, text="안녕하세요")])
-    conv = [{"role": "user", "text": "졸업하려면?"}]
-    a = api.chat("general", conv, [], major=MAJOR)
-    b = api.chat("general", conv, [], major=MAJOR)
-    assert a == b == {"reply": "안녕하세요", "suggest_action": None}
-    assert len(calls) == 1
 
 
 def test_suggest_tool_sets_action():
@@ -86,6 +73,44 @@ def test_context_builds():
         assert ctx.curriculum_text(major) and ctx.edges_text(major) is not None
         assert ctx.graduation_text(major) != "졸업요건 데이터 없음", major
     assert ctx.careers_text().count("[") == len(ctx._db()["careers"])
+
+
+def fake_db_loader(table):
+    """backend seed처럼 타입을 바꾼 행을 돌려준다: 빈 값 None, 숫자 int, Y/N bool, id 추가 (id 순서 = CSV 순서)."""
+    ints = {"credit", "lecture_hours", "practice_hours", "section_count", "capacity", "week",
+            "basis_year", "grade", "credits", "theory_hours", "lab_hours"}
+    bools = {"is_required", "has_syllabus"}
+    out = []
+    for i, r in enumerate(ctx.csv_loader(table)):
+        row = {"id": i}
+        for k, v in r.items():
+            if k in bools:
+                row[k] = ctx._yes(v)
+            elif v == "":
+                row[k] = None
+            elif k in ints:
+                row[k] = int(float(v))
+            else:
+                row[k] = v
+        out.append(row)
+    return out
+
+
+def test_db_loader_same_output():
+    """DB에서 읽어도 CSV와 prompt 텍스트가 한 글자도 다르지 않아야 한다."""
+    def snapshot():
+        majors = list(ctx._db()["curriculum"])
+        return ([ctx.curriculum_text(m) + ctx.edges_text(m) + ctx.graduation_text(m) for m in sorted(majors)]
+                + [ctx.subject_detail(c) for c in sorted(ctx._db()["subjects"])] + [ctx.careers_text()])
+    ctx.use_loader(ctx.csv_loader)
+    from_csv = snapshot()
+    ctx.use_loader(fake_db_loader)
+    try:
+        from_db = snapshot()
+    finally:
+        ctx.use_loader(ctx.csv_loader)
+    diff = [(a, b) for a, b in zip(from_csv, from_db) if a != b]
+    assert not diff, (diff[0][0][:300], diff[0][1][:300])
 
 
 if __name__ == "__main__":
