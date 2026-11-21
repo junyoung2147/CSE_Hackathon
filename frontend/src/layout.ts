@@ -1,59 +1,82 @@
-import dagre from '@dagrejs/dagre'
-import type { Edge as FlowEdge, Node as FlowNode } from '@xyflow/react'
-import { edges, subjects, type Edge } from './data'
+import type { Edge as FlowEdge } from '@xyflow/react'
+import type { Edge, MajorGraph } from './data'
 
 export const NODE_W = 168
 export const NODE_H = 46
+export const COL_GAP = 84 // 학기 열 사이 간격
+export const ROW_GAP = 14
+export const TOP = 64 // 학기 제목 아래부터 과목 시작
+export const COL_W = NODE_W + COL_GAP
+
+export const colX = (col: number) => col * COL_W
 
 /**
- * dagre로 왼쪽→오른쪽 층 배치(선수과목이 왼쪽). 선수(pre) 간선만 배치에 쓰고,
- * 관련(rel) 간선은 배치에 영향 없이 점선으로만 그린다.
+ * x = 권장 학기 열(1-1 ~ 4-2), y = 열 안의 순서.
+ * 열 안의 순서는 '바리센터' 방식으로 정한다:
+ * 각 과목을 이어진 과목들의 평균 높이 쪽으로 정렬하는 걸 몇 번 반복하면 선이 덜 꼬인다.
  */
-export function layoutGraph(showIsolated: boolean) {
-  const connected = new Set<string>()
-  for (const e of edges) {
-    connected.add(e.from)
-    connected.add(e.to)
-  }
-  const visible = subjects.filter((s) => showIsolated || connected.has(s.code))
+export function layoutBySemester(g: MajorGraph) {
+  const columns: string[][] = Array.from({ length: 8 }, () => [])
+  for (const c of g.courses) columns[Math.min(Math.max(c.col, 0), 7)].push(c.code)
 
-  const g = new dagre.graphlib.Graph()
-  g.setGraph({ rankdir: 'LR', nodesep: 18, ranksep: 90, marginx: 20, marginy: 20 })
-  g.setDefaultEdgeLabel(() => ({}))
-  for (const s of visible) g.setNode(s.code, { width: NODE_W, height: NODE_H })
-  for (const e of edges) {
-    if (e.type === 'pre' && g.hasNode(e.from) && g.hasNode(e.to)) g.setEdge(e.from, e.to)
+  // 처음엔 전공필수 → 이름순
+  for (const col of columns) {
+    col.sort((a, b) => {
+      const ca = g.courseByCode.get(a)!
+      const cb = g.courseByCode.get(b)!
+      return Number(cb.required) - Number(ca.required) || ca.name.localeCompare(cb.name, 'ko')
+    })
   }
-  dagre.layout(g)
+
+  const neighbors = new Map<string, string[]>()
+  for (const e of g.edges) {
+    neighbors.set(e.to, [...(neighbors.get(e.to) ?? []), e.from])
+    neighbors.set(e.from, [...(neighbors.get(e.from) ?? []), e.to])
+  }
+
+  const rowOf = () => {
+    const m = new Map<string, number>()
+    columns.forEach((col) => col.forEach((code, i) => m.set(code, i)))
+    return m
+  }
+
+  for (let iter = 0; iter < 6; iter++) {
+    const row = rowOf()
+    for (const col of columns) {
+      const score = new Map<string, number>()
+      for (const code of col) {
+        const ns = (neighbors.get(code) ?? []).map((n) => row.get(n)!).filter((v) => v !== undefined)
+        score.set(code, ns.length ? ns.reduce((a, b) => a + b, 0) / ns.length : row.get(code)!)
+      }
+      col.sort((a, b) => score.get(a)! - score.get(b)!)
+    }
+  }
 
   const positions = new Map<string, { x: number; y: number }>()
-  for (const s of visible) {
-    const n = g.node(s.code)
-    positions.set(s.code, { x: n.x - NODE_W / 2, y: n.y - NODE_H / 2 })
-  }
-  return { visible, positions }
+  columns.forEach((col, ci) =>
+    col.forEach((code, ri) => positions.set(code, { x: colX(ci), y: TOP + ri * (NODE_H + ROW_GAP) })),
+  )
+  const height = TOP + Math.max(...columns.map((c) => c.length)) * (NODE_H + ROW_GAP)
+  return { positions, height }
 }
 
-export function toFlowEdges(highlight: Set<string>, selected: string | null): FlowEdge[] {
-  return edges.map((e: Edge, i) => {
-    const onPath =
-      selected !== null && e.type === 'pre' && (e.to === selected || highlight.has(e.to)) && highlight.has(e.from)
+export function toFlowEdges(es: Edge[], focus: Set<string>, active: boolean): FlowEdge[] {
+  return es.map((e, i) => {
+    const onPath = active && e.type === 'pre' && focus.has(e.from) && focus.has(e.to)
     const isRel = e.type === 'rel'
     return {
       id: `e${i}-${e.from}-${e.to}`,
       source: e.from,
       target: e.to,
       type: 'default',
-      animated: onPath,
+      animated: false,
       style: {
-        stroke: onPath ? '#d97706' : isRel ? '#9ca3af' : '#cbd5e1',
+        stroke: onPath ? '#4f46e5' : isRel ? '#9ca3af' : '#cbd5e1',
         strokeWidth: onPath ? 2.5 : 1.2,
-        strokeDasharray: isRel ? '6 4' : e.orWith.length ? '2 3' : undefined,
-        opacity: selected && !onPath ? 0.35 : 1,
+        strokeDasharray: isRel ? '6 4' : undefined,
+        opacity: active && !onPath ? 0.15 : 0.9,
       },
+      zIndex: onPath ? 1 : 0,
     }
   })
 }
-
-export type NodeData = { label: string }
-export type SubjectNode = FlowNode<NodeData>

@@ -18,6 +18,8 @@ from models import (
     UserTimetable,
 )
 
+from everytime_router import router as everytime_router
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="KNU CSE Hackathon Backend", version="0.3.0")
@@ -29,6 +31,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(everytime_router)
 
 
 class CompleteToggleRequest(BaseModel):

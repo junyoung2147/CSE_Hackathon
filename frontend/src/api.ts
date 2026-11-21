@@ -1,27 +1,12 @@
 // 백엔드가 있으면 API를, 없으면 브라우저 저장소를 쓴다.
 const API = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || ''
 const USER = (import.meta.env.VITE_USER_ID as string | undefined) || 'demo'
-const LS_KEY = 'cse-map-completed'
 
 export const hasBackend = API !== ''
 
-function readLocal(): string[] {
-  try {
-    return JSON.parse(localStorage.getItem(LS_KEY) || '[]')
-  } catch {
-    return []
-  }
-}
-function writeLocal(codes: string[]) {
-  try {
-    localStorage.setItem(LS_KEY, JSON.stringify(codes))
-  } catch {
-    /* 저장소를 못 써도 화면 상태는 유지된다 */
-  }
-}
-
+/** 백엔드에 저장된 이수 과목 (백엔드가 없으면 빈 집합 — 로컬 저장은 progress.ts가 맡는다) */
 export async function loadCompleted(): Promise<Set<string>> {
-  if (!hasBackend) return new Set(readLocal())
+  if (!hasBackend) return new Set()
   const res = await fetch(`${API}/api/roadmap?user_id=${encodeURIComponent(USER)}`)
   if (!res.ok) throw new Error(`roadmap ${res.status}`)
   const body = await res.json()
@@ -32,11 +17,8 @@ export async function loadCompleted(): Promise<Set<string>> {
   )
 }
 
-export async function setCompleted(code: string, completed: boolean, all: Set<string>) {
-  if (!hasBackend) {
-    writeLocal([...all])
-    return
-  }
+export async function setCompleted(code: string, completed: boolean) {
+  if (!hasBackend) return
   await fetch(`${API}/api/roadmap/complete`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -44,23 +26,25 @@ export async function setCompleted(code: string, completed: boolean, all: Set<st
   })
 }
 
-export type SubjectDetail = {
+
+export type EverytimeCourse = {
+  course_no: string
   subject_code: string
-  subject_name: string
-  sections: {
-    term: string
-    course_no: string
-    professor: string | null
-    time_real: string | null
-    room: string | null
-    syllabus: { summary: string | null; goals: string | null; evaluation: string | null } | null
-    weeks: { week: number | null; content: string | null }[]
-  }[]
+  name: string
+  professor: string
+  credit: number | null
+  times: { day: number; start: number; end: number; place: string }[]
+}
+export type EverytimeResult = {
+  semesters: { year: number; semester: string; courses: EverytimeCourse[] }[]
+  skipped: { year: number | null; semester: string | null; reason: string }[]
 }
 
-export async function loadDetail(code: string): Promise<SubjectDetail | null> {
-  if (!hasBackend) return null
-  const res = await fetch(`${API}/api/subjects/${encodeURIComponent(code)}`)
-  if (!res.ok) return null
-  return res.json()
+/** 에브리타임 공유 링크 → 학기별 시간표 (백엔드 /api/everytime 경유) */
+export async function loadEverytime(link: string): Promise<EverytimeResult> {
+  if (!hasBackend) throw new Error('백엔드 주소(VITE_API_URL)가 설정되지 않았어요')
+  const res = await fetch(`${API}/api/everytime?link=${encodeURIComponent(link)}`)
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(body.detail || `HTTP ${res.status}`)
+  return body
 }

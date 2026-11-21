@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dagrejs/dagre": "^1.1.4",
     "@xyflow/react": "^12.3.6",
     "papaparse": "^5.4.1",
     "react": "^18.3.1",
