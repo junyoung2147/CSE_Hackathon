@@ -59,10 +59,13 @@ def _db():
     """모든 테이블을 한 번만 읽어 둔다."""
     subjects = {r["subject_code"]: r for r in _rows("subjects")}
     sec_code = {(r["term"], r["course_no"]): r["subject_code"] for r in _rows("sections")}
-    syllabus = {}  # subject_code -> 개요가 있는 첫 계획서
+    syllabus = {}  # subject_code -> 계획서 하나 (개요 있는 것 우선, 없으면 목표만 있는 것)
     for r in sorted(_rows("syllabus"), key=lambda r: (r["term"], r["course_no"])):  # DB는 순서 보장 안 됨
         code = sec_code.get((r["term"], r["course_no"]))
-        if code and r["summary"] and code not in syllabus:
+        if not code or not (r["summary"] or r["goals"]):
+            continue
+        cur = syllabus.get(code)
+        if cur is None or (not cur["summary"] and r["summary"]):
             syllabus[code] = r
     weeks = {}
     for r in sorted(_rows("syllabus_weeks"), key=lambda r: int(r["week"] or 0)):
@@ -143,17 +146,24 @@ def subject_detail(code):
     if not syl:
         out.append("강의계획서 없음")
         return "\n".join(out)
-    out += [f"개요: {syl['summary']}", f"목표: {syl['goals'] or '없음'}", "주차:"]
+    out += [f"개요: {syl['summary'] or '없음'}", f"목표: {syl['goals'] or '없음'}", "주차:"]
     for w in db["weeks"].get((syl["term"], syl["course_no"]), []):
         out.append(f"  {w['week']}주: {' '.join(w['content'].split())[:WEEK_CHARS]}")
     return "\n".join(out)
 
 
+def _scope(r):
+    """졸업요건 행의 적용 범위 '[2018~2022학번 다중전공 트랙] '. 빈 값은 생략."""
+    parts = [f"{r['from']}~{r['to']}학번"] if r["from"] or r["to"] else []
+    parts += [str(r["track"])] if r["track"] else []
+    return f"[{' '.join(parts)}] " if parts else ""
+
+
 def graduation_text(major):
     """전공의 졸업 학점과 학점 외 요건."""
     db = _db()
-    rows = [f"- [{r['from']}~{r['to']}학번 {r['track']}] {r['category']}: {r['credits_min']}~{r['credits_max']}학점"
+    rows = [f"- {_scope(r)}{r['category']}: {r['credits_min']}~{r['credits_max']}학점"
             for r in db["credits"] if r["major_name"] == major]
-    rows += [f"- [{r['from']}~{r['to']}학번 {r['track']}] {r['item']}: {r['requirement']}"
+    rows += [f"- {_scope(r)}{r['item']}: {r['requirement']}"
              for r in db["rules"] if r["major_name"] == major]
     return "\n".join(rows) or "졸업요건 데이터 없음"

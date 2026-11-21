@@ -6,23 +6,24 @@
 
 | 항목 | 내용 |
 |---|---|
-| 의존성 | `google-genai>=3.6.0`, `pydantic>=2` (확인한 버전: 3.6.1 / 2.12) |
+| 의존성 | `google-genai>=3.6.0`, `pydantic>=2` (확인한 버전: 3.6.1 / 2.12). **`backend/requirements.txt`에 `google-genai` 추가 필요** (지금 없음) |
 | 키 | 환경변수 `GOOGLE_API_KEY` 또는 `GEMINI_API_KEY`. SDK가 직접 읽기 때문에 코드에서 키를 다루지 않음. `data/.env`에 두어도 됨(gitignore 처리됨) |
 | 모델 | 기본값 `gemini-3.5-flash-lite`. 환경변수 `GEMINI_MODEL`로 변경 |
 | import 경로 | `data/`를 `sys.path`에 넣은 뒤 `from llm import api, client, context` |
-| 호출 시간 | 동기 함수이고 수 초가 걸림. 이벤트 루프를 막지 않게 호출해 주세요(FastAPI라면 `async def` 대신 `def` 엔드포인트) |
+| 호출 시간 | 동기 함수이고 보통 수 초가 걸림. 호출 한 번의 timeout은 60초이고, general 모드는 tool 때문에 최대 3번 연달아 호출함. 이벤트 루프를 막지 않게 호출해 주세요(FastAPI라면 `async def` 대신 `def` 엔드포인트) |
 
 ## 2. 함수 계약
 
 ### 입력 공통
 - `conversation`: `[{"role": "user" | "assistant", "text": str}]` 형식입니다. 다른 role이 오거나 text가 문자열이 아니면 `ValueError`가 납니다.
+- 길이 상한: 메시지 **40개**(20턴)까지, 메시지 하나에 **2,000자**까지입니다. 넘으면 `ValueError`가 납니다. 공개 서버에서 무료 한도를 지키기 위한 장치입니다. 넘으면 프론트에서 새 대화로 시작하게 해 주세요.
 - `completed`, `targets`: 과목 코드 목록입니다. 과목 코드가 아닌 값은 함수 안에서 버려지므로, 이름이나 학번 같은 값을 넣어도 Gemini로 가지 않습니다.
 - `major`: `curriculum.major_name` 값입니다(예: `심화컴퓨팅전공`). 사용자 정보에 전공이 없으면 요청에서 받아야 합니다.
 
 ### `api.chat(mode, conversation, completed, major=, targets=, subject=, unmet=)`
 | mode | 필요한 인자 | 동작 |
 |---|---|---|
-| `general` | `major`, `targets` | 진로·과목·졸업요건을 상담합니다. 로드맵을 짜 달라는 요청을 알아채면 `suggest_action`을 채웁니다 |
+| `general` | `major`, `targets` | 진로·과목·졸업요건을 상담합니다. 로드맵을 짜 달라는 요청을 알아채면 `suggest_action`을 채웁니다. 대화가 비어 있으면 `ValueError` |
 | `prereq` | `subject`, `unmet` | `subject`를 듣기 전에 안 들은 선수과목 `unmet`을 건너뛰어도 되는지 상담합니다. 대화가 비어 있으면 첫 판단을 만듭니다 |
 
 - 반환: `{"reply": str, "suggest_action": "plan_roadmap" | null}`
@@ -48,8 +49,8 @@
 ### 예외
 | 예외 | 의미 | 권장 HTTP |
 |---|---|---|
-| `ValueError` | 잘못된 입력 (role, 모르는 전공·과목, 안 들은 선수과목 없음) | 400 |
-| `client.LLMError` | Gemini 실패 (한도 초과, 수요 과다, 키 없음). 429·503은 함수 안에서 5초 뒤 1회 재시도한 뒤의 실패입니다 | 503 |
+| `ValueError` | 잘못된 입력 (형식, 길이 상한 초과, 빈 general 대화, 모르는 전공·과목, 안 들은 선수과목 없음) | 400 |
+| `client.LLMError` | Gemini 실패 (한도 초과, 수요 과다, timeout·연결 오류, 빈 응답, 키 없음). 429·503·timeout·연결 오류는 함수 안에서 5초 뒤 1회 재시도한 뒤의 실패입니다 | 503 |
 
 ## 3. 제안 엔드포인트
 

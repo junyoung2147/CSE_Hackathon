@@ -5,6 +5,7 @@ from . import api, client
 from . import context as ctx
 
 MAJOR = "심화컴퓨팅전공"
+REAL_GENERATE = client.generate  # fake()가 바꾸기 전 원본
 
 
 def fake(responses):
@@ -56,8 +57,13 @@ def test_prereq_first_message_and_privacy():
 
 
 def test_bad_input():
-    """외부 입력 검증: 잘못된 role, 모르는 전공·과목은 ValueError."""
+    """외부 입력 검증: 형식·길이·빈 general 대화·모르는 전공·과목은 ValueError."""
+    user = {"role": "user", "text": "x"}
     for bad in (lambda: api.chat("general", [{"role": "system", "text": "x"}], [], major=MAJOR),
+                lambda: api.chat("general", ["문자열"], [], major=MAJOR),
+                lambda: api.chat("general", [], [], major=MAJOR),
+                lambda: api.chat("general", [user] * (api.MAX_MESSAGES + 1), [], major=MAJOR),
+                lambda: api.chat("general", [{"role": "user", "text": "가" * (api.MAX_CHARS + 1)}], [], major=MAJOR),
                 lambda: api.plan_roadmap([], "없는전공", [], []),
                 lambda: api.chat("prereq", [], [], subject="NOPE", unmet=["COMP0218"])):
         try:
@@ -65,6 +71,36 @@ def test_bad_input():
             raise AssertionError("ValueError가 나야 함")
         except ValueError:
             pass
+
+
+def test_empty_reply_is_error():
+    """빈 응답(안전 차단 등)은 정상 응답이 아니라 LLMError."""
+    fake([NS(function_calls=None, text=None)])
+    try:
+        api.chat("general", [{"role": "user", "text": "안녕"}], [], major=MAJOR)
+        raise AssertionError("LLMError가 나야 함")
+    except client.LLMError:
+        pass
+
+
+def test_client_wraps_all_errors():
+    """timeout 같은 SDK 밖 예외도 1회 재시도 후 LLMError로 바뀐다."""
+    tries = []
+
+    def boom(**kw):
+        tries.append(1)
+        raise TimeoutError("가짜 timeout")
+
+    saved = (client.generate, client._client, client.time.sleep)
+    client.generate, client._client = REAL_GENERATE, NS(models=NS(generate_content=boom))
+    client.time.sleep = lambda s: None
+    try:
+        client.generate("sys", [])
+        raise AssertionError("LLMError가 나야 함")
+    except client.LLMError as e:
+        assert "TimeoutError" in str(e) and len(tries) == 2, (e, tries)
+    finally:
+        client.generate, client._client, client.time.sleep = saved
 
 
 def test_context_builds():

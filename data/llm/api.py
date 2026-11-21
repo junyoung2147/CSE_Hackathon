@@ -10,7 +10,9 @@ from . import client
 from . import context as ctx
 
 PROMPTS = Path(__file__).resolve().parent / "prompts"
-MAX_TOOL_ROUNDS = 5
+MAX_TOOL_ROUNDS = 3  # 한 턴 최악 대기 시간을 줄이려고 낮춤
+MAX_MESSAGES = 40  # 대화 20턴(user+assistant)
+MAX_CHARS = 2000  # 메시지 하나의 최대 글자 수
 FIRST_PREREQ_MSG = "안 들은 선수과목마다 첫 판단을 알려 주세요."
 PLAN_MSG = "지금까지의 대화를 바탕으로 목표 과목을 정해 주세요."
 
@@ -34,10 +36,17 @@ def _prompt(name, **kw):
 
 
 def _check_conversation(conversation):
-    """[{role: user|assistant, text: str}] 형식인지 확인한다 (외부 입력)."""
+    """[{role: user|assistant, text: str}] 형식과 길이 상한을 확인한다 (외부 입력, 무료 한도 보호)."""
+    if not isinstance(conversation, list):
+        raise ValueError("conversation은 목록이어야 합니다")
+    if len(conversation) > MAX_MESSAGES:
+        raise ValueError(f"대화가 너무 깁니다 (최대 {MAX_MESSAGES}개 메시지). 새 대화로 시작해 주세요")
     for m in conversation:
-        if m.get("role") not in ("user", "assistant") or not isinstance(m.get("text"), str):
+        if (not isinstance(m, dict) or m.get("role") not in ("user", "assistant")
+                or not isinstance(m.get("text"), str)):
             raise ValueError("conversation 항목은 {role: user|assistant, text: str} 이어야 합니다")
+        if len(m["text"]) > MAX_CHARS:
+            raise ValueError(f"메시지가 너무 깁니다 (최대 {MAX_CHARS}자)")
     return [{"role": m["role"], "text": m["text"]} for m in conversation]
 
 
@@ -48,6 +57,13 @@ def _contents(conversation):
                       parts=[types.Part.from_text(text=m["text"])])
         for m in conversation
     ]
+
+
+def _reply(resp):
+    """응답 텍스트. 비어 있으면(안전 차단 등) 오류로 처리해 빈 말풍선이 저장·표시되지 않게 한다."""
+    if not (resp.text or "").strip():
+        raise client.LLMError("Gemini가 빈 응답을 돌려줬습니다")
+    return resp.text
 
 
 def _known(codes):
@@ -63,7 +79,7 @@ def _run_tools(system, conversation, funcs):
         resp = client.generate(system, contents, tools=list(funcs.values()))
         calls = resp.function_calls or []
         if not calls:
-            return {"reply": resp.text or "", "suggest_action": "plan_roadmap" if suggest else None}
+            return {"reply": _reply(resp), "suggest_action": "plan_roadmap" if suggest else None}
         contents.append(resp.candidates[0].content)  # thought signature 보존
         parts = []
         for call in calls:
@@ -87,6 +103,9 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
     completed = _known(completed)
 
     if mode == "general":
+        if not conversation:
+            raise ValueError("general 모드는 학생 메시지가 하나 이상 있어야 합니다")
+
         def get_subject(code: str) -> str:
             """과목 코드로 강의계획서 개요·목표·주차와 선수과목 원문을 조회한다."""
             return ctx.subject_detail(code)
@@ -115,7 +134,7 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
                          prereqs="\n\n".join(ctx.subject_detail(c) for c in unmet),
                          completed=ctx.codes_text(completed))
         turns = conversation or [{"role": "user", "text": FIRST_PREREQ_MSG}]
-        return {"reply": client.generate(system, _contents(turns)).text or "", "suggest_action": None}
+        return {"reply": _reply(client.generate(system, _contents(turns))), "suggest_action": None}
 
     raise ValueError(f"알 수 없는 mode: {mode}")
 
