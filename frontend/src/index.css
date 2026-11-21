@@ -124,3 +124,60 @@ button.primary:disabled { background: #a5b4fc; cursor: default; }
 .advice-src h4 { margin: 8px 0 4px; font-size: 12.5px; color: #374151; }
 .advice-ask { display: flex; gap: 6px; margin-top: 8px; align-items: flex-end; }
 .advice-ask textarea { flex: 1; font: inherit; font-size: 12.5px; padding: 6px; border: 1px solid #d1d5db; border-radius: 8px; resize: vertical; }
+.msgs { display: flex; flex-direction: column; gap: 6px; max-height: 320px; overflow-y: auto; }
+.msg { white-space: pre-wrap; font-size: 13px; line-height: 1.55; padding: 8px 10px; border-radius: 10px; max-width: 92%; }
+.msg.assistant { background: #fff; border: 1px solid #e0e7ff; align-self: flex-start; }
+.msg.user { background: #4f46e5; color: #fff; align-self: flex-end; }
+.advice-src summary { font-size: 12.5px; color: #4b5563; font-weight: 500; }
+
+/* ---- AI 상담 ---- */
+.chat { flex: 1; display: flex; gap: 16px; padding: 16px; min-height: 0; }
+.chat-main { flex: 1; display: flex; flex-direction: column; max-width: 860px; margin: 0 auto; min-height: 0; }
+.chat-msgs { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 4px; }
+.chat-empty { margin: auto 0; text-align: center; }
+.chat-empty .chips { justify-content: center; margin-top: 12px; }
+.chat-msgs .msg { font-size: 14px; }
+.chat-input { display: flex; gap: 8px; align-items: flex-end; margin-top: 8px; }
+.chat-input textarea { flex: 1; font: inherit; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 10px; resize: none; }
+.chat-input button:not(.primary) { border: 1px solid #d1d5db; background: #fff; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.plan-cta { align-self: flex-start; display: flex; gap: 10px; align-items: center; background: #eef2ff; border-radius: 10px; padding: 8px 12px; font-size: 13px; }
+.plan { width: 340px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; overflow-y: auto; }
+.plan h3 { margin: 0 0 8px; }
+.plan h4 { margin: 12px 0 4px; font-size: 13px; color: #374151; }
+.plan ul { list-style: none; padding: 0; margin: 0; }
+.plan li { padding: 6px 0; border-top: 1px solid #f3f4f6; font-size: 13px; }
+.plan li p { margin: 2px 0 0; color: #4b5563; }
+.plan-actions { display: flex; gap: 8px; margin-top: 12px; }
+.plan-actions button:not(.primary) { border: 1px solid #d1d5db; background: #fff; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.reasons { list-style: none; padding: 0; margin: 0; font-size: 12.5px; }
+.reasons li { padding: 4px 0; border-top: 1px solid #f3f4f6; }
+button.link { border: none; background: none; color: #6b7280; text-decoration: underline; cursor: pointer; font-size: 12px; padding: 0; margin-top: 8px; }
+
+/* ---- 검색 · 재수강 ---- */
+.search { position: relative; margin-left: auto; }
+.search input { width: 180px; padding: 5px 10px; border: 1px solid #d1d5db; border-radius: 999px; font: inherit; font-size: 13px; }
+.search ul { position: absolute; right: 0; top: 34px; z-index: 20; list-style: none; margin: 0; padding: 4px; width: 260px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+.search li { padding: 6px 8px; font-size: 13px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; }
+.search li:hover { background: #f3f4f6; }
+.course-node .grade.fail { background: #dc2626; }
+.toggle.fail { border-color: #dc2626; color: #dc2626; }
+
+/* ---- 좁은 화면(모바일) ---- */
+@media (max-width: 800px) {
+  .topbar { padding: 8px 10px; }
+  .brand { flex-wrap: wrap; gap: 6px; width: 100%; }
+  .brand strong { font-size: 16px; white-space: nowrap; }
+  .tabs button { white-space: nowrap; padding: 6px 6px; font-size: 13px; }
+  .brand select { max-width: 160px; font-size: 12.5px; }
+  .brand .sub { display: none; }
+  .legend { gap: 8px; font-size: 11.5px; }
+  .careers { padding: 6px 10px; gap: 6px; }
+  .career { padding: 4px 9px; font-size: 12px; }
+  .search { margin-left: 0; width: 100%; }
+  .search input { width: 100%; }
+  .chat { flex-direction: column; padding: 10px; }
+  .plan { width: 100%; }
+  .tt-body { flex-direction: column; }
+  .tt-list { width: 100%; }
+  .tt-input { flex-wrap: wrap; }
+}

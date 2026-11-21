@@ -39,12 +39,18 @@ export function CourseNode({ data }: NodeProps) {
         fontWeight: d.status === 'done' || d.emphasis === 'selected' || d.emphasis === 'target' ? 600 : 500,
       }}
     >
-      <Handle type="target" position={Position.Left} />
+      <Handle type="target" position={Position.Left} id="t-left" />
+      {/* 같은 학기 열 안에서 잇는 선은 위·아래로 연결 (옆으로 나갔다 돌아오면 다른 과목을 가림) */}
+      <Handle type="target" position={Position.Top} id="t-top" />
+      <Handle type="target" position={Position.Bottom} id="t-bottom" />
+      <Handle type="source" position={Position.Top} id="s-top" />
+      <Handle type="source" position={Position.Bottom} id="s-bottom" />
       <span className="course-name">{d.name}</span>
       {d.required && <span className="badge">필수</span>}
       {d.status === 'done' && d.grade && <span className="grade">{d.grade}</span>}
+      {d.grade === 'F' && <span className="grade fail">F 재수강</span>}
       {d.status === 'taking' && <span className="grade taking">수강 중</span>}
-      <Handle type="source" position={Position.Right} />
+      <Handle type="source" position={Position.Right} id="s-right" />
     </div>
   )
 }

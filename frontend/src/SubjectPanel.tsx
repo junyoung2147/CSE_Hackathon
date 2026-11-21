@@ -10,12 +10,15 @@ type Props = {
   completed: Set<string>
   taking: Set<string>
   inMajor: (code: string) => boolean // 지금 고른 전공 교육과정에 있는 과목인지
+  major: string
   grade: string | undefined // undefined = 미이수
   scale: Scale
   onToggle: (code: string) => void
   onGrade: (code: string, grade: string) => void
   onSelect: (code: string) => void
-  pathCount: number
+  pathCount: number // 거슬러 올라간 선수과목 전체 수
+  showChain: boolean
+  onToggleChain: () => void
 }
 
 function Chip({ code, done, onSelect }: { code: string; done: boolean; onSelect: (c: string) => void }) {
@@ -26,15 +29,15 @@ function Chip({ code, done, onSelect }: { code: string; done: boolean; onSelect:
   )
 }
 
-export default function SubjectPanel({ code, course, completed, taking, inMajor, grade, scale, onToggle, onGrade, onSelect, pathCount }: Props) {
+export default function SubjectPanel({ code, course, completed, taking, inMajor, major, grade, scale, onToggle, onGrade, onSelect, pathCount, showChain, onToggleChain }: Props) {
   // 계획서: 처음 열 때 syllabus.ts를 불러와서 이 과목 분반들을 찾는다
   const [sections, setSections] = useState<LocalSection[] | null>(null)
   const [secIdx, setSecIdx] = useState(0)
-  const [asking, setAsking] = useState<string[] | null>(null) // 상담 중인 선수과목 묶음
+  const [asking, setAsking] = useState(false) // 선수과목 상담 열림
   useEffect(() => {
     setSections(null)
     setSecIdx(0)
-    setAsking(null)
+    setAsking(false)
     let alive = true
     import('./syllabus').then((m) => alive && setSections(m.sectionsOf(code)))
     return () => {
@@ -46,7 +49,8 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
   const { taken, missing } = splitPrereqs(code, completed, taking)
   const post = followupsOf(code)
   const rel = relatedOf(code)
-  const isDone = completed.has(code)
+  const isDone = grade !== undefined // 성적을 넣었으면(F 포함) 수강 기록이 있음
+  const failed = grade === 'F'
   const sec = sections?.[secIdx]
 
   return (
@@ -56,13 +60,13 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
           <h2>{nameOf(code)}</h2>
           <p className="meta">
             {code} · {s?.credit ?? course?.credit ?? '-'}학점
-            {course ? ` · 권장 ${SEMESTER_LABELS[course.col]}학기` : ''}
+            {course ? (course.col < 8 ? ` · 권장 ${SEMESTER_LABELS[course.col]}학기` : ' · 이 전공 교육과정 밖 과목') : ''}
             {course?.required ? ' · 전공필수' : ''}
             {s?.offeredTerms.length ? ` · 2026 개설 ${s.offeredTerms.join(', ')}` : ' · 2026 미개설'}
           </p>
         </div>
-        <button className={`toggle ${isDone ? 'on' : ''}`} onClick={() => onToggle(code)}>
-          {isDone ? '✓ 이수함' : '이수 체크'}
+        <button className={`toggle ${isDone ? (failed ? 'fail' : 'on') : ''}`} onClick={() => onToggle(code)}>
+          {failed ? '재수강 필요' : isDone ? '✓ 이수함' : '이수 체크'}
         </button>
       </div>
 
@@ -91,7 +95,14 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
       </section>
 
       <section>
-        <h3>선수과목 {pathCount > 0 && <small>(거슬러 올라가면 {pathCount}과목)</small>}</h3>
+        <h3>
+          선수과목{' '}
+          {pathCount > 0 && (
+            <button className="link" style={{ marginTop: 0 }} onClick={onToggleChain}>
+              {showChain ? '바로 앞 과목만 보기' : `지도에서 전체 경로 보기 (${pathCount}과목)`}
+            </button>
+          )}
+        </h3>
         {taken.length + missing.length === 0 && <p className="muted">없음</p>}
         {taken.length > 0 && (
           <div className="chips" style={{ marginBottom: 8 }}>
@@ -124,20 +135,25 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
                       ))}
                       {other && <span className="tag">타 전공</span>}
                     </span>
-                    <button className="ask" onClick={() => setAsking(group)}>꼭 들어야 하나요?</button>
                   </li>
                 )
               })}
             </ul>
+            {!asking && (
+              <button className="ask" style={{ marginTop: 6 }} onClick={() => setAsking(true)}>
+                안 들었는데 들어도 될까요? AI에게 물어보기
+              </button>
+            )}
           </>
         )}
         {asking && (
           <AdviceBox
             code={code}
-            missing={asking}
+            major={major}
+            missing={missing}
             completedCodes={[...completed]}
             notes={sections?.[0]?.notes ?? null}
-            onClose={() => setAsking(null)}
+            onClose={() => setAsking(false)}
           />
         )}
       </section>

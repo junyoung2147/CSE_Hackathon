@@ -16,8 +16,8 @@ export const colX = (col: number) => col * COL_W
  * 각 과목을 이어진 과목들의 평균 높이 쪽으로 정렬하는 걸 몇 번 반복하면 선이 덜 꼬인다.
  */
 export function layoutBySemester(g: MajorGraph) {
-  const columns: string[][] = Array.from({ length: 8 }, () => [])
-  for (const c of g.courses) columns[Math.min(Math.max(c.col, 0), 7)].push(c.code)
+  const columns: string[][] = Array.from({ length: 9 }, () => [])
+  for (const c of g.courses) columns[Math.min(Math.max(c.col, 0), 8)].push(c.code)
 
   // 처음엔 전공필수 → 이름순
   for (const col of columns) {
@@ -57,7 +57,7 @@ export function layoutBySemester(g: MajorGraph) {
     col.forEach((code, ri) => positions.set(code, { x: colX(ci), y: TOP + ri * (NODE_H + ROW_GAP) })),
   )
   const height = TOP + Math.max(...columns.map((c) => c.length)) * (NODE_H + ROW_GAP)
-  return { positions, height }
+  return { positions, height, hasOutside: columns[8].length > 0 }
 }
 
 /**
@@ -68,28 +68,42 @@ export function layoutBySemester(g: MajorGraph) {
  */
 export function toFlowEdges(
   es: Edge[],
-  focus: Set<string>,
+  isPathEdge: (e: Edge) => boolean,
   active: boolean,
   start: Set<string>,
   firstYear: Set<string>,
+  selected: string | null = null,
+  positions?: Map<string, { x: number; y: number }>,
 ): FlowEdge[] {
   const fresh = start.size === 0
   return es.flatMap((e, i) => {
-    const onPath = active && e.type === 'pre' && focus.has(e.from) && focus.has(e.to)
+    const onPath = active && e.type === 'pre' && isPathEdge(e)
+    // 고른 과목에서 나가는 선(다음 과목)은 옅은 파랑, 들어오는 선(선수과목)은 보라
+    const outgoing = onPath && selected !== null && e.from === selected
     const isRel = e.type === 'rel'
     const fromMine = start.has(e.from)
     const show = active ? onPath : fresh ? firstYear.has(e.from) && !isRel : fromMine
     if (!show) return []
+    // 같은 열(x가 같음)이면 위·아래 핸들로 잇는다
+    const a = positions?.get(e.from)
+    const b = positions?.get(e.to)
+    const sameCol = a && b && a.x === b.x
+    const handles = sameCol
+      ? b!.y > a!.y
+        ? { sourceHandle: 's-bottom', targetHandle: 't-top' }
+        : { sourceHandle: 's-top', targetHandle: 't-bottom' }
+      : { sourceHandle: 's-right', targetHandle: 't-left' }
     return [{
       id: `e${i}-${e.from}-${e.to}`,
       source: e.from,
       target: e.to,
+      ...handles,
       type: 'default',
       animated: false,
       style: {
-        stroke: onPath ? '#4f46e5' : isRel ? '#9ca3af' : fresh ? '#cbd5e1' : '#60a5fa',
+        stroke: outgoing ? '#93c5fd' : onPath ? '#4f46e5' : isRel ? '#9ca3af' : fresh ? '#cbd5e1' : '#60a5fa',
         strokeWidth: onPath ? 2.5 : fresh ? 1.2 : 1.6,
-        strokeDasharray: isRel ? '6 4' : undefined,
+        strokeDasharray: isRel || outgoing ? '6 4' : undefined,
         opacity: fresh ? 0.6 : 0.9,
       },
       zIndex: onPath ? 1 : 0,

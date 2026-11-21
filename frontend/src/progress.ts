@@ -19,7 +19,7 @@ export const NON_GPA = ['P', '']
 /** 과목코드 → 성적 ('' = 이수했지만 성적 미입력) */
 export type Grades = Record<string, string>
 
-const KEY = { grades: 'cse-map-grades', taking: 'cse-map-taking', extra: 'cse-map-extra-credits', scale: 'cse-map-scale' }
+const KEY = { grades: 'cse-map-grades', taking: 'cse-map-taking', extra: 'cse-map-extra-credits', scale: 'cse-map-scale', mine: 'cse-map-my-roadmap' }
 
 function read<T>(key: string, fallback: T): T {
   try {
@@ -48,9 +48,13 @@ export const store = {
   saveGrades: (g: Grades) => write(KEY.grades, g),
   loadTaking: (): string[] => read(KEY.taking, []),
   saveTaking: (t: string[]) => write(KEY.taking, t),
+  /** AI 상담으로 만든 내 로드맵 (목표 과목 + 이유) */
+  loadMine: (): { targets: string[]; reasons: Record<string, string> } => read(KEY.mine, { targets: [], reasons: {} }),
+  saveMine: (m: { targets: string[]; reasons: Record<string, string> }) => write(KEY.mine, m),
   loadExtra: (): number => read(KEY.extra, 0),
   saveExtra: (n: number) => write(KEY.extra, n),
-  loadScale: (): Scale => read(KEY.scale, '4.5'),
+  // 경북대는 4.3 만점. 다른 학교로 넓힐 때 대비해서 4.5 표도 남겨 둔다
+  loadScale: (): Scale => '4.3',
   saveScale: (s: Scale) => write(KEY.scale, s),
 }
 

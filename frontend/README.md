@@ -31,8 +31,16 @@ npm run dev        # http://localhost:5173
 - 진로 클릭: 그 진로의 도착 과목 + 거기까지 가는 선수과목만 진하게, 나머지는 흐리게. 오른쪽에 학기별 정리·남은 학점
 - 과목 클릭: 그 과목까지 가는 선수과목 경로 강조 + 상세 패널
   - 선수과목을 '들은 것 / 아직 안 들은 것(권장)'으로 나누고, 다른 전공 교육과정에만 있는 과목은 '타 전공' 표시
-  - '꼭 들어야 하나요?' → `POST /api/advise {subject_code, completed_codes, question}` → `{answer, sources}` (LLM, 백엔드)
-  - 백엔드가 없으면 계획서의 선수과목 문구·수강 참고사항을 대신 보여줌
+  - 'AI에게 물어보기' → `POST /api/chat` (mode=prereq, 처음엔 빈 대화 → 첫 판단, 이후 대화 이어가기)
+  - 서버가 없거나 아직 엔드포인트가 없으면(404) 계획서의 선수과목 문구·수강 참고사항을 대신 보여줌
+
+## AI 상담 (data/llm — 준영님 모듈, 엔드포인트는 백엔드)
+- 'AI 상담' 탭: `POST /api/chat` (mode=general, major, targets) → `{reply, suggest_action}`
+- `suggest_action = plan_roadmap`이거나 대화가 오가면 '이 대화로 로드맵 짜기' → `POST /api/roadmap/plan` → 추가·삭제 미리보기(이유, 교육과정 밖 표시)
+- '적용' → 진로 줄에 '★ 내 로드맵'이 생기고 지도에 경로 표시. 교육과정 밖 과목은 지도 오른쪽 끝 '교육과정 밖' 열에 표시
+- 내 로드맵은 브라우저에 저장 (`PUT /api/roadmap/targets` 저장은 백엔드 준비되면 연결)
+- 요청에 `completed`, `targets`도 같이 보낸다 (로컬 모드 사용자용). 백엔드는 DB 값을 써도 됨
+- 503 → "AI가 바빠요", 404 → "서버 준비 전" 안내
 
 ## 내 현황 · 시간표
 - 과목 이수 체크 → 성적(A+~F, P) 선택 → 오른쪽 '내 현황'에 평점과 졸업요건(`data/curriculum_data/out/graduation_credits.csv`) 진행률
@@ -47,7 +55,9 @@ npm run dev        # http://localhost:5173
 - `src/layout.ts` 학기 열 배치(열 안 순서는 바리센터 정렬), 간선 스타일
 - `src/nodes.tsx` 과목 노드, 학기 제목, 학기 사이 점선
 - `src/CareerPanel.tsx` 진로를 골랐을 때 오른쪽 패널
-- `src/AdviceBox.tsx` 선수과목 상담 박스
+- `src/SearchBox.tsx` 과목 검색 (진로 줄 오른쪽)
+- `src/AdviceBox.tsx` 선수과목 상담 (prereq 채팅)
+- `src/ChatView.tsx` AI 상담 탭 (general 채팅 + 로드맵 짜기 미리보기)
 - `src/StatusPanel.tsx` 아무것도 안 골랐을 때 오른쪽 패널(평점·졸업요건·전공필수)
 - `src/progress.ts` 성적 저장, 평점 계산(4.5/4.3), 졸업요건 계산
 - `src/syllabus.ts` 강의계획서·분반·주차별 CSV (과목을 처음 열 때 불러옴)
