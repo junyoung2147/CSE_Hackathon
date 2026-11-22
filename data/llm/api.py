@@ -93,14 +93,15 @@ def _run_tools(system, conversation, funcs):
     raise client.LLMError("tool 호출이 너무 많습니다")
 
 
-def chat(mode, conversation, completed, major=None, targets=(), subject=None, unmet=()):
+def chat(mode, conversation, completed, major=None, targets=(), subject=None, unmet=(), taking=()):
     """상담 채팅 한 턴. 반환: {reply, suggest_action: "plan_roadmap"|None}
 
     mode="general": major, targets 사용. 로드맵 요청이면 suggest_action이 채워진다.
     mode="prereq": subject(대상 과목), unmet(안 들은 선수과목) 사용. 대화가 비어 있으면 첫 판단을 만든다.
+    taking: 이번 학기 수강 중인 과목 코드. 선수과목은 이수와 같게 충족으로 본다.
     """
     conversation = _check_conversation(conversation)
-    completed = _known(completed)
+    completed, taking = _known(completed), _known(taking)
 
     if mode == "general":
         if not conversation:
@@ -119,7 +120,7 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
             return "버튼을 띄웠습니다. 학생에게 버튼을 누르라고 안내하세요."
 
         system = _prompt("general_chat", major=major, completed=ctx.codes_text(completed),
-                         targets=ctx.codes_text(_known(targets)), careers=ctx.careers_text(),
+                         taking=ctx.codes_text(taking), targets=ctx.codes_text(_known(targets)), careers=ctx.careers_text(),
                          curriculum=ctx.curriculum_text(major))
         funcs = {f.__name__: f for f in (get_subject, get_graduation, suggest_plan_roadmap)}
         return _run_tools(system, conversation, funcs)
@@ -127,35 +128,35 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
     if mode == "prereq":
         if subject not in ctx._db()["subjects"]:
             raise ValueError(f"알 수 없는 과목: {subject}")
-        unmet = _known(unmet)
+        unmet = [c for c in _known(unmet) if c not in taking]  # 수강 중이면 충족
         if not unmet:
             raise ValueError("unmet(안 들은 선수과목)이 비어 있습니다")
         system = _prompt("prereq_chat", target=ctx.subject_detail(subject),
                          prereqs="\n\n".join(ctx.subject_detail(c) for c in unmet),
-                         completed=ctx.codes_text(completed))
+                         completed=ctx.codes_text(completed), taking=ctx.codes_text(taking))
         turns = conversation or [{"role": "user", "text": FIRST_PREREQ_MSG}]
         return {"reply": _reply(client.generate(system, _contents(turns))), "suggest_action": None}
 
     raise ValueError(f"알 수 없는 mode: {mode}")
 
 
-def plan_roadmap(conversation, major, current_targets, completed):
+def plan_roadmap(conversation, major, current_targets, completed, taking=()):
     """대화를 보고 목표 과목을 새로 짜거나 고친다. 진로는 LLM이 대화에서 판단한다.
 
     반환: {add, remove, reasons: {code: 이유}, outside_curriculum: add 중 전공 교육과정 밖 코드, dropped: 검증에서 버린 코드}
     """
     conversation = _check_conversation(conversation)
     allowed = ctx.major_codes(major)
-    current, done = _known(current_targets), _known(completed)
+    current, done, now = _known(current_targets), _known(completed), _known(taking)
     system = _prompt("plan_roadmap", major=major, targets=ctx.codes_text(current),
-                     completed=ctx.codes_text(done), careers=ctx.careers_text(),
+                     completed=ctx.codes_text(done), taking=ctx.codes_text(now), careers=ctx.careers_text(),
                      curriculum=ctx.curriculum_text(major), edges=ctx.edges_text(major))
     turns = conversation + [{"role": "user", "text": PLAN_MSG}]
 
     parsed = client.generate(system, _contents(turns), schema=RoadmapPlan).parsed
     if parsed is None:
         raise client.LLMError("로드맵 응답을 해석하지 못했습니다")
-    return validate_plan(parsed.model_dump(), allowed, set(current), set(done))
+    return validate_plan(parsed.model_dump(), allowed, set(current), set(done) | set(now))  # 수강 중도 새로 추가하지 않음
 
 
 def validate_plan(raw, allowed, current, done):
