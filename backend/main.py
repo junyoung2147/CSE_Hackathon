@@ -14,6 +14,8 @@ from database import Base, engine, get_db
 from everytime_router import router as everytime_router
 from llm_router import router as llm_router
 from models import (
+    Career,
+    CareerSubject,
     CourseEdge,
     Curriculum,
     Section,
@@ -90,7 +92,29 @@ def _is_edge_satisfied(edge: CourseEdge, completed_codes: set[str]) -> bool:
 def health_check():
     return {"status": "ok"}
 
+@app.get("/api/careers")
+def get_careers(db: Session = Depends(get_db)):
+    careers = db.query(Career).order_by(Career.career_id).all()
+    career_subjects = db.query(CareerSubject).order_by(CareerSubject.id).all()
 
+    targets_by_career: dict[str, list[str]] = defaultdict(list)
+    seen_by_career: dict[str, set[str]] = defaultdict(set)
+    for cs in career_subjects:
+        code = cs.subject_code.strip() if cs.subject_code else ""
+        if code and code not in seen_by_career[cs.career_id]:
+            seen_by_career[cs.career_id].add(code)
+            targets_by_career[cs.career_id].append(code)
+
+    return [
+        {
+            "id": c.career_id,
+            "name": c.name,
+            "description": c.description or "",
+            "targets": targets_by_career.get(c.career_id, []),
+        }
+        for c in careers
+    ]
+    
 @app.get("/api/roadmap")
 def get_roadmap(
     user_id: str = Query(..., min_length=1, max_length=64, description="사용자 식별 ID"),
