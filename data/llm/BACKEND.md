@@ -17,30 +17,30 @@
 ### 입력 공통
 - `conversation`: `[{"role": "user" | "assistant", "text": str}]` 형식입니다. 다른 role이 오거나 text가 문자열이 아니면 `ValueError`가 납니다.
 - 길이 상한: 메시지 **40개**(20턴)까지, 메시지 하나에 **2,000자**까지입니다. 넘으면 `ValueError`가 납니다. 공개 서버에서 무료 한도를 지키기 위한 장치입니다. 넘으면 프론트에서 새 대화로 시작하게 해 주세요.
-- `completed`, `targets`: 과목 코드 목록입니다. 과목 코드가 아닌 값은 함수 안에서 버려지므로, 이름이나 학번 같은 값을 넣어도 Gemini로 가지 않습니다.
+- `completed`, `targets`, `taking`: 과목 코드 목록입니다. `taking`은 이번 학기 수강 중인 과목이고, 선수과목 판단에서 이수와 같게 충족으로 봅니다. 과목 코드가 아닌 값은 함수 안에서 버려지므로, 이름이나 학번 같은 값을 넣어도 Gemini로 가지 않습니다.
 - `major`: `curriculum.major_name` 값입니다(예: `심화컴퓨팅전공`). 사용자 정보에 전공이 없으면 요청에서 받아야 합니다.
 
-### `api.chat(mode, conversation, completed, major=, targets=, subject=, unmet=)`
+### `api.chat(mode, conversation, completed, major=, targets=, subject=, unmet=, taking=)`
 | mode | 필요한 인자 | 동작 |
 |---|---|---|
 | `general` | `major`, `targets` | 진로·과목·졸업요건을 상담합니다. 로드맵을 짜 달라는 요청을 알아채면 `suggest_action`을 채웁니다. 대화가 비어 있으면 `ValueError` |
 | `prereq` | `subject`, `unmet` | `subject`를 듣기 전에 안 들은 선수과목 `unmet`을 건너뛰어도 되는지 상담합니다. 대화가 비어 있으면 첫 판단을 만듭니다 |
 
 - 반환: `{"reply": str, "suggest_action": "plan_roadmap" | null}`
-- `unmet`은 백엔드가 계산해서 넘깁니다. `course_edges`에서 `to_code = subject`, `type = "pre"`인 간선 중 사용자가 충족하지 못한 것들입니다(`or_with` 대체 과목 반영). 기존 `_is_edge_satisfied` 기준과 같습니다. 비어 있으면 `ValueError`가 납니다.
+- `unmet`은 백엔드가 계산해서 넘깁니다. `course_edges`에서 `to_code = subject`, `type = "pre"`인 간선 중 사용자가 충족하지 못한 것들입니다(`or_with` 대체 과목 반영). 기존 `_is_edge_satisfied` 기준과 같습니다. 비어 있으면 `ValueError`가 납니다. **수강 중(`taking`)인 선수과목은 백엔드도 충족으로 보고 `unmet`에서 빼 주세요.** 함수 안에서도 한 번 걸러 주지만, 전부 걸러져 비면 `ValueError`가 나므로 백엔드가 먼저 빼서 상담 버튼을 숨기는 편이 낫습니다.
 - prereq 모드에서 후속 질문을 보낼 때는 대화를 이렇게 구성해야 맥락이 이어집니다.
   ```
   [{"role":"user","text": api.FIRST_PREREQ_MSG}, {"role":"assistant","text": 첫 판단}, {"role":"user","text": 후속 질문}, ...]
   ```
 
-### `api.plan_roadmap(conversation, major, current_targets, completed)`
+### `api.plan_roadmap(conversation, major, current_targets, completed, taking=)`
 - 대화를 보고 목표 과목을 새로 짜거나 고칩니다. 진로는 LLM이 대화에서 판단합니다.
 - 반환:
   ```json
   {"add": [코드], "remove": [코드], "reasons": {"코드": "이유"},
    "outside_curriculum": [코드], "dropped": [코드]}
   ```
-- `add`에는 실제 과목이면서 현재 목표에 없고 이수하지 않은 과목만 남습니다.
+- `add`에는 실제 과목이면서 현재 목표에 없고 이수하지도, 수강 중이지도 않은 과목만 남습니다.
 - `remove`에는 현재 목표에 있는 과목만 남습니다.
 - `outside_curriculum`은 add 중 해당 전공 교육과정에 없는 과목입니다. 화면에 "교육과정 밖 과목"이라고 안내해야 합니다.
 - `dropped`는 LLM이 냈지만 걸러진 코드입니다(지어낸 코드 등). 디버깅용입니다.
@@ -82,7 +82,7 @@
 | `model` | str | `client.MODEL` |
 | `created_at` | datetime | |
 
-- **`request_key`에 넣어야 할 것**: kind, model, major, subject, 정렬한 completed·targets·unmet, conversation 전체. 하나라도 빠지면 다른 상황의 응답이 재사용됩니다.
+- **`request_key`에 넣어야 할 것**: kind, model, major, subject, 정렬한 completed·taking·targets·unmet, conversation 전체. 하나라도 빠지면 다른 상황의 응답이 재사용됩니다.
 - **오류 응답은 저장하지 않습니다.** `LLMError`가 나면 저장하지 말아야 다음 요청에서 다시 시도됩니다.
 - **prompt나 데이터를 바꾼 뒤에는** 이 테이블을 비우거나, 재사용 조건에 날짜를 추가해야 합니다. `request_key`에는 prompt 내용이 들어가지 않기 때문입니다.
 - 대화 기록을 서버에 저장하더라도, 함수 입력은 여전히 대화 전체입니다. 프론트가 보내든 백엔드가 이 테이블에서 조립하든 상관없습니다.
@@ -115,8 +115,3 @@ LLM 모듈이 읽는 데이터는 10개 테이블입니다.
 4. 값의 타입은 신경 쓰지 않아도 됩니다. `None`, `int`, `bool`(예: `is_required`)이 와도 CSV 문자열과 같은 결과가 나옵니다.
 5. DB에 아직 없는 테이블은 `context.csv_loader(테이블명)`을 대신 돌려주면 됩니다. 그러면 한 번에 다 바꾸지 않고 조금씩 전환할 수 있습니다.
 6. 데이터는 처음 읽을 때 메모리에 올려 둡니다. 서버가 켜진 상태에서 DB를 바꿨다면 `use_loader`를 다시 호출하거나 서버를 재시작해야 반영됩니다.
-
-**검증 결과 (데이터 담당이 확인함)**: 메모리 SQLite에서 확인했습니다.
-- 기존 `seed_all()`과, 위 규칙대로 만든 새 4개 테이블로 10개 테이블을 모두 DB에서 읽었습니다.
-- 전공 5개의 교육과정·간선·졸업요건 텍스트, 과목 123개의 상세, 진로 텍스트를 CSV 결과와 비교했고, 차이는 **0건**이었습니다.
-- 오프라인 테스트 `test_db_loader_same_output`도 같은 내용을 확인합니다.

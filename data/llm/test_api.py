@@ -56,6 +56,24 @@ def test_prereq_first_message_and_privacy():
     assert "홍길동" not in calls[0]["system"] and "2021123456" not in calls[0]["system"]
 
 
+def test_taking_reaches_prompt_and_counts_as_met():
+    """수강 중 과목은 prompt에 들어가고, 선수과목 충족·add 제외로 처리된다 (코드가 아닌 값은 버림)."""
+    edge = next(e for e in ctx._db()["edges"] if e["type"] == "pre")
+    codes = sorted(ctx.major_codes(MAJOR))
+    calls = fake([NS(function_calls=None, text="ok")])
+    api.chat("general", [{"role": "user", "text": "안녕"}], [], major=MAJOR, taking=[codes[0], "홍길동"])
+    assert ctx.codes_text([codes[0]]) in calls[0]["system"] and "홍길동" not in calls[0]["system"]
+    try:  # 유일한 unmet이 수강 중이면 판단할 게 없다
+        api.chat("prereq", [], [], subject=edge["to_code"], unmet=[edge["from_code"]], taking=[edge["from_code"]])
+        raise AssertionError("ValueError가 나야 함")
+    except ValueError:
+        pass
+    plan = api.RoadmapPlan(add=[codes[1], codes[2]], remove=[], reasons=[])
+    fake([NS(parsed=plan)])
+    out = api.plan_roadmap([{"role": "user", "text": "x"}], MAJOR, [], [], taking=[codes[1]])
+    assert out["add"] == [codes[2]], out
+
+
 def test_bad_input():
     """외부 입력 검증: 형식·길이·빈 general 대화·모르는 전공·과목은 ValueError."""
     user = {"role": "user", "text": "x"}

@@ -14,9 +14,9 @@ Gemini로 상담 채팅 2종과 로드맵 짜기를 처리하는 순수 Python �
 
 | 함수 | 용도 | 반환 |
 |---|---|---|
-| `chat("general", conversation, completed, major=, targets=)` | 일반 상담 (진로·과목·졸업요건) | `{reply, suggest_action}` |
-| `chat("prereq", conversation, completed, subject=, unmet=)` | 안 들은 선수과목을 건너뛰어도 되는지 상담. 대화가 비어 있으면 첫 판단을 만듦 | `{reply, suggest_action: None}` |
-| `plan_roadmap(conversation, major, current_targets, completed)` | 대화를 보고 목표 과목을 새로 짜거나 수정. 진로는 LLM이 대화에서 판단 | `{add, remove, reasons: {code: 이유}, outside_curriculum, dropped}` |
+| `chat("general", conversation, completed, major=, targets=, taking=)` | 일반 상담 (진로·과목·졸업요건) | `{reply, suggest_action}` |
+| `chat("prereq", conversation, completed, subject=, unmet=, taking=)` | 안 들은 선수과목을 건너뛰어도 되는지 상담. 대화가 비어 있으면 첫 판단을 만듦 | `{reply, suggest_action: None}` |
+| `plan_roadmap(conversation, major, current_targets, completed, taking=)` | 대화를 보고 목표 과목을 새로 짜거나 수정. 진로는 LLM이 대화에서 판단 | `{add, remove, reasons: {code: 이유}, outside_curriculum, dropped}` |
 
 - `suggest_action == "plan_roadmap"`이면 프론트에 "로드맵 짜기" 버튼을 띄웁니다.
 - `plan_roadmap`의 add에는 실제 과목 코드(subjects)만 남고, 그중 해당 전공 교육과정 밖 과목은 `outside_curriculum`에도 들어갑니다. 프론트는 이 과목에 "교육과정 밖 과목"이라고 안내해 주세요. 로드맵 화면이 전공 교육과정으로 과목을 거르고 있다면 이 과목들도 보이게 해야 합니다. remove에는 현재 목표에 있는 코드만 남습니다. 지어낸 코드처럼 버린 코드는 `dropped`에 들어갑니다. 경로(선수과목 체인)는 기존 edges 로직으로 계산합니다.
