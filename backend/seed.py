@@ -5,8 +5,12 @@ from sqlalchemy.orm import Session
 
 from database import Base, SessionLocal, engine
 from models import (
+    Career,
+    CareerSubject,
     CourseEdge,
     Curriculum,
+    GraduationCredit,
+    GraduationRule,
     Section,
     Subject,
     Syllabus,
@@ -18,6 +22,8 @@ DEFAULT_DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DEFAULT_CSV_DIR = DEFAULT_DATA_DIR / "lecture_data" / "lecture_data_csv"
 DEFAULT_EDGES_CSV = DEFAULT_DATA_DIR / "graph_data" / "edges.csv"
 DEFAULT_CURRICULUM_CSV = DEFAULT_DATA_DIR / "curriculum_data" / "curriculum.csv"
+DEFAULT_CAREER_DIR = DEFAULT_DATA_DIR / "career_data"
+DEFAULT_GRAD_DIR = DEFAULT_DATA_DIR / "curriculum_data" / "out"
 
 
 def _to_int(val: str | None) -> int | None:
@@ -35,6 +41,13 @@ def _to_bool(val: str | None) -> bool:
     return str(val).strip().lower() in {"1", "true", "yes", "y"}
 
 
+def _clean_str(val: str | None) -> str | None:
+    if val is None:
+        return None
+    stripped = val.strip()
+    return stripped or None
+
+
 def load_csv(path: Path) -> list[dict]:
     with path.open("r", encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
@@ -42,13 +55,15 @@ def load_csv(path: Path) -> list[dict]:
 
 def seed_all(
     db: Session,
-    csv_dir: Path,
-    edges_csv: Path,
-    curriculum_csv: Path,
+    csv_dir: Path = DEFAULT_CSV_DIR,
+    edges_csv: Path = DEFAULT_EDGES_CSV,
+    curriculum_csv: Path = DEFAULT_CURRICULUM_CSV,
+    career_dir: Path = DEFAULT_CAREER_DIR,
+    grad_dir: Path = DEFAULT_GRAD_DIR,
 ) -> dict[str, int | str]:
     counts: dict[str, int | str] = {}
 
-    if db.query(Subject).first() is None:
+    if db.query(Subject).first() is None and (csv_dir / "subjects.csv").exists():
         subjects_rows = load_csv(csv_dir / "subjects.csv")
         db.bulk_save_objects([
             Subject(
@@ -153,7 +168,7 @@ def seed_all(
                 to_code=r["to_code"].strip(),
                 to_name=r.get("to_name"),
                 type=(r.get("type") or "pre").strip(),
-                or_with=(r.get("or_with") or "").strip() or None,
+                or_with=_clean_str(r.get("or_with")),
             )
             for r in edge_rows
             if r.get("from_code") and r.get("to_code")
@@ -167,20 +182,86 @@ def seed_all(
                 major_name=r["major_name"].strip(),
                 basis_year=_to_int(r.get("basis_year")),
                 grade=_to_int(r.get("grade")),
-                semester=(r.get("semester") or "").strip() or None,
-                category=(r.get("category") or "").strip() or None,
+                semester=_clean_str(r.get("semester")),
+                category=_clean_str(r.get("category")),
                 course_code=r["course_code"].strip(),
-                course_name_ko=(r.get("course_name_ko") or "").strip() or None,
+                course_name_ko=_clean_str(r.get("course_name_ko")),
                 credits=_to_int(r.get("credits")),
                 theory_hours=_to_int(r.get("theory_hours")),
                 lab_hours=_to_int(r.get("lab_hours")),
                 is_required=_to_bool(r.get("is_required")),
-                note=(r.get("note") or "").strip() or None,
+                note=_clean_str(r.get("note")),
             )
             for r in curriculum_rows
             if r.get("major_name") and r.get("course_code")
         ])
         counts["curriculum"] = len(curriculum_rows)
+
+    careers_csv = career_dir / "careers.csv"
+    if db.query(Career).first() is None and careers_csv.exists():
+        career_rows = load_csv(careers_csv)
+        db.bulk_save_objects([
+            Career(
+                career_id=r["career_id"].strip(),
+                name=r["name"].strip(),
+                description=_clean_str(r.get("description")),
+                source=_clean_str(r.get("source")),
+            )
+            for r in career_rows
+            if r.get("career_id") and r.get("name")
+        ])
+        counts["careers"] = len(career_rows)
+
+    career_subjects_csv = career_dir / "career_subjects.csv"
+    if db.query(CareerSubject).first() is None and career_subjects_csv.exists():
+        cs_rows = load_csv(career_subjects_csv)
+        db.bulk_save_objects([
+            CareerSubject(
+                career_id=r["career_id"].strip(),
+                subject_code=r["subject_code"].strip(),
+                source=_clean_str(r.get("source")),
+            )
+            for r in cs_rows
+            if r.get("career_id") and r.get("subject_code")
+        ])
+        counts["career_subjects"] = len(cs_rows)
+
+    grad_credits_csv = grad_dir / "graduation_credits.csv"
+    if db.query(GraduationCredit).first() is None and grad_credits_csv.exists():
+        gc_rows = load_csv(grad_credits_csv)
+        db.bulk_save_objects([
+            GraduationCredit(
+                major_name=r["major_name"].strip(),
+                track=_clean_str(r.get("track")),
+                from_year=_clean_str(r.get("from")),
+                to_year=_clean_str(r.get("to")),
+                category=_clean_str(r.get("category")),
+                credits_min=_to_int(r.get("credits_min")),
+                credits_max=_to_int(r.get("credits_max")),
+                note=_clean_str(r.get("note")),
+            )
+            for r in gc_rows
+            if r.get("major_name")
+        ])
+        counts["graduation_credits"] = len(gc_rows)
+
+    grad_rules_csv = grad_dir / "graduation_rules.csv"
+    if db.query(GraduationRule).first() is None and grad_rules_csv.exists():
+        gr_rows = load_csv(grad_rules_csv)
+        db.bulk_save_objects([
+            GraduationRule(
+                major_name=r["major_name"].strip(),
+                track=_clean_str(r.get("track")),
+                from_year=_clean_str(r.get("from")),
+                to_year=_clean_str(r.get("to")),
+                item=_clean_str(r.get("item")),
+                requirement=_clean_str(r.get("requirement")),
+                footnotes=_clean_str(r.get("footnotes")),
+            )
+            for r in gr_rows
+            if r.get("major_name")
+        ])
+        counts["graduation_rules"] = len(gr_rows)
 
     db.commit()
     return counts or {"message": "already_seeded"}
@@ -190,10 +271,12 @@ if __name__ == "__main__":
     csv_dir = Path(os.getenv("CSV_DIR", str(DEFAULT_CSV_DIR)))
     edges_csv = Path(os.getenv("EDGES_CSV", str(DEFAULT_EDGES_CSV)))
     curriculum_csv = Path(os.getenv("CURRICULUM_CSV", str(DEFAULT_CURRICULUM_CSV)))
+    career_dir = Path(os.getenv("CAREER_DIR", str(DEFAULT_CAREER_DIR)))
+    grad_dir = Path(os.getenv("GRAD_DIR", str(DEFAULT_GRAD_DIR)))
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
-        result = seed_all(db, csv_dir, edges_csv, curriculum_csv)
+        result = seed_all(db, csv_dir, edges_csv, curriculum_csv, career_dir, grad_dir)
         print("Seed result:", result)
     finally:
         db.close()

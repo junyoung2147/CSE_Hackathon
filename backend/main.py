@@ -6,6 +6,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from database import Base, engine, get_db
+from everytime_router import router as everytime_router
+from llm_router import router as llm_router
 from models import (
     CourseEdge,
     Curriculum,
@@ -15,14 +17,13 @@ from models import (
     SyllabusBook,
     SyllabusWeek,
     UserCompletedCourse,
+    UserRoadmap,
     UserTimetable,
 )
 
-from everytime_router import router as everytime_router
-
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="KNU CSE Hackathon Backend", version="0.3.0")
+app = FastAPI(title="KNU CSE Hackathon Backend", version="0.4.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -33,6 +34,7 @@ app.add_middleware(
 )
 
 app.include_router(everytime_router)
+app.include_router(llm_router)
 
 
 class CompleteToggleRequest(BaseModel):
@@ -82,7 +84,14 @@ def get_roadmap(
         .filter(UserCompletedCourse.user_id == user_id)
         .all()
     )
+    target_rows = (
+        db.query(UserRoadmap)
+        .filter(UserRoadmap.user_id == user_id)
+        .order_by(UserRoadmap.id)
+        .all()
+    )
     completed_codes = {row.subject_code for row in completed_rows}
+    target_codes = [row.subject_code for row in target_rows]
 
     prereq_edges_by_target: dict[str, list[CourseEdge]] = defaultdict(list)
     for e in edges:
@@ -129,6 +138,7 @@ def get_roadmap(
         "total": len(nodes),
         "subjects": nodes,
         "edges": edge_list,
+        "targets": target_codes,
     }
 
 
@@ -147,7 +157,12 @@ def get_curriculum(
     if semester:
         query = query.filter(Curriculum.semester == semester)
 
-    rows = query.order_by(Curriculum.major_name, Curriculum.grade, Curriculum.semester, Curriculum.course_code).all()
+    rows = query.order_by(
+        Curriculum.major_name,
+        Curriculum.grade,
+        Curriculum.semester,
+        Curriculum.course_code,
+    ).all()
     return {
         "total": len(rows),
         "items": [
