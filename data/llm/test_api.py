@@ -12,8 +12,8 @@ def fake(responses):
     """client.generate를 정해진 응답을 차례로 돌려주는 함수로 바꾼다. 호출 기록을 돌려준다."""
     calls = []
 
-    def gen(system, contents, schema=None, tools=None):
-        calls.append({"system": system, "contents": contents, "schema": schema})
+    def gen(system, contents, schema=None, tools=None, model=None):
+        calls.append({"system": system, "contents": contents, "schema": schema, "model": model})
         return responses.pop(0)
 
     client.generate = gen
@@ -54,6 +54,10 @@ def test_prereq_first_message_and_privacy():
     assert out["reply"] == "판단: 권장"
     assert calls[0]["contents"][0].parts[0].text == api.FIRST_PREREQ_MSG
     assert "홍길동" not in calls[0]["system"] and "2021123456" not in calls[0]["system"]
+    assert calls[0]["model"] == client.STRONG_MODEL  # 선수과목 상담은 판단 품질이 좋은 모델
+    calls = fake([NS(function_calls=None, text="ok")])
+    api.chat("general", [{"role": "user", "text": "안녕"}], [], major=MAJOR)
+    assert calls[0]["model"] is None  # 일반 상담은 기본 모델(tool 호출이 많아 빠른 쪽)
 
 
 def test_taking_reaches_prompt_and_counts_as_met():
@@ -101,24 +105,58 @@ def test_empty_reply_is_error():
         pass
 
 
+def real_client(outcomes):
+    """진짜 client.generate를 가짜 SDK에 연결한다. outcomes: 호출마다 예외(던짐) 또는 응답(돌려줌). 쓴 모델 이름 목록을 돌려준다."""
+    names, slept = [], []
+
+    def gen(model, **kw):
+        names.append(model)
+        out = outcomes.pop(0)
+        if isinstance(out, Exception):
+            raise out
+        return out
+
+    client.generate, client._client = REAL_GENERATE, NS(models=NS(generate_content=gen))
+    client.time.sleep = slept.append
+    return names, slept
+
+
 def test_client_wraps_all_errors():
-    """timeout 같은 SDK 밖 예외도 1회 재시도 후 LLMError로 바뀐다."""
-    tries = []
-
-    def boom(**kw):
-        tries.append(1)
-        raise TimeoutError("가짜 timeout")
-
+    """timeout 같은 SDK 밖 예외도 다른 모델로 한 번 넘어간 뒤 실패하면 LLMError로 바뀐다."""
     saved = (client.generate, client._client, client.time.sleep)
-    client.generate, client._client = REAL_GENERATE, NS(models=NS(generate_content=boom))
-    client.time.sleep = lambda s: None
+    names, _ = real_client([TimeoutError("가짜 timeout"), TimeoutError("가짜 timeout")])
     try:
         client.generate("sys", [])
         raise AssertionError("LLMError가 나야 함")
     except client.LLMError as e:
-        assert "TimeoutError" in str(e) and len(tries) == 2, (e, tries)
+        assert "TimeoutError" in str(e) and names == [client.MODEL, client.STRONG_MODEL], (e, names)
     finally:
         client.generate, client._client, client.time.sleep = saved
+
+
+def test_client_falls_back_to_other_model():
+    """503이면 다른 모델로 넘어가 성공하고, used_model()이 실제로 응답한 모델을 알려 준다. 400은 넘어가지 않는다."""
+    from google.genai import errors
+    saved = (client.generate, client._client, client.time.sleep, client.STRONG_MODEL)
+    try:
+        client.STRONG_MODEL = "strong-test"
+        names, slept = real_client([errors.ServerError(503, {"error": {"message": "x"}}), "응답"])
+        assert client.generate("sys", []) == "응답"
+        assert names == [client.MODEL, "strong-test"] and client.used_model() == "strong-test" and not slept, (names, slept)
+        names, _ = real_client([errors.ServerError(503, {}), "응답"])  # 선수과목 상담은 strong이 기본이라 lite로 내려간다
+        client.generate("sys", [], model="strong-test")
+        assert names == ["strong-test", client.MODEL] and client.used_model() == client.MODEL, names
+        names, _ = real_client([errors.ClientError(400, {"error": {"message": "잘못된 요청"}}), "응답"])
+        try:
+            client.generate("sys", [])
+            raise AssertionError("LLMError가 나야 함")
+        except client.LLMError as e:
+            assert "400" in str(e) and len(names) == 1, (e, names)
+        client.STRONG_MODEL = client.MODEL  # 같은 모델이면 넘어갈 곳이 없으니 5초 기다렸다가 같은 모델로 재시도
+        names, slept = real_client([errors.ServerError(503, {}), "응답"])
+        assert client.generate("sys", []) == "응답" and names == [client.MODEL] * 2 and slept == [5], (names, slept)
+    finally:
+        client.generate, client._client, client.time.sleep, client.STRONG_MODEL = saved
 
 
 def test_context_builds():

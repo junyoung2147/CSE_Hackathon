@@ -135,7 +135,7 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
                          prereqs="\n\n".join(ctx.subject_detail(c) for c in unmet),
                          completed=ctx.codes_text(completed), taking=ctx.codes_text(taking))
         turns = conversation or [{"role": "user", "text": FIRST_PREREQ_MSG}]
-        return {"reply": _reply(client.generate(system, _contents(turns))), "suggest_action": None}
+        return {"reply": _reply(client.generate(system, _contents(turns), model=client.STRONG_MODEL)), "suggest_action": None}
 
     raise ValueError(f"알 수 없는 mode: {mode}")
 
