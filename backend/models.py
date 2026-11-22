@@ -1,4 +1,14 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, UniqueConstraint
+from datetime import datetime, timezone
+from sqlalchemy import (
+    Boolean,
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+)
 from database import Base
 
 
@@ -44,6 +54,51 @@ class Curriculum(Base):
     lab_hours = Column(Integer, nullable=True)
     is_required = Column(Boolean, default=False)
     note = Column(Text, nullable=True)
+
+
+class Career(Base):
+    __tablename__ = "careers"
+
+    career_id = Column(String(64), primary_key=True, index=True)
+    name = Column(String(200), nullable=False)
+    description = Column(Text, nullable=True)
+    source = Column(String(200), nullable=True)
+
+
+class CareerSubject(Base):
+    __tablename__ = "career_subjects"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    career_id = Column(String(64), ForeignKey("careers.career_id"), nullable=False, index=True)
+    subject_code = Column(String(32), nullable=False, index=True)
+    source = Column(String(200), nullable=True)
+
+
+class GraduationCredit(Base):
+    __tablename__ = "graduation_credits"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    major_name = Column(String(100), nullable=False, index=True)
+    track = Column(String(100), nullable=True)
+    from_year = Column("from", String(20), nullable=True)
+    to_year = Column("to", String(20), nullable=True)
+    category = Column(String(100), nullable=True)
+    credits_min = Column(Integer, nullable=True)
+    credits_max = Column(Integer, nullable=True)
+    note = Column(Text, nullable=True)
+
+
+class GraduationRule(Base):
+    __tablename__ = "graduation_rules"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    major_name = Column(String(100), nullable=False, index=True)
+    track = Column(String(100), nullable=True)
+    from_year = Column("from", String(20), nullable=True)
+    to_year = Column("to", String(20), nullable=True)
+    item = Column(String(200), nullable=True)
+    requirement = Column(Text, nullable=True)
+    footnotes = Column(Text, nullable=True)
 
 
 class Section(Base):
@@ -128,6 +183,36 @@ class UserCompletedCourse(Base):
     subject_code = Column(String(32), ForeignKey("subjects.subject_code"), nullable=False)
     term = Column(String(20), nullable=True)
     source = Column(String(20), default="manual")
+
+
+class UserRoadmap(Base):
+    __tablename__ = "user_roadmaps"
+    __table_args__ = (
+        UniqueConstraint("user_id", "subject_code", name="uq_user_roadmap_subject"),
+    )
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(String(64), nullable=False, index=True)
+    subject_code = Column(String(32), ForeignKey("subjects.subject_code"), nullable=False)
+    source = Column(String(20), default="llm")
+
+
+class LLMLog(Base):
+    __tablename__ = "llm_logs"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(String(64), nullable=False, index=True)
+    kind = Column(String(20), nullable=False, index=True)
+    subject_code = Column(String(32), nullable=True, index=True)
+    request_key = Column(String(64), nullable=False, index=True)
+    request = Column(Text, nullable=False)
+    response = Column(Text, nullable=False)
+    model = Column(String(100), nullable=False)
+    created_at = Column(
+        DateTime,
+        nullable=False,
+        default=lambda: datetime.now(timezone.utc),
+    )
 
 
 class UserTimetable(Base):
