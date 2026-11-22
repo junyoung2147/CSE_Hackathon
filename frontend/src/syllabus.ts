@@ -18,7 +18,7 @@ type SectionRow = {
   language: string
   has_syllabus: string
 }
-type SyllabusRow = { term: string; course_no: string; summary: string; goals: string; evaluation: string; textbooks_references: string }
+type SyllabusRow = { term: string; course_no: string; summary: string; goals: string; evaluation: string; textbooks_references: string; notes: string }
 type WeekRow = { term: string; course_no: string; week: string; content: string }
 
 const sections = parse<SectionRow>(sectionsCsv)
@@ -40,6 +40,7 @@ export type LocalSection = {
   goals: string | null
   evaluation: string | null
   textbooks: string | null
+  notes: string | null // 수강 참고사항
   weeks: { week: number; content: string }[]
 }
 
@@ -61,6 +62,7 @@ export function sectionsOf(code: string): LocalSection[] {
         goals: syl?.goals || null,
         evaluation: syl?.evaluation || null,
         textbooks: syl?.textbooks_references || null,
+        notes: syl?.notes || null,
         weeks: (weeksByKey.get(k) ?? []).sort((a, b) => a.week - b.week),
       }
     })

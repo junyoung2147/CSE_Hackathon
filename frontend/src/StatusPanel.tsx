@@ -6,14 +6,13 @@ type Props = {
   grades: Grades
   scale: Scale
   extra: number
-  onScale: (s: Scale) => void
   onExtra: (n: number) => void
   onSelect: (code: string) => void
   onOpenTimetable: () => void
 }
 
 /** 아무것도 안 골랐을 때 오른쪽 패널: 내 평점 + 졸업요건 */
-export default function StatusPanel({ major, grades, scale, extra, onScale, onExtra, onSelect, onOpenTimetable }: Props) {
+export default function StatusPanel({ major, grades, scale, extra, onExtra, onSelect, onOpenTimetable }: Props) {
   const { gpa, credits, gpaCredits } = gpaOf(grades, scale)
   const reqs = graduationOf(major, grades, extra)
   const required = requiredCourses(major)
@@ -27,15 +26,10 @@ export default function StatusPanel({ major, grades, scale, extra, onScale, onEx
       <div className="stats">
         <div><b>{gpa === null ? '-' : gpa.toFixed(2)}</b><span>평점 / {scale}</span></div>
         <div><b>{credits + extra}</b><span>이수 학점</span></div>
-        <div><b>{Object.keys(grades).length}</b><span>이수 과목</span></div>
+        <div><b>{Object.values(grades).filter((g) => g !== 'F').length}</b><span>이수 과목</span></div>
       </div>
       <p className="muted small">
-        평점은 성적을 입력한 {gpaCredits}학점 기준이에요{missingGrades ? ` (성적 미입력 ${missingGrades}과목)` : ''}.{' '}
-        만점 기준:{' '}
-        <select value={scale} onChange={(e) => onScale(e.target.value as Scale)}>
-          <option value="4.5">4.5</option>
-          <option value="4.3">4.3</option>
-        </select>
+        평점은 성적을 입력한 {gpaCredits}학점 기준이에요(경북대 4.3 만점){missingGrades ? `. 성적 미입력 ${missingGrades}과목` : ''}.
       </p>
 
       <section>
@@ -65,8 +59,8 @@ export default function StatusPanel({ major, grades, scale, extra, onScale, onEx
           <h3>전공필수</h3>
           <div className="chips">
             {required.map((r) => (
-              <button key={r.code} className={`chip ${r.code in grades ? 'done' : ''}`} onClick={() => onSelect(r.code)}>
-                {r.code in grades ? '✓ ' : ''}{nameOf(r.code)}
+              <button key={r.code} className={`chip ${r.code in grades && grades[r.code] !== 'F' ? 'done' : ''}`} onClick={() => onSelect(r.code)}>
+                {r.code in grades && grades[r.code] !== 'F' ? '✓ ' : ''}{nameOf(r.code)}
               </button>
             ))}
           </div>

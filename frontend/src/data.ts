@@ -10,6 +10,7 @@ export type Subject = {
   name: string
   credit: number | null
   offeredTerms: string[]
+  prereqText: string // 계획서에 교수님이 적은 선수과목 문구 (분반별로 한 줄씩)
 }
 
 export type Edge = {
@@ -36,7 +37,7 @@ function parse<T>(text: string): T[] {
   return Papa.parse<T>(text.replace(/^﻿/, ''), { header: true, skipEmptyLines: true }).data
 }
 
-type SubjectRow = { subject_code: string; subject_name: string; credit: string; offered_terms: string }
+type SubjectRow = { subject_code: string; subject_name: string; credit: string; offered_terms: string; prerequisites: string }
 type EdgeRow = { from_code: string; to_code: string; type: string; or_with: string }
 type CurRow = {
   major_name: string
@@ -56,6 +57,7 @@ export const subjects: Subject[] = parse<SubjectRow>(subjectsCsv)
     name: r.subject_name.trim(),
     credit: r.credit ? Number(r.credit) : null,
     offeredTerms: (r.offered_terms || '').split(/[,;]/).map((s) => s.trim()).filter(Boolean),
+    prereqText: (r.prerequisites || '').trim(),
   }))
 
 export const subjectByCode = new Map(subjects.map((s) => [s.code, s]))
@@ -92,7 +94,7 @@ export function nameOf(code: string): string {
 
 // ---------- 전공별 그래프 ----------
 
-export type Course = CurriculumRow & { col: number } // col: 0 = 1-1학기, 7 = 4-2학기
+export type Course = CurriculumRow & { col: number } // col: 0 = 1-1학기, 7 = 4-2학기, 8 = 교육과정 밖
 
 export type MajorGraph = {
   major: string
@@ -106,13 +108,23 @@ export type MajorGraph = {
  * 선수과목이 다른 전공 과목이면(예: 프로그래밍기초) or_with 대안 중
  * 이 전공에 있는 과목(예: 기초프로그래밍)으로 바꿔서 잇는다.
  */
-export function buildMajorGraph(major: string): MajorGraph {
+export function buildMajorGraph(major: string, extra: string[] = []): MajorGraph {
   const courses: Course[] = []
   const seen = new Set<string>()
   for (const r of curriculum) {
     if (r.major !== major || seen.has(r.code)) continue
     seen.add(r.code)
     courses.push({ ...r, col: (r.grade - 1) * 2 + (r.semester - 1) })
+  }
+  // AI가 로드맵에 넣은 '교육과정 밖' 과목은 맨 오른쪽 열에 따로 둔다
+  for (const code of extra) {
+    const s = subjectByCode.get(code)
+    if (seen.has(code) || !s) continue
+    seen.add(code)
+    courses.push({
+      major, code, name: s.name, grade: 0, semester: 0, category: '교육과정 밖',
+      credit: s.credit, required: false, col: 8,
+    })
   }
   const courseByCode = new Map(courses.map((c) => [c.code, c]))
 
@@ -182,16 +194,31 @@ export function relatedOf(code: string): string[] {
     .map((e) => (e.from === code ? e.to : e.from))
 }
 
-/** 이수 / 수강 중 / 수강 가능(선수과목을 다 들음) / 아직 */
-export type Status = 'done' | 'taking' | 'available' | 'locked'
+/**
+ * 이수 / 수강 중 / 다음 후보 / 기본
+ * 선수과목은 대부분 '권장'이라서 "다 들어야 들을 수 있다"로 막지 않는다.
+ * 선수과목을 하나라도 들었으면(또는 수강 중이면) '다음 후보'로 보여준다.
+ */
+export type Status = 'done' | 'taking' | 'next' | 'none'
 
 export function statusOf(code: string, completed: Set<string>, taking: Set<string> = new Set()): Status {
   if (completed.has(code)) return 'done'
   if (taking.has(code)) return 'taking'
-  const ok = edges
-    .filter((e) => e.type === 'pre' && e.to === code)
-    .every((e) => completed.has(e.from) || e.orWith.some((c) => completed.has(c)))
-  return ok ? 'available' : 'locked'
+  const had = (c: string) => completed.has(c) || taking.has(c)
+  const anyPre = edges.some((e) => e.type === 'pre' && e.to === code && (had(e.from) || e.orWith.some(had)))
+  return anyPre ? 'next' : 'none'
+}
+
+/** 선수과목 묶음을 들은 것 / 안 들은 것으로 나눈다 */
+export function splitPrereqs(code: string, completed: Set<string>, taking: Set<string>) {
+  const had = (c: string) => completed.has(c) || taking.has(c)
+  const groups = prereqGroupsOf(code)
+  return {
+    taken: groups.filter((g) => g.some(had)),
+    missing: groups.filter((g) => !g.some(had)),
+  }
 }
 
 export const SEMESTER_LABELS = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2']
+/** 지도 열 제목 (8번 열은 교육과정 밖 과목이 있을 때만) */
+export const COLUMN_LABELS = [...SEMESTER_LABELS.map((l) => `${l}학기`), '교육과정 밖']
