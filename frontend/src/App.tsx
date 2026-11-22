@@ -227,6 +227,7 @@ function RoadmapApp() {
             setMessages={setChatMsgs}
             currentTargets={mine.targets.length ? mine.targets : targets}
             completed={[...completed]}
+            taking={taking}
             onApply={(t, reasons) => {
               setMine({ targets: t, reasons: { ...mine.reasons, ...reasons } })
               setCareerId('mine')
@@ -303,6 +304,16 @@ function RoadmapApp() {
             onExtra={setExtra}
             onSelect={setSelected}
             onOpenTimetable={() => setView('timetable')}
+            onReset={() => {
+              // 이 브라우저의 기록 전체 초기화 (백엔드 이수 기록도 해제)
+              Object.keys(grades).forEach((c) => sync(c, false))
+              setGrades({})
+              setTaking([])
+              setExtra(0)
+              setMine({ targets: [], reasons: {} })
+              setCareerId(null)
+              setSelected(null)
+            }}
           />
         )}
       </main>

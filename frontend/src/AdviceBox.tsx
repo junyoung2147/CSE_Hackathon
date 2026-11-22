@@ -7,6 +7,7 @@ type Props = {
   major: string
   missing: string[][] // 안 들은 선수과목 묶음들 (화면 안내용, 실제 판단은 백엔드가 간선으로 계산)
   completedCodes: string[]
+  takingCodes: string[]
   notes: string | null // 계획서 수강 참고사항
   onClose: () => void
 }
@@ -17,7 +18,7 @@ type Props = {
  * [FIRST_PREREQ_MSG, 첫 판단, 질문, 답, ...] 순서로 대화 전체를 보낸다.
  * 서버가 없으면 계획서에 적힌 선수과목 문구를 대신 보여준다. 답은 참고용.
  */
-export default function AdviceBox({ code, major, missing, completedCodes, notes, onClose }: Props) {
+export default function AdviceBox({ code, major, missing, completedCodes, takingCodes, notes, onClose }: Props) {
   const [msgs, setMsgs] = useState<ChatMessage[]>([]) // 첫 user 메시지(FIRST_PREREQ_MSG)는 화면에 안 보임
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -33,6 +34,7 @@ export default function AdviceBox({ code, major, missing, completedCodes, notes,
         major,
         subject: code,
         completed: completedCodes,
+        taking: takingCodes,
       })
       const base = conversation.length ? conversation : [{ role: 'user' as const, text: FIRST_PREREQ_MSG }]
       setMsgs([...base, { role: 'assistant', text: r.reply }])

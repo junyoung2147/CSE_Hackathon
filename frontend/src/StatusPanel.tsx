@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { nameOf } from './data'
 import { gpaOf, graduationOf, requiredCourses, type Grades, type Scale } from './progress'
 
@@ -9,10 +10,12 @@ type Props = {
   onExtra: (n: number) => void
   onSelect: (code: string) => void
   onOpenTimetable: () => void
+  onReset: () => void
 }
 
 /** 아무것도 안 골랐을 때 오른쪽 패널: 내 평점 + 졸업요건 */
-export default function StatusPanel({ major, grades, scale, extra, onExtra, onSelect, onOpenTimetable }: Props) {
+export default function StatusPanel({ major, grades, scale, extra, onExtra, onSelect, onOpenTimetable, onReset }: Props) {
+  const [confirming, setConfirming] = useState(false)
   const { gpa, credits, gpaCredits } = gpaOf(grades, scale)
   const reqs = graduationOf(major, grades, extra)
   const required = requiredCourses(major)
@@ -71,6 +74,18 @@ export default function StatusPanel({ major, grades, scale, extra, onExtra, onSe
         <h3>이수 과목 입력</h3>
         <p className="small">지도에서 과목을 눌러 <b>이수 체크</b>하고 성적을 고르거나,</p>
         <button className="primary" onClick={onOpenTimetable}>에브리타임 시간표로 한 번에 불러오기</button>
+      </section>
+
+      <section>
+        {confirming ? (
+          <p className="small">
+            이수·성적·수강 중·내 로드맵을 모두 지울까요?{' '}
+            <button className="link danger" onClick={() => { onReset(); setConfirming(false) }}>지우기</button>{' '}
+            <button className="link" onClick={() => setConfirming(false)}>취소</button>
+          </p>
+        ) : (
+          <button className="link" onClick={() => setConfirming(true)}>내 기록 초기화</button>
+        )}
       </section>
     </aside>
   )

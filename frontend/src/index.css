@@ -181,3 +181,4 @@ button.link { border: none; background: none; color: #6b7280; text-decoration: u
   .tt-list { width: 100%; }
   .tt-input { flex-wrap: wrap; }
 }
+.link.danger { color: #dc2626; }

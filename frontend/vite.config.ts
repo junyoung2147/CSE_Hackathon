@@ -5,4 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: { fs: { allow: ['..'] } },
+  // 강의계획서 데이터(syllabus)는 따로 나눠서 필요할 때만 불러오므로 큰 청크 경고는 끔
+  build: { chunkSizeWarningLimit: 800 },
 })

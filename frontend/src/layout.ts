@@ -82,7 +82,8 @@ export function toFlowEdges(
     const outgoing = onPath && selected !== null && e.from === selected
     const isRel = e.type === 'rel'
     const fromMine = start.has(e.from)
-    const show = active ? onPath : fresh ? firstYear.has(e.from) && !isRel : fromMine
+    // 기본 화면: 들은(수강 중) 과목에서 아직 안 들은 과목으로 가는 선수 선만 그린다 (들은 과목끼리 선은 생략)
+    const show = active ? onPath : fresh ? firstYear.has(e.from) && !isRel : fromMine && !isRel && !start.has(e.to)
     if (!show) return []
     // 같은 열(x가 같음)이면 위·아래 핸들로 잇는다
     const a = positions?.get(e.from)
