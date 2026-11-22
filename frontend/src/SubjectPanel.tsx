@@ -152,6 +152,7 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
             major={major}
             missing={missing}
             completedCodes={[...completed]}
+            takingCodes={[...taking]}
             notes={sections?.[0]?.notes ?? null}
             onClose={() => setAsking(false)}
           />

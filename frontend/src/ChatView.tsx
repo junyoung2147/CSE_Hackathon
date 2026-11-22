@@ -8,6 +8,7 @@ type Props = {
   setMessages: (m: ChatMessage[]) => void
   currentTargets: string[] // 지금 목표 과목 (내 로드맵 또는 고른 진로)
   completed: string[]
+  taking: string[] // 이번 학기 수강 중
   onApply: (targets: string[], reasons: Record<string, string>) => void
 }
 
@@ -22,7 +23,7 @@ const EXAMPLES = [
  * AI가 "로드맵을 짜 드릴까요?"(suggest_action)라고 하면 버튼이 뜨고,
  * 누르면 추가·삭제 미리보기를 보여준 뒤 '적용'하면 지도에 '내 로드맵'으로 표시된다.
  */
-export default function ChatView({ major, messages, setMessages, currentTargets, completed, onApply }: Props) {
+export default function ChatView({ major, messages, setMessages, currentTargets, completed, taking, onApply }: Props) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [suggest, setSuggest] = useState(false)
@@ -44,7 +45,7 @@ export default function ChatView({ major, messages, setMessages, currentTargets,
     setMessages(next)
     setLoading(true)
     try {
-      const r = await chat('general', next, { major, targets: currentTargets, completed })
+      const r = await chat('general', next, { major, targets: currentTargets, completed, taking })
       setMessages([...next, { role: 'assistant', text: r.reply }])
       setSuggest(r.suggest_action === 'plan_roadmap')
     } catch (e) {
@@ -60,7 +61,7 @@ export default function ChatView({ major, messages, setMessages, currentTargets,
     setPlanning(true)
     setError(null)
     try {
-      setPlan(await planRoadmap(messages, major, currentTargets, completed))
+      setPlan(await planRoadmap(messages, major, currentTargets, completed, taking))
     } catch (e) {
       fail(e)
     } finally {

@@ -1,6 +1,23 @@
 // 백엔드가 있으면 API를, 없으면 브라우저 저장소를 쓴다.
 const API = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || ''
-const USER = (import.meta.env.VITE_USER_ID as string | undefined) || 'demo'
+/**
+ * 사용자 ID: 로그인 없이 브라우저마다 하나씩 만든다.
+ * (예전엔 모두 'demo'를 써서, 같은 백엔드에 붙은 사람끼리 이수 기록이 섞였다)
+ * VITE_USER_ID를 주면 그 값을 쓴다 (발표 시연용 고정 계정 등).
+ */
+function browserUserId(): string {
+  const KEY = 'cse-map-user-id'
+  try {
+    const saved = localStorage.getItem(KEY)
+    if (saved) return saved
+    const id = `u-${crypto.randomUUID?.() ?? Math.random().toString(36).slice(2)}`
+    localStorage.setItem(KEY, id)
+    return id
+  } catch {
+    return `u-${Math.random().toString(36).slice(2)}`
+  }
+}
+export const USER = (import.meta.env.VITE_USER_ID as string | undefined) || browserUserId()
 
 export const hasBackend = API !== ''
 
@@ -75,7 +92,12 @@ async function post<T>(path: string, body: unknown): Promise<T> {
   })
   if (res.status === 404 || res.status === 405) throw new NotReadyError('AI 상담 서버가 아직 준비되지 않았어요')
   const data = await res.json().catch(() => ({}))
-  if (res.status === 503) throw new Error('AI가 지금 바빠요. 잠시 후 다시 시도해 주세요')
+  if (res.status === 503) {
+    // 키가 없는 등 설정 문제는 그대로 보여주고, 그 외(한도·수요 과다)는 '바빠요'로 안내
+    const detail = (data as { detail?: string }).detail ?? ''
+    if (/KEY|모듈/.test(detail)) throw new Error(`AI 서버 설정 문제: ${detail}`)
+    throw new Error('AI가 지금 바빠요. 잠시 후 다시 시도해 주세요')
+  }
   if (!res.ok) throw new Error((data as { detail?: string }).detail || `HTTP ${res.status}`)
   return data as T
 }
@@ -84,23 +106,30 @@ async function post<T>(path: string, body: unknown): Promise<T> {
  * POST /api/chat
  * - general: 진로·과목·졸업요건 상담 (major, targets)
  * - prereq: subject를 듣기 전 안 들은 선수과목을 건너뛰어도 되는지 (빈 대화면 첫 판단)
- * completed·targets는 백엔드가 DB에서 읽는 게 원칙이지만, 로컬 모드 사용자도 있어서 같이 보낸다.
+ * completed·taking·targets는 백엔드가 DB에서 읽는 게 원칙이지만, 성적·수강 중은 브라우저에만 있어서 같이 보낸다.
  */
 export function chat(
   mode: 'general' | 'prereq',
   conversation: ChatMessage[],
-  opts: { major: string; subject?: string; targets?: string[]; completed: string[] },
+  opts: { major: string; subject?: string; targets?: string[]; completed: string[]; taking: string[] },
 ) {
   return post<ChatReply>('/api/chat', { user_id: USER, mode, conversation, ...opts })
 }
 
 /** POST /api/roadmap/plan — 대화를 보고 목표 과목 추가·삭제안 (미리보기, 저장 안 함) */
-export function planRoadmap(conversation: ChatMessage[], major: string, currentTargets: string[], completed: string[]) {
+export function planRoadmap(
+  conversation: ChatMessage[],
+  major: string,
+  currentTargets: string[],
+  completed: string[],
+  taking: string[],
+) {
   return post<RoadmapPlan>('/api/roadmap/plan', {
     user_id: USER,
     major,
     conversation,
     current_targets: currentTargets,
     completed,
+    taking,
   })
 }
