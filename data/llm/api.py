@@ -116,7 +116,7 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
             return ctx.graduation_text(major)
 
         def suggest_plan_roadmap() -> str:
-            """학생이 로드맵(목표 과목)을 새로 짜거나 바꿔 달라고 할 때 호출한다. 화면에 로드맵 짜기 버튼이 뜬다."""
+            """학생이 로드맵(목표 과목 목록)을 새로 만들거나 고쳐 달라고 분명히 요청할 때만 호출한다. 다음 학기에 뭘 들을지 묻는 질문에는 호출하지 않는다. 화면에 로드맵 짜기 버튼이 뜬다."""
             return "버튼을 띄웠습니다. 학생에게 버튼을 누르라고 안내하세요."
 
         system = _prompt("general_chat", major=major, completed=ctx.codes_text(completed),
