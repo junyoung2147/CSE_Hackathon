@@ -123,7 +123,8 @@ class ChatRequest(BaseModel):
     subject: str | None = Field(default=None, max_length=32)
     targets: list[str] | None = None
     completed: list[str] | None = None
-
+    taking: list[str] | None = None
+    
 
 class RoadmapPlanRequest(BaseModel):
     user_id: str = Field(default="demo", min_length=1, max_length=64)
@@ -131,7 +132,8 @@ class RoadmapPlanRequest(BaseModel):
     conversation: list[ChatMessage] = Field(default_factory=list, max_length=50)
     current_targets: list[str] | None = None
     completed: list[str] | None = None
-
+    taking: list[str] | None = None
+    
 
 class RoadmapTargetsRequest(BaseModel):
     user_id: str = Field(default="demo", min_length=1, max_length=64)
@@ -161,7 +163,11 @@ def _parse_list(raw: str | None) -> list[str]:
         return []
     return [item.strip() for item in re.split(r"[;,]", raw) if item.strip()]
 
-
+def _normalize_codes(codes: list[str] | None) -> list[str]:
+    if not codes:
+        return []
+    return list(dict.fromkeys(c.strip() for c in codes if c and c.strip()))
+    
 def _is_edge_satisfied(edge: CourseEdge, completed_codes: set[str]) -> bool:
     if edge.from_code in completed_codes:
         return True
@@ -270,8 +276,9 @@ def post_chat(payload: ChatRequest):
     with _short_db_session() as db:
         completed = _resolve_completed(db, user_id, payload.completed)
         targets = _resolve_targets(db, user_id, payload.targets)
+        taking = _normalize_codes(payload.taking)
         unmet = (
-            _compute_unmet_prereqs(db, subject_code, set(completed))
+            _compute_unmet_prereqs(db, subject_code, set(completed) | set(taking))
             if payload.mode == "prereq" and subject_code
             else []
         )
@@ -283,6 +290,7 @@ def post_chat(payload: ChatRequest):
             "subject": subject_code,
             "completed": sorted(set(completed)),
             "targets": sorted(set(targets)),
+            "taking": sorted(set(taking)),
             "unmet": sorted(set(unmet)),
             "conversation": conversation,
         }
@@ -327,6 +335,7 @@ def post_chat(payload: ChatRequest):
             major=payload.major,
             targets=targets,
             subject=subject_code,
+            taking=taking,
             unmet=unmet,
         )
     except ValueError as exc:
@@ -362,7 +371,8 @@ def post_roadmap_plan(payload: RoadmapPlanRequest):
     with _short_db_session() as db:
         completed = _resolve_completed(db, user_id, payload.completed)
         current_targets = _resolve_targets(db, user_id, payload.current_targets)
-
+        taking = _normalize_codes(payload.taking)
+        
         cache_input = {
             "kind": "plan",
             "model": model_name,
@@ -370,6 +380,7 @@ def post_roadmap_plan(payload: RoadmapPlanRequest):
             "subject": None,
             "completed": sorted(set(completed)),
             "targets": sorted(set(current_targets)),
+            "taking": sorted(set(taking)),
             "unmet": [],
             "conversation": conversation,
         }
@@ -410,6 +421,7 @@ def post_roadmap_plan(payload: RoadmapPlanRequest):
             conversation=conversation,
             major=payload.major,
             current_targets=current_targets,
+            taking=taking,
             completed=completed,
         )
     except ValueError as exc:
