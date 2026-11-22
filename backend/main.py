@@ -1,14 +1,21 @@
-import re
 from collections import defaultdict
+from contextlib import asynccontextmanager
+import os
+import re
+
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from sqlalchemy import tuple_
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from database import Base, engine, get_db
 from everytime_router import router as everytime_router
 from llm_router import router as llm_router
 from models import (
+    Career,
+    CareerSubject,
     CourseEdge,
     Curriculum,
     Section,
@@ -21,14 +28,28 @@ from models import (
     UserTimetable,
 )
 
-Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="KNU CSE Hackathon Backend", version="0.4.0")
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    Base.metadata.create_all(bind=engine)
+    yield
+
+
+app = FastAPI(
+    title="KNU CSE Hackathon Backend",
+    version="0.4.1",
+    lifespan=lifespan,
+)
+
+# ALLOWED_ORIGINS 환경변수에 콤마 구분 도메인 지정 가능 (미지정 시 개발용 전체 허용 + credentials 비활성화)
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "*").strip()
+_allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()] or ["*"]
+_allow_credentials = "*" not in _allowed_origins
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=_allowed_origins,
+    allow_credentials=_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -38,17 +59,17 @@ app.include_router(llm_router)
 
 
 class CompleteToggleRequest(BaseModel):
-    user_id: str
-    subject_code: str
+    user_id: str = Field(..., min_length=1, max_length=64)
+    subject_code: str = Field(..., min_length=1, max_length=32)
     completed: bool
     term: str | None = None
     source: str = "manual"
 
 
 class TimetableSaveRequest(BaseModel):
-    user_id: str
-    term: str
-    course_nos: list[str]
+    user_id: str = Field(..., min_length=1, max_length=64)
+    term: str = Field(..., min_length=1, max_length=32)
+    course_nos: list[str] = Field(default_factory=list)
 
 
 def _parse_list(raw: str | None) -> list[str]:
@@ -71,10 +92,32 @@ def _is_edge_satisfied(edge: CourseEdge, completed_codes: set[str]) -> bool:
 def health_check():
     return {"status": "ok"}
 
+@app.get("/api/careers")
+def get_careers(db: Session = Depends(get_db)):
+    careers = db.query(Career).order_by(Career.career_id).all()
+    career_subjects = db.query(CareerSubject).order_by(CareerSubject.id).all()
 
+    targets_by_career: dict[str, list[str]] = defaultdict(list)
+    seen_by_career: dict[str, set[str]] = defaultdict(set)
+    for cs in career_subjects:
+        code = cs.subject_code.strip() if cs.subject_code else ""
+        if code and code not in seen_by_career[cs.career_id]:
+            seen_by_career[cs.career_id].add(code)
+            targets_by_career[cs.career_id].append(code)
+
+    return [
+        {
+            "id": c.career_id,
+            "name": c.name,
+            "description": c.description or "",
+            "targets": targets_by_career.get(c.career_id, []),
+        }
+        for c in careers
+    ]
+    
 @app.get("/api/roadmap")
 def get_roadmap(
-    user_id: str = Query(..., description="사용자 식별 ID"),
+    user_id: str = Query(..., min_length=1, max_length=64, description="사용자 식별 ID"),
     db: Session = Depends(get_db),
 ):
     subjects = db.query(Subject).order_by(Subject.subject_code).all()
@@ -190,9 +233,14 @@ def toggle_completed_subject(
     payload: CompleteToggleRequest,
     db: Session = Depends(get_db),
 ):
+    user_id = payload.user_id.strip()
+    subject_code = payload.subject_code.strip()
+    if not user_id or not subject_code:
+        raise HTTPException(status_code=400, detail="user_id and subject_code are required")
+
     subject = (
         db.query(Subject)
-        .filter(Subject.subject_code == payload.subject_code)
+        .filter(Subject.subject_code == subject_code)
         .first()
     )
     if not subject:
@@ -201,37 +249,47 @@ def toggle_completed_subject(
     existing = (
         db.query(UserCompletedCourse)
         .filter(
-            UserCompletedCourse.user_id == payload.user_id,
-            UserCompletedCourse.subject_code == payload.subject_code,
+            UserCompletedCourse.user_id == user_id,
+            UserCompletedCourse.subject_code == subject_code,
         )
         .first()
     )
 
-    if payload.completed:
-        if not existing:
-            db.add(
-                UserCompletedCourse(
-                    user_id=payload.user_id,
-                    subject_code=payload.subject_code,
-                    term=payload.term,
-                    source=payload.source,
+    try:
+        if payload.completed:
+            if not existing:
+                db.add(
+                    UserCompletedCourse(
+                        user_id=user_id,
+                        subject_code=subject_code,
+                        term=payload.term,
+                        source=payload.source,
+                    )
                 )
-            )
-            db.commit()
-    else:
-        if existing:
-            db.delete(existing)
-            db.commit()
+                db.commit()
+        else:
+            if existing:
+                db.delete(existing)
+                db.commit()
+    except IntegrityError:
+        # 동시 요청으로 이미 삽입된 경우 멱등하게 처리
+        db.rollback()
+        if not payload.completed:
+            raise HTTPException(status_code=409, detail="Database conflict while updating completion")
+    except SQLAlchemyError:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Failed to update completed subject")
 
     return {
-        "user_id": payload.user_id,
-        "subject_code": payload.subject_code,
+        "user_id": user_id,
+        "subject_code": subject_code,
         "completed": payload.completed,
     }
 
 
 @app.get("/api/subjects/{subject_code}")
 def get_subject_detail(subject_code: str, db: Session = Depends(get_db)):
+    subject_code = subject_code.strip()
     subject = (
         db.query(Subject)
         .filter(Subject.subject_code == subject_code)
@@ -247,31 +305,46 @@ def get_subject_detail(subject_code: str, db: Session = Depends(get_db)):
         .all()
     )
 
-    section_details = []
-    for sec in sections:
-        syl = (
+    # N+1 방지: 분반 키 목록으로 Syllabus / SyllabusWeek / SyllabusBook 일괄 조회
+    section_keys = [(sec.term, sec.course_no) for sec in sections]
+    syllabus_map: dict[tuple[str, str], Syllabus] = {}
+    weeks_map: dict[tuple[str, str], list[SyllabusWeek]] = defaultdict(list)
+    books_map: dict[tuple[str, str], list[SyllabusBook]] = defaultdict(list)
+
+    if section_keys:
+        syllabi = (
             db.query(Syllabus)
-            .filter(Syllabus.term == sec.term, Syllabus.course_no == sec.course_no)
-            .first()
+            .filter(tuple_(Syllabus.term, Syllabus.course_no).in_(section_keys))
+            .all()
         )
+        for syl in syllabi:
+            syllabus_map[(syl.term, syl.course_no)] = syl
+
         weeks = (
             db.query(SyllabusWeek)
-            .filter(
-                SyllabusWeek.term == sec.term,
-                SyllabusWeek.course_no == sec.course_no,
-            )
+            .filter(tuple_(SyllabusWeek.term, SyllabusWeek.course_no).in_(section_keys))
             .order_by(SyllabusWeek.week)
             .all()
         )
+        for w in weeks:
+            weeks_map[(w.term, w.course_no)].append(w)
+
         books = (
             db.query(SyllabusBook)
-            .filter(
-                SyllabusBook.term == sec.term,
-                SyllabusBook.course_no == sec.course_no,
-            )
+            .filter(tuple_(SyllabusBook.term, SyllabusBook.course_no).in_(section_keys))
             .order_by(SyllabusBook.book_no)
             .all()
         )
+        for b in books:
+            books_map[(b.term, b.course_no)].append(b)
+
+    section_details = []
+    for sec in sections:
+        key = (sec.term, sec.course_no)
+        syl = syllabus_map.get(key)
+        sec_weeks = weeks_map.get(key, [])
+        sec_books = books_map.get(key, [])
+
         section_details.append({
             "term": sec.term,
             "course_no": sec.course_no,
@@ -283,15 +356,15 @@ def get_subject_detail(subject_code: str, db: Session = Depends(get_db)):
             "language": sec.language,
             "capacity": sec.capacity,
             "syllabus": {
-                "summary": syl.summary if syl else None,
-                "goals": syl.goals if syl else None,
-                "evaluation": syl.evaluation if syl else None,
-                "textbooks_references": syl.textbooks_references if syl else None,
-                "notes": syl.notes if syl else None,
+                "summary": syl.summary,
+                "goals": syl.goals,
+                "evaluation": syl.evaluation,
+                "textbooks_references": syl.textbooks_references,
+                "notes": syl.notes,
             } if syl else None,
             "weeks": [
                 {"week": w.week, "content": w.content, "method": w.method}
-                for w in weeks
+                for w in sec_weeks
             ],
             "books": [
                 {
@@ -301,7 +374,7 @@ def get_subject_detail(subject_code: str, db: Session = Depends(get_db)):
                     "year": b.year,
                     "isbn": b.isbn,
                 }
-                for b in books
+                for b in sec_books
             ],
         })
 
@@ -320,8 +393,8 @@ def get_subject_detail(subject_code: str, db: Session = Depends(get_db)):
 
 @app.get("/api/timetable")
 def get_timetable(
-    user_id: str = Query(...),
-    term: str = Query("2026-1"),
+    user_id: str = Query(..., min_length=1, max_length=64),
+    term: str = Query("2026-1", min_length=1, max_length=32),
     db: Session = Depends(get_db),
 ):
     rows = (
@@ -357,22 +430,56 @@ def save_timetable(
     payload: TimetableSaveRequest,
     db: Session = Depends(get_db),
 ):
-    db.query(UserTimetable).filter(
-        UserTimetable.user_id == payload.user_id,
-        UserTimetable.term == payload.term,
-    ).delete()
+    user_id = payload.user_id.strip()
+    term = payload.term.strip()
+    if not user_id or not term:
+        raise HTTPException(status_code=400, detail="user_id and term are required")
 
-    for course_no in payload.course_nos:
-        db.add(
-            UserTimetable(
-                user_id=payload.user_id,
-                term=payload.term,
-                course_no=course_no.strip(),
+    # 공백 제거 및 순서 유지 중복 제거
+    unique_course_nos = list(
+        dict.fromkeys(c.strip() for c in payload.course_nos if c and c.strip())
+    )
+
+    # 실제 해당 학기에 개설된 분반인지 검증
+    if unique_course_nos:
+        valid_course_nos = {
+            row[0]
+            for row in db.query(Section.course_no)
+            .filter(
+                Section.term == term,
+                Section.course_no.in_(unique_course_nos),
             )
-        )
-    db.commit()
+            .all()
+        }
+        invalid_course_nos = [c for c in unique_course_nos if c not in valid_course_nos]
+        if invalid_course_nos:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid course_no for term {term}: {', '.join(invalid_course_nos)}",
+            )
+
+    try:
+        db.query(UserTimetable).filter(
+            UserTimetable.user_id == user_id,
+            UserTimetable.term == term,
+        ).delete()
+
+        for course_no in unique_course_nos:
+            db.add(
+                UserTimetable(
+                    user_id=user_id,
+                    term=term,
+                    course_no=course_no,
+                )
+            )
+        db.commit()
+    except SQLAlchemyError:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Failed to save timetable")
+
     return {
-        "user_id": payload.user_id,
-        "term": payload.term,
-        "saved_count": len(payload.course_nos),
+        "user_id": user_id,
+        "term": term,
+        "saved_count": len(unique_course_nos),
+        "course_nos": unique_course_nos,
     }
