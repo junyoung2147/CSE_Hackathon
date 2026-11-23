@@ -122,7 +122,7 @@ function RoadmapApp() {
         c.code === selected ? 'selected'
         : !selected && targets.includes(c.code) ? 'target'
         : focus.has(c.code) ? 'path'
-        : active ? 'dim'
+        : selected && active ? 'dim'
         : 'normal'
       return {
         id: c.code,
@@ -144,7 +144,8 @@ function RoadmapApp() {
   const flowEdges = useMemo(() => {
     const start = new Set([...completed, ...takingSet])
     const firstYear = new Set(graph.courses.filter((c) => c.col <= 1).map((c) => c.code))
-    return toFlowEdges(graph.edges, isPathEdge, active, start, firstYear, selected, positions)
+    // 진로만 골랐을 땐 선 규칙을 바꾸지 않는다 (과목을 골랐을 때만 경로 선)
+    return toFlowEdges(graph.edges, isPathEdge, selected !== null && active, start, firstYear, selected, positions)
   }, [graph, isPathEdge, active, completed, takingSet, selected, positions])
 
   // 고른 경로가 한 화면에 들어오게 확대 / 아무것도 안 고르면 전체 보기
@@ -296,7 +297,7 @@ function RoadmapApp() {
             onToggleChain={() => setShowChain((v) => !v)}
           />
         ) : career ? (
-          <CareerPanel career={career} reasons={career.id === 'mine' ? mine.reasons : undefined} onClear={career.id === 'mine' ? () => { setMine({ targets: [], reasons: {} }); setCareerId(null) } : undefined} graph={graph} focus={focus} completed={completed} onSelect={setSelected} />
+          <CareerPanel career={career} reasons={career.id === 'mine' ? mine.reasons : undefined} onClear={career.id === 'mine' ? () => { setMine({ targets: [], reasons: {} }); setCareerId(null) } : undefined} graph={graph} focus={focus} completed={completed} taking={takingSet} onSelect={setSelected} />
         ) : (
           <StatusPanel
             major={major}

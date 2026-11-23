@@ -237,4 +237,5 @@ button.primary:disabled { background: #f3f4f6; color: var(--sub); }
 .panel.status .stats { margin: 24px 0 28px; }
 .chip.done { border-color: var(--blue); background: #eaf0f7; color: var(--blue); }
 .chip.target { border: 1.5px solid var(--orange); }
+.chip.taking { border-color: var(--blue); background: #fff; color: var(--blue); }
 .extra { font-size: 12px; }

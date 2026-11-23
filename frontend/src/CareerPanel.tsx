@@ -8,11 +8,12 @@ type Props = {
   graph: MajorGraph
   focus: Set<string>
   completed: Set<string>
+  taking: Set<string>
   onSelect: (code: string) => void
 }
 
 /** 진로를 고르면: 그 진로까지 가는 과목을 학기별로 정리해서 보여준다 */
-export default function CareerPanel({ career, reasons, onClear, graph, focus, completed, onSelect }: Props) {
+export default function CareerPanel({ career, reasons, onClear, graph, focus, completed, taking, onSelect }: Props) {
   const courses = graph.courses.filter((c) => focus.has(c.code)).sort((a, b) => a.col - b.col)
   const targets = new Set(career.targets)
   const done = courses.filter((c) => completed.has(c.code))
@@ -40,10 +41,10 @@ export default function CareerPanel({ career, reasons, onClear, graph, focus, co
               {inCol.map((c) => (
                 <button
                   key={c.code}
-                  className={`chip ${completed.has(c.code) ? 'done' : ''} ${targets.has(c.code) ? 'target' : ''}`}
+                  className={`chip ${completed.has(c.code) ? 'done' : taking.has(c.code) ? 'taking' : ''} ${targets.has(c.code) ? 'target' : ''}`}
                   onClick={() => onSelect(c.code)}
                 >
-                  {completed.has(c.code) ? '✓ ' : ''}{c.name}
+                  {completed.has(c.code) ? '✓ ' : taking.has(c.code) ? '▶ ' : ''}{c.name}
                 </button>
               ))}
             </div>
