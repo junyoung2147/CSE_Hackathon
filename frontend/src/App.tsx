@@ -31,11 +31,11 @@ function RoadmapApp() {
   // 내 학업 현황 (브라우저에 저장)
   const [grades, setGrades] = useState<Grades>(store.loadGrades) // 과목코드 → 성적('' = 미입력)
   const [taking, setTaking] = useState<string[]>(store.loadTaking) // 이번 학기 수강 중
-  const [extra, setExtra] = useState<number>(store.loadExtra) // 지도에 없는 교양·기타 학점
+  const [overrides, setOverrides] = useState(store.loadOverrides) // 교양·그 외 학점을 직접 고친 값
   const [scale] = useState<Scale>(store.loadScale)
   useEffect(() => { store.saveGrades(grades) }, [grades])
   useEffect(() => { store.saveTaking(taking) }, [taking])
-  useEffect(() => { store.saveExtra(extra) }, [extra])
+  useEffect(() => { store.saveOverrides(overrides) }, [overrides])
   // F를 받은 과목은 '이수'가 아니다 (성적은 남겨서 재수강 표시용으로 쓴다)
   const completed = useMemo(() => new Set(Object.entries(grades).filter(([, g]) => g !== 'F').map(([c]) => c)), [grades])
   const takingSet = useMemo(() => new Set(taking), [taking])
@@ -309,8 +309,8 @@ function RoadmapApp() {
             totalCount={graph.courses.length}
             grades={grades}
             scale={scale}
-            extra={extra}
-            onExtra={setExtra}
+            overrides={overrides}
+            onOverrides={setOverrides}
             onSelect={setSelected}
             onOpenTimetable={() => setView('timetable')}
             onReset={() => {
@@ -318,7 +318,7 @@ function RoadmapApp() {
               Object.keys(grades).forEach((c) => sync(c, false))
               setGrades({})
               setTaking([])
-              setExtra(0)
+              setOverrides({})
               setMine({ targets: [], reasons: {} })
               setCareerId(null)
               setSelected(null)

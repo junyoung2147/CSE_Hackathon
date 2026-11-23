@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { nameOf } from './data'
-import { gpaOf, graduationOf, requiredCourses, type Grades, type Scale } from './progress'
+import { gpaOf, graduationOf, requiredCourses, type Grades, type Overrides, type Scale } from './progress'
 
 type Props = {
   major: string
@@ -9,20 +9,23 @@ type Props = {
   totalCount: number
   grades: Grades
   scale: Scale
-  extra: number
-  onExtra: (n: number) => void
+  overrides: Overrides
+  onOverrides: (o: Overrides) => void
   onSelect: (code: string) => void
   onOpenTimetable: () => void
   onReset: () => void
 }
 
 /** 아무것도 안 골랐을 때 오른쪽 패널: 내 평점 + 졸업요건 */
-export default function StatusPanel({ major, doneCount, takingCount, totalCount, grades, scale, extra, onExtra, onSelect, onOpenTimetable, onReset }: Props) {
+export default function StatusPanel({ major, doneCount, takingCount, totalCount, grades, scale, overrides, onOverrides, onSelect, onOpenTimetable, onReset }: Props) {
   const [confirming, setConfirming] = useState(false)
   const { gpa, credits, gpaCredits } = gpaOf(grades, scale)
-  const reqs = graduationOf(major, grades, extra)
+  const reqs = graduationOf(major, grades, overrides)
+  const totalCredits = reqs.find((r) => r.category === '전체')?.have ?? credits
   const required = requiredCourses(major)
   const missingGrades = Object.values(grades).filter((g) => g === '').length
+  const set = (k: string, n: number) => onOverrides({ ...overrides, [k]: Math.max(0, n) })
+  const reset = (k: string) => { const { [k as keyof Overrides]: _, ...rest } = overrides; onOverrides(rest) }
 
   return (
     <aside className="panel status">
@@ -43,17 +46,27 @@ export default function StatusPanel({ major, doneCount, takingCount, totalCount,
             <div key={r.category} className="req">
               <div className="req-head">
                 <span>{r.category}</span>
-                <span>{r.have === null ? '직접 확인' : `${r.have} / ${r.need}학점`}</span>
+                {r.base !== undefined && r.have !== null ? (
+                  <span className="stepper">
+                    <span className="stepbox">
+                      <button aria-label={`${r.category} 학점 줄이기`} onClick={() => set(r.category, r.have! - 1)}>−</button>
+                      <input type="number" min={0} value={r.have} onChange={(e) => set(r.category, Number(e.target.value) || 0)} />
+                      <button aria-label={`${r.category} 학점 늘리기`} onClick={() => set(r.category, r.have! + 1)}>+</button>
+                    </span>
+                    / {r.need}학점                  </span>
+                ) : (
+                  <span>{r.have === null ? '직접 확인' : `${r.have} / ${r.need}학점`}</span>
+                )}
               </div>
               {r.have !== null && <div className="bar"><i style={{ width: `${pct}%` }} className={pct >= 100 ? 'full' : ''} /></div>}
+              {r.base !== undefined && (
+                <div className="req-reset">
+                  {r.category in overrides && <button className="link" onClick={() => reset(r.category)}>되돌리기</button>}
+                </div>
+              )}
             </div>
           )
         })}
-        <label className="extra">
-          목록에 없는 교양·기타 이수 학점
-          <input type="number" min={0} value={extra} onChange={(e) => onExtra(Math.max(0, Number(e.target.value) || 0))} />
-        </label>
-        {/* <p className="muted small">지도에 있는 과목만 자동으로 세요. 교양은 대부분 지도에 없어서 위 칸에 직접 더해 주세요.</p> */}
       </section>
 
       {required.length > 0 && (
@@ -71,7 +84,7 @@ export default function StatusPanel({ major, doneCount, takingCount, totalCount,
 
       <details className="more">
         <summary>평점 · 입력 안내</summary>
-        <p className="small">평점 <b>{gpa === null ? '-' : gpa.toFixed(2)}</b> / {scale} · 이수 학점 {credits + extra}</p>
+        <p className="small">평점 <b>{gpa === null ? '-' : gpa.toFixed(2)}</b> / {scale} · 이수 학점 {totalCredits}</p>
         <p className="muted small">
           평점은 성적을 입력한 {gpaCredits}학점 기준이에요(경북대 4.3 만점){missingGrades ? `. 성적 미입력 ${missingGrades}과목` : ''}.
         </p>

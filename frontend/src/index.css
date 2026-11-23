@@ -239,3 +239,12 @@ button.primary:disabled { background: #f3f4f6; color: var(--sub); }
 .chip.target { border: 1.5px solid var(--orange); }
 .chip.taking { border-color: var(--blue); background: #fff; color: var(--blue); }
 .extra { font-size: 12px; }
+.stepper { display: inline-flex; align-items: center; gap: 4px; }
+.stepbox { display: inline-flex; align-items: center; border: 1px solid #d5dbe3; border-radius: 6px; background: #fff; }
+.stepbox button { width: 22px; height: 22px; border: none; background: none; cursor: pointer; line-height: 1; color: var(--sub); }
+.stepbox input { width: 32px; height: 22px; padding: 0; border: none; outline: none; background: none; text-align: center; font: inherit; -moz-appearance: textfield; }
+.stepbox input::-webkit-outer-spin-button, .stepbox input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.req-head { align-items: center; }
+/* 되돌리기 자리는 항상 비워 둬서 나타나도 줄 높이가 안 변한다 */
+.req-reset { height: 16px; margin-top: 4px; text-align: right; }
+.req-reset .link { margin: 0; font-size: 11px; line-height: 16px; }

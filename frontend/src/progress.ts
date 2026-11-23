@@ -19,7 +19,11 @@ export const NON_GPA = ['P', '']
 /** 과목코드 → 성적 ('' = 이수했지만 성적 미입력) */
 export type Grades = Record<string, string>
 
-const KEY = { grades: 'cse-map-grades', taking: 'cse-map-taking', extra: 'cse-map-extra-credits', scale: 'cse-map-scale', mine: 'cse-map-my-roadmap' }
+/** 교양·그 외 학점을 사용자가 직접 고친 값 (없으면 지도 계산값) */
+export type Overrides = { 교양?: number; '그 외'?: number }
+export const EDITABLE = ['교양', '그 외'] as const
+
+const KEY = { grades: 'cse-map-grades', taking: 'cse-map-taking', overrides: 'cse-map-credit-override', scale: 'cse-map-scale', mine: 'cse-map-my-roadmap' }
 
 function read<T>(key: string, fallback: T): T {
   try {
@@ -51,8 +55,8 @@ export const store = {
   /** AI 상담으로 만든 내 로드맵 (목표 과목 + 이유) */
   loadMine: (): { targets: string[]; reasons: Record<string, string> } => read(KEY.mine, { targets: [], reasons: {} }),
   saveMine: (m: { targets: string[]; reasons: Record<string, string> }) => write(KEY.mine, m),
-  loadExtra: (): number => read(KEY.extra, 0),
-  saveExtra: (n: number) => write(KEY.extra, n),
+  loadOverrides: (): Overrides => read(KEY.overrides, {}),
+  saveOverrides: (o: Overrides) => write(KEY.overrides, o),
   // 경북대는 4.3 만점. 다른 학교로 넓힐 때 대비해서 4.5 표도 남겨 둔다
   loadScale: (): Scale => '4.3',
   saveScale: (s: Scale) => write(KEY.scale, s),
@@ -97,11 +101,12 @@ export type Requirement = {
   category: string
   need: number
   have: number | null // null = 자동으로 셀 수 없음
+  base?: number // 교양·그 외: 지도에서 센 학점 (사용자가 고치기 전 값)
   note: string
 }
 
 /** 가장 최근 기준(종료 연도가 비어 있는 것)의 졸업요건으로 계산 */
-export function graduationOf(major: string, grades: Grades, extraCredits: number): Requirement[] {
+export function graduationOf(major: string, grades: Grades, overrides: Overrides): Requirement[] {
   const rows = gradRows.filter((r) => r.major_name === major && !r.to)
   const latest = new Map<string, GradRow>()
   for (const r of rows) {
@@ -111,12 +116,25 @@ export function graduationOf(major: string, grades: Grades, extraCredits: number
   const passed = Object.entries(grades).filter(([, g]) => g !== 'F').map(([c]) => c)
   const catOf = new Map(curriculum.filter((r) => r.major === major).map((r) => [r.code, r.category]))
 
+  const sum = (f: (cat: string) => boolean) =>
+    passed.filter((c) => f(catOf.get(c) ?? '')).reduce((s, c) => s + creditOf(c), 0)
+  // 그 외 = 전공·교양 규칙에 안 들어가는 지도 과목
+  const base: Record<string, number> = {
+    교양: sum((c) => (COUNTS.교양 as string[]).includes(c)),
+    '그 외': sum((c) => !(COUNTS.전공 as string[]).includes(c) && !(COUNTS.교양 as string[]).includes(c)),
+  }
+  // 요건이 있는 항목만, 사용자가 고친 만큼의 차이를 전체에 더한다
+  const delta = EDITABLE.filter((k) => latest.has(k) && overrides[k] !== undefined)
+    .reduce((s, k) => s + overrides[k]! - base[k], 0)
+
   return [...latest.values()].map((r) => {
     const rule = COUNTS[r.category]
     let have: number | null = null
-    if (rule === 'all') have = passed.reduce((s, c) => s + creditOf(c), 0) + extraCredits
-    else if (rule) have = passed.filter((c) => rule.includes(catOf.get(c) ?? '')).reduce((s, c) => s + creditOf(c), 0)
-    return { category: r.category, need: Number(r.credits_min), have, note: r.note || '' }
+    const editable = (EDITABLE as readonly string[]).includes(r.category)
+    if (rule === 'all') have = passed.reduce((s, c) => s + creditOf(c), 0) + delta
+    else if (editable) have = overrides[r.category as keyof Overrides] ?? base[r.category]
+    else if (rule) have = sum((c) => rule.includes(c))
+    return { category: r.category, need: Number(r.credits_min), have, base: editable ? base[r.category] : undefined, note: r.note || '' }
   })
 }
 
