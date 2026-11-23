@@ -34,10 +34,12 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
   const [sections, setSections] = useState<LocalSection[] | null>(null)
   const [secIdx, setSecIdx] = useState(0)
   const [asking, setAsking] = useState(false) // 선수과목 상담 열림
+  const [fullSummary, setFullSummary] = useState(false) // 과목 설명 펼침
   useEffect(() => {
     setSections(null)
     setSecIdx(0)
     setAsking(false)
+    setFullSummary(false)
     let alive = true
     import('./syllabus').then((m) => alive && setSections(m.sectionsOf(code)))
     return () => {
@@ -54,7 +56,7 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
   const sec = sections?.[secIdx]
 
   return (
-    <aside className="panel">
+    <aside className={`panel subject ${asking ? 'wide' : ''}`}>
       <div className="panel-head">
         <div>
           <h2>{nameOf(code)}</h2>
@@ -88,7 +90,13 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
         {sections === null ? (
           <p className="muted">불러오는 중…</p>
         ) : sec?.summary ? (
-          <p className="pre">{sec.summary}</p>
+          <>
+            {/* 긴 설명은 4줄까지만, 더 보기로 펼친다 */}
+            <p className={`pre ${fullSummary ? '' : 'clamp'}`}>{sec.summary}</p>
+            {sec.summary.length > 120 && (
+              <button className="link" onClick={() => setFullSummary(!fullSummary)}>{fullSummary ? '접기' : '더 보기'}</button>
+            )}
+          </>
         ) : (
           <p className="muted">2026년 강의계획서가 없어요{s?.offeredTerms.length ? '' : ' (올해 미개설)'}.</p>
         )}
@@ -104,41 +112,27 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
           )}
         </h3>
         {taken.length + missing.length === 0 && <p className="muted">없음</p>}
-        {taken.length > 0 && (
-          <div className="chips" style={{ marginBottom: 8 }}>
-            {taken.map((group) => (
-              <span key={group.join('|')} className="chip-group">
-                {group.map((c, i) => (
-                  <span key={c} className="chip-group">
-                    {i > 0 && <span className="or">또는</span>}
-                    <Chip code={c} done={completed.has(c) || taking.has(c)} onSelect={onSelect} />
-                  </span>
-                ))}
-              </span>
-            ))}
-          </div>
+        {taken.length + missing.length > 0 && (
+          <p className="small muted" style={{ margin: '0 0 8px' }}>
+            {taken.length + missing.length}개 중 {taken.length}개 들음{missing.length > 0 ? ` · ${missing.length}개 남음 (권장)` : ''}
+          </p>
         )}
+        {/* 안 들은 것만 펼쳐 보이고, 들은 것은 접는다. 한 줄에 여러 개씩 이어 붙여 길이를 줄인다 */}
         {missing.length > 0 && (
           <>
-            <p className="small muted" style={{ margin: '4px 0' }}>아직 안 들은 선수과목 (권장)</p>
-            <ul className="missing">
-              {missing.map((group) => {
-                const other = !group.some(inMajor)
-                return (
-                  <li key={group.join('|')}>
-                    <span className="chip-group">
-                      {group.map((c, i) => (
-                        <span key={c} className="chip-group">
-                          {i > 0 && <span className="or">또는</span>}
-                          <Chip code={c} done={false} onSelect={onSelect} />
-                        </span>
-                      ))}
-                      {other && <span className="tag">타 전공</span>}
+            <div className="chips">
+              {missing.map((group) => (
+                <span key={group.join('|')} className="chip-group">
+                  {group.map((c, i) => (
+                    <span key={c} className="chip-group">
+                      {i > 0 && <span className="or">또는</span>}
+                      <Chip code={c} done={false} onSelect={onSelect} />
                     </span>
-                  </li>
-                )
-              })}
-            </ul>
+                  ))}
+                  {!group.some(inMajor) && <span className="tag">타 전공</span>}
+                </span>
+              ))}
+            </div>
             {!asking && (
               <button className="ask" style={{ marginTop: 6 }} onClick={() => setAsking(true)}>
                 안 들었는데 들어도 될까요? AI에게 물어보기
@@ -157,30 +151,47 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
             onClose={() => setAsking(false)}
           />
         )}
-      </section>
-
-      <section>
-        <h3>이 과목 다음에</h3>
-        {post.length === 0 ? (
-          <p className="muted">없음</p>
-        ) : (
-          <div className="chips">
-            {post.map((c) => <Chip key={c} code={c} done={completed.has(c)} onSelect={onSelect} />)}
-          </div>
+        {taken.length > 0 && (
+          <details className="more" open={missing.length === 0}>
+            <summary>들은 선수과목 {taken.length}</summary>
+            <div className="chips">
+              {taken.map((group) => (
+                <span key={group.join('|')} className="chip-group">
+                  {group.map((c, i) => (
+                    <span key={c} className="chip-group">
+                      {i > 0 && <span className="or">또는</span>}
+                      <Chip code={c} done={completed.has(c) || taking.has(c)} onSelect={onSelect} />
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
+          </details>
         )}
       </section>
 
+      {/* 자주 안 보는 정보는 접어 둔다 */}
+      {post.length > 0 && (
+        <details className="more">
+          <summary>이 과목 다음에 {post.length}</summary>
+          <div className="chips">
+            {post.map((c) => <Chip key={c} code={c} done={completed.has(c)} onSelect={onSelect} />)}
+          </div>
+        </details>
+      )}
+
       {rel.length > 0 && (
-        <section>
-          <h3>관련 과목</h3>
+        <details className="more">
+          <summary>관련 과목 {rel.length}</summary>
           <div className="chips">
             {rel.map((c) => <Chip key={c} code={c} done={completed.has(c)} onSelect={onSelect} />)}
           </div>
-        </section>
+        </details>
       )}
 
       {sections && sections.length > 0 && (
-        <>
+        <details className="more">
+          <summary>강의계획서 · 개설 분반 {sections.length}</summary>
           <section>
             <h3>개설 분반</h3>
             <div className="chips">
@@ -220,7 +231,7 @@ export default function SubjectPanel({ code, course, completed, taking, inMajor,
               </details>
             </section>
           )}
-        </>
+        </details>
       )}
     </aside>
   )

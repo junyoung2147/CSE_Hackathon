@@ -22,9 +22,9 @@ def _load_env():
 
 
 _load_env()  # MODEL보다 먼저 읽어야 .env의 GEMINI_MODEL이 적용됨
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")  # 기본: 일반 상담·로드맵 (3.6/3.8-flash는 11/21 테스트 때 503)
-# 판단 품질이 중요한 선수과목 상담용. tool 없이 한 번 호출이라 3.5-flash로도 약 16초
-STRONG_MODEL = os.environ.get("GEMINI_STRONG_MODEL", "gemini-3.5-flash")
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")  # 기본: 일반 상담·로드맵 (11/21 테스트 때 일반 상담 38~74초)
+# 판단 품질이 중요한 선수과목 상담용. 3.6-flash는 11/21 테스트 때 503이었고, 실패하면 MODEL로 넘어간다
+STRONG_MODEL = os.environ.get("GEMINI_STRONG_MODEL", "gemini-3.6-flash")
 TIMEOUT_MS = 40_000  # 모델 한 번당. 실패하면 다른 모델로 넘어가므로 무한 대기만 막으면 된다
 RETRY_CODES = (429, 503, 504)  # 서비스 쪽 사정(한도·수요 과다·시간 초과). 400 같은 요청 오류는 모델을 바꿔도 같다
 

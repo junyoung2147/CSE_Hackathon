@@ -101,26 +101,29 @@ def major_codes(major):
 
 
 def codes_text(codes):
-    """코드 목록을 '코드 과목명' 줄로."""
-    return "\n".join(f"- {c} {name(c)}" for c in codes) or "(없음)"
+    """코드 목록을 '과목명(코드)' 줄로. 모델이 이 형식을 따라 쓰므로 프롬프트 규칙과 맞춘다."""
+    return "\n".join(f"- {name(c)}({c})" for c in codes) or "(없음)"
 
 
-def curriculum_text(major):
-    """전공 교육과정 과목 목록."""
+def curriculum_text(major, completed=None, taking=()):
+    """전공 교육과정 과목 목록. completed를 주면 줄 끝에 이수 상태·안 들은 선수과목을 붙인다."""
     major_codes(major)
     return "\n".join(
-        f"- {r['course_code']} {r['course_name_ko']} | {r['grade']}학년 {r['semester']} | "
+        f"- {r['course_name_ko']}({r['course_code']}) | {r['grade']}학년 {r['semester']} | "
         f"{r['category']} | {'필수' if _yes(r['is_required']) else '선택'} | {r['credits']}학점"
+        + ("" if completed is None else f" | {prereq_status(r['course_code'], completed, taking)}")
         for r in _db()["curriculum"][major]
     )
 
 
-def careers_text():
-    """진로별 목표 과목 (참고 데이터)."""
+def careers_text(completed=None, taking=()):
+    """진로별 목표 과목 (참고 데이터). completed를 주면 과목마다 이수 상태·안 들은 선수과목을 붙인다."""
     out = []
     for c in _db()["careers"]:
         codes = [r["subject_code"] for r in _db()["career_subjects"] if r["career_id"] == c["career_id"]]
-        out.append(f"[{c['career_id']}] {c['name']}: {c['description']}\n" + codes_text(codes))
+        lines = (codes_text(codes) if completed is None else
+                 "\n".join(f"- {name(x)}({x}) | {prereq_status(x, completed, taking)}" for x in codes))
+        out.append(f"[{c['career_id']}] {c['name']}: {c['description']}\n" + lines)
     return "\n\n".join(out)
 
 
@@ -135,16 +138,46 @@ def edges_text(major):
     return "\n".join(lines)
 
 
+def prereq_groups(code):
+    """edges.csv의 pre 간선을 줄(서로 대체 가능한 과목 묶음) 목록으로. 줄마다 하나씩 필요하다."""
+    groups = {}  # 서로 대체 가능한 과목 묶음은 한 번만 (A or B, B or A가 따로 적힌 경우)
+    for e in _db()["edges"]:
+        if e["to_code"] == code and e["type"] == "pre":
+            alts = [e["from_code"], *[c for c in (e["or_with"] or "").split(";") if c]]
+            groups.setdefault(frozenset(alts), alts)
+    return list(groups.values())
+
+
+def prereq_text(code):
+    """선수과목 줄. or_with는 '또는'으로 묶는다. 간선이 없으면 없다고 적는다."""
+    lines = ["- " + " 또는 ".join(f"{name(c)}({c})" for c in alts) for alts in prereq_groups(code)]
+    return "\n".join(lines) or "- 등록된 선수 관계 없음"
+
+
+def prereq_status(code, completed, taking=()):
+    """이수 상태와 안 들은 선수과목을 코드가 계산한다 (작은 모델이 줄 단위 판단을 틀려서). 수강 중은 이수로 본다."""
+    if code in completed:
+        return "이수함"
+    if code in taking:
+        return "수강 중"
+    groups = prereq_groups(code)
+    if not groups:
+        return "선수 관계 데이터 없음"
+    met = set(completed) | set(taking)
+    unmet = [alts for alts in groups if not met & set(alts)]
+    if not unmet:
+        return "선수과목 모두 들음"
+    return "안 들은 선수과목: " + ", ".join(" 또는 ".join(f"{name(c)}({c})" for c in alts) for alts in unmet)
+
+
 def subject_detail(code):
-    """과목 하나의 계획서 개요·목표·주차와 선수과목 원문. 계획서가 없으면 그렇게 적는다."""
+    """과목 하나의 선수과목(edges 기준)과 계획서 개요·목표·주차. 계획서가 없으면 그렇게 적는다."""
     db = _db()
     s = db["subjects"].get(code)
     if not s:
         return f"{code}: 과목 데이터 없음"
     syl = db["syllabus"].get(code)
-    # 계획서가 없는 과목의 빈 선수과목은 "없다"가 아니라 "알 수 없다"
-    prereq = s["prerequisites"] or ("없음" if syl else "알 수 없음 (강의계획서 없음)")
-    out = [f"## {code} {s['subject_name']} ({s['credit']}학점)", f"선수과목 원문: {prereq}"]
+    out = [f"## {s['subject_name']}({code}) · {s['credit']}학점", "선수과목 (줄마다 하나씩 필요함. 한 줄 안의 '또는'은 그중 하나만 들으면 그 줄이 충족됨):", prereq_text(code)]
     if not syl:
         out.append("강의계획서 없음")
         return "\n".join(out)

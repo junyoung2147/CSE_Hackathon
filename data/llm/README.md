@@ -4,7 +4,7 @@ Gemini로 상담 채팅 2종과 로드맵 짜기를 처리하는 순수 Python �
 
 ## 설정
 - 의존성: `pip install google-genai pydantic` (확인한 버전: google-genai 3.6.1, pydantic 2.12)
-- 모델: 일반 상담·로드맵은 `gemini-3.5-flash-lite`(`GEMINI_MODEL`), 선수과목 상담은 `gemini-3.5-flash`(`GEMINI_STRONG_MODEL`)를 씁니다. 무료 플랜이고 3.6·3.8-flash는 테스트 때 503이었습니다. 환경변수나 `data/.env`로 바꿀 수 있습니다. 선수과목 상담은 판단 품질이 중요하고 한 번만 호출해서(약 16초) 상위 모델을 쓰고, 일반 상담은 tool 호출이 여러 번 오가서 3.5-flash로는 38~74초가 걸려 lite를 씁니다.
+- 모델: 일반 상담·로드맵은 `gemini-3.5-flash`(`GEMINI_MODEL`), 선수과목 상담은 `gemini-3.6-flash`(`GEMINI_STRONG_MODEL`)를 씁니다. 무료 플랜이고 3.6·3.8-flash는 11/21 테스트 때 503이었습니다(실패하면 다른 모델로 자동 전환). 환경변수나 `data/.env`로 바꿀 수 있습니다. 일반 상담은 tool 호출이 여러 번 오가서 3.5-flash로는 38~74초가 걸렸으므로, 느리면 `GEMINI_MODEL=gemini-3.5-flash-lite`로 되돌립니다.
 - 무료 플랜에서는 입력이 Google의 모델 개선에 쓰입니다. 그래서 과목 코드와 대화 내용만 보냅니다. `completed`·`targets`에 들어온 값 중 과목 코드가 아닌 것은 버립니다.
 - 저장 없음: 이 모듈은 요청을 받아 응답만 돌려줍니다. 응답 저장과 같은 요청 재사용은 백엔드가 맡습니다([BACKEND.md](BACKEND.md) 4절 제안).
 - 429(한도 초과)·503(수요 과다)·504·timeout(모델 한 번당 40초)·연결 오류가 나면 다른 모델로 한 번 넘어갑니다(기본 모델 ↔ 선수과목 모델). 두 모델이 같게 설정돼 있으면 5초 뒤 같은 모델로 다시 시도합니다. 400 같은 요청 오류는 바로 실패합니다. 그래도 실패하거나 Gemini가 빈 응답을 주면 `client.LLMError`가 납니다. 백엔드에서는 503으로 바꿔 주세요. 실제로 응답한 모델은 `client.used_model()`로 알 수 있습니다(스레드별).

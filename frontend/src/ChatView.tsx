@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { chat, NotReadyError, planRoadmap, type ChatMessage, type RoadmapPlan } from './api'
 import { nameOf } from './data'
+import Markdown from './Markdown'
 
 type Props = {
   major: string
@@ -94,7 +95,7 @@ export default function ChatView({ major, messages, setMessages, currentTargets,
             </div>
           )}
           {messages.map((m, i) => (
-            <div key={i} className={`msg ${m.role}`}>{m.text}</div>
+            <div key={i} className={`msg ${m.role}`}>{m.role === 'assistant' ? <Markdown text={m.text} /> : m.text}</div>
           ))}
           {loading && <div className="msg assistant muted">생각 중…</div>}
           {error && <p className="error">{error}</p>}
