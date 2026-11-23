@@ -102,8 +102,8 @@ export function toFlowEdges(
       type: 'default',
       animated: false,
       style: {
-        stroke: outgoing ? '#93c5fd' : onPath ? '#4f46e5' : isRel ? '#9ca3af' : fresh ? '#cbd5e1' : '#60a5fa',
-        strokeWidth: onPath ? 2.5 : fresh ? 1.2 : 1.6,
+        stroke: outgoing ? '#f2c48a' : onPath ? '#e08a1e' : '#c9d0d9',
+        strokeWidth: onPath ? 2 : 1.2,
         strokeDasharray: isRel || outgoing ? '6 4' : undefined,
         opacity: fresh ? 0.6 : 0.9,
       },

@@ -182,3 +182,59 @@ button.link { border: none; background: none; color: #6b7280; text-decoration: u
   .tt-input { flex-wrap: wrap; }
 }
 .link.danger { color: #dc2626; }
+
+/* ---- 미니멀 테마 (모양만, design.png 기준) ---- */
+:root { --blue: #3d6a98; --orange: #e08a1e; --line: #e6e9ee; --sub: #8a94a3; --ink: #1c2430; }
+body { color: var(--ink); }
+.topbar, .careers, .panel { border-color: var(--line); }
+.brand strong { display: inline-flex; align-items: center; gap: 7px; font-size: 16px; }
+.brand strong::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+.tabs button { color: var(--sub); }
+.tabs button.on { color: var(--ink); border-bottom-color: var(--ink); }
+.brand select { border-color: #d5dbe3; border-radius: 6px; }
+.legend i.path { border-color: var(--orange); }
+.career { border: 1px solid var(--line); }
+.career.on { border-color: var(--blue); background: var(--blue); }
+.search input { border: 0; background: #eef2f6; }
+.react-flow__background { display: none; }
+.course-node { border-radius: 6px; font-size: 12px; }
+.course-node .badge, .course-node .grade:not(.fail) { display: none; }
+.sem-header { text-align: left; font-size: 12px; font-weight: 400; color: var(--sub); }
+.sem-divider { border-left: 1px solid var(--line); }
+.stats div { background: none; border: 0; padding: 0; text-align: left; }
+.stats b { font-size: 26px; }
+.bar { height: 4px; background: var(--line); }
+.bar i, .bar i.full { background: var(--blue); }
+button.primary { background: #fff; color: var(--ink); border: 1px solid #d5dbe3; font-weight: 500; }
+button.primary:disabled { background: #f3f4f6; color: var(--sub); }
+
+/* ---- 상단 바·패널 배치 ---- */
+.head-right { display: flex; align-items: center; gap: 16px; }
+.head-right select { font: inherit; font-size: 13px; padding: 6px 12px; border: 1px solid #d5dbe3; border-radius: 6px; background: #fff; }
+.head-right .sub { color: var(--sub); font-size: 12px; }
+.topbar { flex-wrap: nowrap; }
+.graph { position: relative; background: #fff; }
+.legend { position: absolute; left: 20px; bottom: 14px; z-index: 5; gap: 16px; font-size: 12px; color: var(--sub); }
+.legend i.lg { width: 14px; height: 10px; border: 1.5px solid transparent; border-radius: 3px; }
+.legend i.done { background: var(--blue); border-color: var(--blue); }
+.legend i.taking { background: #fff; border-color: var(--blue); }
+.legend i.next { background: #fff; border: 1.5px dashed #aab4c0; }
+.legend i.path { background: #fff; border-color: var(--orange); }
+.legend .mode { background: none; padding: 0; }
+.error { background: #f6f7f9; color: var(--sub); }
+.panel.status { width: 270px; display: flex; flex-direction: column; padding: 24px 20px; }
+.panel.status .push { margin-top: auto; padding-top: 16px; }
+.panel.status button.primary { width: 100%; height: 40px; }
+.panel.status .push .link { display: block; margin-top: 12px; text-decoration: none; color: var(--sub); }
+.req { margin: 0 0 18px; }
+.req-head span:last-child { font-size: 12px; color: var(--sub); }
+.extra { color: var(--sub); }
+.extra input { border-color: #d5dbe3; }
+.more { margin-top: 12px; }
+.more summary { font-size: 12.5px; font-weight: 400; color: var(--sub); }
+.more .chips { margin-top: 8px; }
+@media (max-width: 800px) { .head-right .sub { display: none; } .panel.status { width: 100%; } }
+.panel.status .stats { margin: 24px 0 28px; }
+.chip.done { border-color: var(--blue); background: #eaf0f7; color: var(--blue); }
+.chip.target { border: 1.5px solid var(--orange); }
+.extra { font-size: 12px; }

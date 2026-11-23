@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Background, Controls, ReactFlow, ReactFlowProvider, useReactFlow, type Node } from '@xyflow/react'
+import { Controls, ReactFlow, ReactFlowProvider, useReactFlow, type Node } from '@xyflow/react'
 import { ancestorsOf, buildMajorGraph, COLUMN_LABELS, majors, statusOf } from './data'
 import { careers as presetCareers, type Career } from './careers'
 import { COL_W, colX, layoutBySemester, NODE_W, toFlowEdges } from './layout'
-import { COLORS, nodeTypes, type CourseNodeData } from './nodes'
+import { nodeTypes, type CourseNodeData } from './nodes'
 import { hasBackend, loadCompleted, setCompleted, type ChatMessage } from './api'
 import { store, type Grades, type Scale } from './progress'
 import SubjectPanel from './SubjectPanel'
@@ -200,16 +200,12 @@ function RoadmapApp() {
             <button className={view === 'timetable' ? 'on' : ''} onClick={() => setView('timetable')}>내 시간표</button>
             <button className={view === 'chat' ? 'on' : ''} onClick={() => setView('chat')}>AI 상담</button>
           </div>
+        </div>
+        <div className="head-right">
           <select value={major} onChange={(e) => { setMajor(e.target.value); setSelected(null) }}>
             {majors.map((m) => <option key={m} value={m}>{m}</option>)}
           </select>
           <span className="sub">교육과정 {graph.courses.length}과목 · 이수 {majorCredits}학점</span>
-        </div>
-        <div className="legend">
-          <span><i style={{ background: COLORS.done.bg, borderColor: COLORS.done.border }} />이수</span>
-          <span><i style={{ background: COLORS.taking.bg, borderColor: COLORS.taking.border }} />수강 중</span>
-          <span><i style={{ background: COLORS.next.bg, borderColor: COLORS.next.border }} />다음 후보</span>
-          <span className="mode">{hasBackend ? '백엔드 연결' : '로컬 모드'}</span>
         </div>
       </header>
 
@@ -272,9 +268,15 @@ function RoadmapApp() {
             fitView
             minZoom={0.15}
           >
-            <Background gap={24} />
-            <Controls showInteractive={false} />
+            <Controls showInteractive={false} position="bottom-right" />
           </ReactFlow>
+          <div className="legend">
+            <span><i className="lg done" />이수</span>
+            <span><i className="lg taking" />수강 중</span>
+            <span><i className="lg next" />다음 후보</span>
+            <span><i className="lg path" />진로 경로</span>
+            <span className="mode">{hasBackend ? '백엔드 연결' : '로컬 모드'}</span>
+          </div>
         </div>
         {selected ? (
           <SubjectPanel
@@ -298,6 +300,9 @@ function RoadmapApp() {
         ) : (
           <StatusPanel
             major={major}
+            doneCount={graph.courses.filter((c) => completed.has(c.code)).length}
+            takingCount={graph.courses.filter((c) => takingSet.has(c.code) && !completed.has(c.code)).length}
+            totalCount={graph.courses.length}
             grades={grades}
             scale={scale}
             extra={extra}
