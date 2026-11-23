@@ -4,7 +4,7 @@ import { NODE_H, NODE_W } from './layout'
 
 export const COLORS: Record<Status, { bg: string; border: string; text: string }> = {
   done: { bg: '#3d6a98', border: '#3d6a98', text: '#ffffff' },
-  taking: { bg: '#ffffff', border: '#3d6a98', text: '#1c2430' },
+  taking: { bg: '#eaf0f7', border: '#3d6a98', text: '#2f5580' },
   next: { bg: '#ffffff', border: '#aab4c0', text: '#6b7686' },
   none: { bg: '#eef2f6', border: 'transparent', text: '#a3adba' },
 }
