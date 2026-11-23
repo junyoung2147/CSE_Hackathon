@@ -8,7 +8,7 @@
 |---|---|
 | 의존성 | `google-genai>=3.6.0`, `pydantic>=2` (확인한 버전: 3.6.1 / 2.12). **`backend/requirements.txt`에 `google-genai` 추가 필요** (지금 없음) |
 | 키 | 환경변수 `GOOGLE_API_KEY` 또는 `GEMINI_API_KEY`. SDK가 직접 읽기 때문에 코드에서 키를 다루지 않음. `data/.env`에 두어도 됨(gitignore 처리됨) |
-| 모델 | 일반 상담·로드맵은 기본값 `gemini-3.5-flash-lite`(`GEMINI_MODEL`), 선수과목 상담은 `gemini-3.5-flash`(`GEMINI_STRONG_MODEL`). 한쪽이 429·503·504·timeout이면 다른 모델로 자동 전환됩니다. **백엔드는 아무것도 바꾸지 않아도 동작합니다** |
+| 모델 | 일반 상담·로드맵은 기본값 `gemini-3.5-flash`(`GEMINI_MODEL`), 선수과목 상담은 `gemini-3.6-flash`(`GEMINI_STRONG_MODEL`). 한쪽이 429·503·504·timeout이면 다른 모델로 자동 전환됩니다. **백엔드는 아무것도 바꾸지 않아도 동작합니다** |
 | import 경로 | `data/`를 `sys.path`에 넣은 뒤 `from llm import api, client, context` |
 | 호출 시간 | 동기 함수이고 보통 수 초가 걸림. 모델 한 번당 timeout은 40초이고, 실패하면 다른 모델로 한 번 더 시도하므로 호출 한 번의 최악은 80초입니다. general 모드는 tool 때문에 최대 3번 연달아 호출하고, lite로 보통 15~20초, 3.5-flash로 넘어가면 38~74초까지 걸립니다. 이벤트 루프를 막지 않게 호출해 주세요(FastAPI라면 `async def` 대신 `def` 엔드포인트) |
 
@@ -44,6 +44,7 @@
 - `remove`에는 현재 목표에 있는 과목만 남습니다.
 - `outside_curriculum`은 add 중 해당 전공 교육과정에 없는 과목입니다. 화면에 "교육과정 밖 과목"이라고 안내해야 합니다.
 - `dropped`는 LLM이 냈지만 걸러진 코드입니다(지어낸 코드 등). 디버깅용입니다.
+- `add`·`remove`가 모두 비어 있으면 대화에서 진로를 알 수 없었다는 뜻입니다. 화면에 "상담에서 원하는 진로를 먼저 말해 주세요"처럼 안내해 주세요.
 - 적용 후 목표는 `current_targets - remove + add`입니다. 저장은 사용자가 미리보기를 보고 적용했을 때 합니다.
 
 ### 예외

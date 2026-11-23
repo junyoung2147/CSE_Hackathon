@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { chat, FIRST_PREREQ_MSG, NotReadyError, type ChatMessage } from './api'
 import { nameOf, subjectByCode } from './data'
+import Markdown from './Markdown'
 
 type Props = {
   code: string // 들으려는 과목
@@ -78,7 +79,7 @@ export default function AdviceBox({ code, major, missing, completedCodes, taking
 
       <div className="msgs">
         {msgs.slice(1).map((m, i) => (
-          <div key={i} className={`msg ${m.role}`}>{m.text}</div>
+          <div key={i} className={`msg ${m.role}`}>{m.role === 'assistant' ? <Markdown text={m.text} /> : m.text}</div>
         ))}
         {loading && <div className="msg assistant muted">생각 중…</div>}
         <div ref={endRef} />

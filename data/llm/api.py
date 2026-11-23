@@ -10,7 +10,7 @@ from . import client
 from . import context as ctx
 
 PROMPTS = Path(__file__).resolve().parent / "prompts"
-MAX_TOOL_ROUNDS = 3  # 한 턴 최악 대기 시간을 줄이려고 낮춤
+MAX_TOOL_ROUNDS = 5  # 한 턴 최악 대기 시간을 줄이려고 낮춤
 MAX_MESSAGES = 40  # 대화 20턴(user+assistant)
 MAX_CHARS = 2000  # 메시지 하나의 최대 글자 수
 FIRST_PREREQ_MSG = "안 들은 선수과목마다 첫 판단을 알려 주세요."
@@ -108,8 +108,10 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
             raise ValueError("general 모드는 학생 메시지가 하나 이상 있어야 합니다")
 
         def get_subject(code: str) -> str:
-            """과목 코드로 강의계획서 개요·목표·주차와 선수과목 원문을 조회한다."""
-            return ctx.subject_detail(code)
+            """과목 코드로 선수과목(정리된 선수 관계), 이 학생 기준 안 들은 선수과목, 강의계획서 개요·목표·주차를 조회한다."""
+            if code not in ctx._db()["subjects"]:
+                return ctx.subject_detail(code)
+            return f"이 학생 기준: {ctx.prereq_status(code, completed, taking)}\n" + ctx.subject_detail(code)
 
         def get_graduation() -> str:
             """학생 전공의 졸업 학점과 졸업 요건을 조회한다."""
@@ -120,8 +122,9 @@ def chat(mode, conversation, completed, major=None, targets=(), subject=None, un
             return "버튼을 띄웠습니다. 학생에게 버튼을 누르라고 안내하세요."
 
         system = _prompt("general_chat", major=major, completed=ctx.codes_text(completed),
-                         taking=ctx.codes_text(taking), targets=ctx.codes_text(_known(targets)), careers=ctx.careers_text(),
-                         curriculum=ctx.curriculum_text(major))
+                         taking=ctx.codes_text(taking), targets=ctx.codes_text(_known(targets)),
+                         careers=ctx.careers_text(completed, taking),  # 안 들은 선수과목은 코드가 계산해 넣는다
+                         curriculum=ctx.curriculum_text(major, completed, taking))
         funcs = {f.__name__: f for f in (get_subject, get_graduation, suggest_plan_roadmap)}
         return _run_tools(system, conversation, funcs)
 

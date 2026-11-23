@@ -167,6 +167,35 @@ def test_context_builds():
     assert ctx.careers_text().count("[") == len(ctx._db()["careers"])
 
 
+def test_subject_detail_prereq_from_edges():
+    """선수과목은 edges에서 만든다. or_with는 한 줄로 묶고, 간선이 없는 과목은 없다고 적는다."""
+    text = ctx.subject_detail("COME0331")
+    assert "선수과목 원문" not in text
+    assert "프로그래밍기초(COMP0204) 또는 기초프로그래밍(COMP0206)" in text
+    assert text.count("COMP0206") == 1  # 서로 대체 가능한 쌍이 두 번 적히지 않는다
+    assert "등록된 선수 관계 없음" in ctx.subject_detail("EECS0442")
+
+
+def test_prereq_status_per_group():
+    """안 들은 선수과목은 줄마다 따로 계산한다. 다른 줄을 이수해도 안 들은 줄은 남고, 수강 중은 충족."""
+    s = ctx.prereq_status("ITEC0418", ["COME0331", "COMP0206"], ["COMP0411"])
+    for c in ("COMP0312", "COMP0319", "GLSO0216", "STAT0452"):
+        assert c in s, s
+    for c in ("COME0331", "COMP0204", "COMP0206", "COMP0411"):
+        assert c not in s, s
+    assert ctx.prereq_status("ITEC0418", ["ITEC0418"]) == "이수함"
+    assert ctx.prereq_status("EECS0442", []) == "선수 관계 데이터 없음"
+    call = NS(name="get_subject", args={"code": "ITEC0418"})
+    calls = fake([NS(function_calls=[call], candidates=[NS(content=api._contents([{"role": "assistant", "text": "x"}])[0])]),
+                  NS(function_calls=None, text="ok")])
+    api.chat("general", [{"role": "user", "text": "뭐 들을까"}], ["COME0331"], major=MAJOR)
+    result = calls[1]["contents"][-1].parts[0].function_response.response["result"]
+    assert result.startswith("이 학생 기준: 안 들은 선수과목: ") and "COME0331" not in result.splitlines()[0], result
+    lines = calls[0]["system"].splitlines()
+    assert any("(COME0331) |" in l and l.endswith("| 이수함") for l in lines)
+    assert any("| 안 들은 선수과목: " in l for l in lines)
+
+
 def fake_db_loader(table):
     """backend seed처럼 타입을 바꾼 행을 돌려준다: 빈 값 None, 숫자 int, Y/N bool, id 추가 (id 순서 = CSV 순서)."""
     ints = {"credit", "lecture_hours", "practice_hours", "section_count", "capacity", "week",
