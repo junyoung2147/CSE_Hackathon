@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Background, Controls, ReactFlow, ReactFlowProvider, useReactFlow, type Node } from '@xyflow/react'
+import { Controls, ReactFlow, ReactFlowProvider, useReactFlow, type Node } from '@xyflow/react'
 import { ancestorsOf, buildMajorGraph, COLUMN_LABELS, majors, statusOf } from './data'
 import { careers as presetCareers, type Career } from './careers'
 import { COL_W, colX, layoutBySemester, NODE_W, toFlowEdges } from './layout'
-import { COLORS, nodeTypes, type CourseNodeData } from './nodes'
+import { nodeTypes, type CourseNodeData } from './nodes'
 import { hasBackend, loadCompleted, setCompleted, type ChatMessage } from './api'
 import { store, type Grades, type Scale } from './progress'
 import SubjectPanel from './SubjectPanel'
@@ -20,6 +20,8 @@ function RoadmapApp() {
   const [major, setMajor] = useState(DEFAULT_MAJOR)
   const [careerId, setCareerId] = useState<string | null>(null)
   const [selected, setSelected] = useState<string | null>(null)
+  const [panelOpen, setPanelOpen] = useState(true) // 우측 패널 접기
+  useEffect(() => { setPanelOpen(true) }, [selected, careerId]) // 과목·진로를 고르면 다시 연다
   const [view, setView] = useState<'roadmap' | 'timetable' | 'chat'>('roadmap')
   const [chatMsgs, setChatMsgs] = useState<ChatMessage[]>([]) // AI 상담 대화 (탭을 옮겨도 유지)
   const [mine, setMine] = useState(store.loadMine) // AI로 만든 내 로드맵
@@ -29,11 +31,11 @@ function RoadmapApp() {
   // 내 학업 현황 (브라우저에 저장)
   const [grades, setGrades] = useState<Grades>(store.loadGrades) // 과목코드 → 성적('' = 미입력)
   const [taking, setTaking] = useState<string[]>(store.loadTaking) // 이번 학기 수강 중
-  const [extra, setExtra] = useState<number>(store.loadExtra) // 지도에 없는 교양·기타 학점
+  const [overrides, setOverrides] = useState(store.loadOverrides) // 교양·그 외 학점을 직접 고친 값
   const [scale] = useState<Scale>(store.loadScale)
   useEffect(() => { store.saveGrades(grades) }, [grades])
   useEffect(() => { store.saveTaking(taking) }, [taking])
-  useEffect(() => { store.saveExtra(extra) }, [extra])
+  useEffect(() => { store.saveOverrides(overrides) }, [overrides])
   // F를 받은 과목은 '이수'가 아니다 (성적은 남겨서 재수강 표시용으로 쓴다)
   const completed = useMemo(() => new Set(Object.entries(grades).filter(([, g]) => g !== 'F').map(([c]) => c)), [grades])
   const takingSet = useMemo(() => new Set(taking), [taking])
@@ -122,7 +124,7 @@ function RoadmapApp() {
         c.code === selected ? 'selected'
         : !selected && targets.includes(c.code) ? 'target'
         : focus.has(c.code) ? 'path'
-        : active ? 'dim'
+        : selected && active ? 'dim'
         : 'normal'
       return {
         id: c.code,
@@ -144,7 +146,8 @@ function RoadmapApp() {
   const flowEdges = useMemo(() => {
     const start = new Set([...completed, ...takingSet])
     const firstYear = new Set(graph.courses.filter((c) => c.col <= 1).map((c) => c.code))
-    return toFlowEdges(graph.edges, isPathEdge, active, start, firstYear, selected, positions)
+    // 진로만 골랐을 땐 선 규칙을 바꾸지 않는다 (과목을 골랐을 때만 경로 선)
+    return toFlowEdges(graph.edges, isPathEdge, selected !== null && active, start, firstYear, selected, positions)
   }, [graph, isPathEdge, active, completed, takingSet, selected, positions])
 
   // 고른 경로가 한 화면에 들어오게 확대 / 아무것도 안 고르면 전체 보기
@@ -162,7 +165,7 @@ function RoadmapApp() {
       else flow.fitView({ duration: 500, padding: 0.05 })
     }, 50)
     return () => clearTimeout(t)
-  }, [focus, active, flow, major, selected, showChain, graph])
+  }, [focus, active, flow, major, selected, showChain, graph, panelOpen])
 
   const sync = (code: string, done: boolean) =>
     setCompleted(code, done).catch((e) => setError(`저장 실패: ${(e as Error).message}`))
@@ -200,16 +203,12 @@ function RoadmapApp() {
             <button className={view === 'timetable' ? 'on' : ''} onClick={() => setView('timetable')}>내 시간표</button>
             <button className={view === 'chat' ? 'on' : ''} onClick={() => setView('chat')}>AI 상담</button>
           </div>
+        </div>
+        <div className="head-right">
           <select value={major} onChange={(e) => { setMajor(e.target.value); setSelected(null) }}>
             {majors.map((m) => <option key={m} value={m}>{m}</option>)}
           </select>
           <span className="sub">교육과정 {graph.courses.length}과목 · 이수 {majorCredits}학점</span>
-        </div>
-        <div className="legend">
-          <span><i style={{ background: COLORS.done.bg, borderColor: COLORS.done.border }} />이수</span>
-          <span><i style={{ background: COLORS.taking.bg, borderColor: COLORS.taking.border }} />수강 중</span>
-          <span><i style={{ background: COLORS.next.bg, borderColor: COLORS.next.border }} />다음 후보</span>
-          <span className="mode">{hasBackend ? '백엔드 연결' : '로컬 모드'}</span>
         </div>
       </header>
 
@@ -252,6 +251,7 @@ function RoadmapApp() {
           </button>
         ))}
         <SearchBox courses={graph.courses} onPick={(c) => { setCareerId(null); setSelected(c) }} />
+        <button className="career" onClick={() => setPanelOpen((v) => !v)} title="우측 패널 접기/펼치기" aria-label="우측 패널 접기/펼치기" aria-expanded={panelOpen}>☰</button>
       </nav>
 
       {error && <div className="error" onClick={() => setError(null)}>{error} (닫기)</div>}
@@ -272,11 +272,17 @@ function RoadmapApp() {
             fitView
             minZoom={0.15}
           >
-            <Background gap={24} />
-            <Controls showInteractive={false} />
+            <Controls showInteractive={false} position="bottom-right" />
           </ReactFlow>
+          <div className="legend">
+            <span><i className="lg done" />이수</span>
+            <span><i className="lg taking" />수강 중</span>
+            <span><i className="lg next" />다음 후보</span>
+            <span><i className="lg path" />진로 경로</span>
+            <span className="mode">{hasBackend ? '백엔드 연결' : '로컬 모드'}</span>
+          </div>
         </div>
-        {selected ? (
+        {!panelOpen ? null : selected ? (
           <SubjectPanel
             code={selected}
             course={graph.courseByCode.get(selected)}
@@ -294,14 +300,17 @@ function RoadmapApp() {
             onToggleChain={() => setShowChain((v) => !v)}
           />
         ) : career ? (
-          <CareerPanel career={career} reasons={career.id === 'mine' ? mine.reasons : undefined} onClear={career.id === 'mine' ? () => { setMine({ targets: [], reasons: {} }); setCareerId(null) } : undefined} graph={graph} focus={focus} completed={completed} onSelect={setSelected} />
+          <CareerPanel career={career} reasons={career.id === 'mine' ? mine.reasons : undefined} onClear={career.id === 'mine' ? () => { setMine({ targets: [], reasons: {} }); setCareerId(null) } : undefined} graph={graph} focus={focus} completed={completed} taking={takingSet} onSelect={setSelected} />
         ) : (
           <StatusPanel
             major={major}
+            doneCount={graph.courses.filter((c) => completed.has(c.code)).length}
+            takingCount={graph.courses.filter((c) => takingSet.has(c.code) && !completed.has(c.code)).length}
+            totalCount={graph.courses.length}
             grades={grades}
             scale={scale}
-            extra={extra}
-            onExtra={setExtra}
+            overrides={overrides}
+            onOverrides={setOverrides}
             onSelect={setSelected}
             onOpenTimetable={() => setView('timetable')}
             onReset={() => {
@@ -309,7 +318,7 @@ function RoadmapApp() {
               Object.keys(grades).forEach((c) => sync(c, false))
               setGrades({})
               setTaking([])
-              setExtra(0)
+              setOverrides({})
               setMine({ targets: [], reasons: {} })
               setCareerId(null)
               setSelected(null)
