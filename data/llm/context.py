@@ -141,12 +141,14 @@ def subject_detail(code):
     s = db["subjects"].get(code)
     if not s:
         return f"{code}: 과목 데이터 없음"
-    out = [f"## {code} {s['subject_name']} ({s['credit']}학점)", f"선수과목 원문: {s['prerequisites'] or '없음'}"]
     syl = db["syllabus"].get(code)
+    # 계획서가 없는 과목의 빈 선수과목은 "없다"가 아니라 "알 수 없다"
+    prereq = s["prerequisites"] or ("없음" if syl else "알 수 없음 (강의계획서 없음)")
+    out = [f"## {code} {s['subject_name']} ({s['credit']}학점)", f"선수과목 원문: {prereq}"]
     if not syl:
         out.append("강의계획서 없음")
         return "\n".join(out)
-    out += [f"개요: {syl['summary'] or '없음'}", f"목표: {syl['goals'] or '없음'}", "주차:"]
+    out += [f"개요: {syl['summary'] or '없음'}", f"목표: {syl['goals'] or '없음'}", "회차:"]
     for w in db["weeks"].get((syl["term"], syl["course_no"]), []):
         out.append(f"  {w['week']}주: {' '.join(w['content'].split())[:WEEK_CHARS]}")
     return "\n".join(out)

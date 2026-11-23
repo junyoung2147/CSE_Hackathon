@@ -8,9 +8,9 @@
 |---|---|
 | 의존성 | `google-genai>=3.6.0`, `pydantic>=2` (확인한 버전: 3.6.1 / 2.12). **`backend/requirements.txt`에 `google-genai` 추가 필요** (지금 없음) |
 | 키 | 환경변수 `GOOGLE_API_KEY` 또는 `GEMINI_API_KEY`. SDK가 직접 읽기 때문에 코드에서 키를 다루지 않음. `data/.env`에 두어도 됨(gitignore 처리됨) |
-| 모델 | 기본값 `gemini-3.5-flash-lite`. 환경변수 `GEMINI_MODEL`로 변경 |
+| 모델 | 일반 상담·로드맵은 기본값 `gemini-3.5-flash-lite`(`GEMINI_MODEL`), 선수과목 상담은 `gemini-3.5-flash`(`GEMINI_STRONG_MODEL`). 한쪽이 429·503·504·timeout이면 다른 모델로 자동 전환됩니다. **백엔드는 아무것도 바꾸지 않아도 동작합니다** |
 | import 경로 | `data/`를 `sys.path`에 넣은 뒤 `from llm import api, client, context` |
-| 호출 시간 | 동기 함수이고 보통 수 초가 걸림. 호출 한 번의 timeout은 60초이고, general 모드는 tool 때문에 최대 3번 연달아 호출함. 이벤트 루프를 막지 않게 호출해 주세요(FastAPI라면 `async def` 대신 `def` 엔드포인트) |
+| 호출 시간 | 동기 함수이고 보통 수 초가 걸림. 모델 한 번당 timeout은 40초이고, 실패하면 다른 모델로 한 번 더 시도하므로 호출 한 번의 최악은 80초입니다. general 모드는 tool 때문에 최대 3번 연달아 호출하고, lite로 보통 15~20초, 3.5-flash로 넘어가면 38~74초까지 걸립니다. 이벤트 루프를 막지 않게 호출해 주세요(FastAPI라면 `async def` 대신 `def` 엔드포인트) |
 
 ## 2. 함수 계약
 
@@ -50,7 +50,7 @@
 | 예외 | 의미 | 권장 HTTP |
 |---|---|---|
 | `ValueError` | 잘못된 입력 (형식, 길이 상한 초과, 빈 general 대화, 모르는 전공·과목, 안 들은 선수과목 없음) | 400 |
-| `client.LLMError` | Gemini 실패 (한도 초과, 수요 과다, timeout·연결 오류, 빈 응답, 키 없음). 429·503·timeout·연결 오류는 함수 안에서 5초 뒤 1회 재시도한 뒤의 실패입니다 | 503 |
+| `client.LLMError` | Gemini 실패 (한도 초과, 수요 과다, timeout·연결 오류, 빈 응답, 키 없음). 429·503·504·timeout·연결 오류는 함수 안에서 다른 모델로 1회 넘어간 뒤의 실패입니다 | 503 |
 
 ## 3. 제안 엔드포인트
 
@@ -79,7 +79,7 @@
 | `request_key` | str, index | 아래 입력 전체의 해시 (예: sha256) |
 | `request` | JSON 텍스트 | 함수에 넘긴 인자 전체 |
 | `response` | JSON 텍스트 | 함수 반환값 |
-| `model` | str | `client.MODEL` |
+| `model` | str | `client.MODEL`. 예비 모델로 넘어간 응답까지 정확히 남기려면 호출 직후 `client.used_model()`을 쓰세요 (선택. 기본값 `MODEL`만 써도 동작은 같습니다) |
 | `created_at` | datetime | |
 
 - **`request_key`에 넣어야 할 것**: kind, model, major, subject, 정렬한 completed·taking·targets·unmet, conversation 전체. 하나라도 빠지면 다른 상황의 응답이 재사용됩니다.
