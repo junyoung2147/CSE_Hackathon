@@ -20,6 +20,8 @@ function RoadmapApp() {
   const [major, setMajor] = useState(DEFAULT_MAJOR)
   const [careerId, setCareerId] = useState<string | null>(null)
   const [selected, setSelected] = useState<string | null>(null)
+  const [panelOpen, setPanelOpen] = useState(true) // 우측 패널 접기
+  useEffect(() => { setPanelOpen(true) }, [selected, careerId]) // 과목·진로를 고르면 다시 연다
   const [view, setView] = useState<'roadmap' | 'timetable' | 'chat'>('roadmap')
   const [chatMsgs, setChatMsgs] = useState<ChatMessage[]>([]) // AI 상담 대화 (탭을 옮겨도 유지)
   const [mine, setMine] = useState(store.loadMine) // AI로 만든 내 로드맵
@@ -163,7 +165,7 @@ function RoadmapApp() {
       else flow.fitView({ duration: 500, padding: 0.05 })
     }, 50)
     return () => clearTimeout(t)
-  }, [focus, active, flow, major, selected, showChain, graph])
+  }, [focus, active, flow, major, selected, showChain, graph, panelOpen])
 
   const sync = (code: string, done: boolean) =>
     setCompleted(code, done).catch((e) => setError(`저장 실패: ${(e as Error).message}`))
@@ -249,6 +251,7 @@ function RoadmapApp() {
           </button>
         ))}
         <SearchBox courses={graph.courses} onPick={(c) => { setCareerId(null); setSelected(c) }} />
+        <button className="career" onClick={() => setPanelOpen((v) => !v)} title="우측 패널 접기/펼치기" aria-label="우측 패널 접기/펼치기" aria-expanded={panelOpen}>☰</button>
       </nav>
 
       {error && <div className="error" onClick={() => setError(null)}>{error} (닫기)</div>}
@@ -279,7 +282,7 @@ function RoadmapApp() {
             <span className="mode">{hasBackend ? '백엔드 연결' : '로컬 모드'}</span>
           </div>
         </div>
-        {selected ? (
+        {!panelOpen ? null : selected ? (
           <SubjectPanel
             code={selected}
             course={graph.courseByCode.get(selected)}

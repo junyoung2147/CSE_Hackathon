@@ -53,7 +53,7 @@ export default function StatusPanel({ major, doneCount, takingCount, totalCount,
           목록에 없는 교양·기타 이수 학점
           <input type="number" min={0} value={extra} onChange={(e) => onExtra(Math.max(0, Number(e.target.value) || 0))} />
         </label>
-        <p className="muted small">지도에 있는 과목만 자동으로 세요. 교양은 대부분 지도에 없어서 위 칸에 직접 더해 주세요.</p>
+        {/* <p className="muted small">지도에 있는 과목만 자동으로 세요. 교양은 대부분 지도에 없어서 위 칸에 직접 더해 주세요.</p> */}
       </section>
 
       {required.length > 0 && (
