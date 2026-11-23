@@ -117,11 +117,13 @@ export default function ChatView({ major, messages, setMessages, currentTargets,
             rows={2}
           />
           <button className="primary" disabled={loading || !input.trim()} onClick={() => send(input)}>보내기</button>
+        </div>
+        <div className="chat-foot">
+          <p className="muted small">참고용 답변이에요. 수강 계획은 학과 공지와 지도교수님 상담으로 꼭 확인하세요.</p>
           {messages.length > 0 && (
-            <button onClick={() => { setMessages([]); setPlan(null); setSuggest(false); setError(null) }}>새 대화</button>
+            <button className="link" onClick={() => { setMessages([]); setPlan(null); setSuggest(false); setError(null) }}>새 대화</button>
           )}
         </div>
-        <p className="muted small">참고용 답변이에요. 수강 계획은 학과 공지와 지도교수님 상담으로 꼭 확인하세요.</p>
       </div>
 
       {plan && (
