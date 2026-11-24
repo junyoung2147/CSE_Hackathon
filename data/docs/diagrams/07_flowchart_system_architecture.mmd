@@ -1,0 +1,45 @@
+%%{init: {"flowchart": {"wrappingWidth": 420, "nodeSpacing": 30, "rankSpacing": 55}, "themeVariables": {"clusterBkg": "#FAF7F5", "clusterBorder": "#B8A39A", "lineColor": "#6B5048", "edgeLabelBackground": "#FFFFFF"}}}%%
+flowchart LR
+    U("&nbsp;<br/>&nbsp;&nbsp;&nbsp;<b>학생</b>&nbsp;&nbsp;&nbsp;<br/>&nbsp;")
+
+    FE["<b>프론트엔드</b><br/><small>React · TypeScript · Vite</small><br/>로드맵 그래프 (React Flow)<br/>시간표 연동<br/>AI 상담 화면"]
+
+    subgraph BE["백엔드 · FastAPI · SQLAlchemy"]
+        direction TB
+        B3["에브리타임 연동<br/>공유 링크 XML 파싱<br/><small>everytime_router.py + 파서</small>"]
+        B2["<b>AI 상담</b><br/>강의계획서 근거 프롬프트<br/>선수과목은 코드가 계산<br/>없는 과목 코드는 서버가 검증<br/><small>llm_router.py + 상담 모듈</small>"]
+        B1["로드맵 · 진로 · 시간표 API<br/><small>main.py</small>"]
+    end
+
+    DB[("SQLite<br/>15개 테이블 · WAL")]
+
+    subgraph EXT["외부 서비스"]
+        direction TB
+        E["에브리타임 공유 링크"]
+        G["Gemini API"]
+    end
+
+    P1["<b>데이터 준비</b> (미리 한 번)<br/>공개 강의계획서 · 전공 교육과정<br/>→ CSV 전처리 · 사람 검수<br/>123과목 · 계획서 179 · 선수 관계 234건"]
+
+    U --> FE
+    FE -->|"REST API (JSON)"| BE
+    B3 -->|"링크 조회"| E
+    B2 -->|"프롬프트"| G
+    B2 <-->|"과목 · 계획서"| DB
+    B1 <-->|"읽기 · 쓰기"| DB
+    P1 -->|"seed.py 초기 적재"| DB
+
+    classDef user fill:#6B5048,stroke:#6B5048,color:#FFFFFF,font-size:30px
+    classDef fe fill:#FFFFFF,stroke:#8A6E64,stroke-width:1.5px,color:#2B211D
+    classDef be fill:#FFFFFF,stroke:#8A6E64,stroke-width:1.5px,color:#2B211D
+    classDef key fill:#F3E9E4,stroke:#6B5048,stroke-width:2.5px,color:#2B211D
+    classDef db fill:#EFE6E1,stroke:#6B5048,stroke-width:2px,color:#2B211D
+    classDef ext fill:#F2F2F2,stroke:#8C8C8C,stroke-width:1.5px,color:#2B211D
+    classDef prep fill:#FFFFFF,stroke:#9C8A83,stroke-width:1.5px,stroke-dasharray:5 4,color:#2B211D
+    class U user
+    class FE fe
+    class B1,B3 be
+    class B2 key
+    class DB db
+    class G,E ext
+    class P1 prep

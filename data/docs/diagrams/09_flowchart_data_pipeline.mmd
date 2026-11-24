@@ -1,0 +1,50 @@
+%%{init: {"flowchart": {"wrappingWidth": 320, "nodeSpacing": 30, "rankSpacing": 45}, "themeVariables": {"lineColor": "#6B5048", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#FAF7F5", "clusterBorder": "#B8A39A"}}}%%
+flowchart TB
+    subgraph COL["① 수집 · 정리 (공개 페이지, 비로그인)"]
+        direction LR
+        A1["수업시간표 ·<br/>강의계획서 조회"]
+        C1["<b>수집</b><br/>원본 JSON 740개<br/><small>crawl_lectures.py</small>"]
+        C2["<b>CSV 변환</b><br/>분반 308 · 계획서 179<br/>주차 2,731 · 교재 80<br/><small>build_csv.py</small>"]
+        A2["컴퓨터학부 홈페이지<br/>교육과정 · 졸업요건"]
+        D1["<b>수집</b><br/>표의 병합 셀 펼치기<br/><small>cse_crawler.py</small>"]
+        D2["<b>정리</b><br/>전공별 교육과정 ·<br/>졸업요건 표 정리"]
+        CUR["<b>교육과정 322행</b><br/>5개 전공 × 과목<br/>학년 · 학기 · 교과구분<br/>필수 여부 · 학점 · 시수"]
+        GRAD["<b>졸업요건</b><br/>학점 기준 31행<br/>학점 외 요건 35행<br/><small>전공필수 · 영어 성적 등</small>"]
+        SUB["<b>과목 노드 123개</b><br/>시간표 87 + 교육과정에만 36<br/><small>subjects.csv · 선수·후수 원문 포함</small>"]
+        A1 --> C1 --> C2 --> SUB
+        A2 --> D1 --> D2
+        D2 --> CUR
+        D2 --> GRAD
+        CUR -->|"교육과정에만 있는 과목"| SUB
+    end
+
+    subgraph GR["② 선수 관계 만들기"]
+        direction LR
+        E1["<b>Claude가 해석</b><br/>계획서의 선수 · 후수 문구<br/>→ 과목 코드 간선"]
+        E2["<b>사람 검수</b><br/>사이클 처리<br/>시간축 규칙<br/>대체 과목 (A 또는 B)"]
+        E3["<b>자동 검증</b><br/>없는 코드 · 자기 간선<br/>중복 없음 · DAG"]
+        OUT["<b>edges.csv 234건</b><br/>선수 관계 221<br/>관련 과목 13"]
+        E1 --> E2 --> E3 --> OUT
+    end
+
+    DB[("<b>SQLite</b><br/>CSV를 seed.py로<br/>한 번에 적재")]
+    COL --> GR
+    COL -->|"강의 · 교육과정 · 졸업요건 CSV"| DB
+    GR -->|"edges.csv"| DB
+    NOTE["※ 크롤링은 요청 간격 1초 이상, 한 번 받은 페이지는 저장해 다시 요청하지 않음"]
+    GR ~~~ NOTE
+
+    classDef src fill:#FFFFFF,stroke:#8C8C8C,stroke-width:1.5px,color:#2B211D
+    classDef step fill:#FFFFFF,stroke:#8A6E64,stroke-width:1.5px,color:#2B211D
+    classDef human fill:#F3E9E4,stroke:#6B5048,stroke-width:2.5px,color:#2B211D
+    classDef ai fill:#FFFFFF,stroke:#8C8C8C,stroke-width:1.5px,stroke-dasharray:5 4,color:#2B211D
+    classDef out fill:#6B5048,stroke:#6B5048,color:#FFFFFF
+    classDef db fill:#EFE6E1,stroke:#6B5048,stroke-width:2px,color:#2B211D,font-size:18px
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#6B6B6B
+    class A1,A2 src
+    class C1,C2,D1,D2,SUB,E3 step
+    class E2 human
+    class E1 ai
+    class OUT,CUR,GRAD out
+    class DB db
+    class NOTE note
