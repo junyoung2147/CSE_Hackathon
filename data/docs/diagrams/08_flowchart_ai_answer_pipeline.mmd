@@ -1,0 +1,31 @@
+%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 40, "rankSpacing": 45}, "themeVariables": {"lineColor": "#6B5048", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#FAF7F5", "clusterBorder": "#B8A39A"}}}%%
+flowchart TB
+    subgraph R1["AI 상담"]
+        direction LR
+        S1("<b>① 학생 질문</b><br/>+ 이수 · 수강 중 과목")
+        S2["<small>코드</small><br/><b>② 프롬프트 구성</b><br/>답변 규칙 + 학생 정보<br/>전공 교육과정 · 진로 과목<br/><small>과목마다 이수 상태 표시</small>"]
+        G["<small>AI</small><br/><b>③ Gemini</b><br/>질문에 필요한 자료를 요청하고<br/>근거 안에서 답변"]
+        S3["<small>코드</small><br/><b>④ 자료 조회</b><br/>과목별 안 들은 선수과목<br/>강의계획서 개요 · 목표 · 주차<br/>졸업요건"]
+        A1("<b>⑤ 답변</b><br/>조회한 자료를 근거로 설명<br/><small>추천 · 선수과목 판단 · 졸업요건</small>")
+        S1 --> S2 --> G --> A1
+        G <-->|"필요할 때만 요청"| S3
+    end
+    subgraph R2["로드맵 짜기 (버튼을 누르면)"]
+        direction LR
+        P1["<small>AI</small><br/><b>⑥ Gemini</b><br/>대화를 보고<br/>목표 과목 선택"]
+        P2["<small>코드</small><br/><b>⑦ 서버 검증</b><br/>없는 과목 코드 제거<br/>교육과정 밖 과목 표시<br/>이미 들은 과목 제외"]
+        P3("<b>⑧ 로드맵 미리보기</b><br/>선수과목 경로는<br/>지도가 간선으로 계산")
+        P1 --> P2 --> P3
+    end
+    R1 --> R2
+    NOTE["※ 과목 패널의 선수과목 상담은<br/>대상 과목과 안 들은 선수과목의 강의계획서를 처음부터 붙여 한 번에 판단한다"]
+    R2 ~~~ NOTE
+
+    classDef io fill:#6B5048,stroke:#6B5048,color:#FFFFFF
+    classDef code fill:#F3E9E4,stroke:#6B5048,stroke-width:2.5px,color:#2B211D
+    classDef ai fill:#FFFFFF,stroke:#8C8C8C,stroke-width:1.5px,stroke-dasharray:5 4,color:#2B211D
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#6B6B6B
+    class S1,A1,P3 io
+    class S2,S3,P2 code
+    class G,P1 ai
+    class NOTE note
